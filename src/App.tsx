@@ -6,8 +6,8 @@ function App() {
   return (
     <Routes>
   
-      <Route path="/" element={<Layout children={<Outlet />} />}>
-        <Route path="/" element={<Homepage />} />
+      <Route path="/web-dai-hoc-van-hoa/" element={<Layout children={<Outlet />} />}>
+        <Route path="/web-dai-hoc-van-hoa/" element={<Homepage />} />
         {/* <Route path="/category" element={<Category />} />
         <Route path="/wallpaper" element={<Wallpapers />} /> */}
       </Route>
