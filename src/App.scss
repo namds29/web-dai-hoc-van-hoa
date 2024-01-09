@@ -1,14 +1,14 @@
-
-
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -17,6 +17,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -35,13 +36,22 @@
 .read-the-docs {
   color: #888;
 }
+
 .ant-carousel .slick-prev,
 .ant-carousel .slick-prev:hover,
 .ant-carousel .slick-prev:focus {
   font-size: inherit;
   left: 10px;
   z-index: 2;
-  color: blueviolet;
+  color: white;
+
+}
+
+.ant-carousel .slick-prev::before {
+  content: '';
+}
+.ant-carousel .slick-next::before {
+  content: '';
 }
 
 .ant-carousel .slick-next,
@@ -50,5 +60,5 @@
   font-size: inherit;
   right: 10px;
   z-index: 2;
-  color: blueviolet;
+  color: white;
 }

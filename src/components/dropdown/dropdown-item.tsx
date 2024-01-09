@@ -1,6 +1,6 @@
 // DropdownItem.tsx
 import { Space, Dropdown } from 'antd';
-import { DownOutlined, CaretDownOutlined } from '@ant-design/icons';
+import { CaretDownOutlined } from '@ant-design/icons';
 interface DropdownItemProps {
     label: string;
     items: any; // You can replace 'any' with the actual type of your items

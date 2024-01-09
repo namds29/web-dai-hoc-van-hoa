@@ -1,5 +1,5 @@
 
-import { SearchOutlined, FacebookOutlined } from "@ant-design/icons";
+import { SearchOutlined } from "@ant-design/icons";
 import styles from "./header.module.scss";
 
 import { items } from './menu.ts'
@@ -24,7 +24,7 @@ const Header = ({ }: any) => {
       </div>
       <section className=" bg-white">
         <div className="flex justify-between">
-          <div className="h-20 flex p-2 items-center">
+          <div className="h-20 flex px-8 py-2 items-center">
             <img className="h-full" src="src/assets/img/LOGO.jpg" alt="" />
             <div className="text-orange-700 ml-4">
               <p className="font-extrabold text-xl ">TUCST University</p>
