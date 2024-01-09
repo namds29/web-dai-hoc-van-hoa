@@ -1,10 +1,17 @@
 import "./App.scss";
-
+import { Outlet, Route, Routes } from "react-router-dom";
+import Layout from "./components/layout/layout";
+import Homepage from "./storefront/homepage";
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </>
+    <Routes>
+  
+      <Route path="/" element={<Layout children={<Outlet />} />}>
+        <Route path="/" element={<Homepage />} />
+        {/* <Route path="/category" element={<Category />} />
+        <Route path="/wallpaper" element={<Wallpapers />} /> */}
+      </Route>
+    </Routes>
   );
 }
 

@@ -1,0 +1,17 @@
+@use '../../../variable' as v;
+
+.header {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.navbar {
+    background-color: v.$primary-color;
+    height: 1.8rem;
+    // position: fixed;
+    width: 100%;
+   
+    display: flex;
+    justify-content: flex-end;
+}
