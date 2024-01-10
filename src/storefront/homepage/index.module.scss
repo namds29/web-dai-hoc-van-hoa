@@ -13,6 +13,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .lib_card {
     width: 300px;
     min-height: 400px;
@@ -24,6 +25,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .card_img {
     object-fit: cover;
     height: 100%;
@@ -101,7 +103,7 @@
     color: black;
     gap: 1.5rem;
     margin-top: 1.5rem;
-  
+
     flex-wrap: wrap;
 
     .sub_news_box {
@@ -220,8 +222,8 @@
 
 .animate_btn {
     position: absolute;
-    margin-top: 40px;
-    margin-left: 60px;
+    margin-top: 70px;
+    margin-right: 40px;
     height: 60px;
     width: 60px;
     background-color: red;
@@ -230,11 +232,22 @@
     align-items: center;
     justify-content: center;
     animation-name: example;
-    animation-duration: 0.5s ;
+    animation-duration: 0.5s;
     animation-iteration-count: infinite;
     cursor: pointer;
 }
+.fixed_bg{
+    background-attachment: fixed;
+    background-image: url('img/office.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
+    position: relative;
+}
+.footer{
+    height: 450px;
+}
 @keyframes example {
     from {
         width: 50px;

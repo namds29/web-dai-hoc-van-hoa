@@ -8,6 +8,11 @@ import {
 
 import { Carousel } from "antd";
 
+import { loadSlim } from "tsparticles-slim";
+import { useCallback } from "react";
+import type { Container, Engine } from "tsparticles-engine";
+import Particles from "react-tsparticles";
+
 const contentStyle: React.CSSProperties = {
     margin: 0,
     width: "100%",
@@ -16,6 +21,7 @@ const contentStyle: React.CSSProperties = {
     textAlign: "center",
     background: "rgb(254 202 202)",
     objectFit: "cover",
+
 };
 const libImgStyle: React.CSSProperties = {
     //   width: "400px",
@@ -24,6 +30,7 @@ const libImgStyle: React.CSSProperties = {
     textAlign: "center",
     background: "rgb(254 202 202)",
     objectFit: "cover",
+
 };
 const SlickButtonFix = ({
     currentSlide,
@@ -31,6 +38,8 @@ const SlickButtonFix = ({
     children,
     ...props
 }: any) => <div {...props}>{children}</div>;
+
+
 const Homepage = () => {
     const settings = {
         className: "center",
@@ -38,7 +47,7 @@ const Homepage = () => {
         centerMode: true,
         infinite: true,
         // centerPadding: "10px",
-
+        dots: false,
         slidesToShow: 3,
 
         prevArrow: (
@@ -60,6 +69,19 @@ const Homepage = () => {
 
         // afterChange: this.nextClick
     };
+    const particlesInit = useCallback(async (engine: Engine) => {
+        console.log(engine);
+
+        // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
+        // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
+        // starting from v2 you can add only the features you need reducing the bundle size
+        //await loadFull(engine);
+        await loadSlim(engine);
+    }, []);
+
+    const particlesLoaded = useCallback(async (container: Container | undefined) => {
+        await console.log(container);
+    }, []);
     return (
         <div className={styles.container}>
             <div className="w-full">
@@ -171,7 +193,7 @@ const Homepage = () => {
                 </div>
 
                 <div className={styles.sub_news}>
-                    
+
                     <div className={styles.sub_news_box}>
                         <div className={styles.sub_news__img}>
                             <img src="/img/img1.png" alt="" />
@@ -450,30 +472,41 @@ const Homepage = () => {
                 </div>
             </section>
 
-            <section className="bg-orange-400 text-white font-bold text-2xl   text-center gap-64 w-full  py-8">
-                <p>
-                    "Nuôi dưỡng đam mê - Khuyến khích sáng tạo - Tôn trọng khác biệt - Hợp
-                    tác phát triển"
-                </p>
-                <div className="flex justify-center  gap-64 mt-12">
-                    <p>
-                        28 <br />
-                        Chuyên ngành
+            <section className={`${styles.fixed_bg} bg-orange-400 h-96 text-white font-bold   text-center gap-64 w-full  py-16 flex justify-center`}>
+                <div className="absolute brightness-50 bg-black opacity-65 top-0 w-full h-full"></div>
+                <div className="absolute">
+                    <p className="text-3xl">
+                        "Nuôi dưỡng đam mê - Khuyến khích sáng tạo - Tôn trọng khác biệt - Hợp
+                        tác phát triển"
                     </p>
-                    <p>
-                        60 <br />
-                        Năm phát triển
-                    </p>
-                    <p>
-                        {">"} 4000 <br />
-                        Học viên
-                    </p>
-                </div>
-                <div className="flex items-center justify-center mt-8 pb-8 relative">
-                    <div className={styles.animate_btn}>
-                        <CaretRightOutlined />
+                    <div className="flex justify-center gap-64 mt-12">
+                        <div>
+                            <p className="text-6xl block text-orange-500">
+                                28
+                            </p>
+                            <div className="text-xl">Chuyên ngành</div>
+                        </div>
+                        <div>
+                            <p className="text-6xl block text-orange-500">
+                                60
+                            </p>
+                            <div className="text-xl">Năm phát triển</div>
+                        </div>
+                        <div>
+                            <p className="text-6xl block text-orange-500">
+                                {">"} 4000
+                            </p>
+                            <div className="text-xl"> Học viên</div>
+                        </div>
+
+                    </div>
+                    <div className="flex items-center justify-center mt-8 pb-8 relative">
+                        <div className={styles.animate_btn}>
+                            <CaretRightOutlined />
+                        </div>
                     </div>
                 </div>
+
             </section>
 
             <section className="bg-gray-100 w-full px-24 py-8">
@@ -491,8 +524,79 @@ const Homepage = () => {
                 </div>
             </section>
 
-            <section className="bg-orange-300 w-full px-24 py-8 text-black">
-                <div className="flex justify-between">
+            <section className={`${styles.fixed_bg} ${styles.footer} text-white relative bg-orange-300 w-full  text-black`}>
+                <div className="absolute w-full h-full top-0 left-0 opacity-60 bg-black">
+                    <Particles className="w-full h-full absolute" id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={{
+                        fullScreen: {
+                            enable: false,
+                            zIndex: -1
+                        },
+                       
+                        fpsLimit: 120,
+                        interactivity: {
+                            events: {
+                                onClick: {
+                                    enable: true,
+                                    mode: "push",
+                                },
+                                onHover: {
+                                    enable: true,
+                                    mode: "repulse",
+                                },
+                                resize: true,
+                            },
+                            modes: {
+                                push: {
+                                    quantity: 4,
+                                },
+                                repulse: {
+                                    distance: 200,
+                                    duration: 0.4,
+                                },
+                            },
+                        },
+                        particles: {
+                            color: {
+                                value: "#ffffff",
+                            },
+                            links: {
+                                color: "#ffffff",
+                                distance: 150,
+                                enable: true,
+                                opacity: 0.5,
+                                width: 1,
+                            },
+                            move: {
+                                direction: "none",
+                                enable: true,
+                                outModes: {
+                                    default: "bounce",
+                                },
+                                random: false,
+                                speed: 6,
+                                straight: false,
+                            },
+                            number: {
+                                density: {
+                                    enable: true,
+                                    area: 800,
+                                },
+                                value: 80,
+                            },
+                            opacity: {
+                                value: 0.5,
+                            },
+                            shape: {
+                                type: "circle",
+                            },
+                            size: {
+                                value: { min: 1, max: 5 },
+                            },
+                        },
+                        detectRetina: true,
+                    }} />
+                </div>
+                <div className="flex justify-between absolute w-full h-full px-24 py-8">
                     <div className="text-sm">
                         <p className="font-bold text-lg">CONNECT WITH TUCST</p>
                         <p>Address: No. 561 Quang Trung 3, Dong Ve Ward, City. Thanh Hoa</p>
