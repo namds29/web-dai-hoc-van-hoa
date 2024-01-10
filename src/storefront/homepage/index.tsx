@@ -7,10 +7,9 @@ import {
 } from "@ant-design/icons";
 
 import { Carousel } from "antd";
-
 import { loadSlim } from "tsparticles-slim";
 import { useCallback } from "react";
-import type { Container, Engine } from "tsparticles-engine";
+import type { Engine } from "tsparticles-engine";
 import Particles from "react-tsparticles";
 
 const contentStyle: React.CSSProperties = {
@@ -67,21 +66,9 @@ const Homepage = () => {
     // afterChange: this.nextClick
   };
   const particlesInit = useCallback(async (engine: Engine) => {
-    console.log(engine);
-
-    // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
-    //await loadFull(engine);
     await loadSlim(engine);
   }, []);
 
-  const particlesLoaded = useCallback(
-    async (container: Container | undefined) => {
-      await console.log(container);
-    },
-    []
-  );
   return (
     <div className={styles.container}>
       <div className="w-full">
@@ -262,16 +249,16 @@ const Homepage = () => {
         </div>
         <Carousel {...settings}>
           <div className="p-4">
-            <img style={libImgStyle} src="/img/faculties.png" alt="" />
+            <img style={libImgStyle} src="/img/fa1.png" alt="" />
           </div>
           <div className="p-4">
-            <img style={libImgStyle} src="/img/faculties.png" alt="" />
+            <img style={libImgStyle} src="/img/fa2.png" alt="" />
           </div>
           <div className="p-4">
-            <img style={libImgStyle} src="/img/faculties.png" alt="" />
+            <img style={libImgStyle} src="/img/fa3.png" alt="" />
           </div>
           <div className="p-4">
-            <img style={libImgStyle} src="/img/faculties.png" alt="" />
+            <img style={libImgStyle} src="/img/fa4.png" alt="" />
           </div>
         </Carousel>
         <div className="text-center ">
@@ -474,7 +461,7 @@ const Homepage = () => {
         <div className="flex text-orange-500 font-bold mb-6 justify-center items-center">
           <p className="text-xl border-b-4">IMAGE LIBRARY</p>
         </div>
-        <div className="flex justify-center  flex-wrap">
+        <div className="xl:px-32 grid xl:grid-cols-3 sm:grid-cols-2 gap-8 justify-items-center">
           <div className={styles.lib_card}></div>
           <div className={styles.lib_card}></div>
           <div className={styles.lib_card}></div>
@@ -492,7 +479,7 @@ const Homepage = () => {
             className="w-full h-full absolute"
             id="tsparticles"
             init={particlesInit}
-            loaded={particlesLoaded}
+            // loaded={particlesLoaded}
             options={{
               fullScreen: {
                 enable: false,
@@ -500,28 +487,7 @@ const Homepage = () => {
               },
 
               fpsLimit: 120,
-              interactivity: {
-                events: {
-                  onClick: {
-                    enable: true,
-                    mode: "push",
-                  },
-                  onHover: {
-                    enable: true,
-                    mode: "repulse",
-                  },
-                  resize: true,
-                },
-                modes: {
-                  push: {
-                    quantity: 4,
-                  },
-                  repulse: {
-                    distance: 200,
-                    duration: 0.4,
-                  },
-                },
-              },
+            
               particles: {
                 color: {
                   value: "#ffffff",
@@ -534,13 +500,10 @@ const Homepage = () => {
                   width: 1,
                 },
                 move: {
-                  direction: "none",
+                  direction: "top-right",
                   enable: true,
-                  outModes: {
-                    default: "bounce",
-                  },
-                  random: false,
-                  speed: 6,
+                  random: true,
+                  speed: 10,
                   straight: false,
                 },
                 number: {

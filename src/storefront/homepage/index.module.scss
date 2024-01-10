@@ -15,10 +15,10 @@
 }
 
 .lib_card {
-    width: 300px;
+    width: 100%;
+    min-width: 200px;
     min-height: 400px;
     background-color: pink;
-    margin: 1.7rem;
     border-radius: 8px;
     position: relative;
     display: flex;
