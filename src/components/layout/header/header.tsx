@@ -17,15 +17,15 @@ const Header = ({ }: any) => {
           <button className="leading-none" onClick={() => console.log('1')}>
             <SearchOutlined className="text-white" />
           </button>
-          <a href=""> <img className="h-4" src="src/assets/img/vn.png" alt="" /></a>
-          <a href=""> <img className="h-4" src="src/assets/img/en.png" alt="" /></a>
+          <a href=""> <img className="h-4" src="img/vn.png" alt="" /></a>
+          <a href=""> <img className="h-4" src="img/en.png" alt="" /></a>
         </div>
 
       </div>
       <section className=" bg-white">
         <div className="flex justify-between">
           <div className="h-20 flex px-8 py-2 items-center">
-            <img className="h-full" src="src/assets/img/LOGO.jpg" alt="" />
+            <img className="h-full" src="img/LOGO.jpg" alt="" />
             <div className="text-orange-700 ml-4">
               <p className="font-extrabold text-xl ">TUCST University</p>
               <p>Thanh Hoa University of Culture, Sports and Tourism</p>
