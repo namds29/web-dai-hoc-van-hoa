@@ -171,7 +171,7 @@
     display: flex;
     gap: 0.9rem;
     color: black;
-
+    padding-bottom: 2rem;
     .news {
         width: calc(100% / 3);
         max-height: 600px;
@@ -244,6 +244,12 @@
     background-size: cover;
 
     position: relative;
+}
+.bg_gradient_blue_to_light{
+     background-image: linear-gradient(to right, #0c4a6e, #FEE8B0);
+}
+.letter_space{
+    letter-spacing: 5px;
 }
 .footer{
     height: 450px;
