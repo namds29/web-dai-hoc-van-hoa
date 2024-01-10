@@ -55,13 +55,13 @@ const Homepage = () => {
       <div className="w-full">
         <Carousel>
           <div>
-            <img style={contentStyle} src="src/assets/img/banner1.png" alt="" />
+            <img style={contentStyle} src="/img/banner1.png" alt="" />
           </div>
           <div>
-            <img style={contentStyle} src="src/assets/img/banner2.png" alt="" />
+            <img style={contentStyle} src="/img/banner2.png" alt="" />
           </div>
           <div>
-            <img style={contentStyle} src="src/assets/img/banner3.png" alt="" />
+            <img style={contentStyle} src="/img/banner3.png" alt="" />
           </div>
         </Carousel>
       </div>
@@ -70,7 +70,7 @@ const Homepage = () => {
           <div className={styles.card}>
             <img
               className={styles.card_img}
-              src="src/assets/img/img1.png"
+              src="/img/img1.png"
               alt=""
             />
             <div className={styles.card_text}>Training Program</div>
@@ -78,7 +78,7 @@ const Homepage = () => {
           <div className={styles.card}>
             <img
               className={styles.card_img}
-              src="src/assets/img/img1.png"
+              src="/img/img1.png"
               alt=""
             />
             <div className={styles.card_text}>Partner List</div>
@@ -86,7 +86,7 @@ const Homepage = () => {
           <div className={styles.card}>
             <img
               className={styles.card_img}
-              src="src/assets/img/img1.png"
+              src="/img/img1.png"
               alt=""
             />
             <div className={styles.card_text}>Student Guidebook</div>
@@ -106,7 +106,7 @@ const Homepage = () => {
             <div className={styles.news_img}>
               <img
                 className="w-full h-full"
-                src="src/assets/img/img1.png"
+                src="/img/img1.png"
                 alt=""
               />
             </div>
@@ -133,7 +133,7 @@ const Homepage = () => {
             <div className={styles.news_img}>
               <img
                 className="w-full h-full"
-                src="src/assets/img/img1.png"
+                src="/img/img1.png"
                 alt=""
               />
             </div>
@@ -163,7 +163,7 @@ const Homepage = () => {
         <div className={styles.sub_news}>
           <div className={styles.sub_news_box}>
             <div className={styles.sub_news__img}>
-              <img src="src/assets/img/img1.png" alt="" />
+              <img src="/img/img1.png" alt="" />
             </div>
             <div className={styles.sub_news__content}>
               <div className={styles.sub_news__title}>
@@ -183,7 +183,7 @@ const Homepage = () => {
           </div>
           <div className={styles.sub_news_box}>
             <div className={styles.sub_news__img}>
-              <img src="src/assets/img/img1.png" alt="" />
+              <img src="/img/img1.png" alt="" />
             </div>
             <div className={styles.sub_news__content}>
               <div className={styles.sub_news__title}>
@@ -203,7 +203,7 @@ const Homepage = () => {
           </div>
           <div className={styles.sub_news_box}>
             <div className={styles.sub_news__img}>
-              <img src="src/assets/img/img1.png" alt="" />
+              <img src="/img/img1.png" alt="" />
             </div>
             <div className={styles.sub_news__content}>
               <div className={styles.sub_news__title}>
@@ -223,7 +223,7 @@ const Homepage = () => {
           </div>
           <div className={styles.sub_news_box}>
             <div className={styles.sub_news__img}>
-              <img src="src/assets/img/img1.png" alt="" />
+              <img src="/img/img1.png" alt="" />
             </div>
             <div className={styles.sub_news__content}>
               <div className={styles.sub_news__title}>
@@ -250,19 +250,19 @@ const Homepage = () => {
         </div>
         <Carousel {...settings}>
           <div>
-            <img src="src/assets/img/faculties.png" alt="" />
+            <img src="/img/faculties.png" alt="" />
           </div>
           <div>
-            <img src="src/assets/img/faculties.png" alt="" />
+            <img src="/img/faculties.png" alt="" />
           </div>
           <div>
-            <img src="src/assets/img/faculties.png" alt="" />
+            <img src="/img/faculties.png" alt="" />
           </div>
           <div>
-            <img src="src/assets/img/faculties.png" alt="" />
+            <img src="/img/faculties.png" alt="" />
           </div>
           <div>
-            <img src="src/assets/img/faculties.png" alt="" />
+            <img src="/img/faculties.png" alt="" />
           </div>
         </Carousel>
         <div className="text-center ">
@@ -284,7 +284,7 @@ const Homepage = () => {
         <div className={styles.sub_news}>
           <div className={styles.sub_news_box}>
             <div className={styles.sub_news__img}>
-              <img src="src/assets/img/img1.png" alt="" />
+              <img src="/img/img1.png" alt="" />
             </div>
             <div className={styles.sub_news__content}>
               <div className={styles.sub_news__title}>
@@ -313,7 +313,7 @@ const Homepage = () => {
           </div>
           <div className={styles.sub_news_box}>
             <div className={styles.sub_news__img}>
-              <img src="src/assets/img/img1.png" alt="" />
+              <img src="/img/img1.png" alt="" />
             </div>
             <div className={styles.sub_news__content}>
               <div className={styles.sub_news__title}>
@@ -342,7 +342,7 @@ const Homepage = () => {
           </div>
           <div className={styles.sub_news_box}>
             <div className={styles.sub_news__img}>
-              <img src="src/assets/img/img1.png" alt="" />
+              <img src="/img/img1.png" alt="" />
             </div>
             <div className={styles.sub_news__content}>
               <div className={styles.sub_news__title}>
@@ -371,7 +371,7 @@ const Homepage = () => {
           </div>
           <div className={styles.sub_news_box}>
             <div className={styles.sub_news__img}>
-              <img src="src/assets/img/img1.png" alt="" />
+              <img src="/img/img1.png" alt="" />
             </div>
             <div className={styles.sub_news__content}>
               <div className={styles.sub_news__title}>
@@ -410,7 +410,7 @@ const Homepage = () => {
             <div className={styles.news_img}>
               <img
                 className="w-full h-full"
-                src="src/assets/img/img1.png"
+                src="/img/img1.png"
                 alt=""
               />
             </div>
@@ -421,7 +421,7 @@ const Homepage = () => {
             <div className={styles.news_img}>
               <img
                 className="w-full h-full"
-                src="src/assets/img/img1.png"
+                src="/img/img1.png"
                 alt=""
               />
             </div>
@@ -432,7 +432,7 @@ const Homepage = () => {
             <div className={styles.news_img}>
               <img
                 className="w-full h-full"
-                src="src/assets/img/img1.png"
+                src="img/img1.png"
                 alt=""
               />
             </div>
