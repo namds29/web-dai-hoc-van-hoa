@@ -14,6 +14,18 @@
     justify-content: center;
 }
 
+.lib_card {
+    width: 300px;
+    min-height: 400px;
+    background-color: pink;
+    margin: 1.7rem;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .card_img {
     object-fit: cover;
     height: 100%;
@@ -103,6 +115,7 @@
         padding: 1rem;
         display: flex;
         cursor: pointer;
+        position: relative;
         gap: 1rem;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
@@ -209,8 +222,8 @@
 
 .animate_btn {
     position: absolute;
-    margin-top: 40px;
-    margin-left: 60px;
+    margin-top: 70px;
+    margin-right: 40px;
     height: 60px;
     width: 60px;
     background-color: red;
@@ -219,11 +232,22 @@
     align-items: center;
     justify-content: center;
     animation-name: example;
-    animation-duration: 0.5s ;
+    animation-duration: 0.5s;
     animation-iteration-count: infinite;
     cursor: pointer;
 }
+.fixed_bg{
+    background-attachment: fixed;
+    background-image: url('img/office.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
+    position: relative;
+}
+.footer{
+    height: 450px;
+}
 @keyframes example {
     from {
         width: 50px;
