@@ -473,12 +473,13 @@ const Homepage = () => {
           <p className="text-xl border-b-4">IMAGE LIBRARY</p>
         </div>
         <div className="flex justify-center  flex-wrap">
-          <div className={styles.card}></div>
-          <div className={styles.card}></div>
-          <div className={styles.card}></div>
-          <div className={styles.card}></div>
-          <div className={styles.card}></div>
-          <div className={styles.card}></div>
+          <div className={styles.lib_card}></div>
+          <div className={styles.lib_card}></div>
+          <div className={styles.lib_card}></div>
+          <div className={styles.lib_card}></div>
+          <div className={styles.lib_card}></div>
+          <div className={styles.lib_card}></div>
+         
         </div>
       </section>
 

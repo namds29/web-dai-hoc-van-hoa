@@ -13,7 +13,17 @@
     align-items: center;
     justify-content: center;
 }
-
+.lib_card {
+    width: 300px;
+    min-height: 400px;
+    background-color: pink;
+    margin: 1.7rem;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .card_img {
     object-fit: cover;
     height: 100%;
