@@ -28,6 +28,7 @@ const libImgStyle: React.CSSProperties = {
   textAlign: "center",
   background: "rgb(254 202 202)",
   objectFit: "cover",
+  cursor: 'pointer'
 };
 const SlickButtonFix = ({
   currentSlide,
@@ -528,13 +529,16 @@ const Homepage = () => {
         </div>
         <div className="flex justify-between absolute w-full h-full px-24 py-8">
           <div className="text-sm">
-            <p className="font-bold text-lg">CONNECT WITH TUCST</p>
+            <p className="font-bold text-lg mb-4">CONNECT WITH TUCST</p>
             <p>Address: No. 561 Quang Trung 3, Dong Ve Ward, City. Thanh Hoa</p>
             <p>
               Phone: +(84) 2373. 953 388 <br /> +(84) 2373. 857 421
             </p>
             <p>Email: dvtdt@dvtdt.edu.vn</p>
             <p>Website: http://www.dvtdt.edu.vn</p>
+            <div className="mt-7">
+              <iframe className={styles.maps_size} src="https://maps.google.com/maps?q=Thanh%20Hoa%20University%20of%20Culture&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed"  scrolling="no" ></iframe>
+            </div>
           </div>
 
           <p className="font-bold text-lg">Social Media </p>
