@@ -45,7 +45,7 @@ const Homepage = () => {
     // centerPadding: "10px",
     dots: false,
     slidesToShow: 3,
-
+    autoplay: true,
     prevArrow: (
       <SlickButtonFix>
         <div className="h-7 w-7 flex justify-center items-center bg-red-900 opacity-60 rounded-3xl">
@@ -242,10 +242,9 @@ const Homepage = () => {
           </div>
         </div>
       </section>
-
-      <section className="bg-gradient-to-r from-red-300 to-red-200 w-full px-24 py-8">
-        <div className="flex justify-center text-orange-700 font-bold mb-6">
-          <p className="text-2xl border-b-4">FACULTIES</p>
+      <section className={`${styles.bg_gradient_blue_to_light}  w-full px-24 py-8`} >
+        <div className="flex justify-center text-white-700 font-bold mb-6">
+          <p className={` ${styles.letter_space} text-4xl border-b-4`}>FACULTIES</p>
         </div>
         <Carousel {...settings}>
           <div className="p-4">
@@ -263,7 +262,7 @@ const Homepage = () => {
         </Carousel>
         <div className="text-center ">
           <button
-            className={`${styles.btn_see_more} text-black border-double border-4 hover:bg-orange-300 border-orange-700`}
+            className={`${styles.btn_see_more} text-white border-double border-4 hover:opacity-70 border-white`}
           >
             See more
           </button>
@@ -397,9 +396,9 @@ const Homepage = () => {
         </div>
       </section>
 
-      <section className="bg-gradient-to-r from-red-300 to-red-200 w-full px-24 py-8">
-        <div className="flex justify-center text-orange-700 font-bold mb-6">
-          <p className="text-2xl border-b-4">MVV OF TUCST</p>
+      <section className={`${styles.bg_gradient_blue_to_light}  w-full px-24 py-8`} >
+        <div className="flex justify-center text-white font-bold mb-6">
+          <p className={` ${styles.letter_space} text-4xl border-b-4`}>MVV OF TUCST</p>
         </div>
         <div className={styles.small_card}>
           <div className={styles.news}>
@@ -418,7 +417,7 @@ const Homepage = () => {
           </div>
           <div className={styles.news}>
             <div className={styles.news_img}>
-              <img className="w-full h-full" src="img/img1.png" alt="" />
+              <img className="w-full h-full" src="/img/img1.png" alt="" />
             </div>
 
             <div className={styles.news_title}>Value</div>
@@ -487,7 +486,7 @@ const Homepage = () => {
               },
 
               fpsLimit: 120,
-            
+
               particles: {
                 color: {
                   value: "#ffffff",
