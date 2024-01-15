@@ -1,6 +1,6 @@
 import styles from "./index.module.scss";
 import {
-  CalendarOutlined,
+
   LeftOutlined,
   RightOutlined,
   CaretRightOutlined,

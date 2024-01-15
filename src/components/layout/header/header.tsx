@@ -13,7 +13,8 @@ const Header = ({ }: any) => {
   return (
     <header className={styles.header}>
       <div className={styles.navbar}>
-        <div className="flex gap-3 items-center mr-4">
+          <div className={styles.slogan}>Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum</div>
+        <div className="flex gap-3 items-center mr-4 relative">
           <button className="leading-none" onClick={() => console.log('1')}>
             <SearchOutlined className="text-white" />
           </button>
@@ -31,14 +32,21 @@ const Header = ({ }: any) => {
               <p>Thanh Hoa University of Culture, Sports and Tourism</p>
             </div>
           </div>
-          <div className="flex items-center" >
-            <DropdownItem label="About" items={items} />
+          <div className="flex items-center gap-10 mr-10" >
+            <a className="cursor-pointer" href="/about">About</a>
+            <a>News</a>
+            <a>Academics</a>
+            <a>Admission</a>
+            <a>Student Support</a>
+            <a>International Support</a>
+            <a>Research</a>
+            {/* <DropdownItem label="About" items={items} />
             <DropdownItem label="News" items={items} />
             <DropdownItem label="Academics" items={items} />
             <DropdownItem label="Admission" items={items} />
             <DropdownItem label="Student Support" items={items} />
             <DropdownItem label="International Support" items={items} />
-            <DropdownItem label="Research" items={items} />
+            <DropdownItem label="Research" items={items} /> */}
           </div>
         </div>
       </section>

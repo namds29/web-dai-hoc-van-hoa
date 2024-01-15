@@ -8,10 +8,32 @@
 
 .navbar {
     background-color: v.$primary-color;
-    height: 1.8rem;
+    height: 2rem;
     // position: fixed;
     width: 100%;
-   
+    position: relative;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+}
+
+.slogan {
+    position: absolute;
+    // left: 0;
+    margin-right: 10rem;
+    margin-left: 3rem;
+    overflow: hidden;
+    color: white;
+    white-space: nowrap;
+    animation: 10s linear 0s infinite runSlogan;
+}
+
+@keyframes runSlogan {
+    from {
+        right: 0
+    }
+
+    to {
+        right: 100%
+    }
 }
