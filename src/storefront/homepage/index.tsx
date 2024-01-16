@@ -1,6 +1,5 @@
 import styles from "./index.module.scss";
 import {
-
   LeftOutlined,
   RightOutlined,
   CaretRightOutlined,
@@ -8,10 +7,9 @@ import {
 
 import { Carousel } from "antd";
 
-import Footer from "./footer";
+import Footer from "../../components/layout/footer";
 import Announcements from "./announcements";
 import Banner from "./banner";
-
 
 const libImgStyle: React.CSSProperties = {
   //   width: "400px",
@@ -20,7 +18,7 @@ const libImgStyle: React.CSSProperties = {
   textAlign: "center",
   background: "rgb(254 202 202)",
   objectFit: "cover",
-  cursor: 'pointer'
+  cursor: "pointer",
 };
 const SlickButtonFix = ({
   currentSlide,
@@ -59,10 +57,9 @@ const Homepage = () => {
     // afterChange: this.nextClick
   };
 
-
   return (
     <div className={styles.container}>
-     <Banner />
+      <Banner />
       <section className="w-full">
         <div className="flex justify-center">
           <div className={styles.card}>
@@ -81,9 +78,11 @@ const Homepage = () => {
       </section>
 
       <Announcements />
-      <section className={`${styles.bg_gradient_blue_to_light}  w-full px-24 py-8`} >
+      <section className={`bg_gradient_blue_to_light w-full px-24 py-8`}>
         <div className="flex justify-center text-white-700 font-bold mb-6">
-          <p className={` ${styles.letter_space} text-4xl border-b-4`}>FACULTIES</p>
+          <p className={` ${styles.letter_space} text-4xl border-b-4`}>
+            FACULTIES
+          </p>
         </div>
         <Carousel {...settings}>
           <div className="p-4">
@@ -235,9 +234,11 @@ const Homepage = () => {
         </div>
       </section>
 
-      <section className={`${styles.bg_gradient_blue_to_light}  w-full px-24 py-8`} >
+      <section className={`bg_gradient_blue_to_light w-full px-24 py-8`}>
         <div className="flex justify-center text-white font-bold mb-6">
-          <p className={` ${styles.letter_space} text-4xl border-b-4`}>MVV OF TUCST</p>
+          <p className={` ${styles.letter_space} text-4xl border-b-4`}>
+            MVV OF TUCST
+          </p>
         </div>
         <div className={styles.small_card}>
           <div className={styles.news}>
@@ -308,9 +309,6 @@ const Homepage = () => {
           <div className={styles.lib_card}></div>
         </div>
       </section>
-
-      <Footer />
-
     </div>
   );
 };
