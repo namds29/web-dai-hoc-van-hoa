@@ -46,6 +46,7 @@ const Homepage = () => {
     dots: false,
     slidesToShow: 3,
     autoplay: true,
+    autoplay: true,
     prevArrow: (
       <SlickButtonFix>
         <div className="h-7 w-7 flex justify-center items-center bg-red-900 opacity-60 rounded-3xl">
@@ -418,7 +419,7 @@ const Homepage = () => {
           </div>
           <div className={styles.news}>
             <div className={styles.news_img}>
-              <img className="w-full h-full" src="img/img1.png" alt="" />
+              <img className="w-full h-full" src="/img/img1.png" alt="" />
             </div>
 
             <div className={styles.news_title}>Value</div>
@@ -487,6 +488,7 @@ const Homepage = () => {
               },
 
               fpsLimit: 120,
+
 
               particles: {
                 color: {
