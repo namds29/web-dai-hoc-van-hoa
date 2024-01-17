@@ -6,6 +6,9 @@ export default {
   theme: {
     ...colors,
     extend: {
+      height: {
+        '400': '400px'
+      },
       backgroundColor: {
         primary: "#f9841a",
       },

@@ -1,11 +1,10 @@
 import styles from "./index.module.scss";
 
-import { CalendarOutlined } from "@ant-design/icons";
 const About = () => {
   return (
     <section className="w-full">
-      <div className="w-full">
-        <img src="/img/banner3.png" alt="" />
+      <div className="w-full h-400">
+        <img className="w-full h-400 object-cover" src="/img/banner3.png" alt="" />
       </div>
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <p className="text-xl border-b-4 ">PRESIDENT’S MESSAGE</p>

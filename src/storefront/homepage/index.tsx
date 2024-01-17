@@ -7,7 +7,6 @@ import {
 
 import { Carousel } from "antd";
 
-import Footer from "../../components/layout/footer";
 import Announcements from "./announcements";
 import Banner from "./banner";
 
