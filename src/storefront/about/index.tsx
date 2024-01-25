@@ -4,7 +4,11 @@ const About = () => {
   return (
     <section className="w-full">
       <div className="w-full h-400">
-        <img className="w-full h-400 object-cover" src="/img/banner3.png" alt="" />
+        <img
+          className="w-full h-400 object-cover"
+          src="/img/banner3.png"
+          alt=""
+        />
       </div>
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <p className="text-xl border-b-4 ">PRESIDENT’S MESSAGE</p>
@@ -117,7 +121,7 @@ const About = () => {
         <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center">
           CONDITIONS FOR ENSURE QUALITY OF EDUCATION
         </div>
-        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center">
+        <div className="w-full h-64 p-8 rounded bg-lmlmorange-300 flex items-center">
           ACHIEVEMENTS AND HONORS ACHIEVED
         </div>
       </section>

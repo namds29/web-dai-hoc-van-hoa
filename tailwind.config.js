@@ -11,6 +11,7 @@ export default {
       },
       backgroundColor: {
         primary: "#f9841a",
+        subColor: 'rgb(70, 70, 248)'
       },
       textColor: {
         primary: '#f9841a'
