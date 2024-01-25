@@ -46,7 +46,10 @@ const Header = ({}: any) => {
             <a>Admission</a>
             <a>Student Support</a>
             <a>International Support</a>
-            <a>Research</a>
+            <Link className="cursor-pointer" to="/research">
+              Research
+            </Link>
+           
             {/* <DropdownItem label="About" items={items} />
             <DropdownItem label="News" items={items} />
             <DropdownItem label="Academics" items={items} />
