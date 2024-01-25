@@ -1,0 +1,22 @@
+.journal_img{
+  width: 300px;
+  // height: 600px;
+}
+.btn_see_more {
+  margin-top: 2rem;
+  // color: rgb(243, 61, 61);
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+}
+.card_science{
+  width: calc(100% - 13rem);
+  color: black;
+}
+.card_science_description{
+  height: 100px;
+  font-size: 14px;
+  -webkit-line-clamp: 3;
+  /* Set the number of lines to be displayed before truncating */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
