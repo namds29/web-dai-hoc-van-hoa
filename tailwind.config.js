@@ -7,7 +7,8 @@ export default {
     ...colors,
     extend: {
       height: {
-        '400': '400px'
+        '400': '400px',
+        '100': '100px'
       },
       backgroundColor: {
         primary: "#f9841a",
