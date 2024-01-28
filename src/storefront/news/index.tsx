@@ -10,7 +10,7 @@ const News = () => {
           alt=""
         />
       </div>
-      <section className="flex gap-10 bg-gray-100 w-full text-orange-500 font-bold  justify-between px-20 py-8">
+      <section className="flex gap-10  w-full text-orange-500 font-bold  justify-between px-20 py-8">
         <div>
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
           <div className="overflow-hidden bg-red-300 w-full h-80 flex  justify-center items-center relative rounded">
@@ -48,7 +48,7 @@ const News = () => {
         </div>
       </section>
 
-      <section className="bg-white w-full text-black font-bold  justify-between items-center px-20 py-8">
+      <section className=" bg-gray-100 w-full text-black font-bold  justify-between items-center px-20 py-8">
         <div className="flex gap-8 mt-4">
           <div className={styles.card}>
             <div className={styles.card_title}>SCHOOL NAME</div>
