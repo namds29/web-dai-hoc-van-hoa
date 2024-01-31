@@ -3,7 +3,16 @@ import styles from "./header.module.scss";
 
 import { Link } from "react-router-dom";
 
-const Header = ({}: any) => {
+const Header = ({ }: any) => {
+  const menuItem = [
+    { title: "About", route: "/about" },
+    { title: "News", route: "/news" },
+    { title: "Academics", route: "/academics" },
+    { title: "Admission", route: "/admission" },
+    { title: "Student Support", route: "/student-support" },
+    { title: "International Partners", route: "/international-partners" },
+    { title: "Research", route: "/research" },
+  ]
   return (
     <header className={styles.header}>
       <div className={styles.navbar}>
@@ -24,6 +33,7 @@ const Header = ({}: any) => {
       </div>
       <section className=" bg-white">
         <div className="flex justify-between">
+
           <Link to={"/"}>
             <div className="h-20 flex px-8 py-2 items-center">
               <img className="h-full" src="img/LOGO.jpg" alt="" />
@@ -34,22 +44,13 @@ const Header = ({}: any) => {
             </div>
           </Link>
           <div className="flex items-center gap-10 mr-10">
-            <Link className="cursor-pointer" to="/about">
-              About
-            </Link>
-            <Link className="cursor-pointer" to="/news">
-              News
-            </Link>
-            <Link className="cursor-pointer" to="/academics">
-              Academics
-            </Link>
-            <a>Admission</a>
-            <a>Student Support</a>
-            <a>International Support</a>
-            <Link className="cursor-pointer" to="/research">
-              Research
-            </Link>
-           
+            {menuItem.map(item => (
+              <Link className="cursor-pointer" to={item.route}>
+                {item.title}
+              </Link>
+            ))}
+            
+
             {/* <DropdownItem label="About" items={items} />
             <DropdownItem label="News" items={items} />
             <DropdownItem label="Academics" items={items} />
