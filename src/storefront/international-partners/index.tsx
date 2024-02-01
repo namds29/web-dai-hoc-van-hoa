@@ -33,7 +33,7 @@ const InternationalPartners = () => {
               <div className="h-44 w-full">
                 <img
                   className="w-full h-full object-contain"
-                  src="/src/assets/img/logo-partner1.png"
+                  src="/img/logo-partner1.png"
                   alt=""
                 />
               </div>
@@ -48,7 +48,7 @@ const InternationalPartners = () => {
               <div className="h-44 w-full">
                 <img
                   className="w-full h-full object-contain"
-                  src="/src/assets/img/logo-partner1.png"
+                  src="/img/logo-partner1.png"
                   alt=""
                 />
               </div>
@@ -63,7 +63,7 @@ const InternationalPartners = () => {
               <div className="h-44 w-full">
                 <img
                   className="w-full h-full object-contain"
-                  src="/src/assets/img/logo-partner1.png"
+                  src="/img/logo-partner1.png"
                   alt=""
                 />
               </div>
@@ -78,7 +78,7 @@ const InternationalPartners = () => {
               <div className="h-44 w-full">
                 <img
                   className="w-full h-full object-contain"
-                  src="/src/assets/img/logo-partner1.png"
+                  src="/img/logo-partner1.png"
                   alt=""
                 />
               </div>
