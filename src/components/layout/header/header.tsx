@@ -3,7 +3,7 @@ import styles from "./header.module.scss";
 
 import { Link } from "react-router-dom";
 
-const Header = ({ }: any) => {
+const Header = () => {
   const menuItem = [
     { title: "About", route: "/about" },
     { title: "News", route: "/news" },

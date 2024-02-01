@@ -2,21 +2,21 @@ import {
   ACADEMICS_FUCTIONAL_UNITS,
   ACADEMICS_TRAINING_PROGRAM,
 } from "src/utils/constant";
-import styles from "./index.module.scss";
+// import styles from "./index.module.scss";
 import { useState } from "react";
 
 const Academics = () => {
   const [unitId, setUnitId] = useState<number>(1);
-  const [trainingTitle, setTrainingTitle] = useState<string>("");
+  // const [trainingTitle, setTrainingTitle] = useState<string>("");
 
   const handleChangeUnit = (id: number) => {
     console.log(id);
     setUnitId(id);
   };
-  const handleChangeTitle = (title: string) => {
-    console.log(title);
-    setTrainingTitle(title);
-  };
+  // const handleChangeTitle = (title: string) => {
+  //   console.log(title);
+  //   setTrainingTitle(title);
+  // };
 
   return (
     <section className="w-full">
