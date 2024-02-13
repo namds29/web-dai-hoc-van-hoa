@@ -7,6 +7,7 @@ import News from "./storefront/news";
 import Academics from "./storefront/academics";
 import Research from "./storefront/research";
 import InternationalPartners from "./storefront/international-partners";
+import Admission from "./storefront/admission";
 function App() {
   return (
     <Routes>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/news" element={<News />} />
         <Route path="/academics" element={<Academics />} />
+        <Route path="/admission" element={<Admission />} />
         <Route path="/international-partners" element={<InternationalPartners />} />
         <Route path="/research" element={<Research />} />
         {/* <Route path="/wallpaper" element={<Wallpapers />} /> */}

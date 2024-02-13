@@ -121,7 +121,7 @@ const About = () => {
         <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center">
           CONDITIONS FOR ENSURE QUALITY OF EDUCATION
         </div>
-        <div className="w-full h-64 p-8 rounded bg-lmlmorange-300 flex items-center">
+        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center">
           ACHIEVEMENTS AND HONORS ACHIEVED
         </div>
       </section>
