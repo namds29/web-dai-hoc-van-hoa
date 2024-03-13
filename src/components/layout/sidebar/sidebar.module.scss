@@ -1,0 +1,41 @@
+.sidebar {
+    height: 100%;
+    background-color: #1a1c24;
+    transition: left 0.2s ease-in-out;
+    box-shadow: none !important;
+    color: white;
+
+    .menu-sidebar {
+        display: flex;
+        padding: 15px 0 10px 20px;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+            background-color: #e0e0e0;
+            color: black;
+        }
+    }
+
+    .icon-sidebar {
+        padding-right: 20px;
+        color: gray;
+    }
+
+    .menu--text {
+        padding-right: 20px;
+        width: 150px;
+        height: 0;
+        transition: all 0.05s ease-in-out;
+        opacity: 1;
+        text-align: left;
+
+        &-closed {
+            opacity: 0;
+            text-align: left;
+            padding-right: 20px;
+            width: 0;
+            height: 0;
+            transition: all 0.01s ease-in-out;
+        }
+    }
+}
