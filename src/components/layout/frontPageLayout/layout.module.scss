@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    min-height: calc(100vh);
+    padding-top: 6.5rem;
+    color: white;
+    .main-content {
+       width: 100%;
+    }
+}
