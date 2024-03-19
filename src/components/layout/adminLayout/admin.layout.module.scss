@@ -1,9 +1,13 @@
 .container {
     display: flex;
-    min-height: calc(100vh);
-    padding-top: 6.5rem;
+    height: calc(100vh - 64px);
+    background-color: #1a1c24;
     color: white;
     .main-content {
-       width: 100%;
+        position: relative;
+        width: 100%;
+        background-color: gray;
+        border-radius: 20px;
+        padding: 1.3rem 1.5rem;
     }
 }

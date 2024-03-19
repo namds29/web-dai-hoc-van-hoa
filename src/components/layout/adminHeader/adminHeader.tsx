@@ -1,6 +1,7 @@
 import { SearchOutlined } from "@ant-design/icons";
+import { AppBar, Toolbar, IconButton, Typography, Avatar } from "@mui/material";
 import styles from "./header.module.scss";
-
+import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
 const AdminHeader = ({ handleMenuToggle }: any) => {
@@ -14,34 +15,32 @@ const AdminHeader = ({ handleMenuToggle }: any) => {
     { title: "Research", route: "/research" },
   ];
   return (
-    <header className={styles.header}>
-      <div className="flex justify-between">
-        <Link to={"/"}>
-          <div className="h-20 flex px-8 py-2 items-center">
-            <img className="h-full" src="img/LOGO.jpg" alt="" />
-            <div className="text-orange-700 ml-4">
-              <p className="font-extrabold text-xl ">TUCST University</p>
-              <p>Thanh Hoa University of Culture, Sports and Tourism</p>
+    <>
+      <AppBar position="sticky" className={styles["app-bar"]}>
+        <Toolbar>
+          <div className="w-full flex items-center justify-between">
+            <div className="flex items-center">
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={handleMenuToggle}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" className={styles.title}>
+                Quản lý trang chủ
+              </Typography>
+            </div>
+
+            <div className="flex">
+              <Avatar>N</Avatar>
+              {/* <DropdownHeader /> */}
             </div>
           </div>
-        </Link>
-        <div className="flex items-center gap-10 mr-10">
-          {menuItem.map((item) => (
-            <Link className="cursor-pointer" to={item.route}>
-              {item.title}
-            </Link>
-          ))}
-
-          {/* <DropdownItem label="About" items={items} />
-            <DropdownItem label="News" items={items} />
-            <DropdownItem label="Academics" items={items} />
-            <DropdownItem label="Admission" items={items} />
-            <DropdownItem label="Student Support" items={items} />
-            <DropdownItem label="International Support" items={items} />
-            <DropdownItem label="Research" items={items} /> */}
-        </div>
-      </div>
-    </header>
+        </Toolbar>
+      </AppBar>
+    </>
   );
 };
 

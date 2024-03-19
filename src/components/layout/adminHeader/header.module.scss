@@ -1,0 +1,58 @@
+.app-bar {
+    background-color: #1a1c24 !important;
+    color: #333 !important;
+    box-shadow: none !important;
+    z-index: 1 !important;
+    color: white !important;
+    .menu-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 200px;
+      padding-top: 60px;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(-100%);
+      z-index: 100;
+  
+      &.open {
+        transform: translateX(0);
+      }
+  
+      .menu {
+        list-style: none;
+        padding: 0;
+  
+        .menu-item {
+          padding: 10px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+  
+          &:hover {
+            background-color: #f0f0f0;
+          }
+  
+          .icon {
+            margin-right: 8px;
+            visibility: hidden;
+          }
+  
+          &.show-icon .icon {
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+  
+  .title {
+    flex-grow: 1;
+    margin-left: 0.8rem;
+  }
+  
+  .menu-button {
+    margin-right: 16px;
+  }
+  
