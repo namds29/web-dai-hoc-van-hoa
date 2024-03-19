@@ -5,6 +5,7 @@ import { Modal } from "antd";
 const About = () => {
   const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalPresident, setIsModalPresident] = useState(false);
 
   const showInfoModal = () => {
     setIsModalInfoOpen(true);
@@ -22,6 +23,14 @@ const About = () => {
     setIsModalOpen(false);
   };
 
+  const showPresidentModal = () => {
+    setIsModalPresident(true);
+  };
+
+  const handlePresidentCancel = () => {
+    setIsModalPresident(false);
+  };
+
   return (
     <section className="w-full">
       <div className="w-full h-400">
@@ -35,34 +44,48 @@ const About = () => {
         <p className="text-xl border-b-4 ">PRESIDENT’S MESSAGE</p>
         <div className="flex p-4 gap-10">
           <blockquote className={styles.quotes}>
-            Chào mừng các bạn đến với Trường Đại học Văn hóa, Thể thao và Du
-            lịch Thanh Hóa, cơ sở giáo dục đại học được Chính phủ nâng cấp vào
-            năm 2011. Trải qua gần 60 năm xây dựng và phát triển, Trường đã trở
-            thành một trong những cơ sở đào tạo đa ngành, đa lĩnh vực quy mô lớn
-            và đang dần trở thành một trung tâm nghiên cứu khoa học, đáp ứng yêu
-            cầu nguồn nhân lực chất lượng cao phục vụ phát triển kinh tế - xã
-            hội của tỉnh Thanh Hóa, khu vực Nam Sông Hồng - Bắc Trung Bộ và cả
-            nước.
+            Welcome to Thanh Hoa University of Culture, Sports and Tourism
+            (TUCST), a higher education institution upgraded by the Government
+            in 2011. After nearly 60 years of construction and development,
+            TUCST has become one of the large-scale multi-disciplinary and
+            multi-field training facilities and is gradually becoming a
+            scientific research center, meeting the requirements of high-quality
+            human resources to serve the socio-economic development in Thanh
+            Hoa, from the Southern of Red river to the North Central and the
+            whole country.
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nhà trường kiên trì
-            thực hiện các mục tiêu giáo dục dựa trên triết lý của mình là: "Lấy
-            chất lượng, thành công của người học, tín nhiệm của xã hội làm thước
-            đo phát triển"; Khích lệ cán bộ, giảng viên và người học sống, lao
-            động, học tập và cống hiến theo khẩu hiệu: "Nuôi dưỡng đam mê -
-            Khuyến khích sáng tạo - Tôn trọng khác biệt - Hợp tác phát triển".
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TUCST
+            persistently implements educational goals based on its philosophy as
+            follows: "Taking quality, learner success, and social trust as a
+            measure of development"; encourage the staff, lecturers, and
+            learners to live, work, study, and contribute according to the
+            slogan: "Nurturing passion - Encouraging creativity - Respecting
+            differences - Cooperating for the development".
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hiện nay, Trường
-            Đại học Văn hóa, Thể thao và Du lịch Thanh Hóa đào tạo đầy đủ các
-            bậc học từ trung cấp năng khiếu nghệ thuật đến đại học, thạc sĩ,
-            tiến sĩ và hàng loạt chứng chỉ nghề thuộc các lĩnh vực Văn hóa -
-            Nghệ thuật, Thể thao, Du lịch cho địa phương và cả nước. Đội ngũ
-            giảng dạy và nghiên cứu có trình độ cao, trẻ trung, năng động, có
-            phương pháp làm việc hiện đại, được đào tạo bài bản trong và ngoài
-            nước. Nhà trường không ngừng mở rộng quy mô đào tạo, nâng cao cơ sở
-            vật chất, mở rộng quan hệ hợp tác trong nước và quốc tế, đổi mới
-            chương trình, phương pháp dạy và học để từng bước trở thành trường
-            đại học định hướng ứng dụng đa lĩnh vực, hướng đến đại học định
-            hướng nghiên cứu.
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Currently,
+            Thanh Hoa University of Culture, Sports and Tourism provides Thanh
+            Hoa and the whole country with a full range of educational levels
+            including intermediate level, bachelor, master's, doctorate and
+            vocational training certificates of Culture, Art, Sports, and
+            Tourism. The teaching staff and scientific researchers are highly
+            qualified, young and dynamic. They has modern working methods
+            because well-trained at home and abroad. TUCST constantly expands
+            its training scale, improves facilities, expands domestic and
+            international cooperation, and innovates programs, teaching, and
+            learning methods to become a university-oriented university
+            gradually. Multi-disciplinary application, oriented towards
+            research-oriented universities.
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thanh Hoa
+            University of Culture, Sports and Tourism has a dynamic and creative
+            training environment and a place to nurture and promote the
+            potential of learners. We are committed to building a diverse and
+            quality training system and flexible learning methods to ensure that
+            learners have all the knowledge, skills and qualities necessary to
+            become successful citizens in society.
+            <p className="flex flex-row-reverse mt-3">
+              Assoc. Prof. Le Thanh Ha
+            </p>
           </blockquote>
           <div className="grid grid-cols-2 gap-4 w-1/2 text-white">
             <div className="bg-red-300 p-4 rounded">
@@ -93,9 +116,12 @@ const About = () => {
         <div className="flex justify-center text-white font-bold mb-10">
           <p className={`text-4xl border-b-4`}>BOARD OF DIRECTORS</p>
         </div>
-        <div className="grid grid-cols-4 gap-4 text-black pb-10 ">
-          <div className="h-72 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
-            <div className="w-full h-full grayscale hover:grayscale-0  duration-500">
+        <div className="grid grid-cols-3 gap-4 text-black pb-10">
+          <div className="h-96 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
+            <div
+              className="w-full h-full grayscale hover:grayscale-0  duration-500"
+              onClick={showPresidentModal}
+            >
               <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/ceo.png"
@@ -103,12 +129,12 @@ const About = () => {
               />
             </div>
             <div className="text-center text-white mt-4">
-              Nguyễn Văn A
+              Assoc. Prof. Le Thanh Ha
               <br />
               (President)
             </div>
           </div>
-          <div className="h-72 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
+          <div className="h-96 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div className="w-full h-full grayscale hover:grayscale-0  duration-500">
               <img
                 className="w-full h-full rounded-t-xl object-cover"
@@ -117,12 +143,12 @@ const About = () => {
               />
             </div>
             <div className="text-center text-white mt-4">
-              Nguyễn Văn A
+              Assoc. Prof. Nguyen Thi Thuc
               <br />
               (Vice president)
             </div>
           </div>
-          <div className="h-72 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
+          <div className="h-96 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div className="w-full h-full grayscale hover:grayscale-0  duration-500">
               <img
                 className="w-full h-full rounded-t-xl object-cover"
@@ -131,21 +157,7 @@ const About = () => {
               />
             </div>
             <div className="text-center text-white mt-4">
-              Nguyễn Văn A
-              <br />
-              (Vice president)
-            </div>
-          </div>
-          <div className="h-72 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
-            <div className="w-full h-full grayscale hover:grayscale-0  duration-500">
-              <img
-                className="w-full h-full rounded-t-xl object-cover"
-                src="/img/ceo.png"
-                alt=""
-              />
-            </div>
-            <div className="text-center text-white mt-4">
-              Nguyễn Văn A
+              Ph.D Do Huong Lan
               <br />
               (Vice president)
             </div>
@@ -278,6 +290,43 @@ const About = () => {
         <p className="ml-4 mb-4">
           Nurture passion, Encourage creativity, Respect differences,
           Cooperation and development.
+        </p>
+      </Modal>
+      <Modal
+        title={<p className="text-2xl">President - Assoc. Prof. Le Thanh Ha</p>}
+        open={isModalPresident}
+        footer={null}
+        centered
+        width={800}
+        onCancel={handlePresidentCancel}
+      >
+        <p className="ml-4 text-xl">
+          - Comprehensively manage TUCST's operations according to the
+          functions, tasks, and powers specified in TUCST's Organization and
+          Operation Regulations and relevant legal provisions; take full
+          responsibility before the People's Committee of Thanh Hoa province and
+          the Ministry of Education and Training for all aspects of TUCST's
+          operations.
+        </p>
+        <p className="ml-4 text-xl">
+          - In charge of all aspects: Political ideology; TUCST’s development
+          strategy and planning; Personnel Organization; Science and Technology;
+          International Cooperation; Finance; Emulation and Reward.
+        </p>
+        <p className="ml-4 text-xl">
+          - Monitor and promote the activities of the following units:
+          Department of Personnel Organization; Department of Scientific
+          Management and International Cooperation; Department of Financial
+          Planning; Department of Postgraduate Education; Department of
+          Inspection; Department of Testing and Educational Quality Assurance;
+          Center for Continuing & Joint Training Center; Center for Foreign
+          Languages and Information Technology; Center for Admissions Consulting
+          & Job counseling; Center of Information-Library.
+        </p>
+        <p className="ml-4 text-xl">
+          - Work as a teacher at the Faculty of Foreign Language; Be a Party
+          member of the Party Cell of Personnel Organization and Financial
+          Planning.
         </p>
       </Modal>
     </section>
