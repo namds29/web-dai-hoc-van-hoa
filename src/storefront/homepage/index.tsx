@@ -242,24 +242,18 @@ const Homepage = () => {
         <div className={styles.small_card}>
           <div className={styles.news}>
             <div className={styles.news_img}>
-              <img className="w-full h-full" src="/img/img1.png" alt="" />
+              <img className="w-full h-full" src="/img/Mission.png" alt="" />
             </div>
-
-            <div className={styles.news_title}>Mission</div>
           </div>
           <div className={styles.news}>
             <div className={styles.news_img}>
-              <img className="w-full h-full" src="/img/img1.png" alt="" />
+              <img className="w-full h-full" src="/img/Vision.png" alt="" />
             </div>
-
-            <div className={styles.news_title}>Vision</div>
           </div>
           <div className={styles.news}>
             <div className={styles.news_img}>
-              <img className="w-full h-full" src="/img/img1.png" alt="" />
+              <img className="w-full h-full" src="/img/Value.png" alt="" />
             </div>
-
-            <div className={styles.news_title}>Value</div>
           </div>
         </div>
       </section>

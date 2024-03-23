@@ -1,35 +1,23 @@
-import { useState } from "react";
 import styles from "./index.module.scss";
 import { Modal } from "antd";
+import useModal from "src/hook/useModal";
 
 const About = () => {
-  const [isModalInfoOpen, setIsModalInfoOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalPresident, setIsModalPresident] = useState(false);
-
-  const showInfoModal = () => {
-    setIsModalInfoOpen(true);
-  };
-
-  const handleInfoCancel = () => {
-    setIsModalInfoOpen(false);
-  };
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
-  const showPresidentModal = () => {
-    setIsModalPresident(true);
-  };
-
-  const handlePresidentCancel = () => {
-    setIsModalPresident(false);
-  };
+  const {
+    open: isOpenPresident,
+    handleOpen: handleOpenPresident,
+    handleClose: handleClosePresident,
+  } = useModal();
+  const {
+    open: isOpenModalHistory,
+    handleOpen: handleOpenModalHistory,
+    handleClose: handleCloseHistory,
+  } = useModal();
+  const {
+    open: isOpenModalMission,
+    handleOpen: handleOpenModalMission,
+    handleClose: handleCloseMission,
+  } = useModal();
 
   return (
     <section className="w-full">
@@ -119,8 +107,8 @@ const About = () => {
         <div className="grid grid-cols-3 gap-4 text-black pb-10">
           <div className="h-96 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div
-              className="w-full h-full grayscale hover:grayscale-0  duration-500"
-              onClick={showPresidentModal}
+              className="w-full h-full grayscale hover:grayscale-0 duration-500 cursor-pointer"
+              onClick={handleOpenPresident}
             >
               <img
                 className="w-full h-full rounded-t-xl object-cover"
@@ -135,21 +123,21 @@ const About = () => {
             </div>
           </div>
           <div className="h-96 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
-            <div className="w-full h-full grayscale hover:grayscale-0  duration-500">
+            <div className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer">
               <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/ceo.png"
                 alt=""
               />
             </div>
-            <div className="text-center text-white mt-4">
+            <div className="text-center text-white mt-4 ">
               Assoc. Prof. Nguyen Thi Thuc
               <br />
               (Vice president)
             </div>
           </div>
           <div className="h-96 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
-            <div className="w-full h-full grayscale hover:grayscale-0  duration-500">
+            <div className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer">
               <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/ceo.png"
@@ -185,22 +173,22 @@ const About = () => {
       </section>
       <section className="grid grid-cols-4 text-xl bold text-center gap-4 bg-gray-200 w-full text-black  font-bold px-20 py-8">
         <div
-          className="w-full h-64 p-8 rounded bg-orange-300 flex items-center"
-          onClick={showInfoModal}
+          className="w-full h-64 p-8 rounded bg-orange-300 flex items-center cursor-pointer"
+          onClick={handleOpenModalHistory}
         >
           HISTORY OF FORMATION AND DEVELOPMENT
         </div>
         <div
-          className="w-full h-64 p-8 rounded bg-orange-300 flex items-center"
-          onClick={showModal}
+          className="w-full h-64 p-8 rounded bg-orange-300 flex items-center cursor-pointer"
+          onClick={handleOpenModalMission}
         >
           MISSION - VISION - GOAL - CORE VALUES - SLOGAN - EDUCATIONAL
           PHILOSOPHY
         </div>
-        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center">
+        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center cursor-pointer">
           CONDITIONS FOR ENSURE QUALITY OF EDUCATION
         </div>
-        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center">
+        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center cursor-pointer">
           ACHIEVEMENTS AND HONORS ACHIEVED
         </div>
       </section>
@@ -210,10 +198,10 @@ const About = () => {
             TUCST’S HISTORY OF ESTABLISHMENT AND DEVELOPMENT
           </p>
         }
-        open={isModalInfoOpen}
+        open={isOpenModalHistory}
         footer={null}
         centered
-        onCancel={handleInfoCancel}
+        onCancel={handleCloseHistory}
       >
         <strong>
           Thanh Hoa University of Culture, Sports and Tourism is a public
@@ -254,12 +242,12 @@ const About = () => {
             PHILOSOPHY
           </p>
         }
-        open={isModalOpen}
+        open={isOpenModalMission}
         footer={null}
         centered
-        onCancel={handleCancel}
+        onCancel={handleCloseMission}
       >
-        <strong>1. Mission</strong>
+        <strong className="text-lg">1. Mission</strong>
         <p className="ml-4 mb-4">
           TUCT has the mission of training high-quality human resources and
           scientific research in social sciences with 3 main areas: Culture -
@@ -267,14 +255,14 @@ const About = () => {
           development of Thanh Hoa province, the South Red River region - North
           Central region and the whole country.
         </p>
-        <strong>2. Vision</strong>
+        <strong className="text-lg">2. Vision</strong>
         <p className="ml-4 mb-4">
           By 2045, TUCST will be one of the top prestigious training
           institutions in the whole country in scientific research on social
           sciences in the South Red River region - North Central region and
           training programs of culture - arts, sports and tourism.
         </p>
-        <strong>3. Goal</strong>
+        <strong className="text-lg">3. Goal</strong>
         <p className="ml-4 mb-4">
           Building TUCST to become a training and scientific research
           institution of Culture - Arts, Sports and Tourism of the South Red
@@ -282,11 +270,11 @@ const About = () => {
           scale associated with improving training quality, meeting social
           needs; promote domestic and international cooperation.
         </p>
-        <strong>4. Core values</strong>
+        <strong className="text-lg">4. Core values</strong> 
         <p className="ml-4 mb-4">
           Quality - Professionalism - Cooperation - Development.
         </p>
-        <strong>5. Educational philosophy</strong>
+        <strong className="text-lg">5. Educational philosophy</strong>
         <p className="ml-4 mb-4">
           Nurture passion, Encourage creativity, Respect differences,
           Cooperation and development.
@@ -294,11 +282,11 @@ const About = () => {
       </Modal>
       <Modal
         title={<p className="text-2xl">President - Assoc. Prof. Le Thanh Ha</p>}
-        open={isModalPresident}
+        open={isOpenPresident}
         footer={null}
         centered
         width={800}
-        onCancel={handlePresidentCancel}
+        onCancel={handleClosePresident}
       >
         <p className="ml-4 text-xl">
           - Comprehensively manage TUCST's operations according to the

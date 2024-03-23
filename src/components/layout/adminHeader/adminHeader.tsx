@@ -1,19 +1,8 @@
-import { SearchOutlined } from "@ant-design/icons";
 import { AppBar, Toolbar, IconButton, Typography, Avatar } from "@mui/material";
 import styles from "./header.module.scss";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Link } from "react-router-dom";
 
 const AdminHeader = ({ handleMenuToggle }: any) => {
-  const menuItem = [
-    { title: "About", route: "/about" },
-    { title: "News", route: "/news" },
-    { title: "Academics", route: "/academics" },
-    { title: "Admission", route: "/admission" },
-    { title: "Student Support", route: "/student-support" },
-    { title: "International Partners", route: "/international-partners" },
-    { title: "Research", route: "/research" },
-  ];
   return (
     <>
       <AppBar position="sticky" className={styles["app-bar"]}>

@@ -3,24 +3,24 @@ import { Carousel } from "antd";
 const contentStyle: React.CSSProperties = {
   margin: 0,
   width: "100%",
-  height: "400px",
+  height: "500px",
   lineHeight: "160px",
   textAlign: "center",
-  background: "rgb(254 202 202)",
-  objectFit: "cover",
+  background: "white",
+  objectFit: "contain",
 };
 const Banner = () => {
   return (
     <div className="w-full">
       <Carousel>
         <div>
-          <img style={contentStyle} src="/img/banner1.png" alt="" />
+          <img style={contentStyle} src="/img/SLOGAN.png" alt="Slogan" />
         </div>
         <div>
-          <img style={contentStyle} src="/img/banner2.png" alt="" />
+          <img style={contentStyle} src="/img/banner2.png" alt="banner 2" />
         </div>
         <div>
-          <img style={contentStyle} src="/img/banner3.png" alt="" />
+          <img style={contentStyle} src="/img/banner3.png" alt="banner 3" />
         </div>
       </Carousel>
     </div>
