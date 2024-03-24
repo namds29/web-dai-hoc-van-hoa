@@ -107,16 +107,6 @@ function CustomModal({
             ? type === MESSAGE_TYPE.DEFAULT
               ? []
               : [
-                  <Button
-                    className="confirm-btn"
-                    key="ok"
-                    onClick={onOk}
-                    ref={buttonOkRef}
-                  >
-                    {messageText(type).okText}
-                  </Button>,
-                ]
-            : [
                 <Button
                   className="confirm-btn"
                   key="ok"
@@ -125,15 +115,25 @@ function CustomModal({
                 >
                   {messageText(type).okText}
                 </Button>,
-                <Button className="confirm-btn" key="cancel" onClick={onCancel}>
-                  {messageText(type).cancelText}
-                </Button>,
               ]
+            : [
+              <Button
+                className="confirm-btn"
+                key="ok"
+                onClick={onOk}
+                ref={buttonOkRef}
+              >
+                {messageText(type).okText}
+              </Button>,
+              <Button className="confirm-btn" key="cancel" onClick={onCancel}>
+                {messageText(type).cancelText}
+              </Button>,
+            ]
         }
       >
         <div className="flex items-center">
           <div className="mr-2">{showIcon(type)}</div>
-          <p>{message.content}</p>
+          <span>{message.content}</span>
         </div>
       </Modal>
     </>

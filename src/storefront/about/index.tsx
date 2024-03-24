@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./index.module.scss";
-import CustomModal from "../../components/custommodal";
+import CustomModal from "../../components/custom-modal";
 import { IMessage } from "src/interfaces";
 
 const About = () => {
@@ -70,12 +70,14 @@ const About = () => {
             and the Ministry of Education and Training for all aspects of
             TUCST's operations.
           </p>
+          <br />
           <p className="ml-4 text-xl">
             - In charge of all aspects: Political ideology; TUCST’s development
             strategy and planning; Personnel Organization; Science and
             Technology; International Cooperation; Finance; Emulation and
             Reward.
           </p>
+          <br />
           <p className="ml-4 text-xl">
             - Monitor and promote the activities of the following units:
             Department of Personnel Organization; Department of Scientific
@@ -86,6 +88,7 @@ const About = () => {
             Languages and Information Technology; Center for Admissions
             Consulting & Job counseling; Center of Information-Library.
           </p>
+          <br />
           <p className="ml-4 text-xl">
             - Work as a teacher at the Faculty of Foreign Language; Be a Party
             member of the Party Cell of Personnel Organization and Financial
