@@ -31,18 +31,18 @@ const Academics = () => {
         <p className="text-3xl border-b-4 text-center">Academics</p>
         <section id="functional_unit">
           <p className="text-2xl mt-8">Functional Units</p>
-          <div className="flex border text-black border-black mt-4">
-            <div className="title w-1/3">
+          <div className="flex text-black border-black mt-4">
+            <div className="title w-1/3 rounded-l-xl bg-orange-400">
               {ACADEMICS_FUCTIONAL_UNITS.map((item) => (
                 <div
                   onClick={() => handleChangeUnit(item.id)}
-                  className="cursor-pointer text-blue-800 hover:text-blue-700 px-4 py-2 border-r border-black"
+                  className="border-b font-normal text-xl flex justify-between items-center cursor-pointer text-white hover:text-gray-300 px-4 py-2"
                 >
                   <a>{item.title}</a>
                 </div>
               ))}
             </div>
-            <div className="description font-normal p-4 w-2/3">
+            <div className="description font-normal p-4 w-2/3 bg-orange-300 rounded-r-xl">
               {unitId == 1 && (
                 <div className="content">
                   <p className="font-bold">1. General administrative office</p>
@@ -69,13 +69,13 @@ const Academics = () => {
           </div>
         </section>
         <section id="functional_unit">
-          <p className="text-2xl mt-8">Training Program</p>
-          <div className="flex border text-black border-black mt-4">
-            <div className="title w-1/3">
+          <p className="text-2xl mt-8 underline underline-offset-8">Training Program</p>
+          <div className="flex text-black border-black mt-4">
+            <div className="title w-1/3 bg-orange-400">
               {ACADEMICS_TRAINING_PROGRAM.map((item) => (
-                <div className=" text-black px-4 py-2 border-r border-black">
-                  <a>{item.parent_title}</a>
-                  <div className="cursor-pointer ml-4 text-blue-800 hover:text-blue-700">
+                <div className=" text-black px-4 py-2">
+                  <a className="text-xl font-bold">{item.parent_title}</a>
+                  <div className="cursor-pointer ml-4 text-white font-normal hover:text-gray-300">
                     {item.children_title.map((child) => (
                       <div className="underline">{child}</div>
                     ))}
@@ -83,18 +83,24 @@ const Academics = () => {
                 </div>
               ))}
             </div>
-            <div className="description font-normal p-4 w-2/3">
+            <div className="description font-normal pl-10 w-2/3">
               <div className="content">
                 <p className="font-bold text-center text-2xl">University</p>
-                <div className="flex gap-10 mt-8 justify-evenly">
-                  <div className="w-56 h-56 bg-orange-500"></div>
-                  <div className="w-56 h-56 bg-orange-500"></div>
-                  <div className="w-56 h-56 bg-orange-500"></div>
+                <div className="flex mt-8 gap-10">
+                  <div className="w-full h-72 rounded-xl bg-orange-500 cursor-pointer"></div>
+                  <div className="w-full h-80 rounded-xl bg-orange-500 cursor-pointer"></div>
+                  <div className="w-full h-96 rounded-xl bg-orange-500 cursor-pointer"></div>
                 </div>
                 <div className="flex mt-12 justify-center gap-10 items-center font-bold text-xl text-white">
-                  <div className="px-8 py-4 bg-orange-500 rounded ">Chính quy</div>
-                  <div className="px-8 py-4 bg-orange-500 rounded">Liên Thông</div>
-                  <div className="px-8 py-4 bg-orange-500 rounded">Văn bằng 2</div>
+                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer">
+                    Chính quy
+                  </div>
+                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer">
+                    Liên Thông
+                  </div>
+                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer">
+                    Văn bằng 2
+                  </div>
                 </div>
               </div>
             </div>

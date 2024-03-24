@@ -12,10 +12,11 @@ export default {
       },
       backgroundColor: {
         primary: "#f9841a",
-        subColor: 'rgb(70, 70, 248)'
+        subColor: '#5E2E86'
       },
       textColor: {
-        primary: '#f9841a'
+        primary: '#f9841a',
+        secondary: '#5E2E86',
       }
     }
   },
