@@ -9,7 +9,14 @@ import Research from "./storefront/research";
 import InternationalPartners from "./storefront/international-partners";
 import Admission from "./storefront/admission";
 import StudentSupport from "./storefront/student-support";
-import AdminHomepage from "./admin";
+import AdminHomepage from "./admin/homepage";
+import AdminAbout from "./admin/about";
+import AdminAcademics from "./admin/academics";
+import AdminAdmission from "./admin/admission";
+import AdminInternationalPartners from "./admin/international-partners";
+import AdminNews from "./admin/news";
+import AdminResearch from "./admin/research";
+import AdminStudentSupport from "./admin/student-support";
 import AdminLayout from "./components/layout/adminLayout/adminLayout";
 function App() {
   return (
@@ -30,6 +37,16 @@ function App() {
       </Route>
       <Route path="/admin" element={<AdminLayout children={<Outlet />} />}>
         <Route path="/admin" element={<AdminHomepage />} />
+        <Route path="/admin/about" element={<AdminAbout />} />
+        <Route path="/admin/news" element={<AdminNews />} />
+        <Route path="/admin/academics" element={<AdminAcademics />} />
+        <Route path="/admin/admission" element={<AdminAdmission />} />
+        <Route
+          path="/admin/international-partners"
+          element={<AdminInternationalPartners />}
+        />
+        <Route path="/admin/student-support" element={<AdminStudentSupport />} />
+        <Route path="/admin/research" element={<AdminResearch />} />
       </Route>
     </Routes>
   );

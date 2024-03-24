@@ -1,20 +1,24 @@
 import { Link } from "react-router-dom";
 import styles from "./sidebar.module.scss";
-import {
-  DashboardOutlined,
-  ExclamationCircleOutlined,
-  OrderedListOutlined,
-} from "@ant-design/icons";
+import { DashboardOutlined } from "@ant-design/icons";
 
 const Sidebar = ({ menuOpen }: any) => {
   const menuItem = [
-    { title: "Dashboard", icon: <DashboardOutlined />, route: "/dashboard" },
+    { title: "About", icon: <DashboardOutlined />, route: "/admin/about" },
+    { title: "News", icon: <DashboardOutlined />, route: "/news" },
+    { title: "Academics", icon: <DashboardOutlined />, route: "/academics" },
+    { title: "Admission", icon: <DashboardOutlined />, route: "/admission" },
     {
-      title: "Category",
-      icon: <ExclamationCircleOutlined />,
-      route: "/category",
+      title: "Student Support",
+      icon: <DashboardOutlined />,
+      route: "/student-support",
     },
-    { title: "Wallpaper", icon: <OrderedListOutlined />, route: "/wallpaper" },
+    {
+      title: "International Partners",
+      icon: <DashboardOutlined />,
+      route: "/international-partners",
+    },
+    { title: "Research", icon: <DashboardOutlined />, route: "/research" },
   ];
   return (
     <div className={styles.sidebar}>

@@ -1,23 +1,156 @@
+import { useState } from "react";
 import styles from "./index.module.scss";
-import { Modal } from "antd";
-import useModal from "src/hook/useModal";
+import CustomModal from "../../components/custommodal";
+import { IMessage } from "src/interfaces";
 
 const About = () => {
-  const {
-    open: isOpenPresident,
-    handleOpen: handleOpenPresident,
-    handleClose: handleClosePresident,
-  } = useModal();
-  const {
-    open: isOpenModalHistory,
-    handleOpen: handleOpenModalHistory,
-    handleClose: handleCloseHistory,
-  } = useModal();
-  const {
-    open: isOpenModalMission,
-    handleOpen: handleOpenModalMission,
-    handleClose: handleCloseMission,
-  } = useModal();
+  const [open, setOpen] = useState(false);
+  const [modalContent, setModalContent] = useState<IMessage>({
+    title: <></>,
+    content: <></>,
+  });
+
+  const handleOpenModalHistory = () => {
+    setOpen(true);
+    setModalContent({
+      title: (
+        <p className="text-2xl">
+          TUCST’S HISTORY OF ESTABLISHMENT AND DEVELOPMENT
+        </p>
+      ),
+      content: (
+        <>
+          <strong>
+            Thanh Hoa University of Culture, Sports and Tourism is a public
+            university within the national education system, under the
+            management of the People's Committee of Thanh Hoa Province and the
+            professional management of the Ministry of Education and Training.
+          </strong>
+          <p className="ml-4">
+            - On March 9, 1967, the Chairman of the People's Committee of Thanh
+            Hoa Province signed the Decision on the establishment of the School
+            of Culture and Arts under Thanh Hoa Department of Culture and
+            Information.
+          </p>
+          <p className="ml-4">
+            - On October 5, 1978, the Minister of University and Professional
+            Intermediate Schools (now the Ministry of Education and Training)
+            signed the Decision No. 918/THCN-TC upgrading the School of Culture
+            and Arts into the Intermediate school of Culture and Arts under
+            Thanh Hoa Department of Culture and Information.
+          </p>
+          <p className="ml-4">
+            - On August 25, 2004, the Minister of Education and Training signed
+            Decision No.4765/QD-BGD&DT-TCCB on the establishment of Thanh Hoa
+            College of Culture and Arts (on the basis of upgrading Thanh Hoa the
+            Intermediate School of Culture and Arts)
+          </p>
+          <p className="ml-4">
+            - On July 22, 2011, Deputy Prime Minister Nguyen Thien Nhan signed
+            the Decision No. 1221/QD-TTg on the establishment of Thanh Hoa
+            University of Culture, Sports and Tourism (on the basis of upgrading
+            Thanh Hoa College of Culture and Arts).
+          </p>
+        </>
+      ),
+    });
+  };
+
+  const handleOpenPresident = () => {
+    setOpen(true);
+    setModalContent({
+      title: <p className="text-2xl">President - Assoc. Prof. Le Thanh Ha</p>,
+      content: (
+        <>
+          <p className="ml-4 text-xl">
+            - Comprehensively manage TUCST's operations according to the
+            functions, tasks, and powers specified in TUCST's Organization and
+            Operation Regulations and relevant legal provisions; take full
+            responsibility before the People's Committee of Thanh Hoa province
+            and the Ministry of Education and Training for all aspects of
+            TUCST's operations.
+          </p>
+          <p className="ml-4 text-xl">
+            - In charge of all aspects: Political ideology; TUCST’s development
+            strategy and planning; Personnel Organization; Science and
+            Technology; International Cooperation; Finance; Emulation and
+            Reward.
+          </p>
+          <p className="ml-4 text-xl">
+            - Monitor and promote the activities of the following units:
+            Department of Personnel Organization; Department of Scientific
+            Management and International Cooperation; Department of Financial
+            Planning; Department of Postgraduate Education; Department of
+            Inspection; Department of Testing and Educational Quality Assurance;
+            Center for Continuing & Joint Training Center; Center for Foreign
+            Languages and Information Technology; Center for Admissions
+            Consulting & Job counseling; Center of Information-Library.
+          </p>
+          <p className="ml-4 text-xl">
+            - Work as a teacher at the Faculty of Foreign Language; Be a Party
+            member of the Party Cell of Personnel Organization and Financial
+            Planning.
+          </p>
+        </>
+      ),
+    });
+  };
+
+  const handleOpenModalMission = () => {
+    setOpen(true);
+    setModalContent({
+      title: (
+        <p className="text-2xl">
+          MISSION - VISION - GOAL - CORE VALUES - SLOGAN - EDUCATIONAL
+          PHILOSOPHY
+        </p>
+      ),
+      content: (
+        <>
+          <strong className="text-lg">1. Mission</strong>
+          <p className="ml-4 mb-4">
+            TUCT has the mission of training high-quality human resources and
+            scientific research in social sciences with 3 main areas: Culture -
+            Arts, Sports and Tourism; contributing to the socio-economic
+            development of Thanh Hoa province, the South Red River region -
+            North Central region and the whole country.
+          </p>
+          <strong className="text-lg">2. Vision</strong>
+          <p className="ml-4 mb-4">
+            By 2045, TUCST will be one of the top prestigious training
+            institutions in the whole country in scientific research on social
+            sciences in the South Red River region - North Central region and
+            training programs of culture - arts, sports and tourism.
+          </p>
+          <strong className="text-lg">3. Goal</strong>
+          <p className="ml-4 mb-4">
+            Building TUCST to become a training and scientific research
+            institution of Culture - Arts, Sports and Tourism of the South Red
+            River - North Central region and the whole country; gradually expand
+            scale associated with improving training quality, meeting social
+            needs; promote domestic and international cooperation.
+          </p>
+          <strong className="text-lg">4. Core values</strong>
+          <p className="ml-4 mb-4">
+            Quality - Professionalism - Cooperation - Development.
+          </p>
+          <strong className="text-lg">5. Educational philosophy</strong>
+          <p className="ml-4 mb-4">
+            Nurture passion, Encourage creativity, Respect differences,
+            Cooperation and development.
+          </p>
+        </>
+      ),
+    });
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
+
+  const handleOk = () => {
+    setOpen(false);
+  };
 
   return (
     <section className="w-full">
@@ -192,131 +325,13 @@ const About = () => {
           ACHIEVEMENTS AND HONORS ACHIEVED
         </div>
       </section>
-      <Modal
-        title={
-          <p className="text-2xl">
-            TUCST’S HISTORY OF ESTABLISHMENT AND DEVELOPMENT
-          </p>
-        }
-        open={isOpenModalHistory}
-        footer={null}
-        centered
-        onCancel={handleCloseHistory}
-      >
-        <strong>
-          Thanh Hoa University of Culture, Sports and Tourism is a public
-          university within the national education system, under the management
-          of the People's Committee of Thanh Hoa Province and the professional
-          management of the Ministry of Education and Training.
-        </strong>
-        <p className="ml-4">
-          - On March 9, 1967, the Chairman of the People's Committee of Thanh
-          Hoa Province signed the Decision on the establishment of the School of
-          Culture and Arts under Thanh Hoa Department of Culture and
-          Information.
-        </p>
-        <p className="ml-4">
-          - On October 5, 1978, the Minister of University and Professional
-          Intermediate Schools (now the Ministry of Education and Training)
-          signed the Decision No. 918/THCN-TC upgrading the School of Culture
-          and Arts into the Intermediate school of Culture and Arts under Thanh
-          Hoa Department of Culture and Information.
-        </p>
-        <p className="ml-4">
-          - On August 25, 2004, the Minister of Education and Training signed
-          Decision No.4765/QD-BGD&DT-TCCB on the establishment of Thanh Hoa
-          College of Culture and Arts (on the basis of upgrading Thanh Hoa the
-          Intermediate School of Culture and Arts)
-        </p>
-        <p className="ml-4">
-          - On July 22, 2011, Deputy Prime Minister Nguyen Thien Nhan signed the
-          Decision No. 1221/QD-TTg on the establishment of Thanh Hoa University
-          of Culture, Sports and Tourism (on the basis of upgrading Thanh Hoa
-          College of Culture and Arts).
-        </p>
-      </Modal>
-      <Modal
-        title={
-          <p className="text-2xl">
-            MISSION - VISION - GOAL - CORE VALUES - SLOGAN - EDUCATIONAL
-            PHILOSOPHY
-          </p>
-        }
-        open={isOpenModalMission}
-        footer={null}
-        centered
-        onCancel={handleCloseMission}
-      >
-        <strong className="text-lg">1. Mission</strong>
-        <p className="ml-4 mb-4">
-          TUCT has the mission of training high-quality human resources and
-          scientific research in social sciences with 3 main areas: Culture -
-          Arts, Sports and Tourism; contributing to the socio-economic
-          development of Thanh Hoa province, the South Red River region - North
-          Central region and the whole country.
-        </p>
-        <strong className="text-lg">2. Vision</strong>
-        <p className="ml-4 mb-4">
-          By 2045, TUCST will be one of the top prestigious training
-          institutions in the whole country in scientific research on social
-          sciences in the South Red River region - North Central region and
-          training programs of culture - arts, sports and tourism.
-        </p>
-        <strong className="text-lg">3. Goal</strong>
-        <p className="ml-4 mb-4">
-          Building TUCST to become a training and scientific research
-          institution of Culture - Arts, Sports and Tourism of the South Red
-          River - North Central region and the whole country; gradually expand
-          scale associated with improving training quality, meeting social
-          needs; promote domestic and international cooperation.
-        </p>
-        <strong className="text-lg">4. Core values</strong> 
-        <p className="ml-4 mb-4">
-          Quality - Professionalism - Cooperation - Development.
-        </p>
-        <strong className="text-lg">5. Educational philosophy</strong>
-        <p className="ml-4 mb-4">
-          Nurture passion, Encourage creativity, Respect differences,
-          Cooperation and development.
-        </p>
-      </Modal>
-      <Modal
-        title={<p className="text-2xl">President - Assoc. Prof. Le Thanh Ha</p>}
-        open={isOpenPresident}
-        footer={null}
-        centered
-        width={800}
-        onCancel={handleClosePresident}
-      >
-        <p className="ml-4 text-xl">
-          - Comprehensively manage TUCST's operations according to the
-          functions, tasks, and powers specified in TUCST's Organization and
-          Operation Regulations and relevant legal provisions; take full
-          responsibility before the People's Committee of Thanh Hoa province and
-          the Ministry of Education and Training for all aspects of TUCST's
-          operations.
-        </p>
-        <p className="ml-4 text-xl">
-          - In charge of all aspects: Political ideology; TUCST’s development
-          strategy and planning; Personnel Organization; Science and Technology;
-          International Cooperation; Finance; Emulation and Reward.
-        </p>
-        <p className="ml-4 text-xl">
-          - Monitor and promote the activities of the following units:
-          Department of Personnel Organization; Department of Scientific
-          Management and International Cooperation; Department of Financial
-          Planning; Department of Postgraduate Education; Department of
-          Inspection; Department of Testing and Educational Quality Assurance;
-          Center for Continuing & Joint Training Center; Center for Foreign
-          Languages and Information Technology; Center for Admissions Consulting
-          & Job counseling; Center of Information-Library.
-        </p>
-        <p className="ml-4 text-xl">
-          - Work as a teacher at the Faculty of Foreign Language; Be a Party
-          member of the Party Cell of Personnel Organization and Financial
-          Planning.
-        </p>
-      </Modal>
+      <CustomModal
+        message={modalContent}
+        type=""
+        onCancel={handleCancel}
+        onOk={handleOk}
+        show={open}
+      />
     </section>
   );
 };
