@@ -44,12 +44,12 @@ const Header = () => {
             </div>
           </Link>
           <div className="flex items-center gap-10 mr-10">
-            {menuItem.map(item => (
-              <Link className="cursor-pointer" to={item.route}>
+            {menuItem.map((item, index) => (
+              <Link key={index} className="cursor-pointer" to={item.route}>
                 {item.title}
               </Link>
             ))}
-            
+
 
             {/* <DropdownItem label="About" items={items} />
             <DropdownItem label="News" items={items} />
