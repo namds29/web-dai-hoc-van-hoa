@@ -21,7 +21,7 @@ const Header = () => {
         </div>
         <div className="flex gap-3 items-center mr-4 relative">
           <button className="leading-none" onClick={() => console.log("1")}>
-            <SearchOutlined className="text-white" />
+            <SearchOutlined className="text-white" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
           </button>
           <a href="">
             <img className="h-4" src="img/vn.png" alt="" />

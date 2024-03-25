@@ -19,7 +19,7 @@ const Announcements = () => {
                         <img className="w-full h-full" src="/img/img1.png" alt="" />
                     </div>
                     <div className="text-gray-500 flex items-center gap-2 mt-3">
-                        <CalendarOutlined />
+                        <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
                         <span className="italic">01/09/2024</span>
                     </div>
                     <div className={styles.news_title}>
@@ -42,7 +42,7 @@ const Announcements = () => {
                         <img className="w-full h-full" src="/img/img1.png" alt="" />
                     </div>
                     <div className="text-gray-500 flex items-center gap-2 mt-3">
-                        <CalendarOutlined />
+                        <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
                         <span className="italic">01/09/2024</span>
                     </div>
                     <div className={styles.news_title}>
@@ -80,7 +80,7 @@ const Announcements = () => {
                             </a>
                         </div>
                         <div className="text-gray-500  absolute bottom-3 right-4 flex items-center gap-2 mt-4">
-                            <CalendarOutlined />
+                            <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
                             <span className="italic text-sm">01/09/2024</span>
                         </div>
                     </div>
@@ -100,7 +100,7 @@ const Announcements = () => {
                             </a>
                         </div>
                         <div className="text-gray-500  absolute bottom-3 right-4 flex items-center gap-2 mt-4">
-                            <CalendarOutlined />
+                            <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
                             <span className="italic text-sm">01/09/2024</span>
                         </div>
                     </div>
@@ -120,7 +120,7 @@ const Announcements = () => {
                             </a>
                         </div>
                         <div className="text-gray-500  absolute bottom-3 right-4 flex items-center gap-2 mt-4">
-                            <CalendarOutlined />
+                            <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
                             <span className="italic text-sm">01/09/2024</span>
                         </div>
                     </div>
@@ -140,7 +140,7 @@ const Announcements = () => {
                             </a>
                         </div>
                         <div className="text-gray-500  absolute bottom-3 right-4 flex items-center gap-2 mt-4">
-                            <CalendarOutlined />
+                            <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
                             <span className="italic text-sm">01/09/2024</span>
                         </div>
                     </div>

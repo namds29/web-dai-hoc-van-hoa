@@ -4,21 +4,21 @@ import { DashboardOutlined } from "@ant-design/icons";
 
 const Sidebar = ({ menuOpen }: any) => {
   const menuItem = [
-    { title: "About", icon: <DashboardOutlined />, route: "/admin/about" },
-    { title: "News", icon: <DashboardOutlined />, route: "/news" },
-    { title: "Academics", icon: <DashboardOutlined />, route: "/academics" },
-    { title: "Admission", icon: <DashboardOutlined />, route: "/admission" },
+    { title: "About", icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />, route: "/admin/about" },
+    { title: "News", icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />, route: "/news" },
+    { title: "Academics", icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />, route: "/academics" },
+    { title: "Admission", icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />, route: "/admission" },
     {
       title: "Student Support",
-      icon: <DashboardOutlined />,
+      icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />,
       route: "/student-support",
     },
     {
       title: "International Partners",
-      icon: <DashboardOutlined />,
+      icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />,
       route: "/international-partners",
     },
-    { title: "Research", icon: <DashboardOutlined />, route: "/research" },
+    { title: "Research", icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />, route: "/research" },
   ];
   return (
     <div className={styles.sidebar}>

@@ -1,7 +1,6 @@
 // DropdownItem.tsx
 import { Space, Dropdown, MenuProps } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
-import { Label } from "@mui/icons-material";
 interface DropdownItemProps {
   items: MenuProps["items"]; // You can replace 'any' with the actual type of your items
   onClick: MenuProps["onClick"];
@@ -19,7 +18,7 @@ const DropdownItem = ({ items, onClick, label }: DropdownItemProps) => (
     >
       <Space>
         {label}
-        <CaretDownOutlined />
+        <CaretDownOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
       </Space>
     </a>
   </Dropdown>
