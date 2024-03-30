@@ -12,7 +12,7 @@ const contentStyle: React.CSSProperties = {
 const Banner = () => {
   return (
     <div className="w-full">
-      <Carousel>
+      <Carousel autoplay>
         <div>
           <img style={contentStyle} src="/img/SLOGAN.png" alt="Slogan" />
         </div>
