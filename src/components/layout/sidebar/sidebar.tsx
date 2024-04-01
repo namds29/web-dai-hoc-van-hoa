@@ -1,24 +1,34 @@
 import { Link } from "react-router-dom";
 import styles from "./sidebar.module.scss";
-import { DashboardOutlined } from "@ant-design/icons";
+import {
+  BankOutlined,
+  BookOutlined,
+  CoffeeOutlined,
+  DesktopOutlined,
+  FileSearchOutlined,
+  GlobalOutlined,
+  HomeOutlined,
+  InfoOutlined,
+} from "@ant-design/icons";
 
 const Sidebar = ({ menuOpen }: any) => {
   const menuItem = [
-    { title: "About", icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />, route: "/admin/about" },
-    { title: "News", icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />, route: "/news" },
-    { title: "Academics", icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />, route: "/academics" },
-    { title: "Admission", icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />, route: "/admission" },
+    { title: "Home page", icon: <HomeOutlined />, route: "/admin" },
+    { title: "About", icon: <InfoOutlined />, route: "/admin/about" },
+    { title: "News", icon: <CoffeeOutlined />, route: "/news" },
+    { title: "Academics", icon: <BookOutlined />, route: "/academics" },
+    { title: "Admission", icon: <BankOutlined />, route: "/admission" },
     {
       title: "Student Support",
-      icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />,
+      icon: <DesktopOutlined />,
       route: "/student-support",
     },
     {
       title: "International Partners",
-      icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />,
+      icon: <GlobalOutlined />,
       route: "/international-partners",
     },
-    { title: "Research", icon: <DashboardOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />, route: "/research" },
+    { title: "Research", icon: <FileSearchOutlined />, route: "/research" },
   ];
   return (
     <div className={styles.sidebar}>

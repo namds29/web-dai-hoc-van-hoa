@@ -13,7 +13,7 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 .bg_gradient_blue_to_light {
-  background-image: linear-gradient(to right, #5e2e86, #FEE8B0);
+  background-image: linear-gradient(to right, #5e2e86, #fee8b0);
 }
 @keyframes logo-spin {
   from {
@@ -46,14 +46,13 @@
   left: 10px;
   z-index: 2;
   color: white;
-
 }
 
 .ant-carousel .slick-prev::before {
-  content: '';
+  content: "";
 }
 .ant-carousel .slick-next::before {
-  content: '';
+  content: "";
 }
 
 .ant-carousel .slick-next,
@@ -63,4 +62,13 @@
   right: 10px;
   z-index: 2;
   color: white;
+}
+
+.ant-upload-wrapper .ant-upload-select {
+  width: 100%;
+}
+
+.ant-list-header {
+  background-color: black !important;
+  border-radius: 8px 8px 0px 0px;
 }

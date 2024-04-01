@@ -1,13 +1,14 @@
 .container {
-    display: flex;
-    height: calc(100vh - 64px);
-    background-color: #fff;
-    color: #212529;
-    .main-content {
-        position: relative;
-        width: 100%;
-        background-color: #dee2e6;
-        border-radius: 20px;
-        padding: 1.3rem 1.5rem;
-    }
+  display: flex;
+  height: calc(100vh - 64px);
+  background-color: #fff;
+  color: #212529;
+  .main-content {
+    position: relative;
+    width: 100%;
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    padding: 1.3rem 1.5rem;
+    overflow: scroll;
+  }
 }

@@ -1,5 +1,5 @@
 // DropdownItem.tsx
-import { Space, Dropdown, MenuProps } from "antd";
+import { Space, Dropdown, MenuProps, Button } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
 interface DropdownItemProps {
   items: MenuProps["items"]; // You can replace 'any' with the actual type of your items
@@ -9,8 +9,8 @@ interface DropdownItemProps {
 
 const DropdownItem = ({ items, onClick, label }: DropdownItemProps) => (
   <Dropdown className="mr-5" menu={{ items, onClick }}>
-    <a
-      className="text-sm"
+    <Button
+      className="text-sm bg-black text-white"
       onClick={(e) => {
         console.log(e);
         e.preventDefault();
@@ -20,7 +20,7 @@ const DropdownItem = ({ items, onClick, label }: DropdownItemProps) => (
         {label}
         <CaretDownOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
       </Space>
-    </a>
+    </Button>
   </Dropdown>
 );
 
