@@ -1,5 +1,5 @@
 // DropdownItem.tsx
-import { Space, Dropdown, MenuProps } from "antd";
+import { Space, Dropdown, MenuProps, Button } from "antd";
 import { CaretDownOutlined } from "@ant-design/icons";
 import { Label } from "@mui/icons-material";
 interface DropdownItemProps {
@@ -10,8 +10,8 @@ interface DropdownItemProps {
 
 const DropdownItem = ({ items, onClick, label }: DropdownItemProps) => (
   <Dropdown className="mr-5" menu={{ items, onClick }}>
-    <a
-      className="text-sm"
+    <Button
+      className="text-sm bg-black text-white"
       onClick={(e) => {
         console.log(e);
         e.preventDefault();
@@ -21,7 +21,7 @@ const DropdownItem = ({ items, onClick, label }: DropdownItemProps) => (
         {label}
         <CaretDownOutlined />
       </Space>
-    </a>
+    </Button>
   </Dropdown>
 );
 

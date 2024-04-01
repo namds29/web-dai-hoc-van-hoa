@@ -1,24 +1,34 @@
 import { Link } from "react-router-dom";
 import styles from "./sidebar.module.scss";
-import { DashboardOutlined } from "@ant-design/icons";
+import {
+  BankOutlined,
+  BookOutlined,
+  CoffeeOutlined,
+  DesktopOutlined,
+  FileSearchOutlined,
+  GlobalOutlined,
+  HomeOutlined,
+  InfoOutlined,
+} from "@ant-design/icons";
 
 const Sidebar = ({ menuOpen }: any) => {
   const menuItem = [
-    { title: "About", icon: <DashboardOutlined />, route: "/admin/about" },
-    { title: "News", icon: <DashboardOutlined />, route: "/news" },
-    { title: "Academics", icon: <DashboardOutlined />, route: "/academics" },
-    { title: "Admission", icon: <DashboardOutlined />, route: "/admission" },
+    { title: "Home page", icon: <HomeOutlined />, route: "/admin" },
+    { title: "About", icon: <InfoOutlined />, route: "/admin/about" },
+    { title: "News", icon: <CoffeeOutlined />, route: "/news" },
+    { title: "Academics", icon: <BookOutlined />, route: "/academics" },
+    { title: "Admission", icon: <BankOutlined />, route: "/admission" },
     {
       title: "Student Support",
-      icon: <DashboardOutlined />,
+      icon: <DesktopOutlined />,
       route: "/student-support",
     },
     {
       title: "International Partners",
-      icon: <DashboardOutlined />,
+      icon: <GlobalOutlined />,
       route: "/international-partners",
     },
-    { title: "Research", icon: <DashboardOutlined />, route: "/research" },
+    { title: "Research", icon: <FileSearchOutlined />, route: "/research" },
   ];
   return (
     <div className={styles.sidebar}>

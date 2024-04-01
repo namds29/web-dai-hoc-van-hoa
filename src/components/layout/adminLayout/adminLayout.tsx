@@ -18,7 +18,7 @@ type Props = {
         <div className={styles.container}>
           <Sidebar menuOpen={menuOpen} />
           <div className={styles["main-content"]}>
-            <div className="absolute w-97 pr-3">{children}</div>
+            <div className="w-97 pr-3">{children}</div>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ export default function TextEditor() {
 
   const formats = [
     "header",
-    "bold",
+    "bold", 
     "italic",
     "underline",
     "strike",
