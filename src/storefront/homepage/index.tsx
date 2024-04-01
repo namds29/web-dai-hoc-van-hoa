@@ -39,14 +39,14 @@ const Homepage = () => {
     prevArrow: (
       <SlickButtonFix>
         <div className="h-7 w-7 flex justify-center items-center bg-red-900 opacity-60 rounded-3xl">
-          <LeftOutlined />
+          <LeftOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
         </div>
       </SlickButtonFix>
     ),
     nextArrow: (
       <SlickButtonFix>
         <div className="h-7 w-7 flex justify-center items-center bg-red-900 opacity-60 rounded-3xl">
-          <RightOutlined />
+          <RightOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
         </div>
       </SlickButtonFix>
     ),
@@ -283,7 +283,7 @@ const Homepage = () => {
           </div>
           <div className="flex items-center justify-center mt-8 pb-8 relative">
             <div className={styles.animate_btn}>
-              <CaretRightOutlined />
+              <CaretRightOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
             </div>
           </div>
         </div>
