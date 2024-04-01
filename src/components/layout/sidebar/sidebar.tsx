@@ -46,7 +46,7 @@ const Sidebar = ({ menuOpen }: any) => {
                   menuOpen ? styles["menu--text"] : styles["menu--text-closed"]
                 }
               >
-                {item.title}{" "}
+                {item.title}
               </div>
             </div>
           </Link>
