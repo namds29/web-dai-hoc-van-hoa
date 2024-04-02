@@ -1,7 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosError, InternalAxiosRequestConfig } from 'axios';
-import AuthService from './auth/authServices';
 
-const axiosClient: AxiosInstance = axios.create({
+const axiosInstance: AxiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
     headers: {
         Accept: 'application/json', 
@@ -9,20 +8,22 @@ const axiosClient: AxiosInstance = axios.create({
     }
 });
 
-axiosClient.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-    const token: string = AuthService.getToken() || null;
-    token && (config.headers!.Authorization = `Bearer ${token}`);
+axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+    console.log(config)
+    // const token: string = AuthService.getToken() || null;
+    // token && (config.headers!.Authorization = `Bearer ${token}`);
     return config;
 }, async (error: AxiosError) => {
     console.log('error: ', error);
     return await Promise.reject(error);
 });
 
-axiosClient.interceptors.response.use((response: AxiosResponse) => {
+axiosInstance.interceptors.response.use((response: AxiosResponse) => {
+    console.log('res', response)
     return response.data;
 }, async (error: AxiosError) => {
     console.log('error: ', error);
     return await Promise.reject(error);
 });
 
-export default axiosClient;
+export default axiosInstance;

@@ -14,13 +14,13 @@ const Banner = () => {
     <div className="w-full">
       <Carousel>
         <div>
-          <img style={contentStyle} src="/img/SLOGAN.png" alt="Slogan" />
+          <img loading="lazy"style={contentStyle} src="/img/SLOGAN.png" alt="Slogan" />
         </div>
         <div>
-          <img style={contentStyle} src="/img/banner2.png" alt="banner 2" />
+          <img loading="lazy"style={contentStyle} src="/img/banner2.png" alt="banner 2" />
         </div>
         <div>
-          <img style={contentStyle} src="/img/banner3.png" alt="banner 3" />
+          <img loading="lazy"style={contentStyle} src="/img/banner3.png" alt="banner 3" />
         </div>
       </Carousel>
     </div>

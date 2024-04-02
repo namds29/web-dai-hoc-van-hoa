@@ -18,7 +18,7 @@ const DropdownItem = ({ items, onClick, label }: DropdownItemProps) => (
     >
       <Space>
         {label}
-        <CaretDownOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+        <CaretDownOutlined   />
       </Space>
     </Button>
   </Dropdown>

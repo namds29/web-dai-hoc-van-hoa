@@ -10,15 +10,6 @@ import { Carousel } from "antd";
 import Announcements from "./announcements";
 import Banner from "./banner";
 
-const libImgStyle: React.CSSProperties = {
-  //   width: "400px",
-  height: "300px",
-
-  textAlign: "center",
-  background: "rgb(254 202 202)",
-  objectFit: "cover",
-  cursor: "pointer",
-};
 const SlickButtonFix = ({
   currentSlide,
   slideCount,
@@ -26,7 +17,7 @@ const SlickButtonFix = ({
   ...props
 }: any) => <div {...props}>{children}</div>;
 
-const Homepage = () => {
+const AdminHomepage = () => {
   const settings = {
     className: "center",
     arrows: true,
@@ -35,18 +26,18 @@ const Homepage = () => {
     // centerPadding: "10px",
     dots: false,
     slidesToShow: 3,
-    autoplay: true,
+    // autoplay: true,
     prevArrow: (
       <SlickButtonFix>
         <div className="h-7 w-7 flex justify-center items-center bg-red-900 opacity-60 rounded-3xl">
-          <LeftOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+          <LeftOutlined />
         </div>
       </SlickButtonFix>
     ),
     nextArrow: (
       <SlickButtonFix>
         <div className="h-7 w-7 flex justify-center items-center bg-red-900 opacity-60 rounded-3xl">
-          <RightOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+          <RightOutlined />
         </div>
       </SlickButtonFix>
     ),
@@ -62,16 +53,13 @@ const Homepage = () => {
       <section className="w-full">
         <div className="flex justify-center">
           <div className={styles.card}>
-            <img className={styles.card_img} src="/img/img1.png" alt="" />
-            <div className={styles.card_text}>Training Program</div>
+            <img loading="lazy" className={styles.card_img} src="/img/training.png" alt="Training Program" />
           </div>
           <div className={styles.card}>
-            <img className={styles.card_img} src="/img/img1.png" alt="" />
-            <div className={styles.card_text}>Partner List</div>
+            <img loading="lazy" className={styles.card_img} src="/img/partner.png" alt="Partner List" />
           </div>
           <div className={styles.card}>
-            <img className={styles.card_img} src="/img/img1.png" alt="" />
-            <div className={styles.card_text}>Student Guidebook</div>
+            <img loading="lazy" className={styles.card_img} src="/img/guidebook.png" alt="Student Guidebook" />
           </div>
         </div>
       </section>
@@ -85,16 +73,28 @@ const Homepage = () => {
         </div>
         <Carousel {...settings}>
           <div className="p-4">
-            <img style={libImgStyle} src="/img/fa1.png" alt="" />
+            <img loading="lazy" className={styles.fal_img} src="/img/fal-art.png" alt="Art" />
           </div>
           <div className="p-4">
-            <img style={libImgStyle} src="/img/fa2.png" alt="" />
+            <img loading="lazy" className={styles.fal_img} src="/img/fal-cul.png" alt="Cultures" />
           </div>
           <div className="p-4">
-            <img style={libImgStyle} src="/img/fa3.png" alt="" />
+            <img loading="lazy" className={styles.fal_img} src="/img/fal-lang.png" alt="Language" />
           </div>
           <div className="p-4">
-            <img style={libImgStyle} src="/img/fa4.png" alt="" />
+            <img loading="lazy" className={styles.fal_img} src="/img/fal-law.png" alt="Law" />
+          </div>
+          <div className="p-4">
+            <img loading="lazy" className={styles.fal_img} src="/img/fal-music.png" alt="Music" />
+          </div>
+          <div className="p-4">
+            <img loading="lazy" className={styles.fal_img} src="/img/fal-physic.png" alt="Physic" />
+          </div>
+          <div className="p-4">
+            <img loading="lazy" className={styles.fal_img} src="/img/fal-preschool.png" alt="preschool" />
+          </div>
+          <div className="p-4">
+            <img loading="lazy" className={styles.fal_img} src="/img/fal-tourism.png" alt="Tourism" />
           </div>
         </Carousel>
         <div className="text-center ">
@@ -116,120 +116,30 @@ const Homepage = () => {
         <div className={styles.sub_news}>
           <div className={styles.sub_news_box}>
             <div className={styles.sub_news__img}>
-              <img src="/img/img1.png" alt="" />
+              <img loading="lazy" src="/img/img1.png" alt="" />
             </div>
             <div className={styles.sub_news__content}>
               <div className={styles.sub_news__title}>
                 <a
                   href=""
-                  title="Hơn 600 đầu sách được Trường Đại học CMC tiếp nhận từ Trường Quốc tế Hàn Quốc tại Hà Nội"
+                  title="TUCST TAKES PART IN THE 2024 ADMISSION CONSULTATION - CAREER GUIDANCE DAY OF TUOI TRE NEWSPAPER"
                 >
-                  Hơn 600 đầu sách được Trường Đại học CMC tiếp nhận từ Trường
-                  Quốc tế Hàn Quốc tại Hà Nội
+                  TUCST TAKES PART IN THE 2024 ADMISSION CONSULTATION - CAREER GUIDANCE DAY OF TUOI TRE NEWSPAPER
                 </a>
               </div>
               <div
-                className={`${styles.word_cut} text-gray-500 text-xs items-center gap-2 mt-2 `}
+                className={`${styles.word_cut} text-gray-500 text-lg items-center gap-2 mt-2 `}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
-                elit a mauris auctor lacinia. Proin dui orci, auctor vitae
-                rutrum a, condimentum at elit. Praesent odio nibh, elementum
-                vitae metus nec,Proin dui orci, auctor vitae ondimentum at elit.
-                Praesent odio nibh, elementum vitae metus nec,Proin dui orci,
-                auctor vitae ondimentum at elit. Praesent odio nibh, elementum
-                vitae metus nec,Proin dui orci, auctor vitae ondimentum at elit.
-                Praesent odio nibh, elementum vitae metus nec,Proin dui orci,
-                auctor vitae
+                On the morning of January 14, the 2024 Admission Consultation-Career Guidance Day of Tuoi Tre Newspaper officially took place at Hong Duc University with the attendance of many big training institutions across the country. Attending this event was Dr. Vu Van Tuyen - Chairman of TUCST’s Council.
+                The 2024 Admission Consultation-Career Guidance Day is organized by the coordination of Tuoi Tre Newspaper, the Department of Higher Education (Ministry of Education and Training), the General Department of Vocational Education (Ministry of Labor, War Invalids and Social Affairs ), Thanh Hoa Department of Education and Training, Hong Duc University and Vingroup.
+                On the 2024 Admission Consultation-Career Guidance Day, hundreds of admission consulting booths from training institutions such as Hanoi National University, Hanoi Polytechnic University, and National Economics University... were present. Among them, TUCST school's booth is carefully prepared with an outstanding space, combining cultural and artistic activities to attract students. TUCST's booth received great attention from a large number of students.
+                Here, TUCST's staff presented TUCST's training programs, the 2024 admission project, and the values and opportunities of becoming a TUCST student. In addition, TUCST staff will answer all questions for students and parents about admission information, admission methods, tests to assess students’ ability and thinking, and advice on choosing a training program.
+                With the participation of thousands of students from many high schools in Thanh Hoa City and neighboring districts, the successful organization of activities at the 2024 Admission Consultation-Career Guidance Day will not only be a bridge between students in the province and TUCST but also create promising opportunities for the university enrollment in the 2024-2025 academic year.
+
               </div>
             </div>
           </div>
-          <div className={styles.sub_news_box}>
-            <div className={styles.sub_news__img}>
-              <img src="/img/img1.png" alt="" />
-            </div>
-            <div className={styles.sub_news__content}>
-              <div className={styles.sub_news__title}>
-                <a
-                  href=""
-                  title="Hơn 600 đầu sách được Trường Đại học CMC tiếp nhận từ Trường Quốc tế Hàn Quốc tại Hà Nội"
-                >
-                  Hơn 600 đầu sách được Trường Đại học CMC tiếp nhận từ Trường
-                  Quốc tế Hàn Quốc tại Hà Nội
-                </a>
-              </div>
-              <div
-                className={`${styles.word_cut} text-gray-500 text-xs items-center gap-2 mt-2 `}
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
-                elit a mauris auctor lacinia. Proin dui orci, auctor vitae
-                rutrum a, condimentum at elit. Praesent odio nibh, elementum
-                vitae metus nec,Proin dui orci, auctor vitae ondimentum at elit.
-                Praesent odio nibh, elementum vitae metus nec,Proin dui orci,
-                auctor vitae ondimentum at elit. Praesent odio nibh, elementum
-                vitae metus nec,Proin dui orci, auctor vitae ondimentum at elit.
-                Praesent odio nibh, elementum vitae metus nec,Proin dui orci,
-                auctor vitae
-              </div>
-            </div>
-          </div>
-          <div className={styles.sub_news_box}>
-            <div className={styles.sub_news__img}>
-              <img src="/img/img1.png" alt="" />
-            </div>
-            <div className={styles.sub_news__content}>
-              <div className={styles.sub_news__title}>
-                <a
-                  href=""
-                  title="Hơn 600 đầu sách được Trường Đại học CMC tiếp nhận từ Trường Quốc tế Hàn Quốc tại Hà Nội"
-                >
-                  Hơn 600 đầu sách được Trường Đại học CMC tiếp nhận từ Trường
-                  Quốc tế Hàn Quốc tại Hà Nội
-                </a>
-              </div>
-              <div
-                className={`${styles.word_cut} text-gray-500 text-xs items-center gap-2 mt-2 `}
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
-                elit a mauris auctor lacinia. Proin dui orci, auctor vitae
-                rutrum a, condimentum at elit. Praesent odio nibh, elementum
-                vitae metus nec,Proin dui orci, auctor vitae ondimentum at elit.
-                Praesent odio nibh, elementum vitae metus nec,Proin dui orci,
-                auctor vitae ondimentum at elit. Praesent odio nibh, elementum
-                vitae metus nec,Proin dui orci, auctor vitae ondimentum at elit.
-                Praesent odio nibh, elementum vitae metus nec,Proin dui orci,
-                auctor vitae
-              </div>
-            </div>
-          </div>
-          <div className={styles.sub_news_box}>
-            <div className={styles.sub_news__img}>
-              <img src="/img/img1.png" alt="" />
-            </div>
-            <div className={styles.sub_news__content}>
-              <div className={styles.sub_news__title}>
-                <a
-                  href=""
-                  title="Hơn 600 đầu sách được Trường Đại học CMC tiếp nhận từ Trường Quốc tế Hàn Quốc tại Hà Nội"
-                >
-                  Hơn 600 đầu sách được Trường Đại học CMC tiếp nhận từ Trường
-                  Quốc tế Hàn Quốc tại Hà Nội
-                </a>
-              </div>
-              <div
-                className={`${styles.word_cut} text-gray-500 text-xs items-center gap-2 mt-2 `}
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac
-                elit a mauris auctor lacinia. Proin dui orci, auctor vitae
-                rutrum a, condimentum at elit. Praesent odio nibh, elementum
-                vitae metus nec,Proin dui orci, auctor vitae ondimentum at elit.
-                Praesent odio nibh, elementum vitae metus nec,Proin dui orci,
-                auctor vitae ondimentum at elit. Praesent odio nibh, elementum
-                vitae metus nec,Proin dui orci, auctor vitae ondimentum at elit.
-                Praesent odio nibh, elementum vitae metus nec,Proin dui orci,
-                auctor vitae
-              </div>
-            </div>
-          </div>
+
         </div>
       </section>
 
@@ -242,17 +152,17 @@ const Homepage = () => {
         <div className={styles.small_card}>
           <div className={styles.news}>
             <div className={styles.news_img}>
-              <img className="w-full h-full" src="/img/Mission.png" alt="" />
+              <img loading="lazy" className="w-full h-full" src="/img/Mission.png" alt="" />
             </div>
           </div>
           <div className={styles.news}>
             <div className={styles.news_img}>
-              <img className="w-full h-full" src="/img/Vision.png" alt="" />
+              <img loading="lazy" className="w-full h-full" src="/img/Vision.png" alt="" />
             </div>
           </div>
           <div className={styles.news}>
             <div className={styles.news_img}>
-              <img className="w-full h-full" src="/img/Value.png" alt="" />
+              <img loading="lazy" className="w-full h-full" src="/img/Value.png" alt="" />
             </div>
           </div>
         </div>
@@ -283,7 +193,7 @@ const Homepage = () => {
           </div>
           <div className="flex items-center justify-center mt-8 pb-8 relative">
             <div className={styles.animate_btn}>
-              <CaretRightOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+              <CaretRightOutlined />
             </div>
           </div>
         </div>
@@ -293,17 +203,42 @@ const Homepage = () => {
         <div className="flex text-orange-500 font-bold mb-6 justify-center items-center">
           <p className="text-xl border-b-4">IMAGE LIBRARY</p>
         </div>
-        <div className="xl:px-32 grid xl:grid-cols-3 sm:grid-cols-2 gap-8 justify-items-center">
-          <div className={styles.lib_card}></div>
-          <div className={styles.lib_card}></div>
-          <div className={styles.lib_card}></div>
-          <div className={styles.lib_card}></div>
-          <div className={styles.lib_card}></div>
-          <div className={styles.lib_card}></div>
-        </div>
+        <Carousel {...settings}>
+          <div className={styles.lib_card}>
+            <img loading="lazy" src="/img/lib_1.jpg" alt="Lib 1" />
+          </div>
+          <div className={styles.lib_card}>
+            <img loading="lazy" src="/img/lib_2.jpg" alt="Lib 2" />
+          </div>
+          <div className={styles.lib_card}>
+            <img loading="lazy" src="/img/lib-3.jpg" alt="Lib 3" />
+          </div>
+          <div className={styles.lib_card}>
+            <img loading="lazy" src="/img/lib-4.jpg" alt="Lib 4" />
+          </div>
+          <div className={styles.lib_card}>
+            <img loading="lazy" src="/img/lib-5.jpg" alt="Lib 5" />
+          </div>
+          <div className={styles.lib_card}>
+            <img loading="lazy" src="/img/lib-6.jpg" alt="Lib 6" />
+          </div>
+          <div className={styles.lib_card}>
+            <img loading="lazy" src="/img/lib-7.jpg" alt="Lib 7" />
+          </div>
+          <div className={styles.lib_card}>
+            <img loading="lazy" src="/img/lib-8.jpg" alt="Lib 8" />
+          </div>
+          <div className={styles.lib_card}>
+            <img loading="lazy" src="/img/lib-9.jpg" alt="Lib 9" />
+          </div>
+          <div className={styles.lib_card}>
+            <img loading="lazy" src="/img/lib-10.jpg" alt="Lib 10" />
+          </div>
+        </Carousel>
+
       </section>
     </div>
   );
 };
 
-export default Homepage;
+export default AdminHomepage;
