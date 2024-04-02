@@ -76,16 +76,16 @@ function CustomModal({
     switch (type) {
       case MESSAGE_TYPE.ERROR:
         return (
-          <CloseCircleFilled style={{ color: "#f40000", fontSize: "2.6em" }} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+          <CloseCircleFilled style={{ color: "#f40000", fontSize: "2.6em" }}   />
         );
       case MESSAGE_TYPE.WARNING:
         return (
-          <WarningFilled style={{ color: "#ffd965", fontSize: "2.6em" }} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+          <WarningFilled style={{ color: "#ffd965", fontSize: "2.6em" }}   />
         );
       case MESSAGE_TYPE.CONFIRM:
         return (
           <QuestionCircleFilled
-            style={{ color: "#0033cc", fontSize: "2.6em" }} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}          />
+            style={{ color: "#0033cc", fontSize: "2.6em" }}            />
         );
       default:
         return <></>;

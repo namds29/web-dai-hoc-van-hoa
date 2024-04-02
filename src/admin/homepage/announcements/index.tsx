@@ -16,10 +16,10 @@ const Announcements = () => {
             <div className={styles.newest_new}>
                 <div className={styles.news}>
                     <div className={styles.news_img}>
-                        <img className="w-full h-full" src="/img/img1.png" alt="" />
+                       <img  loading="lazy" className="w-full h-full" src="/img/img1.png" alt="" />
                     </div>
                     <div className="text-gray-500 flex items-center gap-2 mt-3">
-                        <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+                        <CalendarOutlined   />
                         <span className="italic">01/09/2024</span>
                     </div>
                     <div className={styles.news_title}>
@@ -39,10 +39,10 @@ const Announcements = () => {
 
                 <div className={styles.news}>
                     <div className={styles.news_img}>
-                        <img className="w-full h-full" src="/img/img1.png" alt="" />
+                       <img  loading="lazy" className="w-full h-full" src="/img/img1.png" alt="" />
                     </div>
                     <div className="text-gray-500 flex items-center gap-2 mt-3">
-                        <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+                        <CalendarOutlined   />
                         <span className="italic">01/09/2024</span>
                     </div>
                     <div className={styles.news_title}>
@@ -67,7 +67,7 @@ const Announcements = () => {
             <div className={styles.sub_news}>
                 <div className={styles.sub_news_box}>
                     <div className={styles.sub_news__img}>
-                        <img src="/img/img1.png" alt="" />
+                        <img loading="lazy"src="/img/img1.png" alt="" />
                     </div>
                     <div className={styles.sub_news__content}>
                         <div className={styles.sub_news__title}>
@@ -80,14 +80,14 @@ const Announcements = () => {
                             </a>
                         </div>
                         <div className="text-gray-500  absolute bottom-3 right-4 flex items-center gap-2 mt-4">
-                            <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+                            <CalendarOutlined   />
                             <span className="italic text-sm">01/09/2024</span>
                         </div>
                     </div>
                 </div>
                 <div className={styles.sub_news_box}>
                     <div className={styles.sub_news__img}>
-                        <img src="/img/img1.png" alt="" />
+                        <img loading="lazy"src="/img/img1.png" alt="" />
                     </div>
                     <div className={styles.sub_news__content}>
                         <div className={styles.sub_news__title}>
@@ -100,14 +100,14 @@ const Announcements = () => {
                             </a>
                         </div>
                         <div className="text-gray-500  absolute bottom-3 right-4 flex items-center gap-2 mt-4">
-                            <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+                            <CalendarOutlined   />
                             <span className="italic text-sm">01/09/2024</span>
                         </div>
                     </div>
                 </div>
                 <div className={styles.sub_news_box}>
                     <div className={styles.sub_news__img}>
-                        <img src="/img/img1.png" alt="" />
+                        <img loading="lazy"src="/img/img1.png" alt="" />
                     </div>
                     <div className={styles.sub_news__content}>
                         <div className={styles.sub_news__title}>
@@ -120,14 +120,14 @@ const Announcements = () => {
                             </a>
                         </div>
                         <div className="text-gray-500  absolute bottom-3 right-4 flex items-center gap-2 mt-4">
-                            <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+                            <CalendarOutlined   />
                             <span className="italic text-sm">01/09/2024</span>
                         </div>
                     </div>
                 </div>
                 <div className={styles.sub_news_box}>
                     <div className={styles.sub_news__img}>
-                        <img src="/img/img1.png" alt="" />
+                        <img loading="lazy"src="/img/img1.png" alt="" />
                     </div>
                     <div className={styles.sub_news__content}>
                         <div className={styles.sub_news__title}>
@@ -140,7 +140,7 @@ const Announcements = () => {
                             </a>
                         </div>
                         <div className="text-gray-500  absolute bottom-3 right-4 flex items-center gap-2 mt-4">
-                            <CalendarOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+                            <CalendarOutlined   />
                             <span className="italic text-sm">01/09/2024</span>
                         </div>
                     </div>

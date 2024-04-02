@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { InboxOutlined, PlusOutlined } from "@ant-design/icons";
+import { InboxOutlined } from "@ant-design/icons";
 import { Image, Upload } from "antd";
 import type { GetProp, UploadFile, UploadProps } from "antd";
 

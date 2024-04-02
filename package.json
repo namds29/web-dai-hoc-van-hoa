@@ -22,6 +22,7 @@
     "@udecode/plate-common": "^31.0.0",
     "antd": "^5.15.2",
     "antd-img-crop": "^4.21.0",
+    "axios": "^1.6.8",
     "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

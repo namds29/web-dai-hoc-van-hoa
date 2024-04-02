@@ -294,7 +294,7 @@ const About = () => {
         <p className="mt-8 text-black">SCHOOL NAME</p>
         <div className="flex gap-8 mt-4">
           <div className="w-1/3 bg-red-200 text-black text-center pt-28  h-72 rounded ">
-            {/* <img className="rounded" src="" alt="" /> */}
+            {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
             IMAGE
           </div>
           <div className="w-2/3 bg-yellow-200 rounded text-black text-center pt-28 ">
