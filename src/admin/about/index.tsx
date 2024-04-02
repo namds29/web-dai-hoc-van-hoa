@@ -1,7 +1,7 @@
 import { MenuProps } from "antd";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
-import TextEditor from "src/components/texteditor";
+// import TextEditor from "src/components/texteditor";
 import FileUpload from "src/components/imageupload";
 import TextImageUpload from "src/components/imagetextupload";
 

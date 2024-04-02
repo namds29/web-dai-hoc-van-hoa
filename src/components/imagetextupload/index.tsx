@@ -8,25 +8,22 @@ import {
 import {
   AutoComplete,
   Button,
-  Image,
   List,
-  Space,
-  Typography,
   Upload,
   message,
 } from "antd";
-import type { GetProp, UploadFile, UploadProps } from "antd";
+import type { UploadProps } from "antd";
 import TextEditor from "../texteditor";
 import { ReactJSXElement } from "node_modules/@emotion/react/types/jsx-namespace";
 
 const { Dragger } = Upload;
 
-type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
+// type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 
-type TextImageType = {
-  text: string;
-  img: string;
-};
+// type TextImageType = {
+//   text: string;
+//   img: string;
+// };
 
 const IconText = ({
   icon,
@@ -44,13 +41,13 @@ const IconText = ({
   </Button>
 );
 
-const getBase64 = (file: FileType): Promise<string> =>
-  new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = (error) => reject(error);
-  });
+// const getBase64 = (file: FileType): Promise<string> =>
+//   new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+//     reader.readAsDataURL(file);
+//     reader.onload = () => resolve(reader.result as string);
+//     reader.onerror = (error) => reject(error);
+//   });
 
 const TextImageUpload = ({
   haveContent,
