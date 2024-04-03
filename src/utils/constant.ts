@@ -1,27 +1,27 @@
 export const ACADEMICS_FUCTIONAL_UNITS = [
   {
     id: 1,
-    title: "General administrative office",
+    title: "General Administration Department",
   },
   {
     id: 2,
-    title: "Organization and staff",
+    title: "Personnel Organization Department",
   },
   {
     id: 3,
-    title: "Financial Planning Division",
+    title: "Finance & Planning Department",
   },
   {
     id: 4,
-    title: "Training Management Department",
+    title: "Academic Affairs Department",
   },
   {
     id: 5,
-    title: "Department of Postgraduate Education",
+    title: "Postgraduate Training Department",
   },
   {
     id: 6,
-    title: "Department of Political Affairs - Students",
+    title: "Politics & Student Affairs Department",
   },
   {
     id: 7,
@@ -29,35 +29,67 @@ export const ACADEMICS_FUCTIONAL_UNITS = [
   },
   {
     id: 8,
-    title: "Inspection office",
+    title: "Inspection Department",
   },
   {
     id: 9,
-    title: "Department of Testing and Educational Quality Assurance",
+    title: "Testing and Quality Assurance Department",
   },
   {
     id: 10,
-    title: "Facilities Management Department",
+    title: "Assets Management & Security Department",
   },
   {
     id: 11,
-    title: "Center for Continuing and Affiliated Education",
+    title: "Advisory Center of Admission and Job",
   },
   {
     id: 12,
-    title: "Center for Admissions Consulting and Job Introduction",
+    title: "Center of Joint and Continuous Training",
   },
   {
     id: 13,
-    title: "Center for Foreign Languages - Information Technology",
+    title: "Informatics – Foreign Language Center",
   },
   {
     id: 14,
-    title: "Center for Training, Tourism Practice and Event Organization",
+    title: "Center of Tourism training & Event Organization",
   },
   {
     id: 15,
-    title: "Information Center - Library",
+    title: "Library and Information Center",
+  },
+  {
+    id: 16,
+    title: "Faculty of Culture and Information",
+  },
+  {
+    id: 17,
+    title: "Falcuty of Music",
+  },
+  {
+    id: 18,
+    title: "Falcuty of Fine Arts",
+  },
+  {
+    id: 19,
+    title: "Faculty of Tourism",
+  },
+  {
+    id: 20,
+    title: "Falcuty of Physical Education and Sports",
+  },
+  {
+    id: 21,
+    title: "Falcuty of Prechool  - Primary Education",
+  },
+  {
+    id: 22,
+    title: "Faculty of Law and State management",
+  },
+  {
+    id: 23,
+    title: "Falcuty of Foreign Languages",
   },
 ];
 
@@ -87,7 +119,7 @@ export const ACADEMICS_TRAINING_PROGRAM = [
       "Hotel receptionist operations",
       "Room service",
       "Industrial machines",
-      "Graphics"
+      "Graphics",
     ],
   },
 ];
