@@ -18,6 +18,7 @@ import AdminNews from "./admin/news";
 import AdminResearch from "./admin/research";
 import AdminStudentSupport from "./admin/student-support";
 import AdminLayout from "./components/layout/adminLayout/adminLayout";
+import LoginPage from "./admin/login";
 function App() {
   return (
     <Routes>
@@ -35,6 +36,7 @@ function App() {
         <Route path="/research" element={<Research />} />
         {/* <Route path="/wallpaper" element={<Wallpapers />} /> */}
       </Route>
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/admin" element={<AdminLayout children={<Outlet />} />}>
         <Route path="/admin" element={<AdminHomepage />} />
         <Route path="/admin/about" element={<AdminAbout />} />

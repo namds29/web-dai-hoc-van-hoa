@@ -15,9 +15,9 @@ const Sidebar = ({ menuOpen }: any) => {
   const menuItem = [
     { title: "Home page", icon: <HomeOutlined />, route: "/admin" },
     { title: "About", icon: <InfoOutlined />, route: "/admin/about" },
-    { title: "News", icon: <CoffeeOutlined />, route: "/news" },
-    { title: "Academics", icon: <BookOutlined />, route: "/academics" },
-    { title: "Admission", icon: <BankOutlined />, route: "/admission" },
+    { title: "News", icon: <CoffeeOutlined />, route: "/admin/news" },
+    { title: "Academics", icon: <BookOutlined />, route: "/admin/academics" },
+    { title: "Admission", icon: <BankOutlined />, route: "/admin/admission" },
     {
       title: "Student Support",
       icon: <DesktopOutlined />,
