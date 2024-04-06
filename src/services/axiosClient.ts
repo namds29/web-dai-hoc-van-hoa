@@ -1,8 +1,8 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosError, InternalAxiosRequestConfig } from 'axios';
-import { ResponeType } from 'src/types';
+import { BASE_API_URL } from './constant';
 
 const axiosInstance: AxiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: BASE_API_URL,
     headers: {
         Accept: 'application/json',
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -20,7 +20,7 @@ axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
 });
 
 axiosInstance.interceptors.response.use((response: AxiosResponse) => {
-    return response;
+    return response.data;
 }, async (error: AxiosError) => {
     console.log('error: ', error);
     return await Promise.reject(error);
