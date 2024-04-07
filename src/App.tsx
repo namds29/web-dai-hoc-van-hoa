@@ -18,6 +18,7 @@ import AdminLayout from "./components/layout/adminLayout/adminLayout";
 import LoginPage from "./admin/login";
 import { Suspense, lazy } from "react";
 import { Spin } from "antd";
+import { AuthProvider } from "./utils/context/auth-context";
 
 const AboutComponent = lazy(() => import("./storefront/about"));
 const NewsComponent = lazy(() => import("./storefront/news"));
@@ -43,21 +44,27 @@ function App() {
           {/* <Route path="/wallpaper" element={<Wallpapers />} /> */}
         </Route>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/admin" element={<AdminLayout children={<Outlet />} />}>
-          <Route path="/admin" element={<AdminHomepage />} />
-          <Route path="/admin/about" element={<AdminAbout />} />
-          <Route path="/admin/news" element={<AdminNews />} />
-          <Route path="/admin/academics" element={<AdminAcademics />} />
-          <Route path="/admin/admission" element={<AdminAdmission />} />
-          <Route
-            path="/admin/international-partners"
-            element={<AdminInternationalPartners />}
-          />
-          <Route path="/admin/student-support" element={<AdminStudentSupport />} />
-          <Route path="/admin/research" element={<AdminResearch />} />
-        </Route>
       </Routes>
-    </Suspense>
+      <AuthProvider>
+        <Routes>
+          <Route path="/admin" element={<AdminLayout children={<Outlet />} />}>
+            <Route path="/admin" element={<AdminHomepage />} />
+            <Route path="/admin/about" element={<AdminAbout />} />
+            <Route path="/admin/news" element={<AdminNews />} />
+            <Route path="/admin/academics" element={<AdminAcademics />} />
+            <Route path="/admin/admission" element={<AdminAdmission />} />
+            <Route
+              path="/admin/international-partners"
+              element={<AdminInternationalPartners />}
+            />
+            <Route path="/admin/student-support" element={<AdminStudentSupport />} />
+            <Route path="/admin/research" element={<AdminResearch />} />
+          </Route>
+        </Routes>
+      </AuthProvider>
+
+
+    </Suspense >
   );
 }
 

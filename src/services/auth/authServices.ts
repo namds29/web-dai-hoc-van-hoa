@@ -1,7 +1,6 @@
-import { ResponeType } from "src/types";
 import { API_ADMIN } from "../constant";
-import { apiGet, apiPost } from "../utils-service";
-import { AxiosResponse } from "axios";
+import { apiPost } from "../utils-service";
+import { TOKEN_KEY } from "src/utils/constant";
 
 type UserLogin = {
   userID: string;
@@ -17,20 +16,28 @@ const login = async (params: UserLogin): Promise<any> => {
   );
   return res;
 };
-// const removeToken = (): void => {
-//   isWindow && window.localStorage.removeItem(TOKEN_KEY!);
-// };
+const removeToken = (): void => {
+  isWindow && sessionStorage.removeItem(TOKEN_KEY!);
+};
 
-// const setToken = (token: string): void => {
-//   isWindow && window.localStorage.setItem(TOKEN_KEY!, token);
-// };
+const setToken = (token: string): void => {
+  isWindow && sessionStorage.setItem(TOKEN_KEY!, token);
+};
 
-// const getToken = (): any => {
-//   return (isWindow && window.localStorage.getItem(TOKEN_KEY!)) || null;
-// };
+const getToken = (): any => {
+  return (isWindow && sessionStorage.getItem(TOKEN_KEY!)) || null;
+};
+function isLoggedIn() {
+  const token = sessionStorage.getItem(TOKEN_KEY);
+  return !!token;
+}
 
 const AuthService = {
   login,
+  removeToken,
+  setToken,
+  getToken,
+  isLoggedIn
 };
 
 export default AuthService;

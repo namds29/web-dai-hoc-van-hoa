@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosError, InternalAxiosRequestConfig } from 'axios';
-import { BASE_API_URL } from './constant';
+import { BASE_API_URL } from 'src/utils/constant';
+import AuthService from './auth/authServices';
 
 const axiosInstance: AxiosInstance = axios.create({
     baseURL: BASE_API_URL,
@@ -11,8 +12,9 @@ const axiosInstance: AxiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
     console.log(config)
-    // const token: string = AuthService.getToken() || null;
-    // token && (config.headers!.Authorization = `Bearer ${token}`);
+    const token: string = AuthService.getToken() || null;
+    token && (config.headers!.Authorization = `Bearer ${token}`);
+    config.maxBodyLength = Infinity
     return config;
 }, async (error: AxiosError) => {
     console.log('error: ', error);

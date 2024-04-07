@@ -10,7 +10,6 @@ enum METHOD_API {
 export const apiGet = async (url: string) => {
     const config = {
         method: METHOD_API.GET,
-        maxBodyLength: Infinity,
         url: url,
     };
     const res = await axiosInstance.request(config);
@@ -19,7 +18,6 @@ export const apiGet = async (url: string) => {
 export const apiPost = async (url: string, params?: any) => {
     const config = {
         method: METHOD_API.POST,
-        maxBodyLength: Infinity,
         url: url,
         data: qs.stringify(params),
     };
@@ -30,7 +28,6 @@ export const apiPost = async (url: string, params?: any) => {
 export const apiCreate = async (url: string, params?: any) => {
     const config = {
         method: METHOD_API.POST,
-        maxBodyLength: Infinity,
         url: url,
         data: qs.stringify(params),
     };
@@ -41,7 +38,6 @@ export const apiCreate = async (url: string, params?: any) => {
 export const apiUpdate = async (url: string, params?: any) => {
     const config = {
         method: METHOD_API.PUT,
-        maxBodyLength: Infinity,
         url: url,
         data: qs.stringify(params),
     };

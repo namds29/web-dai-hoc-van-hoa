@@ -24,10 +24,10 @@ const LoginForm = () => {
     try {
       const res = await AuthService.login({ userID: username, password: sha256(password) });
       console.log(res)
-      // if (res?.message === "success") {
-      //   localStorage.setItem("token", res.data.access_token);
-      //   navigate("/dashboard");
-      // }
+      if (res?.message === "success") {
+        AuthService.setToken(res.data.accessToken);
+        navigate("/admin");
+      }
     } catch (error: any) {
       if (error) {
         setErrorMsg(true);
