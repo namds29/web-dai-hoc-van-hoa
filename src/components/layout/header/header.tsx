@@ -2,7 +2,6 @@ import { SearchOutlined, MenuOutlined } from "@ant-design/icons";
 import styles from "./header.module.scss";
 
 import { Link } from "react-router-dom";
-import useModal from "src/hook/useModal";
 import { useEffect, useState } from "react";
 
 const Header = () => {

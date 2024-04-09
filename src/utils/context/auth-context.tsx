@@ -1,11 +1,8 @@
 import { createContext, useEffect, useState, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
 import { jwtDecode } from "jwt-decode";
 import AuthService from "src/services/auth/authServices";
-import { TOKEN_KEY } from "../constant";
-
 
 type Decode_Token = {
   id: number,
@@ -26,18 +23,21 @@ export const AuthProvider = ({ children }: any) => {
 
   const checkLogin = useCallback(() => {
     const storedToken = AuthService.getToken();
-    if (AuthService.isLoggedIn()) {
-      try {
-        const decode_token = jwtDecode<Decode_Token>(storedToken)
-        setUserID(decode_token.id);
-        setToken(decode_token.fullName);
-      } catch (error) {
+    if (location.pathname.includes("admin")) {
+      if (AuthService.isLoggedIn()) {
+        try {
+          const decode_token = jwtDecode<Decode_Token>(storedToken)
+          setUserID(decode_token.id);
+          setToken(decode_token.fullName);
+        } catch (error) {
+          navigate("/login");
+          AuthService.removeToken();
+        }
+      } else {
         navigate("/login");
-        AuthService.removeToken();
       }
-    } else {
-      // navigate("/login");
     }
+
   }, [navigate]);
 
   useEffect(() => {

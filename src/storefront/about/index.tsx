@@ -239,7 +239,7 @@ const About = () => {
                 />
               </a>
             </div>
-            <div className="rounded">
+            {/* <div className="rounded">
               <a href="" aria-label="">
                 <img
                   className="w-full h-full object-cover overflow-hidden rounded"
@@ -247,7 +247,7 @@ const About = () => {
                   alt=""
                 />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -257,7 +257,7 @@ const About = () => {
           <p className={`text-4xl border-b-4`}>BOARD OF DIRECTORS</p>
         </div>
         <div className="grid grid-cols-3 gap-4 text-black pb-10">
-          <div className="h-96 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
+          <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div
               className="w-full h-full grayscale hover:grayscale-0 duration-500 cursor-pointer"
               onClick={handleOpenPresident}
@@ -274,7 +274,7 @@ const About = () => {
               (President)
             </div>
           </div>
-          <div className="h-96 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
+          <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer">
               <img
                 className="w-full h-full rounded-t-xl object-cover"
@@ -288,13 +288,13 @@ const About = () => {
               (Vice president)
             </div>
           </div>
-          <div className="h-96 w-72 rounded-t-xl w-full hover:drop-shadow-2xl ">
-            <div className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer">
-              <img
+          <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
+            <div className="w-full h-full grayscale hover:grayscale-0 duration-500 bg-slate-500  cursor-pointer">
+              {/* <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/ceo.png"
                 alt=""
-              />
+              /> */}
             </div>
             <div className="text-center text-white mt-4">
               Ph.D Do Huong Lan
@@ -309,20 +309,19 @@ const About = () => {
         <p className="text-xl border-b-4 ">ABOUT TUCST</p>
         <p className="mt-8 text-black">SCHOOL NAME</p>
         <div className="flex gap-8 mt-4">
-          <div className="w-1/3 bg-red-200 text-black text-center h-72 rounded ">
+          <div className="w-1/3 bg-red-200 text-black text-center h-[33rem] rounded ">
             <img
               className="w-full h-full object-cover"
               src="/img/schoolpic.png"
               alt=""
             />
           </div>
-          <div className="w-2/3 bg-yellow-200 rounded text-black text-center">
-            Name: Thanh Hoa University of Culture, Sports and Tourism
-            (abbreviation: TUCST)
-            <br />
-            Code: DVD
-            <br />
-            Type: Public university
+          <div className="w-2/3 bg-yellow-200 h-[33rem] rounded text-black text-center">
+            <img
+              className="w-full h-full object-cover"
+              src="/img/school_name.png"
+              alt=""
+            />
           </div>
         </div>
       </section>

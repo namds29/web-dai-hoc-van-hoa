@@ -19,6 +19,7 @@ import LoginPage from "./admin/login";
 import { Suspense, lazy } from "react";
 import { Spin } from "antd";
 import { AuthProvider } from "./utils/context/auth-context";
+import FormalTraining from "./storefront/academics/formal-training";
 
 const AboutComponent = lazy(() => import("./storefront/about"));
 const NewsComponent = lazy(() => import("./storefront/news"));
@@ -34,6 +35,7 @@ function App() {
           <Route path="/about" element={<AboutComponent />} />
           <Route path="/news" element={<NewsComponent />} />
           <Route path="/academics" element={<AcademicsComponent />} />
+          <Route path="/academics/formal-training" element={<FormalTraining />} />
           <Route path="/admission" element={<AdmissionComponent />} />
           <Route
             path="/international-partners"

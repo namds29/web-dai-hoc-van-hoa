@@ -4,21 +4,17 @@ import {
 } from "src/utils/constant";
 // import styles from "./index.module.scss";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Academics = () => {
   const [unitId, setUnitId] = useState<number>(1);
-  // const [trainingTitle, setTrainingTitle] = useState<string>("");
+  const navigate = useNavigate();
 
   const handleChangeUnit = (id: number) => {
-    console.log(id);
     setUnitId(id);
   };
-  // const handleChangeTitle = (title: string) => {
-  //   console.log(title);
-  //   setTrainingTitle(title);
-  // };
 
-  const content = (value: number) => {
+  const handleChangeContent = (value: number) => {
     switch (value) {
       case 1:
         return (
@@ -1215,7 +1211,7 @@ const Academics = () => {
               ))}
             </div>
             <div className="description font-normal p-4 w-2/3 bg-orange-300 rounded-r-xl">
-              {content(unitId)}
+              {handleChangeContent(unitId)}
             </div>
           </div>
         </section>
@@ -1228,9 +1224,9 @@ const Academics = () => {
               {ACADEMICS_TRAINING_PROGRAM.map((item) => (
                 <div className=" text-black px-4 py-2">
                   <a className="text-xl font-bold">{item.parent_title}</a>
-                  <div className="cursor-pointer ml-4 text-white font-normal hover:text-gray-300">
+                  <div className="cursor-pointer ml-4 text-white font-normal ">
                     {item.children_title.map((child) => (
-                      <div className="underline">{child}</div>
+                      <div className="underline hover:text-gray-300">{child}</div>
                     ))}
                   </div>
                 </div>
@@ -1245,14 +1241,14 @@ const Academics = () => {
                   <div className="w-full h-96 rounded-xl bg-orange-500 cursor-pointer"></div>
                 </div>
                 <div className="flex mt-12 justify-center gap-10 items-center font-bold text-xl text-white">
-                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer">
-                    Chính quy
+                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer hover:bg-orange-400" onClick={()=> navigate("/academics/formal-training")}>
+                    Formal training
                   </div>
-                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer">
-                    Liên Thông
+                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer hover:bg-orange-400">
+                    Transition training
                   </div>
-                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer">
-                    Văn bằng 2
+                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer hover:bg-orange-400">
+                    Second-degree training
                   </div>
                 </div>
               </div>
