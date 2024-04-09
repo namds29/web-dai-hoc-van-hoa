@@ -212,24 +212,40 @@ const About = () => {
             </p>
           </blockquote>
           <div className="grid grid-cols-2 gap-4 w-1/2 text-white">
-            <div className="bg-red-300 p-4 rounded">
+            <div className="rounded">
               <a href="" aria-label="">
-                LIÊN KẾT WEBSITE
+                <img
+                  className="w-full h-full object-cover overflow-hidden rounded"
+                  src="/img/bvhtt.png"
+                  alt=""
+                />
               </a>
             </div>
-            <div className="bg-red-300 p-4 rounded">
+            <div className="rounded">
               <a href="" aria-label="">
-                LIÊN KẾT WEBSITE
+                <img
+                  className="w-full h-full object-cover overflow-hidden rounded"
+                  src="/img/bogd.jpeg"
+                  alt=""
+                />
               </a>
             </div>
-            <div className="bg-red-300 p-4 rounded">
-              <a href="" aria-label="">
-                LIÊN KẾT WEBSITE
+            <div className="rounded">
+              <a href="" aria-label="" className="rounded">
+                <img
+                  className="w-full h-full object-cover overflow-hidden rounded"
+                  src="/img/baothanhhoa.png"
+                  alt=""
+                />
               </a>
             </div>
-            <div className="bg-red-300 p-4 rounded">
+            <div className="rounded">
               <a href="" aria-label="">
-                LIÊN KẾT WEBSITE
+                <img
+                  className="w-full h-full object-cover overflow-hidden rounded"
+                  src="/img/ceo.png"
+                  alt=""
+                />
               </a>
             </div>
           </div>
@@ -248,7 +264,7 @@ const About = () => {
             >
               <img
                 className="w-full h-full rounded-t-xl object-cover"
-                src="/img/ceo.png"
+                src="/img/vicepresident1.jpg"
                 alt=""
               />
             </div>
@@ -262,7 +278,7 @@ const About = () => {
             <div className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer">
               <img
                 className="w-full h-full rounded-t-xl object-cover"
-                src="/img/ceo.png"
+                src="/img/vicepresident2.jpg"
                 alt=""
               />
             </div>
@@ -293,11 +309,14 @@ const About = () => {
         <p className="text-xl border-b-4 ">ABOUT TUCST</p>
         <p className="mt-8 text-black">SCHOOL NAME</p>
         <div className="flex gap-8 mt-4">
-          <div className="w-1/3 bg-red-200 text-black text-center pt-28  h-72 rounded ">
-            {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-            IMAGE
+          <div className="w-1/3 bg-red-200 text-black text-center h-72 rounded ">
+            <img
+              className="w-full h-full object-cover"
+              src="/img/schoolpic.png"
+              alt=""
+            />
           </div>
-          <div className="w-2/3 bg-yellow-200 rounded text-black text-center pt-28 ">
+          <div className="w-2/3 bg-yellow-200 rounded text-black text-center">
             Name: Thanh Hoa University of Culture, Sports and Tourism
             (abbreviation: TUCST)
             <br />
