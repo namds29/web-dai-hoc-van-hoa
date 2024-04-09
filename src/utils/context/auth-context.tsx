@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }: any) => {
         AuthService.removeToken();
       }
     } else {
-      navigate("/login");
+      // navigate("/login");
     }
   }, [navigate]);
 

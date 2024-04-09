@@ -14,13 +14,13 @@ enum ITEM_DROPDOWN {
   PRESIDENT_MESSAGE = "president-msg",
   BOARD_OF_DIRECTORS = "board-of-director",
   ABOUT_TUCST = "about",
-  FOUR_ELEMENT = "four-element"
+  FOUR_ELEMENT = "four-element",
 }
 
 const AdminAbout = () => {
   const [dropdownValue, setDropdownValue] = useState<IItemType>({
-    label: "Section",
-    key: "",
+    label: "President's message",
+    key: ITEM_DROPDOWN.PRESIDENT_MESSAGE,
   });
 
   const dropdownData: IItemType[] = [
@@ -62,14 +62,6 @@ const AdminAbout = () => {
           </div>
         );
       case ITEM_DROPDOWN.ABOUT_TUCST:
-        return (
-          <div>
-            <TextImageUpload
-              haveContent={true}
-              editSection={dropdownValue.label}
-            ></TextImageUpload>
-          </div>
-        );
       case ITEM_DROPDOWN.FOUR_ELEMENT:
         return (
           <div>
