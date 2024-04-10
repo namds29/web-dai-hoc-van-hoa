@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 
 import "react-quill/dist/quill.snow.css";
 
-export default function TextEditor() {
+export default function TextEditor({
+  content,
+  editContent,
+}: {
+  content: any;
+  editContent: any;
+}) {
   const myColors = [
     "purple",
     "#785412",
@@ -11,7 +17,7 @@ export default function TextEditor() {
     "#856325",
     "#963254",
     "#254563",
-    "white"
+    "white",
   ];
   const modules = {
     toolbar: [
@@ -21,13 +27,13 @@ export default function TextEditor() {
       [{ list: "ordered" }, { list: "bullet" }],
       ["link", "image"],
       [{ color: myColors }],
-      [{ background: myColors }]
-    ]
+      [{ background: myColors }],
+    ],
   };
 
   const formats = [
     "header",
-    "bold", 
+    "bold",
     "italic",
     "underline",
     "strike",
@@ -38,25 +44,26 @@ export default function TextEditor() {
     "color",
     "image",
     "background",
-    "align"
+    "align",
   ];
 
-  const [code, setCode] = useState(
-    "hello guys you can also add fonts and another features to this editor."
-  );
+  const [code, setCode] = useState(content);
+
+  useEffect(() => {
+    setCode(content);
+  }, [content]);
+
   const handleProcedureContentChange = (content: any) => {
     setCode(content);
+    editContent(content);
   };
   return (
-    <>
-      {console.log(code)}
-      <ReactQuill
-        theme="snow"
-        modules={modules}
-        formats={formats}
-        value={code}
-        onChange={handleProcedureContentChange}
-      />
-    </>
+    <ReactQuill
+      theme="snow"
+      modules={modules}
+      formats={formats}
+      value={code}
+      onChange={handleProcedureContentChange}
+    />
   );
 }
