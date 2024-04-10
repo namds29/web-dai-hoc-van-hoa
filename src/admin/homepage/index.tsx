@@ -1,5 +1,5 @@
 import { MenuProps } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 import FileUpload from "src/components/imageupload";
 import TextImageUpload from "src/components/imagetextupload";
@@ -18,11 +18,67 @@ enum ITEM_DROPDOWN {
   MVV = "mvv",
 }
 
+type DataType = { id: number; title: string; content: string; type?: string };
+
 const AdminHomePage = () => {
   const [dropdownValue, setDropdownValue] = useState<IItemType>({
     label: "Section",
     key: "",
   });
+
+  const [editValue, setEditValue] = useState<DataType>({
+    id: 0,
+    title: "",
+    content: "",
+  });
+
+  const arrayOfObjects = [
+    {
+      title: "First Object",
+      id: 1,
+      content: "This is the content of the first object.",
+    },
+    {
+      title: "Second Object",
+      id: 2,
+      content: "This is the content of the second object.",
+    },
+    {
+      title: "Third Object",
+      id: 3,
+      content: "This is the content of the third object.",
+    },
+  ];
+
+  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+
+  useEffect(() => {
+    if (editValue.type === "create") {
+      const newObj = {
+        id: arrayOfObjects.length,
+        title: editValue.title,
+        content: editValue.content,
+      };
+      arrayOfObjects.push(newObj);
+      setData(arrayOfObjects);
+    } else {
+      const newData = arrayOfObjects.map((item) => {
+        if (editValue.id && item.id === editValue.id) {
+          item = {
+            id: editValue.id,
+            title: editValue.title,
+            content: editValue.content,
+          };
+        }
+        return item;
+      });
+      setData(newData);
+    }
+  }, [editValue]);
+
+  const handleEditState = (value: any) => {
+    setEditValue(value);
+  };
 
   const dropdownData: IItemType[] = [
     { label: "Banner image", key: ITEM_DROPDOWN.BANNER_IMG },
@@ -44,7 +100,6 @@ const AdminHomePage = () => {
         setDropdownValue({ label: item.label, key: key });
       }
     });
-    console.log(`Click on item ${key}`);
   };
 
   const renderDropdownSelect = (dropdownValue: IItemType) => {
@@ -56,47 +111,27 @@ const AdminHomePage = () => {
           </div>
         );
       case ITEM_DROPDOWN.SMALL_BANNER:
-        return (
-          <div>
-            <TextImageUpload
-              haveContent={false}
-              editSection={dropdownValue.label}
-            ></TextImageUpload>
-          </div>
-        );
-      case ITEM_DROPDOWN.HIGHLIGHT_ANNOUNCEMENT:
-        return (
-          <div>
-            <TextImageUpload
-              haveContent={true}
-              editSection={dropdownValue.label}
-            ></TextImageUpload>
-          </div>
-        );
       case ITEM_DROPDOWN.FACULTIES:
-        return (
-          <div>
-            <TextImageUpload
-              haveContent={false}
-              editSection={dropdownValue.label}
-            ></TextImageUpload>
-          </div>
-        );
-      case ITEM_DROPDOWN.CAMPUS_LIFE:
-        return (
-          <div>
-            <TextImageUpload
-              haveContent={true}
-              editSection={dropdownValue.label}
-            ></TextImageUpload>
-          </div>
-        );
       case ITEM_DROPDOWN.MVV:
         return (
           <div>
             <TextImageUpload
               haveContent={false}
               editSection={dropdownValue.label}
+              dataValue={data}
+              editValue={handleEditState}
+            ></TextImageUpload>
+          </div>
+        );
+      case ITEM_DROPDOWN.HIGHLIGHT_ANNOUNCEMENT:
+      case ITEM_DROPDOWN.CAMPUS_LIFE:
+        return (
+          <div>
+            <TextImageUpload
+              haveContent={true}
+              editSection={dropdownValue.label}
+              dataValue={data}
+              editValue={handleEditState}
             ></TextImageUpload>
           </div>
         );
