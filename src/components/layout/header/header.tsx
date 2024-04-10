@@ -27,7 +27,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.navbar}>
         <div className={styles.slogan}>
-          Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum
+          Nurturing passion - Encouraging creativity - Respecting differences - Cooperating for the development
         </div>
         <div className="flex gap-3 items-center mr-4 relative">
           <button className="leading-none" onClick={() => console.log("1")}>

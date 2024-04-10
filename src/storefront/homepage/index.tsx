@@ -2,9 +2,10 @@ import styles from "./index.module.scss";
 import {
   LeftOutlined,
   RightOutlined,
-  CaretRightOutlined,
 } from "@ant-design/icons";
-
+import SchoolIcon from '@mui/icons-material/School';
+import GroupsIcon from '@mui/icons-material/Groups';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import { Carousel } from "antd";
 
 import Announcements from "./announcements";
@@ -51,15 +52,21 @@ const AdminHomepage = () => {
     <div className={styles.container}>
       <Banner />
       <section className="w-full">
-        <div className="flex justify-center">
+        <div className="flex gap-12 justify-center">
           <div className={styles.card}>
-            <img loading="lazy" className={styles.card_img} src="/img/training.png" alt="Training Program" />
+            {/* <img loading="lazy" className={styles.card_img} src="/img/training-icon.png" alt="Training Program" /> */}
+            <SchoolIcon className="text-6xl text-orange-500" />
+            <p className="text-2xl font-bold ">Training Program</p>
           </div>
           <div className={styles.card}>
-            <img loading="lazy" className={styles.card_img} src="/img/partner.png" alt="Partner List" />
+            {/* <img loading="lazy" className={styles.card_img} src="/img/partner.png" alt="Partner List" /> */}
+            <GroupsIcon className="text-6xl text-orange-500" />
+            <p className="text-2xl font-bold ">Partner List</p>
           </div>
           <div className={styles.card}>
-            <img loading="lazy" className={styles.card_img} src="/img/guidebook.png" alt="Student Guidebook" />
+            {/* <img loading="lazy" className={styles.card_img} src="/img/guidebook.png" alt="Student Guidebook" /> */}
+            <AutoStoriesIcon className="text-6xl text-orange-500" />
+            <p className="text-2xl font-bold ">Student Guidebook</p>
           </div>
         </div>
       </section>
@@ -174,26 +181,20 @@ const AdminHomepage = () => {
         <div className="absolute brightness-50 bg-black opacity-65 top-0 w-full h-full"></div>
         <div className="absolute">
           <p className="text-3xl">
-            "Nuôi dưỡng đam mê - Khuyến khích sáng tạo - Tôn trọng khác biệt -
-            Hợp tác phát triển"
+            "Nurturing passion - Encouraging creativity - Respecting differences - Cooperating for the development"
           </p>
           <div className="flex justify-center gap-64 mt-12">
             <div>
               <p className="text-6xl block text-orange-500">28</p>
-              <div className="text-xl">Chuyên ngành</div>
+              <div className="text-xl">Majors/specializations</div>
             </div>
             <div>
-              <p className="text-6xl block text-orange-500">60</p>
-              <div className="text-xl">Năm phát triển</div>
+              <p className="text-6xl block text-orange-500">57</p>
+              <div className="text-xl">Developing years</div>
             </div>
             <div>
               <p className="text-6xl block text-orange-500">{">"} 4000</p>
               <div className="text-xl"> Học viên</div>
-            </div>
-          </div>
-          <div className="flex items-center justify-center mt-8 pb-8 relative">
-            <div className={styles.animate_btn}>
-              <CaretRightOutlined />
             </div>
           </div>
         </div>

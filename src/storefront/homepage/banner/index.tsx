@@ -3,7 +3,7 @@ import { Carousel } from "antd";
 const contentStyle: React.CSSProperties = {
   margin: 0,
   width: "100%",
-  height: "500px",
+  height: "100%",
   lineHeight: "160px",
   textAlign: "center",
   background: "white",
@@ -17,10 +17,19 @@ const Banner = () => {
           <img loading="lazy"style={contentStyle} src="/img/SLOGAN.png" alt="Slogan" />
         </div>
         <div>
-          <img loading="lazy"style={contentStyle} src="/img/banner2.png" alt="banner 2" />
+          <img loading="lazy"style={contentStyle} src="/img/ban1.png" alt="banner 1" />
         </div>
         <div>
-          <img loading="lazy"style={contentStyle} src="/img/banner3.png" alt="banner 3" />
+          <img loading="lazy"style={contentStyle} src="/img/ban3.png" alt="banner 4" />
+        </div>
+        <div>
+          <img loading="lazy"style={contentStyle} src="/img/ban4.png" alt="banner 5" />
+        </div>
+        <div>
+          <img loading="lazy"style={contentStyle} src="/img/ban5.png" alt="banner 6" />
+        </div>
+        <div>
+          <img loading="lazy"style={contentStyle} src="/img/ban6.png" alt="banner 2" />
         </div>
       </Carousel>
     </div>
