@@ -9,7 +9,10 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import { Carousel } from "antd";
 
 import Announcements from "./announcements";
-import Banner from "./banner";
+import Banner from "../../components/banner";
+import { useState } from "react";
+import { IMessage } from "src/interfaces";
+import CustomModal from "src/components/custom-modal";
 
 const SlickButtonFix = ({
   currentSlide,
@@ -19,6 +22,11 @@ const SlickButtonFix = ({
 }: any) => <div {...props}>{children}</div>;
 
 const AdminHomepage = () => {
+  const [open, setOpen] = useState(false);
+  const [modalContent, setModalContent] = useState<IMessage>({
+    title: <></>,
+    content: <></>,
+  });
   const settings = {
     className: "center",
     arrows: true,
@@ -47,7 +55,71 @@ const AdminHomepage = () => {
 
     // afterChange: this.nextClick
   };
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
+  const handleOk = () => {
+    setOpen(false);
+  };
+  const handleOpenModalVision = () => {
+    setOpen(true);
+    setModalContent({
+      title: (
+        <p className="text-center text-2xl">
+          Vision
+        </p>
+      ),
+      content: (
+        <>
+          <p className="mt-8 ml-4 mb-4 text-xl">
+            By 2045, TUCST will be one of the top prestigious training
+            institutions in the whole country in scientific research on social
+            sciences in the South Red River region - North Central region and
+            training programs of culture - arts, sports and tourism.
+          </p>
+        </>
+      ),
+    });
+  };
+  const handleOpenModalValue = () => {
+    setOpen(true);
+    setModalContent({
+      title: (
+        <p className="text-center text-2xl">
+          Value
+        </p>
+      ),
+      content: (
+        <div className="text-center">
+          <p className="mt-8 ml-4 mb-4 text-xl ">
+            Quality - Professionalism - Cooperation - Development.
+          </p>
+        </div>
+      ),
+    });
+  };
+  const handleOpenModalMission = () => {
+    setOpen(true);
+    setModalContent({
+      title: (
+        <p className="text-center text-2xl">
+          MISSION
+        </p>
+      ),
+      content: (
+        <>
+          <p className="mt-8 ml-4 mb-4 text-xl">
+            TUCT has the mission of training high-quality human resources and
+            scientific research in social sciences with 3 main areas: Culture -
+            Arts, Sports and Tourism; contributing to the socio-economic
+            development of Thanh Hoa province, the South Red River region -
+            North Central region and the whole country.
+          </p>
+        </>
+      ),
+    });
+  };
   return (
     <div className={styles.container}>
       <Banner />
@@ -113,40 +185,12 @@ const AdminHomepage = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 w-full px-24 py-8">
-        <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
-          <p className="text-xl border-b-4">CAMPUS LIFE</p>
-          <button className="border border-orange-400 hover:bg-orange-100 px-4 rounded py-2">
-            See more
-          </button>
+      <section className="bg-gray-100 w-full px-24 py-8 ">
+        <div className="text-orange-500 font-bold mb-6 items-center">
+          <p className="text-3xl underline">INTRODUCE</p>
         </div>
-        <div className={styles.sub_news}>
-          <div className={styles.sub_news_box}>
-            <div className={styles.sub_news__img}>
-              <img loading="lazy" src="/img/img1.png" alt="" />
-            </div>
-            <div className={styles.sub_news__content}>
-              <div className={styles.sub_news__title}>
-                <a
-                  href=""
-                  title="TUCST TAKES PART IN THE 2024 ADMISSION CONSULTATION - CAREER GUIDANCE DAY OF TUOI TRE NEWSPAPER"
-                >
-                  TUCST TAKES PART IN THE 2024 ADMISSION CONSULTATION - CAREER GUIDANCE DAY OF TUOI TRE NEWSPAPER
-                </a>
-              </div>
-              <div
-                className={`${styles.word_cut} text-gray-500 text-lg items-center gap-2 mt-2 `}
-              >
-                On the morning of January 14, the 2024 Admission Consultation-Career Guidance Day of Tuoi Tre Newspaper officially took place at Hong Duc University with the attendance of many big training institutions across the country. Attending this event was Dr. Vu Van Tuyen - Chairman of TUCST’s Council.
-                The 2024 Admission Consultation-Career Guidance Day is organized by the coordination of Tuoi Tre Newspaper, the Department of Higher Education (Ministry of Education and Training), the General Department of Vocational Education (Ministry of Labor, War Invalids and Social Affairs ), Thanh Hoa Department of Education and Training, Hong Duc University and Vingroup.
-                On the 2024 Admission Consultation-Career Guidance Day, hundreds of admission consulting booths from training institutions such as Hanoi National University, Hanoi Polytechnic University, and National Economics University... were present. Among them, TUCST school's booth is carefully prepared with an outstanding space, combining cultural and artistic activities to attract students. TUCST's booth received great attention from a large number of students.
-                Here, TUCST's staff presented TUCST's training programs, the 2024 admission project, and the values and opportunities of becoming a TUCST student. In addition, TUCST staff will answer all questions for students and parents about admission information, admission methods, tests to assess students’ ability and thinking, and advice on choosing a training program.
-                With the participation of thousands of students from many high schools in Thanh Hoa City and neighboring districts, the successful organization of activities at the 2024 Admission Consultation-Career Guidance Day will not only be a bridge between students in the province and TUCST but also create promising opportunities for the university enrollment in the 2024-2025 academic year.
-
-              </div>
-            </div>
-          </div>
-
+        <div className="flex justify-center">
+          <iframe width="860" height="415" src="https://www.youtube.com/embed/_mQCuzXB2uk?si=gcyWuZ6KuN7N4neT" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
         </div>
       </section>
 
@@ -157,17 +201,17 @@ const AdminHomepage = () => {
           </p>
         </div>
         <div className={styles.small_card}>
-          <div className={styles.news}>
+          <div className={styles.news} onClick={handleOpenModalMission}>
             <div className={styles.news_img}>
               <img loading="lazy" className="w-full h-full" src="/img/Mission.png" alt="" />
             </div>
           </div>
-          <div className={styles.news}>
-            <div className={styles.news_img}>
+          <div className={styles.news} onClick={handleOpenModalVision}>
+            <div className={styles.news_img} >
               <img loading="lazy" className="w-full h-full" src="/img/Vision.png" alt="" />
             </div>
           </div>
-          <div className={styles.news}>
+          <div className={styles.news} onClick={handleOpenModalValue}>
             <div className={styles.news_img}>
               <img loading="lazy" className="w-full h-full" src="/img/Value.png" alt="" />
             </div>
@@ -176,14 +220,14 @@ const AdminHomepage = () => {
       </section>
 
       <section
-        className={`${styles.fixed_bg} bg-orange-400 h-96 text-white font-bold   text-center gap-64 w-full  py-16 flex justify-center`}
+        className={`${styles.fixed_bg} bg-orange-400 h-96 text-white font-bold relative text-center gap-64 w-full  py-16 flex justify-center`}
       >
         <div className="absolute brightness-50 bg-black opacity-65 top-0 w-full h-full"></div>
         <div className="absolute">
-          <p className="text-3xl">
+          <p className="text-lg xl:text-3xl break-words">
             "Nurturing passion - Encouraging creativity - Respecting differences - Cooperating for the development"
           </p>
-          <div className="flex justify-center gap-64 mt-12">
+          <div className="flex justify-center xl:gap-64 mt-12">
             <div>
               <p className="text-6xl block text-orange-500">28</p>
               <div className="text-xl">Majors/specializations</div>
@@ -238,6 +282,13 @@ const AdminHomepage = () => {
         </Carousel>
 
       </section>
+      <CustomModal
+        message={modalContent}
+        type=""
+        onCancel={handleCancel}
+        onOk={handleOk}
+        show={open}
+      />
     </div>
   );
 };

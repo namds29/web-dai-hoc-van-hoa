@@ -1,12 +1,11 @@
+import Banner from "src/components/banner";
 import styles from "./index.module.scss";
 
 const Research = () => {
   return (
     <section className="w-full">
+      <Banner />
 
-      <div className="w-full h-400">
-       <img  loading="lazy" className="w-full h-400 object-cover" src="/img/banner3.png" alt="" />
-      </div>
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <div className="text-center">
           <p className="text-4xl">Research</p>
@@ -20,19 +19,19 @@ const Research = () => {
             <div className="flex justify-evenly gap-8 mt-8">
               <div className="text-center">
                 <div className={styles.journal_img}>
-                 <img  loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
+                  <img loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
                 </div>
                 <div>Journal name</div>
               </div>
               <div className="text-center">
                 <div className={styles.journal_img}>
-                 <img  loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
+                  <img loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
                 </div>
                 <div>Journal name</div>
               </div>
               <div className="text-center">
                 <div className={styles.journal_img}>
-                 <img  loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
+                  <img loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
                 </div>
                 <div>Journal name</div>
               </div>
@@ -47,10 +46,10 @@ const Research = () => {
           </section>
           <section id="science">
             <p className="text-2xl border-b-4">Science Topic</p>
-          
+
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-               <img  loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -60,7 +59,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-               <img  loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -70,7 +69,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-               <img  loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -89,10 +88,10 @@ const Research = () => {
           </section>
           <section id="conferences">
             <p className="text-2xl border-b-4">Conferences</p>
-          
+
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-               <img  loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -102,7 +101,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-               <img  loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -112,7 +111,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-               <img  loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -131,10 +130,10 @@ const Research = () => {
           </section>
           <section id="publish">
             <p className="text-2xl border-b-4">Publish</p>
-          
+
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-               <img  loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -144,7 +143,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-               <img  loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -154,7 +153,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-               <img  loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>

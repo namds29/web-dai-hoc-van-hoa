@@ -1,5 +1,6 @@
 // import styles from "./index.module.scss";
 import { Collapse, CollapseProps } from "antd";
+import Banner from "src/components/banner";
 
 const items: CollapseProps["items"] = [
   {
@@ -69,13 +70,7 @@ const Admission = () => {
   };
   return (
     <section className="w-full">
-      <div className="w-full h-400">
-        <img
-          className="w-full h-400 object-cover"
-          src="/img/banner3.png"
-          alt=""
-        />
-      </div>
+      <Banner />
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <p className="text-3xl border-b-4 text-center">Admission</p>
         <section id="functional_unit">

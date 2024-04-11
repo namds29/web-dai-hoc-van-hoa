@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./index.module.scss";
 import CustomModal from "../../components/custom-modal";
 import { IMessage } from "src/interfaces";
+import Banner from "../../components/banner";
 
 const About = () => {
   const [open, setOpen] = useState(false);
@@ -19,8 +20,8 @@ const About = () => {
         </p>
       ),
       content: (
-        <>
-          <strong>
+        <div className="text-lg">
+          <strong >
             Thanh Hoa University of Culture, Sports and Tourism is a public
             university within the national education system, under the
             management of the People's Committee of Thanh Hoa Province and the
@@ -51,7 +52,7 @@ const About = () => {
             University of Culture, Sports and Tourism (on the basis of upgrading
             Thanh Hoa College of Culture and Arts).
           </p>
-        </>
+        </div>
       ),
     });
   };
@@ -109,7 +110,7 @@ const About = () => {
         </p>
       ),
       content: (
-        <>
+        <div className="">
           <strong className="text-lg">1. Mission</strong>
           <p className="ml-4 mb-4">
             TUCT has the mission of training high-quality human resources and
@@ -142,7 +143,7 @@ const About = () => {
             Nurture passion, Encourage creativity, Respect differences,
             Cooperation and development.
           </p>
-        </>
+        </div>
       ),
     });
   };
@@ -157,13 +158,7 @@ const About = () => {
 
   return (
     <section className="w-full">
-      <div className="w-full h-400">
-        <img
-          className="w-full h-400 object-cover"
-          src="/img/banner3.png"
-          alt=""
-        />
-      </div>
+      <Banner />
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <p className="text-xl border-b-4 ">PRESIDENT’S MESSAGE</p>
         <div className="flex p-4 gap-10">
@@ -211,11 +206,11 @@ const About = () => {
               Assoc. Prof. Le Thanh Ha
             </p>
           </blockquote>
-          <div className="grid grid-cols-2 gap-4 w-1/2 text-white">
+          <div className="grid grid-col-1 xl:grid-cols-2 gap-4 w-1/2 text-white">
             <div className="rounded">
               <a href="" aria-label="">
                 <img
-                  className="w-full h-full object-cover overflow-hidden rounded"
+                  className="w-full h-full object-contain overflow-hidden rounded"
                   src="/img/bvhtt.png"
                   alt=""
                 />
@@ -224,7 +219,7 @@ const About = () => {
             <div className="rounded">
               <a href="" aria-label="">
                 <img
-                  className="w-full h-full object-cover overflow-hidden rounded"
+                  className="w-full h-full object-contain overflow-hidden rounded"
                   src="/img/bogd.jpeg"
                   alt=""
                 />
@@ -233,21 +228,12 @@ const About = () => {
             <div className="rounded">
               <a href="" aria-label="" className="rounded">
                 <img
-                  className="w-full h-full object-cover overflow-hidden rounded"
+                  className="w-full h-full object-contain overflow-hidden rounded"
                   src="/img/baothanhhoa.png"
                   alt=""
                 />
               </a>
             </div>
-            {/* <div className="rounded">
-              <a href="" aria-label="">
-                <img
-                  className="w-full h-full object-cover overflow-hidden rounded"
-                  src="/img/ceo.png"
-                  alt=""
-                />
-              </a>
-            </div> */}
           </div>
         </div>
       </section>
@@ -258,28 +244,11 @@ const About = () => {
         </div>
         <div className="grid grid-cols-3 gap-4 text-black pb-10">
           <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
-            <div
-              className="w-full h-full grayscale hover:grayscale-0 duration-500 cursor-pointer"
-              onClick={handleOpenPresident}
-            >
-              <img
-                className="w-full h-full rounded-t-xl object-cover"
-                src="/img/vicepresident2.jpg"
-                alt=""
-              />
-            </div>
-            <div className="text-center text-white mt-4">
-              Assoc. Prof. Le Thanh Ha
-              <br />
-              (President)
-            </div>
-          </div>
-          <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer">
               <img
                 className="w-full h-full rounded-t-xl object-cover"
-                src="/img/ceo.png"
-                alt=""
+                src="/img/vicepresident3.jpg"
+                alt="Assoc. Prof. Nguyen Thi Thuc"
               />
             </div>
             <div className="text-center text-white mt-4 ">
@@ -289,12 +258,29 @@ const About = () => {
             </div>
           </div>
           <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
+            <div
+              className="w-full h-full grayscale hover:grayscale-0 duration-500 cursor-pointer"
+              onClick={handleOpenPresident}
+            >
+              <img
+                className="w-full h-full rounded-t-xl object-cover"
+                src="/img/vicepresident2.jpg"
+                alt="Assoc. Prof. Le Thanh Ha"
+              />
+            </div>
+            <div className="text-center text-white mt-4">
+              Assoc. Prof. Le Thanh Ha
+              <br />
+              (President)
+            </div>
+          </div>
+          <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div className="w-full h-full grayscale hover:grayscale-0 duration-500 bg-slate-500  cursor-pointer">
-              {/* <img
+              <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/vicepresident1.jpg"
-                alt=""
-              /> */}
+                alt="Ph.D Do Huong Lan"
+              />
             </div>
             <div className="text-center text-white mt-4">
               Ph.D Do Huong Lan
@@ -309,41 +295,28 @@ const About = () => {
         <p className="text-xl border-b-4 ">ABOUT TUCST</p>
         <p className="mt-8 text-black">SCHOOL NAME</p>
         <div className="flex gap-8 mt-4">
-          <div className="w-1/3 bg-red-200 text-black text-center h-[33rem] rounded ">
+          <div className="w-1/3 bg-red-200 text-black text-center rounded ">
             <img
               className="w-full h-full object-cover"
               src="/img/schoolpic.png"
               alt=""
             />
           </div>
-          <div className="w-2/3 bg-yellow-200 h-[33rem] rounded text-black text-center">
+          <div className="w-2/3 bg-yellow-200 max-h-[33rem] rounded text-black text-center">
             <img
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover translate-z-1"
               src="/img/school_name.png"
               alt=""
             />
           </div>
         </div>
       </section>
-      <section className="grid grid-cols-4 text-xl bold text-center gap-4 bg-gray-200 w-full text-black  font-bold px-20 py-8">
-        <div
-          className="w-full h-64 p-8 rounded bg-orange-300 flex items-center cursor-pointer"
-          onClick={handleOpenModalHistory}
-        >
-          HISTORY OF FORMATION AND DEVELOPMENT
+      <section className="flex justify-center text-xl bold text-center gap-10 bg-gray-200 w-full text-black  font-bold px-20 py-8">
+        <div onClick={handleOpenModalHistory} className="w-[28rem] h-[28rem] p-4 rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer" >
+          <img className="rounded-lg" src="/img/history_img.png" alt="" />
         </div>
-        <div
-          className="w-full h-64 p-8 rounded bg-orange-300 flex items-center cursor-pointer"
-          onClick={handleOpenModalMission}
-        >
-          MISSION - VISION - GOAL - CORE VALUES - SLOGAN - EDUCATIONAL
-          PHILOSOPHY
-        </div>
-        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center cursor-pointer">
-          CONDITIONS FOR ENSURE QUALITY OF EDUCATION
-        </div>
-        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center cursor-pointer">
-          ACHIEVEMENTS AND HONORS ACHIEVED
+        <div onClick={handleOpenModalMission} className="w-[28rem] h-[28rem] p-4 rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer">
+          <img className="rounded-lg" src="/img/mission_img.png" alt="" />
         </div>
       </section>
       <CustomModal

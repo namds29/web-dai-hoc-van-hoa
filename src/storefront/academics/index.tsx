@@ -5,6 +5,7 @@ import {
 // import styles from "./index.module.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Banner from "src/components/banner";
 
 const Academics = () => {
   const [unitId, setUnitId] = useState<number>(1);
@@ -1188,13 +1189,7 @@ const Academics = () => {
 
   return (
     <section className="w-full">
-      <div className="w-full h-400">
-        <img
-          className="w-full h-400 object-cover"
-          src="/img/banner3.png"
-          alt=""
-        />
-      </div>
+      <Banner />
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <p className="text-3xl border-b-4 text-center">Academics</p>
         <section id="functional_unit">
@@ -1241,7 +1236,7 @@ const Academics = () => {
                   <div className="w-full h-96 rounded-xl bg-orange-500 cursor-pointer"></div>
                 </div>
                 <div className="flex mt-12 justify-center gap-10 items-center font-bold text-xl text-white">
-                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer hover:bg-orange-400" onClick={()=> navigate("/academics/formal-training")}>
+                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer hover:bg-orange-400" onClick={() => navigate("/academics/formal-training")}>
                     Formal training
                   </div>
                   <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer hover:bg-orange-400">

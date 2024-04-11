@@ -1,3 +1,5 @@
+import Banner from "src/components/banner";
+
 const PARTNER_LIST = [
   {
     logo: "/img/Chien Hsin.png",
@@ -66,13 +68,7 @@ const PARTNER_LIST = [
 const InternationalPartners = () => {
   return (
     <section className="w-full">
-      <div className="w-full h-400">
-        <img
-          className="w-full h-400 object-cover"
-          src="/img/banner3.png"
-          alt=""
-        />
-      </div>
+      <Banner />
       <div className="flex min-h-[100vh] gap-10">
         <section className="bg-yellow-700 w-1/3 flex flex-col p-4">
           <p className="font-bold text-2xl mb-4">Partner List</p>

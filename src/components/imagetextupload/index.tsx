@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   EditOutlined,
   DeleteOutlined,
@@ -35,7 +35,7 @@ const TextImageUpload = ({
   editSection,
   editValue,
 }: {
-  dataValue: any;
+  dataValue?: any;
   haveContent: boolean;
   editSection: string;
   editValue?: any;
@@ -45,7 +45,7 @@ const TextImageUpload = ({
   const [contentState, setContentState] = useState("");
   const [titleState, setTitleState] = useState("");
   const [currentId, setCurrentId] = useState(null);
-  const [imgState, setImgState] = useState("");
+  // const [imgState, setImgState] = useState("");
 
   const editContentState = (value: any) => {
     setContentState(value);

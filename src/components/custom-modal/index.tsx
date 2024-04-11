@@ -132,7 +132,7 @@ function CustomModal({
       >
         <div className="flex items-center">
           <div className="mr-2">{showIcon(type)}</div>
-          <span>{message.content}</span>
+          <div className="w-full">{message.content}</div>
         </div>
       </Modal>
     </>

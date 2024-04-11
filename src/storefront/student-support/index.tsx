@@ -1,7 +1,8 @@
+import Banner from "src/components/banner";
 import styles from "./index.module.scss";
 
 import { Card } from "antd";
-import Banner from "./banner";
+
 
 const StudentSupport = () => {
   const departmentData = [
