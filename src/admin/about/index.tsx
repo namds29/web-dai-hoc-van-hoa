@@ -1,5 +1,5 @@
 import { MenuProps } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 // import TextEditor from "src/components/texteditor";
 import FileUpload from "src/components/imageupload";
@@ -17,11 +17,67 @@ enum ITEM_DROPDOWN {
     FOUR_ELEMENT = "four-element",
 }
 
+type DataType = { id: number; title: string; content: string; type?: string };
+
 const AdminAbout = () => {
   const [dropdownValue, setDropdownValue] = useState<IItemType>({
     label: "President's message",
     key: ITEM_DROPDOWN.PRESIDENT_MESSAGE,
   });
+
+  const [editValue, setEditValue] = useState<DataType>({
+    id: 0,
+    title: "",
+    content: "",
+  });
+
+  const arrayOfObjects = [
+    {
+      title: "First Object",
+      id: 1,
+      content: "This is the content of the first object.",
+    },
+    {
+      title: "Second Object",
+      id: 2,
+      content: "This is the content of the second object.",
+    },
+    {
+      title: "Third Object",
+      id: 3,
+      content: "This is the content of the third object.",
+    },
+  ];
+
+  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+
+  useEffect(() => {
+    if (editValue.type === "create") {
+      const newObj = {
+        id: arrayOfObjects.length,
+        title: editValue.title,
+        content: editValue.content,
+      };
+      arrayOfObjects.push(newObj);
+      setData(arrayOfObjects);
+    } else {
+      const newData = arrayOfObjects.map((item) => {
+        if (editValue.id && item.id === editValue.id) {
+          item = {
+            id: editValue.id,
+            title: editValue.title,
+            content: editValue.content,
+          };
+        }
+        return item;
+      });
+      setData(newData);
+    }
+  }, [editValue]);
+
+  const handleEditState = (value: any) => {
+    setEditValue(value);
+  };
 
   const dropdownData: IItemType[] = [
     { label: "President's message", key: ITEM_DROPDOWN.PRESIDENT_MESSAGE },
@@ -58,6 +114,8 @@ const AdminAbout = () => {
             <TextImageUpload
               haveContent={false}
               editSection={dropdownValue.label}
+              dataValue={data}
+              editValue={handleEditState}
             ></TextImageUpload>
           </div>
         );
@@ -68,6 +126,8 @@ const AdminAbout = () => {
             <TextImageUpload
               haveContent={true}
               editSection={dropdownValue.label}
+              dataValue={data}
+              editValue={handleEditState}
             ></TextImageUpload>
           </div>
         );
