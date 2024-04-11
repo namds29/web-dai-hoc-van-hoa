@@ -264,7 +264,7 @@ const About = () => {
             >
               <img
                 className="w-full h-full rounded-t-xl object-cover"
-                src="/img/vicepresident1.jpg"
+                src="/img/vicepresident2.jpg"
                 alt=""
               />
             </div>
@@ -278,7 +278,7 @@ const About = () => {
             <div className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer">
               <img
                 className="w-full h-full rounded-t-xl object-cover"
-                src="/img/vicepresident2.jpg"
+                src="/img/ceo.png"
                 alt=""
               />
             </div>
@@ -292,7 +292,7 @@ const About = () => {
             <div className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer">
               <img
                 className="w-full h-full rounded-t-xl object-cover"
-                src="/img/ceo.png"
+                src="/img/vicepresident1.jpg"
                 alt=""
               />
             </div>
