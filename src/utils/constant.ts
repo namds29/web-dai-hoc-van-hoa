@@ -62,39 +62,43 @@ export const ACADEMICS_FUCTIONAL_UNITS = [
     id: 15,
     title: "Library and Information Center",
   },
+  
+];
+
+export const FACULTY_UNITS = [
   {
-    id: 16,
+    id: 1,
     title: "Faculty of Culture and Information",
   },
   {
-    id: 17,
+    id: 2,
     title: "Falcuty of Music",
   },
   {
-    id: 18,
+    id: 3,
     title: "Falcuty of Fine Arts",
   },
   {
-    id: 19,
+    id: 4,
     title: "Faculty of Tourism",
   },
   {
-    id: 20,
+    id: 5,
     title: "Falcuty of Physical Education and Sports",
   },
   {
-    id: 21,
+    id: 6,
     title: "Falcuty of Prechool  - Primary Education",
   },
   {
-    id: 22,
+    id: 7,
     title: "Faculty of Law and State management",
   },
   {
-    id: 23,
+    id: 8,
     title: "Falcuty of Foreign Languages",
   },
-];
+]
 
 export const ACADEMICS_TRAINING_PROGRAM = [
   {
