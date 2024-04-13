@@ -54,7 +54,7 @@ const Research = () => {
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
@@ -64,7 +64,7 @@ const Research = () => {
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
@@ -74,7 +74,7 @@ const Research = () => {
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
 
@@ -96,7 +96,7 @@ const Research = () => {
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
@@ -106,7 +106,7 @@ const Research = () => {
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
@@ -116,7 +116,7 @@ const Research = () => {
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
 
@@ -138,7 +138,7 @@ const Research = () => {
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
@@ -148,7 +148,7 @@ const Research = () => {
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
@@ -158,7 +158,7 @@ const Research = () => {
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
 

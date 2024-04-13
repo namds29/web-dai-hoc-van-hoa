@@ -208,31 +208,31 @@ const About = () => {
           </blockquote>
           <div className="grid grid-col-1 xl:grid-cols-2 gap-4 w-1/2 text-white">
             <div className="rounded">
-              <a href="" aria-label="">
+              <div className="w-full h-[250px]">
                 <img
-                  className="w-full h-full object-contain overflow-hidden rounded"
+                  className="w-full h-full object-fill overflow-hidden rounded"
                   src="/img/bvhtt.png"
                   alt=""
                 />
-              </a>
+              </div>
             </div>
             <div className="rounded">
-              <a href="" aria-label="">
+              <div className="w-full h-[250px]" >
                 <img
-                  className="w-full h-full object-contain overflow-hidden rounded"
+                  className="w-full h-full object-fill overflow-hidden rounded"
                   src="/img/bogd.jpeg"
                   alt=""
                 />
-              </a>
+              </div>
             </div>
-            <div className="rounded">
-              <a href="" aria-label="" className="rounded">
+            <div className=" w-full rounded">
+              <div className="w-full h-[250px]">
                 <img
-                  className="w-full h-full object-contain overflow-hidden rounded"
+                  className="w-full h-full object-fill overflow-hidden rounded"
                   src="/img/baothanhhoa.png"
                   alt=""
                 />
-              </a>
+              </div>
             </div>
           </div>
         </div>

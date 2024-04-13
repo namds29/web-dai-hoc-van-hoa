@@ -31,29 +31,6 @@ const AdmissionComponent = lazy(() => import("./storefront/admission"));
 function App() {
   return (
     <Suspense fallback={<Spin />}>
-      <Routes>
-        <Route path="/" element={<Layout children={<Outlet />} />}>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/about" element={<AboutComponent />} />
-          <Route path="/news" element={<NewsComponent />} />
-          <Route path="/news/detail" element={<NewsDetailComponent />} />
-          <Route path="/academics" element={<AcademicsComponent />} />
-          <Route
-            path="/academics/formal-training"
-            element={<FormalTraining />}
-          />
-          <Route path="/faculties" element={<Faculties />} />
-          <Route path="/admission" element={<AdmissionComponent />} />
-          <Route
-            path="/international-partners"
-            element={<InternationalPartners />}
-          />
-          <Route path="/student-support" element={<StudentSupport />} />
-          <Route path="/research" element={<Research />} />
-          {/* <Route path="/wallpaper" element={<Wallpapers />} /> */}
-        </Route>
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
       <AuthProvider>
         <Routes>
           <Route path="/admin" element={<AdminLayout children={<Outlet />} />}>
@@ -72,6 +49,32 @@ function App() {
             />
             <Route path="/admin/research" element={<AdminResearch />} />
           </Route>
+
+          <Route path="/login" element={<LoginPage />} />
+
+          <Route path="/" element={<Layout children={<Outlet />} />}>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/about" element={<AboutComponent />} />
+            <Route path="/news" element={<NewsComponent />} />
+            <Route path="/news/:id" element={<NewsDetailComponent />} />
+            <Route path="/academics" element={<AcademicsComponent />} />
+            <Route
+              path="/academics/formal-training"
+              element={<FormalTraining />}
+            />
+            <Route path="/faculties" element={<Faculties />} />
+            <Route path="/admission" element={<AdmissionComponent />} />
+            <Route
+              path="/international-partners"
+              element={<InternationalPartners />}
+            />
+            <Route path="/student-support" element={<StudentSupport />} />
+            <Route path="/research" element={<Research />} />
+            {/* <Route path="/wallpaper" element={<Wallpapers />} /> */}
+          </Route>
+
+
+
         </Routes>
       </AuthProvider>
     </Suspense>

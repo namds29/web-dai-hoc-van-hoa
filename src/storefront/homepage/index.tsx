@@ -187,10 +187,10 @@ const AdminHomepage = () => {
 
       <section className="bg-gray-100 w-full px-24 py-8 ">
         <div className="text-orange-500 font-bold mb-6 items-center">
-          <p className="text-3xl underline">INTRODUCE</p>
+          <p className="text-3xl underline">INTRODUCTION</p>
         </div>
         <div className="flex justify-center">
-          <iframe width="860" height="415" src="https://www.youtube.com/embed/_mQCuzXB2uk?si=gcyWuZ6KuN7N4neT" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+          <iframe width="860" height="415" src="https://www.youtube.com/embed/_GKSgjcPGFg?si=gySiMM7pYac4iuuL" title="Intro TUCST" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
         </div>
       </section>
 

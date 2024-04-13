@@ -90,8 +90,6 @@ const StudentSupport = () => {
         </div>
       </section>
 
-      <Banner />
-
       <section className="bg-gray-100 w-full px-24 py-6">
         <div className="flex text-orange-500 font-bold items-center mb-6">
           <p className="text-xl border-b-4">STUDENT SERVICES</p>

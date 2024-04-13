@@ -3,6 +3,8 @@ import styles from "./index.module.scss";
 import CustomModal from "src/components/custom-modal";
 import { useState } from "react";
 import { IMessage } from "src/interfaces";
+import NewsCardComponent from "src/components/news-card-component";
+import { DATA_CAMPUS_LIFE, DATA_INTERNATIONAL_COOPERATION, DATA_SCHOOL_ACTIVITIES } from "src/data/data";
 
 const News = () => {
   const [open, setOpen] = useState(false);
@@ -56,7 +58,6 @@ const News = () => {
       ),
     });
   };
-
 
   const handleOpenModalMission = () => {
     setOpen(true);
@@ -116,7 +117,7 @@ const News = () => {
   return (
     <section className="w-full">
       <Banner />
-      <section className="flex gap-10  w-full text-orange-500 font-bold  justify-between px-20 py-8">
+      <section className="flex gap-5 w-full text-orange-500 font-bold  justify-between px-20 py-8">
         <div>
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
           <div className="overflow-hidden bg-red-300 w-full h-80 flex  justify-center items-center relative rounded">
@@ -127,88 +128,95 @@ const News = () => {
           </div>
         </div>
 
-        <div className="w-1/3">
+        <div className="w-1/3 h-full ">
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
-          <div className="flex flex-col gap-4 w-full text-white">
-            <div className="bg-subColor h-full p-4 rounded">
-              <a href="" aria-label="">
-                News
-              </a>
+          <div className="flex flex-col h-[19.925rem] overflow-auto pr-4 gap-2 w-full text-white">
+            <div className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-4 mb-5">
+              <div className="w-52 h-full rounded">
+                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+              </div>
+              <div className={styles.card_science}>
+                <p className="title text-xl font-bold letter tracking-wider">Science Title</p>
+                <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
+                <a className="text-white hover:text-gray-300 underline" >Link website</a>
+              </div>
             </div>
-            <div className="bg-subColor p-4 rounded">
-              <a href="" aria-label="">
-                News
-              </a>
+
+            <div className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-4 mb-5">
+              <div className="w-52 h-full rounded">
+                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+              </div>
+              <div className={styles.card_science}>
+                <p className="title text-xl font-bold letter tracking-wider">Science Title</p>
+                <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
+                <a className="text-white hover:text-gray-300 underline" >Link website</a>
+              </div>
             </div>
-            <div className="bg-subColor p-4 rounded">
-              <a href="" aria-label="">
-                News
-              </a>
-            </div>
-            <div className="bg-subColor p-4 rounded">
-              <a href="" aria-label="">
-                News
-              </a>
-            </div>
+
           </div>
         </div>
       </section>
 
-      <section className=" bg-gray-100 w-full text-black font-bold  justify-between items-center px-20 py-8">
-        <div className="flex gap-8 mt-4">
-          <div className={styles.card}>
-            <div className={styles.card_title}>SCHOOL ACTIVITIES</div>
-            <div className="h-[95%] overflow-y-auto px-4 py-1">
-              <div className={styles.card_content_news}>
-                {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-                News
-              </div>
-              <div className={styles.card_content_news}>
-                {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-                News
-              </div>
-              <div className={styles.card_content_news}>
-                {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-                News
-              </div>
-            </div>
+      <section className="bg-gray-100 w-full px-24 py-8">
+        <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
+          <p className="text-xl border-b-4">SCHOOL ACTIVITIES</p>
+          <button className="border border-orange-400 hover:bg-orange-100 px-4 rounded py-2">
+            See more
+          </button>
+        </div>
+        <div className={styles.newest_new}>
+          {DATA_SCHOOL_ACTIVITIES.map((newsItem, index) => (
+            <NewsCardComponent
+              id={newsItem.id}
+              key={index}
+              imgUrl={newsItem.imgUrl}
+              date={newsItem.date}
+              cardTitle={newsItem.cardTitle}
+              cardDescription={newsItem.cardDescription}
+            />
+          ))}
+        </div>
+      </section>
 
-          </div>
-          <div className={styles.card}>
-            <div className={styles.card_title}>CAMPUS LIFE</div>
-            <div className="h-[95%] overflow-y-auto px-4 py-1">
-              <div className={styles.card_content_news}>
-                News
-              </div>
-              <div className={styles.card_content_news}>
-                News
-              </div>
-              <div className={styles.card_content_news}>
-                News
-              </div>
-            </div>
+      <section className="bg-gray-100 w-full px-24 py-8">
+        <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
+          <p className="text-xl border-b-4">CAMPUS LIFE</p>
+          <button className="border border-orange-400 hover:bg-orange-100 px-4 rounded py-2">
+            See more
+          </button>
+        </div>
+        <div className={styles.newest_new}>
+          {DATA_CAMPUS_LIFE.map((newsItem, index) => (
+            <NewsCardComponent
+              id={newsItem.id}
+              key={index}
+              imgUrl={newsItem.imgUrl}
+              date={newsItem.date}
+              cardTitle={newsItem.cardTitle}
+              cardDescription={newsItem.cardDescription}
+            />
+          ))}
+        </div>
+      </section>
 
-          </div>
-          <div className={styles.card}>
-            <div className={styles.card_title}>INTERNATIONAL COOPERATION </div>
-            <div className="h-[95%] overflow-y-auto px-4 py-1">
-              <div className={styles.card_content_news}>
-                TUCST TAKES PART IN THE 2024 ADMISSION CONSULTATION – CAREER GUIDANCE DAY OF TUOI TRE NEWSPAPER
-              </div>
-              <div className={styles.card_content_news}>
-                MR LE DUC GIANG, VICE CHAIRMAN OF THE PEOPLE'S COMMITTEE OF THANH HOA PROVINCE, HAS A WORKING VISIT TO TUCST
-              </div>
-              <div className={styles.card_content_news}>
-                THANH HOA UNIVERSITY OF CULTURE, SPORTS, AND TOURISM ATTENDS THE OPENING CEREMONY OF THANH HOA-DIEN BIEN TOURISM AND CULTURE WEEK 2024
-              </div>
-              <div className={styles.card_content_news}>
-                THANH HOA UNIVERSITY OF CULTURE, SPORTS, AND TOURISM ATTENDS THE OPENING CEREMONY OF THANH HOA-DIEN BIEN TOURISM AND CULTURE WEEK 2024
-              </div>
-              <div className={styles.card_content_news}>
-                THANH HOA UNIVERSITY OF CULTURE, SPORTS, AND TOURISM ATTENDS THE OPENING CEREMONY OF THANH HOA-DIEN BIEN TOURISM AND CULTURE WEEK 2024
-              </div>
-            </div>
-          </div>
+      <section className="bg-gray-100 w-full px-24 py-8">
+        <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
+          <p className="text-xl border-b-4">INTERNATIONAL COOPERATION</p>
+          <button className="border border-orange-400 hover:bg-orange-100 px-4 rounded py-2">
+            See more
+          </button>
+        </div>
+        <div className={styles.newest_new}>
+          {DATA_INTERNATIONAL_COOPERATION.map((newsItem, index) => (
+            <NewsCardComponent
+              id={newsItem.id}
+              key={index}
+              imgUrl={newsItem.imgUrl}
+              date={newsItem.date}
+              cardTitle={newsItem.cardTitle}
+              cardDescription={newsItem.cardDescription}
+            />
+          ))}
         </div>
       </section>
 

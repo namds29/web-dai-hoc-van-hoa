@@ -33,10 +33,10 @@ const Header = () => {
           <button className="leading-none" onClick={() => console.log("1")}>
             <SearchOutlined className="text-white" />
           </button>
-          <a href="">
+          <a >
             <img loading="lazy" className="h-4" src="img/vn.png" alt="" />
           </a>
-          <a href="">
+          <a >
             <img loading="lazy" className="h-4" src="img/en.png" alt="" />
           </a>
         </div>

@@ -14,7 +14,7 @@ const AdminNews = () => {
         <div>
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
           <div className="overflow-hidden bg-red-300 w-full h-80 flex  justify-center items-center relative rounded">
-           <img  loading="lazy" className={styles.hot_new_pic} src="/img/thumb1.png" alt="" />
+            <img loading="lazy" className={styles.hot_new_pic} src="/img/thumb1.png" alt="" />
             <p className="absolute text-2xl text-white cursor-pointer">
               Sinh viên TUCST đạt giải cao
             </p>
@@ -25,22 +25,20 @@ const AdminNews = () => {
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
           <div className="flex flex-col gap-4 w-full text-white">
             <div className="bg-red-300 h-full p-4 rounded">
-              <a href="" aria-label="">
+              News
+            </div>
+            <div className="bg-red-300 p-4 rounded">
+              <a  aria-label="">
                 News
               </a>
             </div>
             <div className="bg-red-300 p-4 rounded">
-              <a href="" aria-label="">
+              <a  aria-label="">
                 News
               </a>
             </div>
             <div className="bg-red-300 p-4 rounded">
-              <a href="" aria-label="">
-                News
-              </a>
-            </div>
-            <div className="bg-red-300 p-4 rounded">
-              <a href="" aria-label="">
+              <a  aria-label="">
                 News
               </a>
             </div>
