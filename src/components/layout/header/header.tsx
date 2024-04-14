@@ -17,6 +17,7 @@ const Header = () => {
   ]
 
   useEffect(() => {
+    if (window.innerWidth < 1280) setIsOpen(false)
     window.addEventListener(
       "resize",
       () => window.innerWidth >= 1280 ? setIsOpen(true) : setIsOpen(false),
@@ -47,7 +48,7 @@ const Header = () => {
             <div className="h-20 flex px-8 py-2 items-center">
               <img loading="lazy" className="h-full" src="img/LOGO.jpg" alt="" />
               <div className="text-orange-700 ml-4">
-                <p className="font-extrabold text-xl ">TUCST University</p>
+                <p className="font-extrabold text-xl ">TUCST</p>
                 <p>Thanh Hoa University of Culture, Sports and Tourism</p>
               </div>
             </div>
@@ -58,9 +59,9 @@ const Header = () => {
           ><MenuOutlined />
           </div>
 
-          {isOpen && <div className={`flex flex-col h-[85vh] xl:h-20 xl:flex-row items-end xl:items-center gap-10 mr-10`}>
+          {isOpen && <div className={`flex flex-col h-[85vh] xl:h-20 xl:flex-row items-end xl:items-center gap-8    mr-10`}>
             {menuItem.map((item, index) => (
-              <Link key={index} className="cursor-pointer" to={item.route}>
+              <Link key={index} onClick={() => setIsOpen(false)} className="cursor-pointer" to={item.route} >
                 {item.title}
               </Link>
             ))}

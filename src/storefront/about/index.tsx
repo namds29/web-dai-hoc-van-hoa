@@ -206,29 +206,29 @@ const About = () => {
               Assoc. Prof. Le Thanh Ha
             </p>
           </blockquote>
-          <div className="grid grid-col-1 xl:grid-cols-2 gap-4 w-1/2 text-white">
+          <div className="grid grid-col-1 gap-4 w-1/2 text-white">
             <div className="rounded">
-              <div className="w-full h-[250px]">
+              <div className="w-full h-[300px]">
                 <img
-                  className="w-full h-full object-fill overflow-hidden rounded"
+                  className="w-full h-full object-cover overflow-hidden rounded"
                   src="/img/bvhtt.png"
                   alt=""
                 />
               </div>
             </div>
             <div className="rounded">
-              <div className="w-full h-[250px]" >
+              <div className="w-full h-[300px]" >
                 <img
-                  className="w-full h-full object-fill overflow-hidden rounded"
+                  className="w-full h-full object-cover overflow-hidden rounded"
                   src="/img/bogd.jpeg"
                   alt=""
                 />
               </div>
             </div>
             <div className=" w-full rounded">
-              <div className="w-full h-[250px]">
+              <div className="w-full h-[300px]">
                 <img
-                  className="w-full h-full object-fill overflow-hidden rounded"
+                  className="w-full h-full object-cover overflow-hidden rounded"
                   src="/img/baothanhhoa.png"
                   alt=""
                 />

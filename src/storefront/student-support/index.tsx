@@ -1,4 +1,3 @@
-import Banner from "src/components/banner";
 import styles from "./index.module.scss";
 
 import { Card } from "antd";
@@ -59,7 +58,9 @@ const StudentSupport = () => {
 
   return (
     <div className={styles.container}>
-      <Banner />
+      <div>
+        <img src="/img/student_support.png" alt="Student Support" />
+      </div>
 
       <section className="bg-gray-100 w-full px-24 py-6">
         <div className="w-full flex justify-center mt-6 mb-10 border-b-4">

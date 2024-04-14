@@ -231,6 +231,7 @@ const TextImageUpload = ({
                 setTitleState("");
                 setOpenAdd(true);
                 setEditFlg(false);
+                
               }}
             >
               Add new

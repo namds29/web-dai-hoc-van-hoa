@@ -13,6 +13,7 @@ import Banner from "../../components/banner";
 import { useState } from "react";
 import { IMessage } from "src/interfaces";
 import CustomModal from "src/components/custom-modal";
+import { useNavigate } from "react-router-dom";
 
 const SlickButtonFix = ({
   currentSlide,
@@ -27,6 +28,7 @@ const AdminHomepage = () => {
     title: <></>,
     content: <></>,
   });
+  const navigate = useNavigate();
   const settings = {
     className: "center",
     arrows: true,
@@ -151,28 +153,28 @@ const AdminHomepage = () => {
           </p>
         </div>
         <Carousel {...settings}>
-          <div className="p-4">
+          <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
             <img loading="lazy" className={styles.fal_img} src="/img/fal-art.png" alt="Art" />
           </div>
-          <div className="p-4">
+          <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
             <img loading="lazy" className={styles.fal_img} src="/img/fal-cul.png" alt="Cultures" />
           </div>
-          <div className="p-4">
+          <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
             <img loading="lazy" className={styles.fal_img} src="/img/fal-lang.png" alt="Language" />
           </div>
-          <div className="p-4">
+          <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
             <img loading="lazy" className={styles.fal_img} src="/img/fal-law.png" alt="Law" />
           </div>
-          <div className="p-4">
+          <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
             <img loading="lazy" className={styles.fal_img} src="/img/fal-music.png" alt="Music" />
           </div>
-          <div className="p-4">
+          <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
             <img loading="lazy" className={styles.fal_img} src="/img/fal-physic.png" alt="Physic" />
           </div>
-          <div className="p-4">
+          <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
             <img loading="lazy" className={styles.fal_img} src="/img/fal-preschool.png" alt="preschool" />
           </div>
-          <div className="p-4">
+          <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
             <img loading="lazy" className={styles.fal_img} src="/img/fal-tourism.png" alt="Tourism" />
           </div>
         </Carousel>
@@ -238,7 +240,7 @@ const AdminHomepage = () => {
             </div>
             <div>
               <p className="text-6xl block text-orange-500">{">"} 4000</p>
-              <div className="text-xl"> Học viên</div>
+              <div className="text-xl"> Students</div>
             </div>
           </div>
         </div>
