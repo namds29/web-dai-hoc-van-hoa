@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const menuItem = [
     { title: "About", route: "/about" },
     { title: "News", route: "/news" },
@@ -17,10 +17,10 @@ const Header = () => {
   ]
 
   useEffect(() => {
-    if (window.innerWidth < 1280) setIsOpen(false)
+    // console.log(isOpen, window.innerWidth < 1280 ? false : true)
     window.addEventListener(
       "resize",
-      () => window.innerWidth >= 1280 ? setIsOpen(true) : setIsOpen(false),
+      () => window.innerWidth >= 1280 && setIsOpen(false),
     );
   }, []);
 
@@ -43,11 +43,11 @@ const Header = () => {
         </div>
       </div>
       <section className="relative bg-white">
-        <div className="flex flex-col  xl:flex-row justify-between">
+        <div className="flex flex-col xl:flex-row justify-between">
           <Link to={"/"}>
-            <div className="h-20 flex px-8 py-2 items-center">
+            <div className="h-20 flex px-4 xl:px-8 py-2 items-center">
               <img loading="lazy" className="h-full" src="img/LOGO.jpg" alt="" />
-              <div className="text-orange-700 ml-4">
+              <div className="text-orange-700 ml-4 mr-8">
                 <p className="font-extrabold text-xl ">TUCST</p>
                 <p>Thanh Hoa University of Culture, Sports and Tourism</p>
               </div>
@@ -59,13 +59,13 @@ const Header = () => {
           ><MenuOutlined />
           </div>
 
-          {isOpen && <div className={`flex flex-col h-[85vh] xl:h-20 xl:flex-row items-end xl:items-center gap-8    mr-10`}>
+          <div className={`flex flex-col h-[85vh] xl:h-20 xl:flex-row ${!isOpen ? styles.nav_item : ""} items-end xl:items-center gap-8 mr-10`}>
             {menuItem.map((item, index) => (
               <Link key={index} onClick={() => setIsOpen(false)} className="cursor-pointer" to={item.route} >
                 {item.title}
               </Link>
             ))}
-          </div>}
+          </div>
         </div>
       </section>
     </header>

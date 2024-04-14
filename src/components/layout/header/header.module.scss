@@ -28,6 +28,13 @@
     animation: 10s linear 0s infinite runSlogan;
 }
 
+@media screen and (max-width: 1280px) {
+    .nav_item {
+        display: none !important;
+    }
+}
+
+
 @keyframes runSlogan {
     from {
         right: 0

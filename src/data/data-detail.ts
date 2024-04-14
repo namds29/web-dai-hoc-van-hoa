@@ -13,7 +13,7 @@ export const DATA_DETAIL = [
     },
     {
         id: "news2",
-        category: "school activities",
+        category: "school_activities",
         title:
             "MR LE DUC GIANG, VICE CHAIRMAN OF THE PEOPLE'S COMMITTEE OF THANH HOA PROVINCE, HAS A WORKING VISIT TO TUCST",
         content: `

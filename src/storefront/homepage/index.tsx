@@ -30,13 +30,13 @@ const AdminHomepage = () => {
   });
   const navigate = useNavigate();
   const settings = {
-    className: "center",
+    // className: "center",
     arrows: true,
     centerMode: true,
-    infinite: true,
+    // infinite: true,
     // centerPadding: "10px",
     dots: false,
-    slidesToShow: 3,
+    // slidesToShow: 1,
     // autoplay: true,
     prevArrow: (
       <SlickButtonFix>
@@ -126,21 +126,21 @@ const AdminHomepage = () => {
     <div className={styles.container}>
       <Banner />
       <section className="w-full">
-        <div className="flex gap-12 justify-center">
+        <div className="flex gap-4 xl:gap-12 justify-center">
           <div className={styles.card}>
             {/* <img loading="lazy" className={styles.card_img} src="/img/training-icon.png" alt="Training Program" /> */}
-            <SchoolIcon className="text-6xl text-orange-500" />
-            <p className="text-2xl font-bold ">Training Program</p>
+            <SchoolIcon className="!text-4xl xl:!text-6xl text-orange-500" />
+            <p className="text-xl xl:text-2xl font-bold ">Training Program</p>
           </div>
           <div className={styles.card}>
             {/* <img loading="lazy" className={styles.card_img} src="/img/partner.png" alt="Partner List" /> */}
-            <GroupsIcon className="text-6xl text-orange-500" />
-            <p className="text-2xl font-bold ">Partner List</p>
+            <GroupsIcon className="!text-4xl xl:!text-6xl text-orange-500" />
+            <p className="text-xl xl:text-2xl font-bold ">Partner List</p>
           </div>
           <div className={styles.card}>
             {/* <img loading="lazy" className={styles.card_img} src="/img/guidebook.png" alt="Student Guidebook" /> */}
-            <AutoStoriesIcon className="text-6xl text-orange-500" />
-            <p className="text-2xl font-bold ">Student Guidebook</p>
+            <AutoStoriesIcon className="!text-4xl xl:!text-6xl text-orange-500" />
+            <p className="text-xl xl:text-2xl font-bold ">Student Guidebook</p>
           </div>
         </div>
       </section>
@@ -187,7 +187,7 @@ const AdminHomepage = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 w-full px-24 py-8 ">
+      <section className="bg-gray-100 w-full px-8 xl:px-24 py-8 ">
         <div className="text-orange-500 font-bold mb-6 items-center">
           <p className="text-3xl underline">INTRODUCTION</p>
         </div>
@@ -196,7 +196,7 @@ const AdminHomepage = () => {
         </div>
       </section>
 
-      <section className={`bg_gradient_blue_to_light w-full px-24 py-8`}>
+      <section className={`bg_gradient_blue_to_light w-full px-8 xl:px-24 py-8`}>
         <div className="flex justify-center text-white font-bold mb-6">
           <p className={` ${styles.letter_space} text-4xl border-b-4`}>
             MVV OF TUCST
@@ -229,18 +229,18 @@ const AdminHomepage = () => {
           <p className="text-lg xl:text-3xl break-words">
             "Nurturing passion - Encouraging creativity - Respecting differences - Cooperating for the development"
           </p>
-          <div className="flex justify-center xl:gap-64 mt-12">
+          <div className="flex justify-center gap-12 xl:gap-64 mt-12 flex-wrap">
             <div>
-              <p className="text-6xl block text-orange-500">28</p>
+              <p className="text-3xl xl:text-6xl block text-orange-500">28</p>
               <div className="text-xl">Majors/specializations</div>
             </div>
             <div>
-              <p className="text-6xl block text-orange-500">57</p>
+              <p className="text-3xl xl:text-6xl block text-orange-500">57</p>
               <div className="text-xl">Developing years</div>
             </div>
             <div>
-              <p className="text-6xl block text-orange-500">{">"} 4000</p>
-              <div className="text-xl"> Students</div>
+              <p className="text-3xl xl:text-6xl block text-orange-500">{">"} 4000</p>
+              <div className="text-xl">Students</div>
             </div>
           </div>
         </div>

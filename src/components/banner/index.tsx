@@ -14,22 +14,22 @@ const Banner = () => {
     <div className="w-full">
       <Carousel autoplay>
         <div>
-          <img loading="lazy"style={contentStyle} src="/img/ban2.png" alt="Slogan" />
+          <img style={contentStyle} src="/img/ban2.png" alt="Slogan" />
         </div>
         <div>
-          <img loading="lazy"style={contentStyle} src="/img/ban1.png" alt="banner 1" />
+          <img style={contentStyle} src="/img/ban1.png" alt="banner 1" />
         </div>
         <div>
-          <img loading="lazy"style={contentStyle} src="/img/ban3.png" alt="banner 4" />
+          <img style={contentStyle} src="/img/ban3.png" alt="banner 4" />
         </div>
         <div>
-          <img loading="lazy"style={contentStyle} src="/img/ban4.png" alt="banner 5" />
+          <img style={contentStyle} src="/img/ban4.png" alt="banner 5" />
         </div>
         <div>
-          <img loading="lazy"style={contentStyle} src="/img/ban5.png" alt="banner 6" />
+          <img style={contentStyle} src="/img/ban5.png" alt="banner 6" />
         </div>
         <div>
-          <img loading="lazy"style={contentStyle} src="/img/ban6.png" alt="banner 2" />
+          <img style={contentStyle} src="/img/ban6.png" alt="banner 2" />
         </div>
       </Carousel>
     </div>

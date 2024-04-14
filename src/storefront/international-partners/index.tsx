@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Banner from "src/components/banner";
 
 const PARTNER_LIST = [
@@ -90,8 +91,8 @@ const InternationalPartners = () => {
         <section className="text-black p-4 w-full">
           <p className="font-bold text-2xl mb-4">Partner List</p>
           <div className="grid grid-cols-2 gap-10">
-            {PARTNER_LIST.map(item => <>
-              <div className="border bg-gray-200 p-4 text-center ">
+            {PARTNER_LIST.map(item => <Fragment key={item.title}>
+              <div key={item.title} className="border bg-gray-200 p-4 text-center ">
                 <div className="flex justify-center w-full rounded-lg h-[300px]">
                   <img
                     className="w-full h-full object-contain rounded-xl mix-blend-multiply"
@@ -107,7 +108,7 @@ const InternationalPartners = () => {
                   <a href={`https://${item.website}`} target="_blank" className="bg-red-400 px-4 py-2  rounded text-white">Website</a>
                 </div>
               </div>
-            </>)}
+            </Fragment>)}
 
 
 

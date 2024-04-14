@@ -188,7 +188,7 @@
 
 .small_card {
     display: flex;
-    gap: 0.9rem;
+    gap: 2rem;
     color: black;
     padding-bottom: 2rem;
 
@@ -256,8 +256,6 @@
     cursor: pointer;
 }
 
-
-
 .letter_space {
     letter-spacing: 5px;
 }
@@ -287,4 +285,24 @@
         width: 54px;
         height: 54px;
     }
+}
+
+@media screen and (max-width: 1280px) {
+    .small_card {
+       flex-wrap: wrap;
+       justify-content: center;
+       .news{
+        min-width: 430px;
+       }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .small_card {
+        flex-wrap: wrap;
+        justify-content: center;
+        .news{
+         min-width: 350px;
+        }
+     }
 }

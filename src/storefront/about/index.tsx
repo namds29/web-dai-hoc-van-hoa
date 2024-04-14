@@ -161,7 +161,7 @@ const About = () => {
       <Banner />
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <p className="text-xl border-b-4 ">PRESIDENT’S MESSAGE</p>
-        <div className="flex p-4 gap-10">
+        <div className=" p-4 gap-10">
           <blockquote className={styles.quotes}>
             Welcome to Thanh Hoa University of Culture, Sports and Tourism
             (TUCST), a higher education institution upgraded by the Government
@@ -206,9 +206,9 @@ const About = () => {
               Assoc. Prof. Le Thanh Ha
             </p>
           </blockquote>
-          <div className="grid grid-col-1 gap-4 w-1/2 text-white">
-            <div className="rounded">
-              <div className="w-full h-[300px]">
+          <div className="flex gap-4 text-white">
+            <div className="w-full rounded bg-[#1e6bff]">
+              <div className="w-full">
                 <img
                   className="w-full h-full object-cover overflow-hidden rounded"
                   src="/img/bvhtt.png"
@@ -216,8 +216,8 @@ const About = () => {
                 />
               </div>
             </div>
-            <div className="rounded">
-              <div className="w-full h-[300px]" >
+            <div className="w-full rounded bg-white">
+              <div className="w-full" >
                 <img
                   className="w-full h-full object-cover overflow-hidden rounded"
                   src="/img/bogd.jpeg"
@@ -225,8 +225,8 @@ const About = () => {
                 />
               </div>
             </div>
-            <div className=" w-full rounded">
-              <div className="w-full h-[300px]">
+            <div className="w-full rounded">
+              <div className="w-full">
                 <img
                   className="w-full h-full object-cover overflow-hidden rounded"
                   src="/img/baothanhhoa.png"

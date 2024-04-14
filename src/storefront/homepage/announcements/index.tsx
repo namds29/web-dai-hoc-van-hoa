@@ -28,7 +28,7 @@ const Announcements = () => {
     ];
 
     return (
-        <section className="bg-gray-100 w-full px-24 py-8">
+        <section className="bg-gray-100 w-full px-8 xl:px-24 py-8">
             <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
                 <p className="text-xl border-b-4">HIGHLIGHTS & ANNOUNCEMENTS</p>
                 <button className="border border-orange-400 hover:bg-orange-100 px-4 rounded py-2">
