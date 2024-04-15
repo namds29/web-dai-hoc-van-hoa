@@ -273,9 +273,6 @@ const AdminHomepage = () => {
             <img  src="/img/lib-7.jpg" alt="Lib 7" />
           </div>
           <div className={styles.lib_card}>
-            <img  src="/img/lib-8.jpg" alt="Lib 8" />
-          </div>
-          <div className={styles.lib_card}>
             <img  src="/img/lib-9.jpg" alt="Lib 9" />
           </div>
           <div className={styles.lib_card}>

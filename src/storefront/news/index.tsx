@@ -117,23 +117,23 @@ const News = () => {
   return (
     <section className="w-full">
       <Banner />
-      <section className="flex gap-5 w-full text-orange-500 font-bold  justify-between px-20 py-8">
-        <div>
+      <section className="flex gap-5 w-full text-orange-500 font-bold  justify-between px-8 xl:px-16 py-8">
+        <div className="w-full">
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
-          <div className="overflow-hidden bg-red-300 w-full h-80 flex  justify-center items-center relative rounded">
-            <img  className={styles.hot_new_pic} src="/img/thumb1.png" alt="" />
+          <div className="overflow-hidden w-full h-80 flex  justify-center items-center relative rounded">
+            <img className={styles.hot_new_pic} src="/img/thumb1.png" alt="" />
             <p className="absolute text-2xl text-white cursor-pointer">
               Sinh viên TUCST đạt giải cao
             </p>
           </div>
         </div>
 
-        <div className="w-1/3 h-full ">
+        <div className="w-1/2 h-full ">
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
           <div className="flex flex-col h-[19.925rem] overflow-auto pr-4 gap-2 w-full text-white">
             <div className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-full rounded">
-                <img  className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold letter tracking-wider">Science Title</p>
@@ -144,7 +144,7 @@ const News = () => {
 
             <div className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-full rounded">
-                <img  className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold letter tracking-wider">Science Title</p>
