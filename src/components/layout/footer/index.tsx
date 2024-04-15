@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <footer>
             <section
-                className={`${styles.fixed_bg} ${styles.footer} text-white relative bg-orange-300 w-full text-black`}
+                className={`${styles.fixed_bg} ${styles.footer} relative bg-orange-300 w-full text-white`}
             >
                 <div className="absolute w-full h-full top-0 left-0 opacity-80 bg-black">
                     <Particles
@@ -65,7 +65,7 @@ const Footer = () => {
                         }}
                     />
                 </div>
-                <div className="flex flex-col justify-between absolute w-full h-full px-24 py-8">
+                <div className="flex flex-col lg:flex-row justify-between absolute w-full h-full px-24 py-8">
                     <div className="text-sm">
                         <p className="font-bold text-lg mb-4">CONNECT WITH TUCST</p>
                         <p>Address: No. 561 Quang Trung 3, Dong Ve Ward, City. Thanh Hoa</p>
