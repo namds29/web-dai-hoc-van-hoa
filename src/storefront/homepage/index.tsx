@@ -36,7 +36,7 @@ const AdminHomepage = () => {
     infinite: true,
     centerPadding: "10px",
     dots: false,
-    slidesToShow: 3,
+    slidesToShow: window.innerWidth < 800 ? 2 : 3,
     autoplay: true,
     prevArrow: (
       <SlickButtonFix>
@@ -146,7 +146,7 @@ const AdminHomepage = () => {
       </section>
 
       <Announcements />
-      <section className={`bg_gradient_blue_to_light w-full px-24 py-8`}>
+      <section className={`bg_gradient_blue_to_light w-full xl:px-24 py-8`}>
         <div className="flex justify-center text-white-700 font-bold mb-6">
           <p className={` ${styles.letter_space} text-4xl border-b-4`}>
             FACULTIES
@@ -246,7 +246,7 @@ const AdminHomepage = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 w-full px-24 py-8">
+      <section className="bg-gray-100 w-full xl:px-24 py-8">
         <div className="flex text-orange-500 font-bold mb-6 justify-center items-center">
           <p className="text-xl border-b-4">IMAGE LIBRARY</p>
         </div>
