@@ -30,14 +30,14 @@ const AdminHomepage = () => {
   });
   const navigate = useNavigate();
   const settings = {
-    // className: "center",
+    className: "center",
     arrows: true,
     centerMode: true,
-    // infinite: true,
-    // centerPadding: "10px",
+    infinite: true,
+    centerPadding: "10px",
     dots: false,
-    // slidesToShow: 1,
-    // autoplay: true,
+    slidesToShow: 3,
+    autoplay: true,
     prevArrow: (
       <SlickButtonFix>
         <div className="h-7 w-7 flex justify-center items-center bg-red-900 opacity-60 rounded-3xl">
@@ -128,17 +128,17 @@ const AdminHomepage = () => {
       <section className="w-full">
         <div className="flex gap-4 xl:gap-12 justify-center">
           <div className={styles.card}>
-            {/* <img loading="lazy" className={styles.card_img} src="/img/training-icon.png" alt="Training Program" /> */}
+            {/* <img  className={styles.card_img} src="/img/training-icon.png" alt="Training Program" /> */}
             <SchoolIcon className="!text-4xl xl:!text-6xl text-orange-500" />
             <p className="text-xl xl:text-2xl font-bold ">Training Program</p>
           </div>
           <div className={styles.card}>
-            {/* <img loading="lazy" className={styles.card_img} src="/img/partner.png" alt="Partner List" /> */}
+            {/* <img  className={styles.card_img} src="/img/partner.png" alt="Partner List" /> */}
             <GroupsIcon className="!text-4xl xl:!text-6xl text-orange-500" />
             <p className="text-xl xl:text-2xl font-bold ">Partner List</p>
           </div>
           <div className={styles.card}>
-            {/* <img loading="lazy" className={styles.card_img} src="/img/guidebook.png" alt="Student Guidebook" /> */}
+            {/* <img  className={styles.card_img} src="/img/guidebook.png" alt="Student Guidebook" /> */}
             <AutoStoriesIcon className="!text-4xl xl:!text-6xl text-orange-500" />
             <p className="text-xl xl:text-2xl font-bold ">Student Guidebook</p>
           </div>
@@ -154,28 +154,28 @@ const AdminHomepage = () => {
         </div>
         <Carousel {...settings}>
           <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
-            <img loading="lazy" className={styles.fal_img} src="/img/fal-art.png" alt="Art" />
+            <img  className={styles.fal_img} src="/img/fal-art.png" alt="Art" />
           </div>
           <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
-            <img loading="lazy" className={styles.fal_img} src="/img/fal-cul.png" alt="Cultures" />
+            <img  className={styles.fal_img} src="/img/fal-cul.png" alt="Cultures" />
           </div>
           <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
-            <img loading="lazy" className={styles.fal_img} src="/img/fal-lang.png" alt="Language" />
+            <img  className={styles.fal_img} src="/img/fal-lang.png" alt="Language" />
           </div>
           <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
-            <img loading="lazy" className={styles.fal_img} src="/img/fal-law.png" alt="Law" />
+            <img  className={styles.fal_img} src="/img/fal-law.png" alt="Law" />
           </div>
           <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
-            <img loading="lazy" className={styles.fal_img} src="/img/fal-music.png" alt="Music" />
+            <img  className={styles.fal_img} src="/img/fal-music.png" alt="Music" />
           </div>
           <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
-            <img loading="lazy" className={styles.fal_img} src="/img/fal-physic.png" alt="Physic" />
+            <img  className={styles.fal_img} src="/img/fal-physic.png" alt="Physic" />
           </div>
           <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
-            <img loading="lazy" className={styles.fal_img} src="/img/fal-preschool.png" alt="preschool" />
+            <img  className={styles.fal_img} src="/img/fal-preschool.png" alt="preschool" />
           </div>
           <div className="p-4 cursor-pointer'" onClick={() => navigate("/faculties")}>
-            <img loading="lazy" className={styles.fal_img} src="/img/fal-tourism.png" alt="Tourism" />
+            <img  className={styles.fal_img} src="/img/fal-tourism.png" alt="Tourism" />
           </div>
         </Carousel>
         <div className="text-center ">
@@ -205,17 +205,17 @@ const AdminHomepage = () => {
         <div className={styles.small_card}>
           <div className={styles.news} onClick={handleOpenModalMission}>
             <div className={styles.news_img}>
-              <img loading="lazy" className="w-full h-full" src="/img/Mission.png" alt="" />
+              <img  className="w-full h-full" src="/img/Mission.png" alt="" />
             </div>
           </div>
           <div className={styles.news} onClick={handleOpenModalVision}>
             <div className={styles.news_img} >
-              <img loading="lazy" className="w-full h-full" src="/img/Vision.png" alt="" />
+              <img  className="w-full h-full" src="/img/Vision.png" alt="" />
             </div>
           </div>
           <div className={styles.news} onClick={handleOpenModalValue}>
             <div className={styles.news_img}>
-              <img loading="lazy" className="w-full h-full" src="/img/Value.png" alt="" />
+              <img  className="w-full h-full" src="/img/Value.png" alt="" />
             </div>
           </div>
         </div>
@@ -252,34 +252,34 @@ const AdminHomepage = () => {
         </div>
         <Carousel {...settings}>
           <div className={styles.lib_card}>
-            <img loading="lazy" src="/img/lib_1.jpg" alt="Lib 1" />
+            <img  src="/img/lib_1.jpg" alt="Lib 1" />
           </div>
           <div className={styles.lib_card}>
-            <img loading="lazy" src="/img/lib_2.jpg" alt="Lib 2" />
+            <img  src="/img/lib_2.jpg" alt="Lib 2" />
           </div>
           <div className={styles.lib_card}>
-            <img loading="lazy" src="/img/lib-3.jpg" alt="Lib 3" />
+            <img  src="/img/lib-3.jpg" alt="Lib 3" />
           </div>
           <div className={styles.lib_card}>
-            <img loading="lazy" src="/img/lib-4.jpg" alt="Lib 4" />
+            <img  src="/img/lib-4.jpg" alt="Lib 4" />
           </div>
           <div className={styles.lib_card}>
-            <img loading="lazy" src="/img/lib-5.jpg" alt="Lib 5" />
+            <img  src="/img/lib-5.jpg" alt="Lib 5" />
           </div>
           <div className={styles.lib_card}>
-            <img loading="lazy" src="/img/lib-6.jpg" alt="Lib 6" />
+            <img  src="/img/lib-6.jpg" alt="Lib 6" />
           </div>
           <div className={styles.lib_card}>
-            <img loading="lazy" src="/img/lib-7.jpg" alt="Lib 7" />
+            <img  src="/img/lib-7.jpg" alt="Lib 7" />
           </div>
           <div className={styles.lib_card}>
-            <img loading="lazy" src="/img/lib-8.jpg" alt="Lib 8" />
+            <img  src="/img/lib-8.jpg" alt="Lib 8" />
           </div>
           <div className={styles.lib_card}>
-            <img loading="lazy" src="/img/lib-9.jpg" alt="Lib 9" />
+            <img  src="/img/lib-9.jpg" alt="Lib 9" />
           </div>
           <div className={styles.lib_card}>
-            <img loading="lazy" src="/img/lib-10.jpg" alt="Lib 10" />
+            <img  src="/img/lib-10.jpg" alt="Lib 10" />
           </div>
         </Carousel>
 

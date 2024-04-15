@@ -16,7 +16,7 @@ const NewsCardComponent = ({ id, imgUrl, date, cardTitle, cardDescription }: Pro
         <>
             <div className={styles.news} onClick={() => navigate(`/news/${id}`)}>
                 <div className={styles.news_img}>
-                    <img loading="lazy" className="w-full h-full translate-z-1" src={imgUrl} alt="" />
+                    <img  className="w-full h-full translate-z-1" src={imgUrl} alt="" />
                 </div>
                 <div className="text-gray-500 flex items-center gap-2 mt-3">
                     <CalendarOutlined />

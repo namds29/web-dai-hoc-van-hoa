@@ -14,7 +14,7 @@ const AdminNews = () => {
         <div>
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
           <div className="overflow-hidden bg-red-300 w-full h-80 flex  justify-center items-center relative rounded">
-            <img loading="lazy" className={styles.hot_new_pic} src="/img/thumb1.png" alt="" />
+            <img  className={styles.hot_new_pic} src="/img/thumb1.png" alt="" />
             <p className="absolute text-2xl text-white cursor-pointer">
               Sinh viên TUCST đạt giải cao
             </p>
@@ -51,45 +51,45 @@ const AdminNews = () => {
           <div className={styles.card}>
             <div className={styles.card_title}>SCHOOL NAME</div>
             <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
+              {/*<img   className="rounded" src="" alt="" /> */}
               News
             </div>
             <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
+              {/*<img   className="rounded" src="" alt="" /> */}
               News
             </div>
             <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
+              {/*<img   className="rounded" src="" alt="" /> */}
               News
             </div>
           </div>
           <div className={styles.card}>
             <div className={styles.card_title}>CAMPUS LIFE</div>
             <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
+              {/*<img   className="rounded" src="" alt="" /> */}
               News
             </div>
             <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
+              {/*<img   className="rounded" src="" alt="" /> */}
               News
             </div>
             <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
+              {/*<img   className="rounded" src="" alt="" /> */}
               News
             </div>
           </div>
           <div className={styles.card}>
             <div className={styles.card_title}>INTERNATIONAL COOPERATION </div>
             <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
+              {/*<img   className="rounded" src="" alt="" /> */}
               News
             </div>
             <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
+              {/*<img   className="rounded" src="" alt="" /> */}
               News
             </div>
             <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
+              {/*<img   className="rounded" src="" alt="" /> */}
               News
             </div>
           </div>

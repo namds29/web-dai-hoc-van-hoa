@@ -19,19 +19,19 @@ const Research = () => {
             <div className="flex justify-evenly gap-8 mt-8">
               <div className="text-center">
                 <div className={styles.journal_img}>
-                  <img loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
+                  <img  className="w-full" src="/img/tapchi.jpg" alt="" />
                 </div>
                 <div>Journal name</div>
               </div>
               <div className="text-center">
                 <div className={styles.journal_img}>
-                  <img loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
+                  <img  className="w-full" src="/img/tapchi.jpg" alt="" />
                 </div>
                 <div>Journal name</div>
               </div>
               <div className="text-center">
                 <div className={styles.journal_img}>
-                  <img loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
+                  <img  className="w-full" src="/img/tapchi.jpg" alt="" />
                 </div>
                 <div>Journal name</div>
               </div>
@@ -49,7 +49,7 @@ const Research = () => {
 
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img  className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -59,7 +59,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img  className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -69,7 +69,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img  className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -91,7 +91,7 @@ const Research = () => {
 
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img  className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -101,7 +101,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img  className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -111,7 +111,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img  className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -133,7 +133,7 @@ const Research = () => {
 
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img  className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -143,7 +143,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img  className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
@@ -153,7 +153,7 @@ const Research = () => {
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img  className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>

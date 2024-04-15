@@ -35,10 +35,10 @@ const Header = () => {
             <SearchOutlined className="text-white" />
           </button>
           <a >
-            <img loading="lazy" className="h-4" src="img/vn.png" alt="" />
+            <img  className="h-4" src="img/vn.png" alt="" />
           </a>
           <a >
-            <img loading="lazy" className="h-4" src="img/en.png" alt="" />
+            <img  className="h-4" src="img/en.png" alt="" />
           </a>
         </div>
       </div>
@@ -46,7 +46,7 @@ const Header = () => {
         <div className="flex flex-col xl:flex-row justify-between">
           <Link to={"/"}>
             <div className="h-20 flex px-4 xl:px-8 py-2 items-center">
-              <img loading="lazy" className="h-full" src="img/LOGO.jpg" alt="" />
+              <img  className="h-full" src="img/LOGO.jpg" alt="" />
               <div className="text-orange-700 ml-4 mr-8">
                 <p className="font-extrabold text-xl ">TUCST</p>
                 <p>Thanh Hoa University of Culture, Sports and Tourism</p>
