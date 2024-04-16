@@ -115,12 +115,18 @@ export const DATA_DETAIL = [
         <div style=" font-size: 1rem; line-height: 1.6;">
         <p style="margin-bottom: 10px;">After a series of football matches taking place over three days (March 29 - March 31), the 2024 Student Football Tournament ended with the championship belonging to the TUCST host team.</p>
         <p style="margin-bottom: 10px;">Not only is the tournament host, TUCST student Team is also the champion. The 2024 Student Football Tournament is a meaningful event for the youth union work at TUCST in particular and is the pride of a leading training unit in physical education and sports in the province in general. TUCST once again affirmed its position and development potential in sports education and training.</p>
+        <img style="margin-bottom:1rem; margin-top:1rem" src="/img/cam5.jpg" />
         <p style="margin-bottom: 10px;">The closing ceremony took place right after the final match with the result 8 - 2 in favor of TUCST. Attending the ceremony were honor guests including Mr. Le Van Chau - Member of the Central Executive Committee of the Youth Union, Provincial Party Committee member, Secretary of the Provincial Youth Union, Chairman of Thanh Hoa Provincial Youth Union; Ms. Phung To Linh - Deputy Secretary of the Provincial Youth Union, President of Thanh Hoa Student Association, Head of the tournament organizing committee; Mr. Nguyen Duy Tu - Deputy Director of Thanh Hoa Department of Culture, Sports and Tourism; TUCST Governing Board including Assoc.Prof. Dr. Le Thanh Ha- Party Committee Secretary- TUCST President, Dr. Vu Van Tuyen - Deputy Secretary of the Party Committee - Chairman of TUCST Council, TUCST key officials and students.</p>
+        <img style="margin-bottom:1rem; margin-top:1rem" src="/img/cam6.jpg" />
         <p style="margin-bottom: 10px;">In addition, representatives of Thanh Hoa Department of Education and Training, Thanh Hoa Football Federation, leaders of universities, colleges, and high schools; Team leaders, coaches, and athletes... also attended the closing ceremony. News agencies and radio stations attended to report on the tournament.</p>
+        <img style="margin-bottom:1rem; margin-top:1rem" src="/img/cam7.jpg" />
         <p style="margin-bottom: 10px;">On behalf of the tournament Organizing Committee, Mr. Pham Cam Hung - Concurrently Vice President and General Secretary of Thanh Hoa Football Federation commented on the tournament. Accordingly, during 12 matches, the players excellently scored a total of 92 goals and did not receive any red cards. The 2024 Student Football Tournament took place successfully with many beautiful marks from the martial spirit of sports, and the enthusiastic emotions of the players to the bursts of happiness and regret of the fans.</p>
         <p style="margin-bottom: 10px;">At the closing ceremony, Mr. Nguyen Duy Tu - Deputy Director of Thanh Hoa Department of Culture, Sports and Tourism awarded certificates of merit to teams and individuals of the TUCST Football Club to recognize TUCST's contributions to the sports movement in general and football in particular in Thanh Hoa province.</p>
+        <img style="margin-bottom:1rem; margin-top:1rem" src="/img/cam8.jpg" />
         <p style="margin-bottom: 10px;">At the same time, the Organizing Committee awarded trophies, flags, medals, and rewards to the champion team, second prize team, and third prize team. At the same time, medals were awarded to the referee team as well as individual awards including: Top scorer award - player Le Van Thuc (TUCST Football Team), best goalkeeper award - player Olay Xaiyasone (TUCST Football Team).</p>
+        <img style="margin-bottom:1rem; margin-top:1rem" src="/img/cam9.jpg" />
         <p style="margin-bottom: 10px;">In particular, to encourage football players from high schools who participated in the tournament, TUCST Governing Board awarded a scholarship of 10,000,000 VND to a promising player who is admitted and participates in studying at TUCST.</p>
+        <img style="margin-bottom:1rem; margin-top:1rem" src="/img/cam10.jpg" />
         <p style="margin-bottom: 10px;">The 2024 Student Football Tournament left a special mark on the 93rd anniversary of the founding of the Ho Chi Minh Communist Youth Union (March 26, 1931-March 26, 2024).</p>
         </div>
         `,
@@ -130,13 +136,13 @@ export const DATA_DETAIL = [
         category: "campus life",
         title: "TUCST STUDENTS WON A BRONZE MEDAL IN SWIMMING AT THE ASIAN ARENA",
         content: `
-        <div style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6;">
+        <div style="font-size: 16px; line-height: 1.6;">
         <p>As a member of the Vietnam National Team participating in the 2024 Asian Swimming Championship, athlete Hoang Thi Trang - a student of Sports Management Class K11 has brought proud achievements to Thanh Hoa province in general and to TUCST in particular.</p>
-        <img src="athlete-photo.jpg" alt="Athlete Hoang Thi Trang with Coaching Team" style="width: 100%; max-width: 400px; margin: 10px 0;">
+        <img src="/img/cam11.jpg" alt="Athlete Hoang Thi Trang with Coaching Team" style="width: 100%; max-width: 400px; margin: 10px 0;">
         <p>Athlete Hoang Thi Trang started her training at Thanh Hoa Provincial Sports Training and Competition Center in 2012 (when she was 11). She said that she participated in sports because of her wish to be immersed in water and that swimming could bring her good health and a beautiful figure. Since then, Trang has nurtured her passion and become one of the potential "fishermen" of Vietnamese sports.</p>
-        <img src="medal-photo.jpg" alt="Athlete Hoang Thi Trang and two excellent players winning medals" style="width: 100%; max-width: 400px; margin: 10px 0;">
+        <img src="/img/cam12.jpg" alt="Athlete Hoang Thi Trang and two excellent players winning medals" style="width: 100%; max-width: 400px; margin: 10px 0;">
         <p>At the 2024 Asian Swimming Championship that just took place in the Philippines (from February 26, 2024, to March 1, 2024), Hoang Thi Trang participated in backstroke. This is a large-scale continental-level sports arena. It is a test for athletes from countries and territories in Asia to accumulate scores which provides them with good opportunities to attend the 2024 Olympics. This is also the first international tournament in 2024 of the Thanh Hoa swimming team and sports.</p>
-        <img src="/img/lib-10.jpg" alt="Hoang Thi Trang and her bronze medal in Asian Swimming 2024" style="width: 100%; max-width: 400px; margin: 10px 0;">
+        <img src="/img/cam13.jpg" alt="Hoang Thi Trang and her bronze medal in Asian Swimming 2024" style="width: 100%; max-width: 400px; margin: 10px 0;">
         <p>Accordingly, on the morning of March 1, 2024, Hoang Thi Trang completed her competition events. She won a bronze medal in the 200m backstroke (age group 18 and up). This is her valuable medal in the Asian sports arena.</p>
         <p>With her proud achievements, student Hoang Thi Trang not only became the pride of TUCST but also inspired many students studying at TUCST.</p>
         </div>
@@ -152,11 +158,24 @@ export const DATA_DETAIL = [
         <p style="margin-bottom: 10px;">Following TUCST key officials’ working visit to Taiwan in October 2024, on the morning of March 25, 2024, the 2024 international student exchange program between TUCST and Taiwan universities was held at TUCST.</p>
         <p style="margin-bottom: 10px;">Attending the program were representatives of TUCST and Taiwan universities including Mr. Jian Shao Qi - President of Hsuan Chuang University, Mr.Lai Ting Zhang - Head of External Relations and Admission Department of Hsuan Chuang University, Mrs. Tai Shu Zhen – Head of the International Cooperation of Hsuan Chuang University, Mrs. Pham Hoa Hue – Secretary of Taiwan Vocational Education Association concurrently Head of External Relation and Admission Department of Chungyu University of Film and Arts; Assoc.Prof. Dr. Le Thanh Ha – TUCST President, Dr. Vu Van Tuyen – Chairman of TUCST Council, TUCST key officials, TUCST teaching staff and students.</p>
         <p style="margin-bottom: 10px;">After the art performance of TUCST students, Assoc.Prof. Dr. Le Thanh Ha – TUCST President welcomed the working visit of Taiwan universities’ key officials to TUCST. Mrs. Ha also had an overview of TUCST including its development, scale, organizational structure, potential, and major international cooperation programs. Thus, TUCST owns many advantages of its history, geography, training scale, curriculum, teaching staff, and facilities… that have created good conditions for TUCST to perform effective international cooperation programs. Mrs. Ha emphasized the importance of international cooperation in higher education nowadays and TUCST’s effort to improve the activities of international cooperation.</p>
+        <img src="/img/lib_1.jpg" style="width: 100%; margin: 1rem 0;">
+        <p style="text-align:center;font-size:14px; margin: 1rem 0;font-style: italic;">Assoc.Prof.Dr. Le Thanh Ha welcomed the international delegations and had an overview of TUCST.</p>
         <p style="margin-bottom: 10px;">TUCST President hoped that the long-term and promising cooperation between TUCST and Taiwan universities will bring good opportunities for both sides to learn and share experiences in university administration, training programs, science and technology, lecturers and student exchange...</p>
         <p style="margin-bottom: 10px;">The program will be followed by a direct exchange program between representatives from Taiwanese universities and TUCST students. TUCST students watched a video on Taiwanese Universities. In addition, Mr. Jian Shao Qi – President of Hsuan Chuang University gave TUCST students a comprehensive introduction of Hsuan Chuang University in terms of its scale and training programs so that TUCST students could get a clear overview of curriculums and internship programs at Taiwan universities.</p>
+        <img src="/img/icop1.jpg" style="width: 100%; margin: 1rem 0;">
+        <p style="text-align:center;font-size:14px; margin: 1rem 0;font-style: italic;">
+        Mr. Jian Shao Qi – President of Hsuan Chuang University gave TUCST students a comprehensive introduction of Hsuan Chuang University
+        </p>
+       
         <p style="margin-bottom: 10px;">During the exchange session between representatives of Taiwan universities and TUCST students, some mini-games were held to attract students’ interest and create more interaction among attendants.</p>
         <p style="margin-bottom: 10px;">TUST students gave Taiwan universities’ key officials a large number of questions referring to scholarships and curriculums (internship, joint training, master’s training program…), job applications, facilities, and living costs….in Taiwan.</p>
+        <img src="/img/icop2.jpg" style="width: 100%; margin: 1rem 0;">
+        <img src="/img/icop3.jpg" style="width: 100%; margin: 1rem 0;">
+        <p style="text-align:center;font-size:14px; margin: 1rem 0;font-style: italic;">
+        TUCST students took part in the direct exchange session with representatives of Taiwan universities
+        </p>
         <p style="margin-bottom: 10px;">The 2024 international student exchange program between TUCST and Taiwan universities was performed successfully. This created many fruitful opportunities for international cooperation between TUCST and Taiwan universities and provided TUCST students with new visions and good chances for further study.</p>
+        <img src="/img/icop4.jpg" style="width: 100%; margin: 1rem 0;">
         <p style="margin-bottom: 10px;">The exchange program at TUCST marks a new development stage of international cooperation in higher education between TUCST and Taiwan universities.</p>
         </div>
         `,
@@ -185,15 +204,20 @@ export const DATA_DETAIL = [
         category: "international cooperation",
         title: "TUCST KEY OFFICIAL WORKING VISIT TO TAIWAN",
         content: `
-        <div style="font-size: 16px; line-height: 1.6;">
-  <p style="margin-bottom: 10px; >In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023, to November 1, 2023, the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha - TUCST President had a working visit to Taiwan and signed a memorandum of cooperation with three universities including Chungyu University of Film and Arts; Hsuan Chuang University; Chien Hsin University of Science and Technology and visited some student internship facilities.</p>
-  <p style="margin-bottom: 10px; >On the first day, TUCST’s key officials had a working program with the Governing Board of Chungyu University of Film and Arts.</p>
-  <p style="margin-bottom: 10px; >At the meeting, key officials of the two universities had an overview of the whole university and training programs as well as each university’s advantages in training management, academic exchange, international cooperation, scientific research, and experimental practice.</p>
-  <p style="margin-bottom: 10px; >After signing the Memorandum of Understanding, the delegation had a working visit to some internship facilities at Chungyu University of Film and Arts.</p>
-  <p style="margin-bottom: 10px; >Following the business trip, the delegation traveled to Hsuan Chuang University. There, key officials of the two universities signed the Memorandum of Understanding on major tasks including lecturers and students exchange; short-term training cooperation; academic exchange; co-organize international scientific conferences and cultural exchange programs... based on the target of achieving common benefits and sharing resources to promote, interact and exchange ideas; strengthen bilateral cooperation for mutual benefit.</p>
-  <p style="margin-bottom: 10px; >On the last working day in Taiwan, the delegation arrived in Taoyuan City and had a discussion with Chien Hsin University of Science and Technology. With the hope of developing a friendly and comprehensive cooperation, the two universities signed the Memorandum of Understanding on major tasks including (1) Lecturer exchange; (2) Student exchange; (3) Exchange on lecturer training activities; (4) Exchange of books and documents necessary for educational and research activities and (5) Other exchange activities based on the agreement between the two training institutions.</p>
-  <p style="margin-bottom: 10px; >The successful business trip of TUCST key officials to Taiwan has created many new international cooperation opportunities in training and scientific research for TUCST in the coming time.</p>
-</div>
+       
+        <p style="margin-bottom: 10px;">In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023, to November 1, 2023, the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha - TUCST President had a working visit to Taiwan and signed a memorandum of cooperation with three universities including Chungyu University of Film and Arts; Hsuan Chuang University; Chien Hsin University of Science and Technology and visited some student internship facilities.</p>
+        <p style="margin-bottom: 10px;">On the first day, TUCST’s key officials had a working program with the Governing Board of Chungyu University of Film and Arts.</p>
+        <p style="margin-bottom: 10px;">At the meeting, key officials of the two universities had an overview of the whole university and training programs as well as each university’s advantages in training management, academic exchange, international cooperation, scientific research, and experimental practice.</p>
+        <img src="/img/icop5.jpg" style="width: 100%; margin: 1rem 0;">
+        <p style="margin-bottom: 10px">After signing the Memorandum of Understanding, the delegation had a working visit to some internship facilities at Chungyu University of Film and Arts.</p>
+        <p style="margin-bottom: 10px">Following the business trip, the delegation traveled to Hsuan Chuang University. There, key officials of the two universities signed the Memorandum of Understanding on major tasks including lecturers and students exchange; short-term training cooperation; academic exchange; co-organize international scientific conferences and cultural exchange programs... based on the target of achieving common benefits and sharing resources to promote, interact and exchange ideas; strengthen bilateral cooperation for mutual benefit.</p>
+        <p style="margin-bottom: 10px">On the last working day in Taiwan, the delegation arrived in Taoyuan City and had a discussion with Chien Hsin University of Science and Technology. With the hope of developing a friendly and comprehensive cooperation, the two universities signed the Memorandum of Understanding on major tasks including (1) Lecturer exchange; (2) Student exchange; (3) Exchange on lecturer training activities; (4) Exchange of books and documents necessary for educational and research activities and (5) Other exchange activities based on the agreement between the two training institutions.</p>
+        <p style="margin-bottom: 10px">The successful business trip of TUCST key officials to Taiwan has created many new international cooperation opportunities in training and scientific research for TUCST in the coming time.</p>
+        <div style="width:100%;text-align:center;font-weight:bold;margin-top:1rem">Some images in events:</div>
+        <img src="/img/icop6.jpg" style="width: 100%; margin: 1rem 0;">
+        <img src="/img/icop7.jpg" style="width: 100%; margin: 1rem 0;">
+        <img src="/img/icop8.jpg" style="width: 100%; margin: 1rem 0;">
+       
         `,
     },
 ];
