@@ -621,23 +621,31 @@ const Academics = () => {
               <div className="content">
                 <p className="font-bold text-center text-2xl">University</p>
                 <div className="flex mt-8 gap-10">
-                  <div className="w-full h-72 rounded-xl bg-orange-500 cursor-pointer"></div>
-                  <div className="w-full h-80 rounded-xl bg-orange-500 cursor-pointer"></div>
-                  <div className="w-full h-96 rounded-xl bg-orange-500 cursor-pointer"></div>
-                </div>
-                <div className="flex mt-12 justify-center gap-10 items-center font-bold text-xl text-white">
-                  <div
-                    className="px-8 py-4 bg-orange-500 rounded cursor-pointer hover:bg-orange-400"
-                    onClick={() => navigate("/academics/formal-training")}
-                  >
-                    Formal training
+                  <div className="w-full flex flex-col justify-center items-center">
+                    <div className="w-full h-96 rounded-xl bg-orange-500 cursor-pointer"></div>
+                    <div
+                      className="w-1/2 px-4 py-2 mt-8 bg-orange-500 text-center rounded cursor-pointer hover:bg-orange-400 text-white"
+                      onClick={() => navigate("/academics/formal-training")}
+                    >
+                      Formal training
+                    </div>
                   </div>
-                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer hover:bg-orange-400">
-                    Transition training
+
+                  <div className="w-full flex flex-col justify-center items-center">
+                    <div className="w-full h-96 rounded-xl bg-orange-500 cursor-pointer">
+                    </div>
+                    <div className="w-1/2 px-4 py-2 mt-8 bg-orange-500 text-center rounded cursor-pointer hover:bg-orange-400 text-white">
+                      Transition training
+                    </div>
                   </div>
-                  <div className="px-8 py-4 bg-orange-500 rounded cursor-pointer hover:bg-orange-400">
-                    Second-degree training
+
+                  <div className="w-full flex flex-col justify-center items-center">
+                    <div className="w-full h-96 rounded-xl bg-orange-500 cursor-pointer"></div>
+                    <div className="w-2/3 px-4 py-2 mt-8 bg-orange-500 text-center rounded cursor-pointer hover:bg-orange-400 text-white">
+                      Second-degree training
+                    </div>
                   </div>
+
                 </div>
               </div>
             </div>
