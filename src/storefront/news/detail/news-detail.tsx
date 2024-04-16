@@ -17,7 +17,7 @@ const NewsDetailComponent = () => {
       setData(resDetail)
     }
   }, [id])
-  console.log(DATA_DETAIL.filter(item => item.id == id))
+
   return (
     <div className="bg-gray-100 min-h-[100vh] py-10 text-black">
       <div className="flex w-full text-orange-500 font-bold mb-6 justify-center items-center">

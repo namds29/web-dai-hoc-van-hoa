@@ -127,7 +127,6 @@ const News = () => {
             </p>
           </div>
         </div>
-
         <div className="w-1/2 h-full ">
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
           <div className="flex flex-col h-[19.925rem]  pr-4 gap-2 w-full text-white">
@@ -156,13 +155,35 @@ const News = () => {
           </div>
         </div>
       </section>
-
-      <section className="flex justify-center text-xl bold text-center gap-16 bg-gray-200 w-full text-black  font-bold px-20 py-8">
-        <div onClick={handleOpenModalHistory} className="w-[20rem] h-[20rem] rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer" >
-          <img className="rounded-lg w-full h-full" src="/img/history_img.png" alt="" />
-        </div>
-        <div onClick={handleOpenModalMission} className="w-[20rem] h-[20rem] rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer">
-          <img className="rounded-lg w-full h-full" src="/img/mission_img.png" alt="" />
+      <section className="px-8 xl:px-16 py-8 bg-gray-200">
+        <div className="flex gap-4 text-white">
+          <div className="w-full rounded bg-[#1e6bff]">
+            <div className="w-full">
+              <img
+                className="w-full h-full object-cover overflow-hidden rounded"
+                src="/img/bvhtt.png"
+                alt=""
+              />
+            </div>
+          </div>
+          <div className="w-full rounded bg-white">
+            <div className="w-full" >
+              <img
+                className="w-full h-full object-cover overflow-hidden rounded"
+                src="/img/bogd.jpeg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div className="w-full rounded">
+            <div className="w-full">
+              <img
+                className="w-full h-full object-cover overflow-hidden rounded"
+                src="/img/baothanhhoa.png"
+                alt=""
+              />
+            </div>
+          </div>
         </div>
       </section>
       <section className="bg-gray-100 w-full px-24 py-8">

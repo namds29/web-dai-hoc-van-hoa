@@ -133,31 +133,31 @@ export const ACADEMICS_TRAINING_PROGRAM = [
 export const ACADEMICS_FORMAL_TRAINING = [
   {
     id: 1,
-    title: "PROGRAM LEARNING OUTCOMES EARLY CHILDHOOD EDUCATION",
+    title: "EARLY CHILDHOOD EDUCATION",
   },
   {
     id: 2,
-    title: "PROGRAM LEARNING OUTCOMES MUSIC EDUCATION",
+    title: "MUSIC EDUCATION",
   },
   {
     id: 3,
-    title: "PROGRAM LEARNING OUTCOMES ART EDUCATION",
+    title: "ART EDUCATION",
   },
   {
     id: 4,
-    title: "PROGRAM LEARNING OUTCOMES VOCAL MUSIC",
+    title: "VOCAL MUSIC",
   },
   {
     id: 5,
-    title: "PROGRAM LEARNING OUTCOMES FASHION DESIGN",
+    title: "FASHION DESIGN",
   },
   {
     id: 6,
-    title: "PROGRAM LEARNING OUTCOMES GRAPHIC",
+    title: "GRAPHIC",
   },
   {
     id: 7,
-    title: "PROGRAM LEARNING OUTCOMES TOURISM",
+    title: "TOURISM",
   },
   {
     id: 8,

@@ -1,8 +1,11 @@
 
 import NewsCardComponent from "src/components/news-card-component";
 import styles from "./index.module.scss";
+import { useNavigate } from "react-router-dom";
+import { CalendarOutlined } from "@ant-design/icons";
 
 const Announcements = () => {
+    const navigate = useNavigate();
     const data = [
         {
             id: "news8",
@@ -24,7 +27,6 @@ const Announcements = () => {
         <section className="bg-gray-100 w-full px-4 md:px-24 py-8">
             <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
                 <p className="text-sm md:text-xl border-b-4">HIGHLIGHTS & ANNOUNCEMENTS</p>
-
             </div>
             <div className={styles.newest_new}>
                 {data.map((newsItem, index) => (
@@ -38,8 +40,35 @@ const Announcements = () => {
                     />
                 ))}
             </div>
+            <div className={styles.sub_news}>
+                <div className={styles.sub_news_box}>
+                    <div className="text-orange-500 font-bold flex gap-1 items-center">
+                        <CalendarOutlined /> 10/04/2024 <img className="w-[40px] h-[20px] ml-2" src="/img/icon-new.gif" alt="gif new" />
+                    </div>
+                    <div className={styles.sub_news_description}>THÔNG BÁO VỀ VIỆC NGHỈ LỄ GIỖ TỔ HÙNG VƯƠNG NĂM 2024</div>
+                </div>
+                <div className={styles.sub_news_box}>
+                <div className="text-orange-500 font-bold flex gap-1 items-center">
+                        <CalendarOutlined /> 10/04/2024 <img className="w-[40px] h-[20px] ml-2" src="/img/icon-new.gif" alt="gif new" />
+                    </div>
+                    <div className={styles.sub_news_description}>THÔNG BÁO TỔ CHỨC HỘI NGHỊ ĐỐI THOẠI GIỮA HIỆU TRƯỞNG NHÀ TRƯỜNG VỚI HỌC SINH, SINH VIÊN NĂM HỌC 2023 - 2024</div>
+                </div>
+                <div className={styles.sub_news_box}>
+                <div className="text-orange-500 font-bold flex gap-1 items-center">
+                        <CalendarOutlined /> 10/04/2024 <img className="w-[40px] h-[20px] ml-2" src="/img/icon-new.gif" alt="gif new" />
+                    </div>
+                    <div className={styles.sub_news_description}>THÔNG BÁO VỀ VIỆC NGHỈ LỄ GIỖ TỔ HÙNG VƯƠNG NĂM 2024</div>
+                </div>
+                <div className={styles.sub_news_box}>
+                <div className="text-orange-500 font-bold flex gap-1 items-center">
+                        <CalendarOutlined /> 10/04/2024
+                    </div>
+                    <div className={styles.sub_news_description}>THÔNG BÁO VỀ VIỆC NGHỈ LỄ GIỖ TỔ HÙNG VƯƠNG NĂM 2024</div>
+                </div>
+
+            </div>
             <div className="w-full text-center mt-8">
-                <button className="text-base border text-orange-500 border-orange-400 hover:bg-orange-100 px-6 rounded py-3">
+                <button className="text-base border text-orange-500 border-orange-400 hover:bg-orange-100 px-6 rounded py-3" onClick={() => navigate("/news")}>
                     See more
                 </button>
             </div>

@@ -161,7 +161,7 @@ const About = () => {
       <Banner />
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <p className="text-xl border-b-4 ">PRESIDENT’S MESSAGE</p>
-        <div className=" p-4 gap-10">
+        <div className="p-4 gap-10">
           <blockquote className={styles.quotes}>
             Welcome to Thanh Hoa University of Culture, Sports and Tourism
             (TUCST), a higher education institution upgraded by the Government
@@ -311,12 +311,12 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className="flex justify-center text-xl bold text-center gap-10 bg-gray-200 w-full text-black  font-bold px-20 py-8">
-        <div onClick={handleOpenModalHistory} className="w-[28rem] h-[28rem] p-4 rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer" >
-          <img className="rounded-lg" src="/img/history_img.png" alt="" />
+      <section className="flex justify-center text-xl bold text-center gap-16 bg-gray-200 w-full text-black  font-bold px-20 py-8">
+        <div onClick={handleOpenModalHistory} className="w-[20rem] h-[20rem] rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer" >
+          <img className="rounded-lg w-full h-full" src="/img/history_img.png" alt="" />
         </div>
-        <div onClick={handleOpenModalMission} className="w-[28rem] h-[28rem] p-4 rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer">
-          <img className="rounded-lg" src="/img/mission_img.png" alt="" />
+        <div onClick={handleOpenModalMission} className="w-[20rem] h-[20rem] rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer">
+          <img className="rounded-lg w-full h-full" src="/img/mission_img.png" alt="" />
         </div>
       </section>
       <CustomModal

@@ -105,7 +105,7 @@ const StudentSupport = () => {
         <div className="mx-10">
           {recruitmentData.map((item) => {
             return (
-              <Card key={item.id} className="my-2=">
+              <Card key={item.id} className="my-4 shadow-lg">
                 <div className="flex flex-row">
                   <img
                     src="/img/img1.png"
