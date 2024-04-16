@@ -6,6 +6,7 @@
 
 .hot_new_pic {
   height: 100%;
+  width: 100%;
   object-fit: cover;
   filter: brightness(0.3);
   border-radius: 5px;
@@ -17,6 +18,11 @@
   height: 100%;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+.newest_new {
+  color: black;
+  display: flex;
+  gap: 1.5rem;
 }
 
 .card {
@@ -48,11 +54,11 @@
 
   &_content_news {
     background: white;
-    max-height: 60px;
-    padding: 0.5rem;
+    // max-height: 60px;
+    padding: 0.8rem;
     width: 100%;
     border-radius: 5px;
-    overflow: auto;
+    text-wrap: pretty;
     cursor: pointer;
     margin-top: 0.8rem;
   }
@@ -60,4 +66,28 @@
   &_content_news:hover {
     background-color: rgb(216, 213, 213);
   }
+}
+
+.journal_img{
+  width: 300px;
+  // height: 600px;
+}
+.btn_see_more {
+  margin-top: 2rem;
+  // color: rgb(243, 61, 61);
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+}
+.card_science{
+  width: calc(100% - 16rem);
+
+}
+.card_science_description{
+  display: -webkit-box;
+  font-size: 14px;
+  -webkit-line-clamp: 3;
+  font-weight: 500;
+  /* Set the number of lines to be displayed before truncating */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

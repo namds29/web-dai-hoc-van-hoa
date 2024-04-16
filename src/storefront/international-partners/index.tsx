@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import Banner from "src/components/banner";
 
 const PARTNER_LIST = [
@@ -72,26 +73,19 @@ const InternationalPartners = () => {
       <div className="flex min-h-[100vh] gap-10">
         <section className="bg-yellow-700 w-1/3 flex flex-col p-4">
           <p className="font-bold text-2xl mb-4">Partner List</p>
+          {PARTNER_LIST.map(item => <Fragment key={item.title + "1"}>
           <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Southern Luzon State University - Philipines
+            🔍 {item.title}
           </a>
-          <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Hsuan Chuang University (HCU) - Taiwan
-          </a>
-          <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Chien Hsin University of Science and Technology - Taiwan
-          </a>
-          <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Daejin University - Korea
-          </a>
+          </Fragment>)}
           <p className="font-bold text-2xl mb-4">Partner With Us</p>
         </section>
 
         <section className="text-black p-4 w-full">
           <p className="font-bold text-2xl mb-4">Partner List</p>
           <div className="grid grid-cols-2 gap-10">
-            {PARTNER_LIST.map(item => <>
-              <div className="border bg-gray-200 p-4 text-center ">
+            {PARTNER_LIST.map(item => <Fragment key={item.title}>
+              <div key={item.title} className="border bg-gray-200 p-4 text-center ">
                 <div className="flex justify-center w-full rounded-lg h-[300px]">
                   <img
                     className="w-full h-full object-contain rounded-xl mix-blend-multiply"
@@ -107,7 +101,7 @@ const InternationalPartners = () => {
                   <a href={`https://${item.website}`} target="_blank" className="bg-red-400 px-4 py-2  rounded text-white">Website</a>
                 </div>
               </div>
-            </>)}
+            </Fragment>)}
 
 
 

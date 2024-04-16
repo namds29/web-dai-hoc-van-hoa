@@ -18,22 +18,26 @@ const Research = () => {
             <p className="text-2xl border-b-4">Journal</p>
             <div className="flex justify-evenly gap-8 mt-8">
               <div className="text-center">
-                <div className={styles.journal_img}>
-                  <img loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
-                </div>
-                <div>Journal name</div>
+                <a href="https://drive.google.com/file/d/1SMuR9fq2126Ap5KGKo6bPxTecB6VL-A7/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                  <div className={styles.journal_img}>
+                    <img className="w-full" src="/img/bia1.png" alt="Bia tap chi 1" />
+                  </div>
+                </a>
+              </div>
+
+              <div className="text-center">
+                <a href="https://drive.google.com/file/d/124S_Lp94eTAPo3W-nZZDymuKi8g1XHn4/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                  <div className={styles.journal_img}>
+                    <img className="w-full" src="/img/bia3.png" alt="Bia tap chi 2" />
+                  </div>
+                </a>
               </div>
               <div className="text-center">
-                <div className={styles.journal_img}>
-                  <img loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
-                </div>
-                <div>Journal name</div>
-              </div>
-              <div className="text-center">
-                <div className={styles.journal_img}>
-                  <img loading="lazy" className="w-full" src="/img/tapchi.jpg" alt="" />
-                </div>
-                <div>Journal name</div>
+                <a href="https://drive.google.com/file/d/1FMiqO_P0R5GkTzzuCRUSPKybMZram06d/view" target="_blank" rel="noopener noreferrer">
+                  <div className={styles.journal_img}>
+                    <img className="w-full" src="/img/bia2.png" alt="Bia tap chi 3" />
+                  </div>
+                </a>
               </div>
             </div>
             <div className="text-center ">
@@ -49,32 +53,32 @@ const Research = () => {
 
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
 
@@ -91,32 +95,32 @@ const Research = () => {
 
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
 
@@ -133,32 +137,32 @@ const Research = () => {
 
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-40 rounded">
-                <img loading="lazy" className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
+                <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
               </div>
               <div className={styles.card_science}>
                 <p className="title text-xl font-bold">Science Title</p>
                 <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" href="">Link website</a>
+                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
               </div>
             </div>
 

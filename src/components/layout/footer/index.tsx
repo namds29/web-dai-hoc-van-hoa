@@ -6,11 +6,11 @@ import { loadSlim } from "tsparticles-slim";
 const Footer = () => {
     const particlesInit = useCallback(async (engine: Engine) => {
         await loadSlim(engine);
-      }, []);
+    }, []);
     return (
         <footer>
             <section
-                className={`${styles.fixed_bg} ${styles.footer} text-white relative bg-orange-300 w-full text-black`}
+                className={`${styles.fixed_bg} ${styles.footer} relative bg-orange-300 w-full text-white`}
             >
                 <div className="absolute w-full h-full top-0 left-0 opacity-80 bg-black">
                     <Particles
@@ -65,7 +65,7 @@ const Footer = () => {
                         }}
                     />
                 </div>
-                <div className="flex justify-between absolute w-full h-full px-24 py-8">
+                <div className="flex flex-col lg:flex-row gap-16 absolute w-full h-full px-8 xl:px-24 py-8">
                     <div className="text-sm">
                         <p className="font-bold text-lg mb-4">CONNECT WITH TUCST</p>
                         <p>Address: No. 561 Quang Trung 3, Dong Ve Ward, City. Thanh Hoa</p>
@@ -78,10 +78,16 @@ const Footer = () => {
                             <iframe className={styles.maps_size} src="https://maps.google.com/maps?q=Thanh%20Hoa%20University%20of%20Culture&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed" scrolling="no" ></iframe>
                         </div>
                     </div>
+                    <div className="block">
+                        <p className="font-bold text-lg">Social Media </p>
+                        <div className="mt-4">
+                            <a href="https://www.facebook.com/profile.php?id=100064751773340" target="_blank">Đoàn Trường Đại học Văn Hóa, Thể Thao và Du Lịch Thanh Hóa</a>
+                        </div>
+                        <div className="mt-4">
+                            <a href="https://www.facebook.com/tuyensinh.dvtdt.edu.vn" target="_blank">Tuyển sinh Trường Đại học Văn hoá, Thể thao và Du lịch Thanh Hoá</a>
+                        </div>
+                    </div>
 
-                    <p className="font-bold text-lg">Social Media </p>
-                    <p className="font-bold text-lg">Hotline</p>
-                    <p className="font-bold text-lg">Email</p>
                 </div>
             </section>
         </footer>

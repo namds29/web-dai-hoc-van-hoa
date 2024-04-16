@@ -1,4 +1,3 @@
-import Banner from "src/components/banner";
 import styles from "./index.module.scss";
 
 import { Card } from "antd";
@@ -26,40 +25,24 @@ const StudentSupport = () => {
 
   const recruitmentData = [
     {
-      id: "1",
-      title: "Title",
-      subtitle: "Subtitle",
+      id: "recruite1",
+      title: "THE SIGNING CEREMONY OF A MEMORANDUM OF COOPERATION ON TRAINING AND SUPPLYING TOURISM HUMAN RESOURCES BETWEEN THANH HOA UNIVERSITY OF CULTURE, SPORTS AND TOURISM AND MELIÃ VINPEARL THANH HOA HOTEL",
+      subtitle: "With the aim of strengthening cooperation in training and supplying human resources for tourism industry of Thanh Hoa province in particular and the whole country in general, on June 13, 2023, TUCST has signed a cooperation agreement with Meliã Vinpearl Thanh Hoa Hotel. This event has a very important meaning in further promoting the ability to create the training cooperation between educational institution and businesses, in accordance with the general trend of the times and the social needs.",
       link: "abc",
     },
     {
-      id: "2",
-      title: "Title",
-      subtitle: "Subtitle",
-      link: "abc",
-    },
-    {
-      id: "3",
-      title: "Title",
-      subtitle: "Subtitle",
-      link: "abc",
-    },
-    {
-      id: "4",
-      title: "Title",
-      subtitle: "Subtitle",
-      link: "abc",
-    },
-    {
-      id: "5",
-      title: "Title",
-      subtitle: "Subtitle",
+      id: "recruite2",
+      title: "THE SIGNING CEREMONY OF COOPERATION FOR HUMAN RESOURCE DEVELOPMENT BETWEEN THANH HOA UNIVERSITY OF CULTURE, SPORTS & TOURISM AND SUN GROUP",
+      subtitle: "Following the 'Human Resource Development Cooperation Signing Ceremony' of Sun Group - Department of Labor, War Invalids & Social Affairs and Training institutions of tourism human resource in Thanh Hoa province, Thanh Hoa University of Culture, Sports & Tourism (TUCST) and Sun Group has signed a human resource development cooperation agreement on July 29, 2022, at Ballroom 1, 6th floor, Vinpearl Hotel Thanh Hoa.",
       link: "abc",
     },
   ];
 
   return (
     <div className={styles.container}>
-      <Banner />
+      <div>
+        <img src="/img/student_support.png" alt="Student Support" />
+      </div>
 
       <section className="bg-gray-100 w-full px-24 py-6">
         <div className="w-full flex justify-center mt-6 mb-10 border-b-4">
@@ -89,8 +72,6 @@ const StudentSupport = () => {
           })}
         </div>
       </section>
-
-      <Banner />
 
       <section className="bg-gray-100 w-full px-24 py-6">
         <div className="flex text-orange-500 font-bold items-center mb-6">
@@ -124,16 +105,16 @@ const StudentSupport = () => {
         <div className="mx-10">
           {recruitmentData.map((item) => {
             return (
-              <Card key={item.id} className="my-2">
+              <Card key={item.id} className="my-2=">
                 <div className="flex flex-row">
                   <img
                     src="/img/img1.png"
                     className="w-1/4 rounded mr-6 "
                     alt=""
                   />
-                  <div className="flex flex-col justify-center ">
-                    <p className="text-3xl font-bold">{item.title}</p>
-                    <p className="text-2xl font-medium">{item.subtitle}</p>
+                  <div className="flex flex-col items-start">
+                    <p className="text-xl font-bold">{item.title}</p>
+                    <p className="text-base font-medium">{item.subtitle}</p>
                   </div>
                 </div>
               </Card>

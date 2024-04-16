@@ -146,7 +146,6 @@ const AdminNews = () => {
           label={dropdownValue.label}
         />
       </div>
-
       <div className="mt-10">
         {dropdownValue.key ? (
           <ListData section={dropdownValue.label} data={data} action={handleEditType}></ListData>

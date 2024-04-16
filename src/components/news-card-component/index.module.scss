@@ -1,0 +1,112 @@
+.newest_new {
+    display: flex;
+    color: black;
+    gap: 1.5rem;
+}
+
+.news {
+    flex: 1 0 300px;
+    max-height: 600px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .news_img {
+        width: 100%;
+        height: 300px;
+
+        img {
+            border-radius: 6px;
+            object-fit: cover;
+        }
+    }
+
+    .news_title {
+        margin-top: 0.5rem;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .news_description {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: grey;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        /* Set the number of lines to be displayed before truncating */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
+
+.sub_news {
+    display: flex;
+    color: black;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+
+    flex-wrap: wrap;
+
+    .sub_news_box {
+        width: calc(50% - 0.75rem);
+        max-height: 170px;
+        min-height: 130px;
+        background-color: white;
+        border-radius: 8px;
+        padding: 1rem;
+        display: flex;
+        cursor: pointer;
+        position: relative;
+        gap: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+        &:hover {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        .sub_news__img {
+            width: 40%;
+            height: 100%;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .sub_news__content {
+
+            width: 60%;
+            height: 100%;
+
+            .sub_news__title {
+                font-size: 1rem;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                font-weight: bold;
+                /* Set the number of lines to be displayed before truncating */
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .news {
+        flex-basis: 300px;
+    }
+
+}
