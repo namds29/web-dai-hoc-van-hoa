@@ -120,7 +120,7 @@ const News = () => {
       <section className="flex gap-5 w-full text-orange-500 font-bold  justify-between px-8 xl:px-16 py-8">
         <div className="w-full">
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
-          <div className="overflow-hidden w-full h-80 flex  justify-center items-center relative rounded">
+          <div className="overflow-hidden w-full h-[21.7rem] flex  justify-center items-center relative rounded">
             <img className={styles.hot_new_pic} src="/img/thumb1.png" alt="" />
             <p className="absolute text-2xl text-white cursor-pointer">
               Sinh viên TUCST đạt giải cao
@@ -130,7 +130,7 @@ const News = () => {
 
         <div className="w-1/2 h-full ">
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
-          <div className="flex flex-col h-[19.925rem] overflow-auto pr-4 gap-2 w-full text-white">
+          <div className="flex flex-col h-[19.925rem]  pr-4 gap-2 w-full text-white">
             <div className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-4 mb-5">
               <div className="w-52 h-full rounded">
                 <img className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
@@ -157,6 +157,14 @@ const News = () => {
         </div>
       </section>
 
+      <section className="flex justify-center text-xl bold text-center gap-16 bg-gray-200 w-full text-black  font-bold px-20 py-8">
+        <div onClick={handleOpenModalHistory} className="w-[20rem] h-[20rem] rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer" >
+          <img className="rounded-lg w-full h-full" src="/img/history_img.png" alt="" />
+        </div>
+        <div onClick={handleOpenModalMission} className="w-[20rem] h-[20rem] rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer">
+          <img className="rounded-lg w-full h-full" src="/img/mission_img.png" alt="" />
+        </div>
+      </section>
       <section className="bg-gray-100 w-full px-24 py-8">
         <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
           <p className="text-xl border-b-4">SCHOOL ACTIVITIES</p>
@@ -220,14 +228,6 @@ const News = () => {
         </div>
       </section>
 
-      <section className="flex justify-center text-xl bold text-center gap-16 bg-gray-200 w-full text-black  font-bold px-20 py-8">
-        <div onClick={handleOpenModalHistory} className="w-[28rem] h-[28rem] p-4 rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer" >
-          <img className="rounded-lg" src="/img/history_img.png" alt="" />
-        </div>
-        <div onClick={handleOpenModalMission} className="w-[28rem] h-[28rem] p-4 rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer">
-          <img className="rounded-lg" src="/img/mission_img.png" alt="" />
-        </div>
-      </section>
       <CustomModal
         message={modalContent}
         type=""

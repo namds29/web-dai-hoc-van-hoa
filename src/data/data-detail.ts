@@ -170,7 +170,6 @@ export const DATA_DETAIL = [
         <p style="margin-bottom: 10px;">During the exchange session between representatives of Taiwan universities and TUCST students, some mini-games were held to attract students’ interest and create more interaction among attendants.</p>
         <p style="margin-bottom: 10px;">TUST students gave Taiwan universities’ key officials a large number of questions referring to scholarships and curriculums (internship, joint training, master’s training program…), job applications, facilities, and living costs….in Taiwan.</p>
         <img src="/img/icop2.jpg" style="width: 100%; margin: 1rem 0;">
-        <img src="/img/icop3.jpg" style="width: 100%; margin: 1rem 0;">
         <p style="text-align:center;font-size:14px; margin: 1rem 0;font-style: italic;">
         TUCST students took part in the direct exchange session with representatives of Taiwan universities
         </p>
@@ -187,16 +186,21 @@ export const DATA_DETAIL = [
             "JOB EXCHANGE PROGRAM BETWEEN TUCST AND SSGV SINGAPORE JOINT VENTURE COMPANY",
         content: `
         <div style="font-size: 16px; line-height: 1.6;">
-  <p style="margin-bottom: 10px; >On the morning of January 11, 2024, a job career exchange program between TUCST and SkillsSG Ventures, Singapore (SSGV) was held at TUCST.</p>
-  <p style="margin-bottom: 10px; >Attending the program were representatives from Singapore including Mr. Cheng Hong Siang - CEO of SSGV and from TUCST including Assoc.Pror. Dr. Nguyen Thi Thuc - Vice President, teaching staff and students.</p>
-  <p style="margin-bottom: 10px; >First, Ms. Nguyen Thi Thuc – TUCST Vice President welcomed Mr. Cheng Hong Siang - CEO of SSGV for his attendance in the job exchange program for TUCST students. Ms. Thuc emphasized that this is a practical and meaningful activity for students to improve their awareness of job opportunities after graduation. The program also demonstrated the international cooperation between TUCST and SSGV.</p>
-  <p style="margin-bottom: 10px; >Previously, on May 4, 2023, TUCST and SSGV (Singapore) signed an official Memorandum of Understanding marking the beginning of a sustainable cooperative relationship between TUCST and SSGV as well as the cooperative relationship between Thanh Hoa and Singapore. The first job exchange program in 2024 is so important to the Memorandum of Understanding.</p>
-  <p style="margin-bottom: 10px; >During the program, Mr. Cheng Hong Siang introduced students to SVVG's certified joint training programs; benefits received when studying abroad and interning in Singapore; and Programs to support students with facilities and study abroad expenses.</p>
-  <p style="margin-bottom: 10px; >During the interaction with Mr. Cheng Hong Siang, TUCST students shared their dreams and plans for the future. At the same time, Mr. Cheng Hong Siang also answered students' questions about methods and conditions for studying abroad, career trends, salary support, facilities, job opportunities after graduation, etc.</p>
-  <p style="margin-bottom: 10px; >In particular, Mr. Cheng Hong Siang awarded TUCST a scholarship package of 6,250 SGD equivalent to 115,000,000 VND.</p>
-  <p style="margin-bottom: 10px; >Through the program, Mr. Cheng Hong Siang has created a connection with TUCST students, imparting motivation and dreams to students in studying, Nguyen Cao Hoang Long – a student of Hotel Management (Faculty of Tourism) expressed.</p>
-  <p style="margin-bottom: 10px; >The success of the job exchange has created an important premise for long-term and fruitful cooperation between TUCST (Thanh Hoa, Vietnam) and SSGV (Singapore) in the near future.</p>
-</div>
+        <p style="margin-bottom: 10px; ">On the morning of January 11, 2024, a job career exchange program between TUCST and SkillsSG Ventures, Singapore (SSGV) was held at TUCST.</p>
+        <p style="margin-bottom: 10px; ">Attending the program were representatives from Singapore including Mr. Cheng Hong Siang - CEO of SSGV and from TUCST including Assoc.Pror. Dr. Nguyen Thi Thuc - Vice President, teaching staff and students.</p>
+        <img src="/img/ic9.JPG" style="width: 100%; margin: 1rem 0;">
+        <p style="margin-bottom: 10px; ">First, Ms. Nguyen Thi Thuc – TUCST Vice President welcomed Mr. Cheng Hong Siang - CEO of SSGV for his attendance in the job exchange program for TUCST students. Ms. Thuc emphasized that this is a practical and meaningful activity for students to improve their awareness of job opportunities after graduation. The program also demonstrated the international cooperation between TUCST and SSGV.</p>
+        <p style="margin-bottom: 10px; ">Previously, on May 4, 2023, TUCST and SSGV (Singapore) signed an official Memorandum of Understanding marking the beginning of a sustainable cooperative relationship between TUCST and SSGV as well as the cooperative relationship between Thanh Hoa and Singapore. The first job exchange program in 2024 is so important to the Memorandum of Understanding.</p>
+        <img src="/img/ic10.JPG" style="width: 100%; margin: 1rem 0;">
+        <p style="margin-bottom: 10px; ">During the program, Mr. Cheng Hong Siang introduced students to SVVG's certified joint training programs; benefits received when studying abroad and interning in Singapore; and Programs to support students with facilities and study abroad expenses.</p>
+        <img src="/img/ic11.JPG" style="width: 100%; margin: 1rem 0;">
+        <p style="margin-bottom: 10px; ">During the interaction with Mr. Cheng Hong Siang, TUCST students shared their dreams and plans for the future. At the same time, Mr. Cheng Hong Siang also answered students' questions about methods and conditions for studying abroad, career trends, salary support, facilities, job opportunities after graduation, etc.</p>
+        <img src="/img/ic12.JPG" style="width: 100%; margin: 1rem 0;">
+        <p style="text-align:center;font-size:14px; margin: 1rem 0;font-style: italic;">In particular, Mr. Cheng Hong Siang awarded TUCST a scholarship package of 6,250 SGD equivalent to 115,000,000 VND</p>
+        <p style="margin-bottom: 10px; ">Through the program, Mr. Cheng Hong Siang has created a connection with TUCST students, imparting motivation and dreams to students in studying, Nguyen Cao Hoang Long – a student of Hotel Management (Faculty of Tourism) expressed.</p>
+        <p style="margin-bottom: 10px; ">The success of the job exchange has created an important premise for long-term and fruitful cooperation between TUCST (Thanh Hoa, Vietnam) and SSGV (Singapore) in the near future.</p>
+        <img src="/img/ic13.JPG" style="width: 100%; margin: 1rem 0;">
+        </div>
         `,
     },
     {
@@ -204,7 +208,6 @@ export const DATA_DETAIL = [
         category: "international cooperation",
         title: "TUCST KEY OFFICIAL WORKING VISIT TO TAIWAN",
         content: `
-       
         <p style="margin-bottom: 10px;">In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023, to November 1, 2023, the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha - TUCST President had a working visit to Taiwan and signed a memorandum of cooperation with three universities including Chungyu University of Film and Arts; Hsuan Chuang University; Chien Hsin University of Science and Technology and visited some student internship facilities.</p>
         <p style="margin-bottom: 10px;">On the first day, TUCST’s key officials had a working program with the Governing Board of Chungyu University of Film and Arts.</p>
         <p style="margin-bottom: 10px;">At the meeting, key officials of the two universities had an overview of the whole university and training programs as well as each university’s advantages in training management, academic exchange, international cooperation, scientific research, and experimental practice.</p>
