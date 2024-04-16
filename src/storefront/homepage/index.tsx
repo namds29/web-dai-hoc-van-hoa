@@ -130,17 +130,17 @@ const AdminHomepage = () => {
           <div className={styles.card}>
             {/* <img  className={styles.card_img} src="/img/training-icon.png" alt="Training Program" /> */}
             <SchoolIcon className="!text-4xl xl:!text-6xl text-orange-500" />
-            <p className="text-xl xl:text-2xl font-bold ">Training Program</p>
+            <p className="text-sm xl:text-2xl font-bold ">Training Program</p>
           </div>
           <div className={styles.card}>
             {/* <img  className={styles.card_img} src="/img/partner.png" alt="Partner List" /> */}
             <GroupsIcon className="!text-4xl xl:!text-6xl text-orange-500" />
-            <p className="text-xl xl:text-2xl font-bold ">Partner List</p>
+            <p className="text-sm xl:text-2xl font-bold ">Partner List</p>
           </div>
           <div className={styles.card}>
             {/* <img  className={styles.card_img} src="/img/guidebook.png" alt="Student Guidebook" /> */}
             <AutoStoriesIcon className="!text-4xl xl:!text-6xl text-orange-500" />
-            <p className="text-xl xl:text-2xl font-bold ">Student Guidebook</p>
+            <p className="text-sm xl:text-2xl font-bold ">Student Guidebook</p>
           </div>
         </div>
       </section>

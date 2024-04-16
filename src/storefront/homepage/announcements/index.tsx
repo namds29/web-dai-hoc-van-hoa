@@ -28,12 +28,10 @@ const Announcements = () => {
     ];
 
     return (
-        <section className="bg-gray-100 w-full px-8 xl:px-24 py-8">
+        <section className="bg-gray-100 w-full px-4 md:px-24 py-8">
             <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
-                <p className="text-xl border-b-4">HIGHLIGHTS & ANNOUNCEMENTS</p>
-                <button className="border border-orange-400 hover:bg-orange-100 px-4 rounded py-2">
-                    See more
-                </button>
+                <p className="text-sm md:text-xl border-b-4">HIGHLIGHTS & ANNOUNCEMENTS</p>
+
             </div>
             <div className={styles.newest_new}>
                 {data.map((newsItem, index) => (
@@ -47,6 +45,12 @@ const Announcements = () => {
                     />
                 ))}
             </div>
+            <div className="w-full text-center mt-8">
+                <button className="text-base border text-orange-500 border-orange-400 hover:bg-orange-100 px-6 rounded py-3">
+                    See more
+                </button>
+            </div>
+            ˛
         </section>
     )
 }

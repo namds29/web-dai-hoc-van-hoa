@@ -65,7 +65,7 @@ const Footer = () => {
                         }}
                     />
                 </div>
-                <div className="flex flex-col lg:flex-row justify-between absolute w-full h-full px-24 py-8">
+                <div className="flex flex-col lg:flex-row justify-between absolute w-full h-full px-8 xl:px-24 py-8">
                     <div className="text-sm">
                         <p className="font-bold text-lg mb-4">CONNECT WITH TUCST</p>
                         <p>Address: No. 561 Quang Trung 3, Dong Ve Ward, City. Thanh Hoa</p>
