@@ -1,107 +1,165 @@
-import {
-  ACADEMICS_FUCTIONAL_UNITS,
-  ACADEMICS_TRAINING_PROGRAM,
-} from "src/utils/constant";
-// import styles from "./index.module.scss";
-import { useState } from "react";
+import { Button, MenuProps } from "antd";
+import { useEffect, useState } from "react";
+import DropdownItem from "src/components/dropdown/dropdown-item";
+import FileUpload from "src/components/image-upload";
+import ListData from "src/components/list-data";
+import EditModal from "src/components/evc-modal";
+import { MODAL_TYPE } from "src/interfaces";
+
+type IItemType = {
+  label: string;
+  key: string;
+};
+
+enum ITEM_DROPDOWN {
+  FUNCTIONAL_UNITS = "funcunits",
+  TRAINING_PROGRAM = "trainingprogram",
+  UNIVERSITY = "university",
+}
+
+type IEditType = {
+  id?: string;
+  type: string;
+};
+
+type DataType = { id: string; title: string; content: string };
 
 const AdminAcademics = () => {
-  const [unitId, setUnitId] = useState<number>(1);
-  // const [trainingTitle, setTrainingTitle] = useState<string>("");
+  const [dropdownValue, setDropdownValue] = useState<IItemType>({
+    label: "Section",
+    key: "",
+  });
 
-  const handleChangeUnit = (id: number) => {
-    console.log(id);
-    setUnitId(id);
+  const [editValue, setEditValue] = useState<DataType>({
+    id: "0",
+    title: "",
+    content: "",
+  });
+
+  const [openModal, setOpenModal] = useState(false);
+  const [modalType, setModalType] = useState("");
+  const [editTypeValue, setEditTypeValue] = useState<IEditType>();
+
+  const arrayOfObjects = [
+    {
+      title: "First Object",
+      id: "1",
+      content: "This is the content of the first object.",
+    },
+    {
+      title: "Second Object",
+      id: "2",
+      content: "This is the content of the second object.",
+    },
+    {
+      title: "Third Object",
+      id: "3",
+      content: "This is the content of the third object.",
+    },
+  ];
+
+  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+
+  useEffect(() => {
+    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.EDIT);
+      const choosenValue = arrayOfObjects.find(
+        (item) => item.id === editTypeValue.id
+      );
+      if (choosenValue) {
+        setEditValue(choosenValue);
+      }
+    }
+    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.CREATE);
+    }
+    if (editTypeValue?.type === MODAL_TYPE.VIEW) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.VIEW);
+    }
+  }, [editTypeValue]);
+
+  const handleEditType = ({ id, type }: IEditType) => {
+    setEditTypeValue({ id, type });
   };
-  // const handleChangeTitle = (title: string) => {
-  //   console.log(title);
-  //   setTrainingTitle(title);
-  // };
+
+  const dropdownData: IItemType[] = [
+    { label: "Functional units", key: ITEM_DROPDOWN.FUNCTIONAL_UNITS },
+    { label: "Training program", key: ITEM_DROPDOWN.TRAINING_PROGRAM },
+    {
+      label: "University",
+      key: ITEM_DROPDOWN.UNIVERSITY,
+    },
+  ];
+
+  const dropdownItems: MenuProps["items"] = dropdownData;
+
+  const onClick: MenuProps["onClick"] = ({ key }) => {
+    dropdownData.map((item) => {
+      if (item.key === key) {
+        setDropdownValue({ label: item.label, key: key });
+      }
+    });
+  };
+
+  const handleCancel = () => {
+    setOpenModal(false);
+  };
+
+  const handleOk = (value: any) => {
+    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
+      const newObj = {
+        id: arrayOfObjects.length.toString(),
+        title: value.title,
+        content: value.content,
+      };
+      arrayOfObjects.push(newObj);
+      setData(arrayOfObjects);
+      setOpenModal(false);
+    }
+    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+      const newData = arrayOfObjects.map((item) => {
+        if (editValue.id && item.id === editValue.id) {
+          item = {
+            id: value.id,
+            title: value.title,
+            content: value.content,
+          };
+        }
+        return item;
+      });
+      setData(newData);
+      setOpenModal(false);
+    }
+  };
 
   return (
-    <section className="w-full">
-      <div className="w-full h-400">
-        <img
-          className="w-full h-400 object-cover"
-          src="/img/banner3.png"
-          alt=""
+    <div>
+      <div>
+        <DropdownItem
+          items={dropdownItems}
+          onClick={onClick}
+          label={dropdownValue.label}
         />
       </div>
-      <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
-        <p className="text-3xl border-b-4 text-center">Academics</p>
-        <section id="functional_unit">
-          <p className="text-2xl mt-8">Functional Units</p>
-          <div className="flex border text-black border-black mt-4">
-            <div className="title w-1/3">
-              {ACADEMICS_FUCTIONAL_UNITS.map((item) => (
-                <div
-                  onClick={() => handleChangeUnit(item.id)}
-                  className="cursor-pointer text-blue-800 hover:text-blue-700 px-4 py-2 border-r border-black"
-                >
-                  <a>{item.title}</a>
-                </div>
-              ))}
-            </div>
-            <div className="description font-normal p-4 w-2/3">
-              {unitId == 1 && (
-                <div className="content">
-                  <p className="font-bold">1. General administrative office</p>
-                  <p>Introduction:</p>
-                  <p>Contact:</p>
-                  <p className="font-bold">2. Organization and staff</p>
-                  <p>Introduction:</p>
-                  <p>Contact:</p>
-                  <p>(...)</p>
-                </div>
-              )}
-              {unitId == 2 && (
-                <div className="content">
-                  <p className="font-bold">1. Organization and staff</p>
-                  <p>Introduction:</p>
 
-                  <p className="font-bold">2. Organization and staff</p>
-                  <p>Introduction:</p>
-                  <p>Contact:</p>
-                  <p>(...)</p>
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-        <section id="functional_unit">
-          <p className="text-2xl mt-8">Training Program</p>
-          <div className="flex border text-black border-black mt-4">
-            <div className="title w-1/3">
-              {ACADEMICS_TRAINING_PROGRAM.map((item) => (
-                <div className=" text-black px-4 py-2 border-r border-black">
-                  <a>{item.parent_title}</a>
-                  <div className="cursor-pointer ml-4 text-blue-800 hover:text-blue-700">
-                    {item.children_title.map((child) => (
-                      <div className="underline">{child}</div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="description font-normal p-4 w-2/3">
-              <div className="content">
-                <p className="font-bold text-center text-2xl">University</p>
-                <div className="flex gap-10 mt-8 justify-evenly">
-                  <div className="w-56 h-56 bg-orange-500"></div>
-                  <div className="w-56 h-56 bg-orange-500"></div>
-                  <div className="w-56 h-56 bg-orange-500"></div>
-                </div>
-                <div className="flex mt-12 justify-center gap-10 items-center font-bold text-xl text-white">
-                  <div className="px-8 py-4 bg-orange-500 rounded ">Chính quy</div>
-                  <div className="px-8 py-4 bg-orange-500 rounded">Liên Thông</div>
-                  <div className="px-8 py-4 bg-orange-500 rounded">Văn bằng 2</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
-    </section>
+      <div className="mt-10">
+        {dropdownValue.key ? (
+          <ListData section={dropdownValue.label} data={data} action={handleEditType}></ListData>
+        ) : (
+          <div>Please select dropdown to edit section</div>
+        )}
+      </div>
+      <EditModal
+        data={editValue}
+        show={openModal}
+        type={modalType}
+        onCancel={handleCancel}
+        onOk={handleOk}
+      ></EditModal>
+    </div>
   );
 };
 export default AdminAcademics;

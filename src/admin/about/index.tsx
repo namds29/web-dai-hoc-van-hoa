@@ -2,8 +2,8 @@ import { MenuProps } from "antd";
 import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 // import TextEditor from "src/components/texteditor";
-import FileUpload from "src/components/imageupload";
-import TextImageUpload from "src/components/imagetextupload";
+import FileUpload from "src/components/image-upload";
+import ListData from "src/components/list-data";
 
 type IItemType = {
   label: string;
@@ -14,7 +14,7 @@ enum ITEM_DROPDOWN {
   PRESIDENT_MESSAGE = "president-msg",
   BOARD_OF_DIRECTORS = "board-of-director",
   ABOUT_TUCST = "about",
-    FOUR_ELEMENT = "four-element",
+  FOUR_ELEMENT = "four-element",
 }
 
 type DataType = { id: number; title: string; content: string; type?: string };
@@ -79,6 +79,11 @@ const AdminAbout = () => {
     setEditValue(value);
   };
 
+  const handleEditType = () => {
+    console.log("cnaksjdncjk");
+    
+  };
+
   const dropdownData: IItemType[] = [
     { label: "President's message", key: ITEM_DROPDOWN.PRESIDENT_MESSAGE },
     { label: "Board of directors", key: ITEM_DROPDOWN.BOARD_OF_DIRECTORS },
@@ -109,28 +114,14 @@ const AdminAbout = () => {
           </div>
         );
       case ITEM_DROPDOWN.BOARD_OF_DIRECTORS:
-        return (
-          <div>
-            <TextImageUpload
-              haveContent={false}
-              editSection={dropdownValue.label}
-              dataValue={data}
-              editValue={handleEditState}
-            ></TextImageUpload>
-          </div>
-        );
       case ITEM_DROPDOWN.ABOUT_TUCST:
       case ITEM_DROPDOWN.FOUR_ELEMENT:
         return (
           <div>
-            <TextImageUpload
-              haveContent={true}
-              editSection={dropdownValue.label}
-              dataValue={data}
-              editValue={handleEditState}
-            ></TextImageUpload>
+            <ListData section="" data={data} action={handleEditType}></ListData>
           </div>
         );
+
       default:
         return <div>Please select dropdown to edit section</div>;
     }

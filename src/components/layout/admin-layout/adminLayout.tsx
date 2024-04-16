@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./admin.layout.module.scss";
-import AdminHeader from "../adminHeader/adminHeader";
+import AdminHeader from "../admin-header/adminHeader";
 import Sidebar from "../sidebar/sidebar";
 
 type Props = {

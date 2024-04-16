@@ -1,119 +1,167 @@
-import styles from "./index.module.scss";
+import { MenuProps } from "antd";
+import { useEffect, useState } from "react";
+import DropdownItem from "src/components/dropdown/dropdown-item";
+import ListData from "src/components/list-data";
+import EditModal from "src/components/evc-modal";
+import { MODAL_TYPE } from "src/interfaces";
+
+type IItemType = {
+  label: string;
+  key: string;
+};
+
+enum ITEM_DROPDOWN {
+  HOT_NEWS = "hotnews",
+  SCHOOL_ACTIVITIES = "schoolactivities",
+  CAMPUS_LIFE = "campuslife",
+  INTERNATIONAL_COOPERATION = "intercoop",
+}
+
+type IEditType = {
+  id?: string;
+  type: string;
+};
+
+type DataType = { id: string; title: string; content: string };
 
 const AdminNews = () => {
+  const [dropdownValue, setDropdownValue] = useState<IItemType>({
+    label: "Section",
+    key: "",
+  });
+
+  const [editValue, setEditValue] = useState<DataType>({
+    id: "0",
+    title: "",
+    content: "",
+  });
+
+  const [openModal, setOpenModal] = useState(false);
+  const [modalType, setModalType] = useState("");
+  const [editTypeValue, setEditTypeValue] = useState<IEditType>();
+
+  const arrayOfObjects = [
+    {
+      title: "First Object",
+      id: "1",
+      content: "This is the content of the first object.",
+    },
+    {
+      title: "Second Object",
+      id: "2",
+      content: "This is the content of the second object.",
+    },
+    {
+      title: "Third Object",
+      id: "3",
+      content: "This is the content of the third object.",
+    },
+  ];
+
+  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+
+  useEffect(() => {
+    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.EDIT);
+      const choosenValue = arrayOfObjects.find(
+        (item) => item.id === editTypeValue.id
+      );
+      if (choosenValue) {
+        setEditValue(choosenValue);
+      }
+    }
+    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.CREATE);
+    }
+    if (editTypeValue?.type === MODAL_TYPE.VIEW) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.VIEW);
+    }
+  }, [editTypeValue]);
+
+  const handleEditType = ({ id, type }: IEditType) => {
+    setEditTypeValue({ id, type });
+  };
+
+  const dropdownData: IItemType[] = [
+    { label: "Hot news", key: ITEM_DROPDOWN.HOT_NEWS },
+    { label: "School activities", key: ITEM_DROPDOWN.SCHOOL_ACTIVITIES },
+    {
+      label: "International cooperation",
+      key: ITEM_DROPDOWN.INTERNATIONAL_COOPERATION,
+    },
+    { label: "Campus life", key: ITEM_DROPDOWN.CAMPUS_LIFE },
+    
+  ];
+
+  const dropdownItems: MenuProps["items"] = dropdownData;
+
+  const onClick: MenuProps["onClick"] = ({ key }) => {
+    dropdownData.map((item) => {
+      if (item.key === key) {
+        setDropdownValue({ label: item.label, key: key });
+      }
+    });
+  };
+
+  const handleCancel = () => {
+    setOpenModal(false);
+  };
+
+  const handleOk = (value: any) => {
+    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
+      const newObj = {
+        id: arrayOfObjects.length.toString(),
+        title: value.title,
+        content: value.content,
+      };
+      arrayOfObjects.push(newObj);
+      setData(arrayOfObjects);
+      setOpenModal(false);
+    }
+    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+      const newData = arrayOfObjects.map((item) => {
+        if (editValue.id && item.id === editValue.id) {
+          item = {
+            id: value.id,
+            title: value.title,
+            content: value.content,
+          };
+        }
+        return item;
+      });
+      setData(newData);
+      setOpenModal(false);
+    }
+  };
+
   return (
-    <section className="w-full">
-      <div className="w-full h-400">
-        <img
-          className="w-full h-400 object-cover"
-          src="/img/banner3.png"
-          alt=""
+    <div>
+      <div>
+        <DropdownItem
+          items={dropdownItems}
+          onClick={onClick}
+          label={dropdownValue.label}
         />
       </div>
-      <section className="flex gap-10  w-full text-orange-500 font-bold  justify-between px-20 py-8">
-        <div>
-          <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
-          <div className="overflow-hidden bg-red-300 w-full h-80 flex  justify-center items-center relative rounded">
-           <img  loading="lazy" className={styles.hot_new_pic} src="/img/thumb1.png" alt="" />
-            <p className="absolute text-2xl text-white cursor-pointer">
-              Sinh viên TUCST đạt giải cao
-            </p>
-          </div>
-        </div>
 
-        <div className="w-1/3">
-          <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
-          <div className="flex flex-col gap-4 w-full text-white">
-            <div className="bg-red-300 h-full p-4 rounded">
-              <a href="" aria-label="">
-                News
-              </a>
-            </div>
-            <div className="bg-red-300 p-4 rounded">
-              <a href="" aria-label="">
-                News
-              </a>
-            </div>
-            <div className="bg-red-300 p-4 rounded">
-              <a href="" aria-label="">
-                News
-              </a>
-            </div>
-            <div className="bg-red-300 p-4 rounded">
-              <a href="" aria-label="">
-                News
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className=" bg-gray-100 w-full text-black font-bold  justify-between items-center px-20 py-8">
-        <div className="flex gap-8 mt-4">
-          <div className={styles.card}>
-            <div className={styles.card_title}>SCHOOL NAME</div>
-            <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-              News
-            </div>
-            <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-              News
-            </div>
-            <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-              News
-            </div>
-          </div>
-          <div className={styles.card}>
-            <div className={styles.card_title}>CAMPUS LIFE</div>
-            <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-              News
-            </div>
-            <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-              News
-            </div>
-            <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-              News
-            </div>
-          </div>
-          <div className={styles.card}>
-            <div className={styles.card_title}>INTERNATIONAL COOPERATION </div>
-            <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-              News
-            </div>
-            <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-              News
-            </div>
-            <div className={styles.card_content_news}>
-              {/*<img  loading="lazy" className="rounded" src="" alt="" /> */}
-              News
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="grid grid-cols-4 text-xl bold text-center gap-4 bg-gray-200 w-full text-black  font-bold px-20 py-8">
-        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center">
-          HISTORY OF FORMATION AND DEVELOPMENT
-        </div>
-        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center">
-          MISSION - VISION - GOAL - CORE VALUES - SLOGAN - EDUCATIONAL
-          PHILOSOPHY
-        </div>
-        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center">
-          CONDITIONS FOR ENSURE QUALITY OF EDUCATION
-        </div>
-        <div className="w-full h-64 p-8 rounded bg-orange-300 flex items-center">
-          ACHIEVEMENTS AND HONORS ACHIEVED
-        </div>
-      </section>
-    </section>
+      <div className="mt-10">
+        {dropdownValue.key ? (
+          <ListData section={dropdownValue.label} data={data} action={handleEditType}></ListData>
+        ) : (
+          <div>Please select dropdown to edit section</div>
+        )}
+      </div>
+      <EditModal
+        data={editValue}
+        show={openModal}
+        type={modalType}
+        onCancel={handleCancel}
+        onOk={handleOk}
+      ></EditModal>
+    </div>
   );
 };
 export default AdminNews;
