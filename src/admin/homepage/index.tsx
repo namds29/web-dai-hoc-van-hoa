@@ -123,7 +123,7 @@ const AdminHomePage = () => {
   const onClick: MenuProps["onClick"] = ({ key }) => {
     dropdownData.map((item) => {
       if (item.key === key) {
-        setDropdownValue({ label: item.label, key: key });
+        setDropdownValue({ label: item.label, key: key, listType: item.listType });
       }
     });
   };
@@ -175,6 +175,7 @@ const AdminHomePage = () => {
             section={dropdownValue.label}
             data={data}
             action={handleEditType}
+            type={dropdownValue.listType}
           ></ListData>
         ) : (
           <div>Please select dropdown to edit section</div>
