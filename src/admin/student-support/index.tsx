@@ -1,147 +1,166 @@
-import styles from "./index.module.scss";
+import { MenuProps } from "antd";
+import { useEffect, useState } from "react";
+import DropdownItem from "src/components/dropdown/dropdown-item";
+import ListData from "src/components/list-data";
+import EditModal from "src/components/evc-modal";
+import { MODAL_TYPE } from "src/interfaces";
 
-import { Card } from "antd";
-import Banner from "./banner";
+type IItemType = {
+  label: string;
+  key: string;
+};
+
+enum ITEM_DROPDOWN {
+  BANNER_IMG = "bannerimg",
+  SUPPORT_DEPARTMENTS = "supportdepartments",
+  STUDENT_SERVICES = "studentservices",
+  RECRUITMENT = "recruitment",
+}
+
+type IEditType = {
+  id?: string;
+  type: string;
+};
+
+type DataType = { id: string; title: string; content: string };
 
 const AdminStudentSupport = () => {
-  const departmentData = [
-    {
-      id: "1",
-      label: "Scientific management & International Cooperation Department",
-      link: "abc",
-    },
-    { id: "2", label: "Training Department", link: "abc" },
-    { id: "3", label: "Student Political Affairs Department", link: "abc" },
-  ];
+  const [dropdownValue, setDropdownValue] = useState<IItemType>({
+    label: "Section",
+    key: "",
+  });
 
-  const serviceData = [
-    {
-      id: "1",
-      label: "Dormitory",
-      link: "abc",
-    },
-    { id: "2", label: "External services", link: "abc" },
-  ];
+  const [editValue, setEditValue] = useState<DataType>({
+    id: "0",
+    title: "",
+    content: "",
+  });
 
-  const recruitmentData = [
+  const [openModal, setOpenModal] = useState(false);
+  const [modalType, setModalType] = useState("");
+  const [editTypeValue, setEditTypeValue] = useState<IEditType>();
+
+  const arrayOfObjects = [
     {
+      title: "First Object",
       id: "1",
-      title: "Title",
-      subtitle: "Subtitle",
-      link: "abc",
+      content: "This is the content of the first object.",
     },
     {
+      title: "Second Object",
       id: "2",
-      title: "Title",
-      subtitle: "Subtitle",
-      link: "abc",
+      content: "This is the content of the second object.",
     },
     {
+      title: "Third Object",
       id: "3",
-      title: "Title",
-      subtitle: "Subtitle",
-      link: "abc",
-    },
-    {
-      id: "4",
-      title: "Title",
-      subtitle: "Subtitle",
-      link: "abc",
-    },
-    {
-      id: "5",
-      title: "Title",
-      subtitle: "Subtitle",
-      link: "abc",
+      content: "This is the content of the third object.",
     },
   ];
+
+  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+
+  useEffect(() => {
+    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.EDIT);
+      const choosenValue = arrayOfObjects.find(
+        (item) => item.id === editTypeValue.id
+      );
+      if (choosenValue) {
+        setEditValue(choosenValue);
+      }
+    }
+    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.CREATE);
+    }
+    if (editTypeValue?.type === MODAL_TYPE.VIEW) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.VIEW);
+    }
+  }, [editTypeValue]);
+
+  const handleEditType = ({ id, type }: IEditType) => {
+    setEditTypeValue({ id, type });
+  };
+
+  const dropdownData: IItemType[] = [
+    { label: "Banner image", key: ITEM_DROPDOWN.BANNER_IMG },
+    { label: "Support departments", key: ITEM_DROPDOWN.SUPPORT_DEPARTMENTS },
+    {
+      label: "Student services",
+      key: ITEM_DROPDOWN.STUDENT_SERVICES,
+    },
+    { label: "Recruitment", key: ITEM_DROPDOWN.RECRUITMENT },
+  ];
+
+  const dropdownItems: MenuProps["items"] = dropdownData;
+
+  const onClick: MenuProps["onClick"] = ({ key }) => {
+    dropdownData.map((item) => {
+      if (item.key === key) {
+        setDropdownValue({ label: item.label, key: key });
+      }
+    });
+  };
+
+  const handleCancel = () => {
+    setOpenModal(false);
+  };
+
+  const handleOk = (value: any) => {
+    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
+      const newObj = {
+        id: arrayOfObjects.length.toString(),
+        title: value.title,
+        content: value.content,
+      };
+      arrayOfObjects.push(newObj);
+      setData(arrayOfObjects);
+      setOpenModal(false);
+    }
+    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+      const newData = arrayOfObjects.map((item) => {
+        if (editValue.id && item.id === editValue.id) {
+          item = {
+            id: value.id,
+            title: value.title,
+            content: value.content,
+          };
+        }
+        return item;
+      });
+      setData(newData);
+      setOpenModal(false);
+    }
+  };
 
   return (
-    <div className={styles.container}>
-      <Banner />
+    <div>
+      <div>
+        <DropdownItem
+          items={dropdownItems}
+          onClick={onClick}
+          label={dropdownValue.label}
+        />
+      </div>
 
-      <section className="bg-gray-100 w-full px-24 py-6">
-        <div className="w-full flex justify-center mt-6 mb-10 border-b-4">
-          <p className="text-5xl text-orange-500 ">International Student Guidebook</p>
-        </div>
-
-        <div className="flex text-orange-500 font-bold items-center">
-          <p className="text-xl border-b-4">SUPPORT DEPARTMENTS</p>
-        </div>
-        <div className="grid grid-cols-3 gap-4 w-full">
-          {departmentData.map((item) => {
-            return (
-              <div
-                key={item.id}
-                className="m-10 relative flex items-center justify-center"
-              >
-                <img
-                  className="object-cover w-full h-full rounded-lg filter brightness-50"
-                  src="/img/img1.png"
-                  alt=""
-                />
-                <div className="absolute flex text-center font-bold m-8 text-2xl">
-                  {item.label}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <Banner />
-
-      <section className="bg-gray-100 w-full px-24 py-6">
-        <div className="flex text-orange-500 font-bold items-center mb-6">
-          <p className="text-xl border-b-4">STUDENT SERVICES</p>
-        </div>
-        <div className="flex gap-4 w-full">
-          {serviceData.map((item) => {
-            return (
-              <div
-                key={item.id}
-                className="mx-10 relative flex items-center justify-center w-full h-80"
-              >
-                <img
-                  className="w-full object-cover rounded-lg filter brightness-50 h-full"
-                  src="/img/img1.png"
-                  alt=""
-                />
-                <div className="absolute flex text-center font-bold m-8 text-2xl">
-                  {item.label}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="bg-gray-100 w-full px-24 py-8">
-        <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
-          <p className="text-xl border-b-4">RECRUITMENT</p>
-        </div>
-        <div className="mx-10">
-          {recruitmentData.map((item) => {
-            return (
-              <Card key={item.id} className="my-2">
-                <div className="flex flex-row">
-                  <img
-                    src="/img/img1.png"
-                    className="w-1/4 rounded mr-6 "
-                    alt=""
-                  />
-                  <div className="flex flex-col justify-center ">
-                    <p className="text-3xl font-bold">{item.title}</p>
-                    <p className="text-2xl font-medium">{item.subtitle}</p>
-                  </div>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-      </section>
+      <div className="mt-10">
+        {dropdownValue.key ? (
+          <ListData section={dropdownValue.label} data={data} action={handleEditType}></ListData>
+        ) : (
+          <div>Please select dropdown to edit section</div>
+        )}
+      </div>
+      <EditModal
+        data={editValue}
+        show={openModal}
+        type={modalType}
+        onCancel={handleCancel}
+        onOk={handleOk}
+      ></EditModal>
     </div>
   );
 };
-
 export default AdminStudentSupport;

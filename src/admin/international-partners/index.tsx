@@ -1,106 +1,163 @@
-const AdminInternationalPartners = () => {
+import { MenuProps } from "antd";
+import { useEffect, useState } from "react";
+import DropdownItem from "src/components/dropdown/dropdown-item";
+import ListData from "src/components/list-data";
+import EditModal from "src/components/evc-modal";
+import { MODAL_TYPE } from "src/interfaces";
+
+type IItemType = {
+  label: string;
+  key: string;
+};
+
+enum ITEM_DROPDOWN {
+  PARTNER_LIST = "partnerlist",
+  PARTNER_WITH_US = "partnerwithus",
+}
+
+type IEditType = {
+  id?: string;
+  type: string;
+};
+
+type DataType = { id: string; title: string; content: string };
+
+const AdminInternationalPartnerss = () => {
+  const [dropdownValue, setDropdownValue] = useState<IItemType>({
+    label: "Section",
+    key: "",
+  });
+
+  const [editValue, setEditValue] = useState<DataType>({
+    id: "0",
+    title: "",
+    content: "",
+  });
+
+  const [openModal, setOpenModal] = useState(false);
+  const [modalType, setModalType] = useState("");
+  const [editTypeValue, setEditTypeValue] = useState<IEditType>();
+
+  const arrayOfObjects = [
+    {
+      title: "First Object",
+      id: "1",
+      content: "This is the content of the first object.",
+    },
+    {
+      title: "Second Object",
+      id: "2",
+      content: "This is the content of the second object.",
+    },
+    {
+      title: "Third Object",
+      id: "3",
+      content: "This is the content of the third object.",
+    },
+  ];
+
+  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+
+  useEffect(() => {
+    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.EDIT);
+      const choosenValue = arrayOfObjects.find(
+        (item) => item.id === editTypeValue.id
+      );
+      if (choosenValue) {
+        setEditValue(choosenValue);
+      }
+    }
+    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.CREATE);
+    }
+    if (editTypeValue?.type === MODAL_TYPE.VIEW) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.VIEW);
+    }
+  }, [editTypeValue]);
+
+  const handleEditType = ({ id, type }: IEditType) => {
+    setEditTypeValue({ id, type });
+  };
+
+  const dropdownData: IItemType[] = [
+    { label: "Partner list", key: ITEM_DROPDOWN.PARTNER_LIST },
+    { label: "Partner with us", key: ITEM_DROPDOWN.PARTNER_WITH_US },
+  ];
+
+  const dropdownItems: MenuProps["items"] = dropdownData;
+
+  const onClick: MenuProps["onClick"] = ({ key }) => {
+    dropdownData.map((item) => {
+      if (item.key === key) {
+        setDropdownValue({ label: item.label, key: key });
+      }
+    });
+  };
+
+  const handleCancel = () => {
+    setOpenModal(false);
+  };
+
+  const handleOk = (value: any) => {
+    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
+      const newObj = {
+        id: arrayOfObjects.length.toString(),
+        title: value.title,
+        content: value.content,
+      };
+      arrayOfObjects.push(newObj);
+      setData(arrayOfObjects);
+      setOpenModal(false);
+    }
+    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+      const newData = arrayOfObjects.map((item) => {
+        if (editValue.id && item.id === editValue.id) {
+          item = {
+            id: value.id,
+            title: value.title,
+            content: value.content,
+          };
+        }
+        return item;
+      });
+      setData(newData);
+      setOpenModal(false);
+    }
+  };
+
   return (
-    <section className="w-full">
-      <div className="w-full h-400">
-        <img
-          className="w-full h-400 object-cover"
-          src="/img/banner3.png"
-          alt=""
+    <div>
+      <div>
+        <DropdownItem
+          items={dropdownItems}
+          onClick={onClick}
+          label={dropdownValue.label}
         />
       </div>
-      <div className="flex min-h-[100vh] gap-10">
-        <section className="bg-yellow-700 w-1/3 flex flex-col p-4">
-          <p className="font-bold text-2xl mb-4">Partner List</p>
-          <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Southern Luzon State University - Philipines
-          </a>
-          <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Hsuan Chuang University (HCU) - Taiwan
-          </a>
-          <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Chien Hsin University of Science and Technology - Taiwan
-          </a>
-          <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Daejin University - Korea
-          </a>
-          <p className="font-bold text-2xl mb-4">Partner With Us</p>
-        </section>
 
-        <section className="text-black p-4 w-full">
-          <p className="font-bold text-2xl mb-4">Partner List</p>
-          <div className="grid grid-cols-2 gap-10">
-            <div className=" border rounded-xl bg-gray-200 p-4 text-center ">
-              <div className="h-44 w-full">
-                <img
-                  className="w-full h-full object-contain"
-                  src="/img/logo-partner1.png"
-                  alt=""
-                />
-              </div>
-              <p className="font-bold">
-                Southern Luzon State University - Philipines
-              </p>
-              <p className="text-orange-600">Giới thiệu tổng quan về đối tác</p>
-              <p className="text-orange-600">Thông tin hợp tác</p>
-              <button className="bg-red-400 px-4 py-2 rounded text-white mt-3">Website</button>
-            </div>
-            <div className=" border rounded-xl bg-gray-200 p-4 text-center ">
-              <div className="h-44 w-full">
-                <img
-                  className="w-full h-full object-contain"
-                  src="/img/logo-partner1.png"
-                  alt=""
-                />
-              </div>
-              <p className="font-bold">
-                Southern Luzon State University - Philipines
-              </p>
-              <p className="text-orange-600">Giới thiệu tổng quan về đối tác</p>
-              <p className="text-orange-600">Thông tin hợp tác</p>
-              <button className="bg-red-400 px-4 py-2 rounded text-white mt-3">Website</button>
-            </div>
-            <div className=" border rounded-xl bg-gray-200 p-4 text-center ">
-              <div className="h-44 w-full">
-                <img
-                  className="w-full h-full object-contain"
-                  src="/img/logo-partner1.png"
-                  alt=""
-                />
-              </div>
-              <p className="font-bold">
-                Southern Luzon State University - Philipines
-              </p>
-              <p className="text-orange-600">Giới thiệu tổng quan về đối tác</p>
-              <p className="text-orange-600">Thông tin hợp tác</p>
-              <button className="bg-red-400 px-4 py-2 rounded text-white mt-3">Website</button>
-            </div>
-            <div className=" border rounded-xl bg-gray-200 p-4 text-center ">
-              <div className="h-44 w-full">
-                <img
-                  className="w-full h-full object-contain"
-                  src="/img/logo-partner1.png"
-                  alt=""
-                />
-              </div>
-              <p className="font-bold">
-                Southern Luzon State University - Philipines
-              </p>
-              <p className="text-orange-600">Giới thiệu tổng quan về đối tác</p>
-              <p className="text-orange-600">Thông tin hợp tác</p>
-              <button className="bg-red-400 px-4 py-2 rounded text-white mt-3">Website</button>
-            </div>
-           
-          </div>
-
-          <div className="font-bold text-2xl mb-4 mt-8">Partner with Us</div>
-          <div>
-            <p>Phone: </p>
-            <p className="mt-2">Email:</p>
-            <p className="mt-2">Department:</p>
-          </div>
-        </section>
+      <div className="mt-10">
+        {dropdownValue.key ? (
+          <ListData
+            section={dropdownValue.label}
+            data={data}
+            action={handleEditType}
+          ></ListData>
+        ) : (
+          <div>Please select dropdown to edit section</div>
+        )}
       </div>
-    </section>
+      <EditModal
+        data={editValue}
+        show={openModal}
+        type={modalType}
+        onCancel={handleCancel}
+        onOk={handleOk}
+      ></EditModal>
+    </div>
   );
 };
-export default AdminInternationalPartners;
+export default AdminInternationalPartnerss;

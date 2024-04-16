@@ -1,179 +1,165 @@
-import styles from "./index.module.scss";
+import { MenuProps } from "antd";
+import { useEffect, useState } from "react";
+import DropdownItem from "src/components/dropdown/dropdown-item";
+import ListData from "src/components/list-data";
+import EditModal from "src/components/evc-modal";
+import { MODAL_TYPE } from "src/interfaces";
+
+type IItemType = {
+  label: string;
+  key: string;
+};
+
+enum ITEM_DROPDOWN {
+  JOURNAL = "journal",
+  SCIENCE_TOPIC = "sciencetopic",
+  CONFERENCES = "conferences",
+  PUBLISH = "publish",
+}
+
+type IEditType = {
+  id?: string;
+  type: string;
+};
+
+type DataType = { id: string; title: string; content: string };
 
 const AdminResearch = () => {
+  const [dropdownValue, setDropdownValue] = useState<IItemType>({
+    label: "Section",
+    key: "",
+  });
+
+  const [editValue, setEditValue] = useState<DataType>({
+    id: "0",
+    title: "",
+    content: "",
+  });
+
+  const [openModal, setOpenModal] = useState(false);
+  const [modalType, setModalType] = useState("");
+  const [editTypeValue, setEditTypeValue] = useState<IEditType>();
+
+  const arrayOfObjects = [
+    {
+      title: "First Object",
+      id: "1",
+      content: "This is the content of the first object.",
+    },
+    {
+      title: "Second Object",
+      id: "2",
+      content: "This is the content of the second object.",
+    },
+    {
+      title: "Third Object",
+      id: "3",
+      content: "This is the content of the third object.",
+    },
+  ];
+
+  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+
+  useEffect(() => {
+    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.EDIT);
+      const choosenValue = arrayOfObjects.find(
+        (item) => item.id === editTypeValue.id
+      );
+      if (choosenValue) {
+        setEditValue(choosenValue);
+      }
+    }
+    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.CREATE);
+    }
+    if (editTypeValue?.type === MODAL_TYPE.VIEW) {
+      setOpenModal(true);
+      setModalType(MODAL_TYPE.VIEW);
+    }
+  }, [editTypeValue]);
+
+  const handleEditType = ({ id, type }: IEditType) => {
+    setEditTypeValue({ id, type });
+  };
+
+  const dropdownData: IItemType[] = [
+    { label: "Journal", key: ITEM_DROPDOWN.JOURNAL },
+    { label: "Science topic", key: ITEM_DROPDOWN.SCIENCE_TOPIC },
+    {
+      label: "Conferences",
+      key: ITEM_DROPDOWN.CONFERENCES,
+    },
+    { label: "Publish", key: ITEM_DROPDOWN.PUBLISH },
+  ];
+
+  const dropdownItems: MenuProps["items"] = dropdownData;
+
+  const onClick: MenuProps["onClick"] = ({ key }) => {
+    dropdownData.map((item) => {
+      if (item.key === key) {
+        setDropdownValue({ label: item.label, key: key });
+      }
+    });
+  };
+
+  const handleCancel = () => {
+    setOpenModal(false);
+  };
+
+  const handleOk = (value: any) => {
+    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
+      const newObj = {
+        id: arrayOfObjects.length.toString(),
+        title: value.title,
+        content: value.content,
+      };
+      arrayOfObjects.push(newObj);
+      setData(arrayOfObjects);
+      setOpenModal(false);
+    }
+    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+      const newData = arrayOfObjects.map((item) => {
+        if (editValue.id && item.id === editValue.id) {
+          item = {
+            id: value.id,
+            title: value.title,
+            content: value.content,
+          };
+        }
+        return item;
+      });
+      setData(newData);
+      setOpenModal(false);
+    }
+  };
+
   return (
-    <section className="w-full">
-
-      <div className="w-full h-400">
-       <img   className="w-full h-400 object-cover" src="/img/banner3.png" alt="" />
+    <div>
+      <div>
+        <DropdownItem
+          items={dropdownItems}
+          onClick={onClick}
+          label={dropdownValue.label}
+        />
       </div>
-      <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
-        <div className="text-center">
-          <p className="text-4xl">Research</p>
-          <p className="text-xl border-b-4">
-            From school leaders to undergraduates, all members of the TUCST community are engaged in the creation of knowledge
-          </p>
-        </div>
-        <section className="mt-8 bg-amber-800 rounded px-8 py-4 text-white">
-          <section id="journal">
-            <p className="text-2xl border-b-4">Journal</p>
-            <div className="flex justify-evenly gap-8 mt-8">
-              <div className="text-center">
-                <div className={styles.journal_img}>
-                 <img   className="w-full" src="/img/tapchi.jpg" alt="" />
-                </div>
-                <div>Journal name</div>
-              </div>
-              <div className="text-center">
-                <div className={styles.journal_img}>
-                 <img   className="w-full" src="/img/tapchi.jpg" alt="" />
-                </div>
-                <div>Journal name</div>
-              </div>
-              <div className="text-center">
-                <div className={styles.journal_img}>
-                 <img   className="w-full" src="/img/tapchi.jpg" alt="" />
-                </div>
-                <div>Journal name</div>
-              </div>
-            </div>
-            <div className="text-center ">
-              <button
-                className={`${styles.btn_see_more} text-white border-double border-4 hover:opacity-70 border-white`}
-              >
-                See more
-              </button>
-            </div>
-          </section>
-          <section id="science">
-            <p className="text-2xl border-b-4">Science Topic</p>
-          
-            <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
-              <div className="w-52 h-40 rounded">
-               <img   className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
-              </div>
-              <div className={styles.card_science}>
-                <p className="title text-xl font-bold">Science Title</p>
-                <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline">Link website</a>
-              </div>
-            </div>
-            <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
-              <div className="w-52 h-40 rounded">
-               <img   className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
-              </div>
-              <div className={styles.card_science}>
-                <p className="title text-xl font-bold">Science Title</p>
-                <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline">Link website</a>
-              </div>
-            </div>
-            <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
-              <div className="w-52 h-40 rounded">
-               <img   className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
-              </div>
-              <div className={styles.card_science}>
-                <p className="title text-xl font-bold">Science Title</p>
-                <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
-              </div>
-            </div>
-
-            <div className="text-center ">
-              <button
-                className={`${styles.btn_see_more} text-white border-double border-4 hover:opacity-70 border-white`}
-              >
-                See more
-              </button>
-            </div>
-          </section>
-          <section id="conferences">
-            <p className="text-2xl border-b-4">Conferences</p>
-          
-            <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
-              <div className="w-52 h-40 rounded">
-               <img   className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
-              </div>
-              <div className={styles.card_science}>
-                <p className="title text-xl font-bold">Science Title</p>
-                <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
-              </div>
-            </div>
-            <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
-              <div className="w-52 h-40 rounded">
-               <img   className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
-              </div>
-              <div className={styles.card_science}>
-                <p className="title text-xl font-bold">Science Title</p>
-                <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
-              </div>
-            </div>
-            <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
-              <div className="w-52 h-40 rounded">
-               <img   className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
-              </div>
-              <div className={styles.card_science}>
-                <p className="title text-xl font-bold">Science Title</p>
-                <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
-              </div>
-            </div>
-
-            <div className="text-center ">
-              <button
-                className={`${styles.btn_see_more} text-white border-double border-4 hover:opacity-70 border-white`}
-              >
-                See more
-              </button>
-            </div>
-          </section>
-          <section id="publish">
-            <p className="text-2xl border-b-4">Publish</p>
-          
-            <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
-              <div className="w-52 h-40 rounded">
-               <img   className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
-              </div>
-              <div className={styles.card_science}>
-                <p className="title text-xl font-bold">Science Title</p>
-                <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
-              </div>
-            </div>
-            <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
-              <div className="w-52 h-40 rounded">
-               <img   className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
-              </div>
-              <div className={styles.card_science}>
-                <p className="title text-xl font-bold">Science Title</p>
-                <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
-              </div>
-            </div>
-            <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
-              <div className="w-52 h-40 rounded">
-               <img   className="w-52 h-full rounded object-cover" src="/img/img1.png" alt="" />
-              </div>
-              <div className={styles.card_science}>
-                <p className="title text-xl font-bold">Science Title</p>
-                <p className={styles.card_science_description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rhoncus dignissim risus, et consectetur massa tincidunt sit amet. Nam elementum vulputate metus</p>
-                <a className="text-blue-800 hover:text-blue-700 underline" >Link website</a>
-              </div>
-            </div>
-
-            <div className="text-center ">
-              <button
-                className={`${styles.btn_see_more} text-white border-double border-4 hover:opacity-70 border-white`}
-              >
-                See more
-              </button>
-            </div>
-          </section>
-        </section>
-      </section>
-    </section>
+      <div className="mt-10">
+        {dropdownValue.key ? (
+          <ListData section={dropdownValue.label} data={data} action={handleEditType}></ListData>
+        ) : (
+          <div>Please select dropdown to edit section</div>
+        )}
+      </div>
+      <EditModal
+        data={editValue}
+        show={openModal}
+        type={modalType}
+        onCancel={handleCancel}
+        onOk={handleOk}
+      ></EditModal>
+    </div>
   );
 };
 export default AdminResearch;

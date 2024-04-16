@@ -1,6 +1,6 @@
 import "./App.scss";
 import { Outlet, Route, Routes } from "react-router-dom";
-import Layout from "./components/layout/frontPageLayout/layout";
+import Layout from "./components/layout/front-page-layout/layout";
 import Homepage from "./storefront/homepage";
 import Research from "./storefront/research";
 import InternationalPartners from "./storefront/international-partners";
@@ -14,7 +14,7 @@ import AdminInternationalPartners from "./admin/international-partners";
 import AdminNews from "./admin/news";
 import AdminResearch from "./admin/research";
 import AdminStudentSupport from "./admin/student-support";
-import AdminLayout from "./components/layout/adminLayout/adminLayout";
+import AdminLayout from "./components/layout/admin-layout/adminLayout";
 import LoginPage from "./admin/login";
 import { Suspense, lazy } from "react";
 import { Spin } from "antd";

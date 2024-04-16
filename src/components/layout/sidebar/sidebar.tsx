@@ -21,14 +21,14 @@ const Sidebar = ({ menuOpen }: any) => {
     {
       title: "Student Support",
       icon: <DesktopOutlined />,
-      route: "/student-support",
+      route: "/admin/student-support",
     },
     {
       title: "International Partners",
       icon: <GlobalOutlined />,
-      route: "/international-partners",
+      route: "/admin/international-partners",
     },
-    { title: "Research", icon: <FileSearchOutlined />, route: "/research" },
+    { title: "Research", icon: <FileSearchOutlined />, route: "/admin/research" },
   ];
   return (
     <div className={styles.sidebar}>
