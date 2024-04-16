@@ -73,18 +73,11 @@ const InternationalPartners = () => {
       <div className="flex min-h-[100vh] gap-10">
         <section className="bg-yellow-700 w-1/3 flex flex-col p-4">
           <p className="font-bold text-2xl mb-4">Partner List</p>
+          {PARTNER_LIST.map(item => <Fragment key={item.title + "1"}>
           <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Southern Luzon State University - Philipines
+            🔍 {item.title}
           </a>
-          <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Hsuan Chuang University (HCU) - Taiwan
-          </a>
-          <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Chien Hsin University of Science and Technology - Taiwan
-          </a>
-          <a className="mb-4 cursor-pointer hover:opacity-80">
-            🔍 Daejin University - Korea
-          </a>
+          </Fragment>)}
           <p className="font-bold text-2xl mb-4">Partner With Us</p>
         </section>
 
