@@ -1,7 +1,6 @@
-import { Button, MenuProps } from "antd";
+import { MenuProps } from "antd";
 import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
-import FileUpload from "src/components/image-upload";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
 import { LIST_TYPE, MODAL_TYPE } from "src/interfaces";

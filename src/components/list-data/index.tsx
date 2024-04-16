@@ -1,6 +1,7 @@
 import React from "react";
 import { EditOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 import { Button, List } from "antd";
+import { LIST_TYPE } from "src/interfaces";
 
 const IconText = ({
   icon,
@@ -22,14 +23,13 @@ const ListData = ({
   data,
   section,
   action,
-  type
+  type,
 }: {
   data: any;
   section: string;
   action?: any;
   type?: number;
 }) => {
-
   return (
     <div>
       <div className="flex justify-end mb-4">
@@ -60,35 +60,58 @@ const ListData = ({
                 src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
               />
             }
-            actions={[
-              <IconText
-                key={item.id}
-                icon={EyeOutlined}
-                text="View"
-                danger={false}
-                onClick={() => {
-                  action({ id: item.id, type: "view" });
-                }}
-              />,
-              <IconText
-                key={item.id}
-                icon={EditOutlined}
-                text="Edit"
-                danger={false}
-                onClick={() => {
-                  action({ id: item.id, type: "edit" });
-                }}
-              />,
-              <IconText
-                key={item.id}
-                icon={DeleteOutlined}
-                text="Delete"
-                danger={true}
-                onClick={() => {
-                  action({ id: item.id, type: "delete" });
-                }}
-              />,
-            ]}
+            actions={
+              type === LIST_TYPE.IMAGE || type === LIST_TYPE.IMAGE_TITLE
+                ? [
+                    <IconText
+                      key={item.id}
+                      icon={EditOutlined}
+                      text="Edit"
+                      danger={false}
+                      onClick={() => {
+                        action({ id: item.id, type: "edit" });
+                      }}
+                    />,
+                    <IconText
+                      key={item.id}
+                      icon={DeleteOutlined}
+                      text="Delete"
+                      danger={true}
+                      onClick={() => {
+                        action({ id: item.id, type: "delete" });
+                      }}
+                    />,
+                  ]
+                : [
+                    <IconText
+                      key={item.id}
+                      icon={EyeOutlined}
+                      text="View"
+                      danger={false}
+                      onClick={() => {
+                        action({ id: item.id, type: "view" });
+                      }}
+                    />,
+                    <IconText
+                      key={item.id}
+                      icon={EditOutlined}
+                      text="Edit"
+                      danger={false}
+                      onClick={() => {
+                        action({ id: item.id, type: "edit" });
+                      }}
+                    />,
+                    <IconText
+                      key={item.id}
+                      icon={DeleteOutlined}
+                      text="Delete"
+                      danger={true}
+                      onClick={() => {
+                        action({ id: item.id, type: "delete" });
+                      }}
+                    />,
+                  ]
+            }
           >
             <List.Item.Meta title={<p className="text-xl">{item.title}</p>} />
             {item.content}

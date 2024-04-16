@@ -1,7 +1,6 @@
-import { Button, MenuProps } from "antd";
+import { MenuProps } from "antd";
 import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
-import FileUpload from "src/components/image-upload";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
 import { MODAL_TYPE } from "src/interfaces";
@@ -142,7 +141,11 @@ const AdminInternationalPartnerss = () => {
 
       <div className="mt-10">
         {dropdownValue.key ? (
-          <ListData section={dropdownValue.label} data={data} action={handleEditType}></ListData>
+          <ListData
+            section={dropdownValue.label}
+            data={data}
+            action={handleEditType}
+          ></ListData>
         ) : (
           <div>Please select dropdown to edit section</div>
         )}
