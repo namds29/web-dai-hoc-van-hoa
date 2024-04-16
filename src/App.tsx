@@ -21,6 +21,7 @@ import { Spin } from "antd";
 import { AuthProvider } from "./utils/context/auth-context";
 import FormalTraining from "./storefront/academics/formal-training";
 import NewsDetailComponent from "./storefront/news/detail/news-detail";
+import NewsListComponent from "./storefront/news/list/index";
 import Faculties from "./storefront/faculties";
 
 const AboutComponent = lazy(() => import("./storefront/about"));
@@ -57,6 +58,7 @@ function App() {
             <Route path="/about" element={<AboutComponent />} />
             <Route path="/news" element={<NewsComponent />} />
             <Route path="/news/:id" element={<NewsDetailComponent />} />
+            <Route path="/news-list/:name" element={<NewsListComponent />} />
             <Route path="/academics" element={<AcademicsComponent />} />
             <Route
               path="/academics/formal-training"
