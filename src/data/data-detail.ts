@@ -1,7 +1,7 @@
 export const DATA_DETAIL = [
     {
         id: "news1",
-        category: "school activities",
+        category: "school_activities",
         title:
             "TUCST TAKES PART IN THE 2024 ADMISSION CONSULTATION – CAREER GUIDANCE DAY OF TUOI TRE NEWSPAPER",
         content: `<p style="margin-bottom: 1rem">On the morning of January 14, the 2024 Admission Consultation-Career Guidance Day of Tuoi Tre Newspaper officially took place at Hong Duc University with the attendance of many big training institutions across the country. Attending this event was Dr. Vu Van Tuyen - Chairman of TUCST’s Council.</p>
@@ -46,7 +46,7 @@ export const DATA_DETAIL = [
     },
     {
         id: "news3",
-        category: "school activities",
+        category: "school_activities",
         title:
             "THANH HOA UNIVERSITY OF CULTURE, SPORTS, AND TOURISM ATTENDS THE OPENING CEREMONY OF THANH HOA-DIEN BIEN TOURISM AND CULTURE WEEK 2024",
         content: `
@@ -62,7 +62,7 @@ export const DATA_DETAIL = [
     },
     {
         id: "news4",
-        category: "campus life",
+        category: "campus_life",
         title:
             "YOUTH MONTH ACTIVITIES AT TUCST TO CELEBRATE THE 93RD ANNIVERSARY OF THE FOUNDING OF THE HO CHI MINH COMMUNIST YOUTH UNION",
         content: `<h1 style="font-weight:700;margin-bottom:1rem">TUCST Youth Month Activities 2024</h1>
@@ -108,7 +108,7 @@ export const DATA_DETAIL = [
     },
     {
         id: "news5",
-        category: "campus life",
+        category: "campus_life",
         title:
             "CLOSING CEREMONY OF THE 2024 STUDENT FOOTBALL TOURNAMENT: AN EXPLOSION OF EMOTION",
         content: `
@@ -133,16 +133,24 @@ export const DATA_DETAIL = [
     },
     {
         id: "news6",
-        category: "campus life",
+        category: "campus_life",
         title: "TUCST STUDENTS WON A BRONZE MEDAL IN SWIMMING AT THE ASIAN ARENA",
         content: `
         <div style="font-size: 16px; line-height: 1.6;">
         <p>As a member of the Vietnam National Team participating in the 2024 Asian Swimming Championship, athlete Hoang Thi Trang - a student of Sports Management Class K11 has brought proud achievements to Thanh Hoa province in general and to TUCST in particular.</p>
+        <div style="display:flex;justify-content:center">
         <img src="/img/cam11.jpg" alt="Athlete Hoang Thi Trang with Coaching Team" style="width: 100%; max-width: 400px; margin: 10px 0;">
+        </div>
         <p>Athlete Hoang Thi Trang started her training at Thanh Hoa Provincial Sports Training and Competition Center in 2012 (when she was 11). She said that she participated in sports because of her wish to be immersed in water and that swimming could bring her good health and a beautiful figure. Since then, Trang has nurtured her passion and become one of the potential "fishermen" of Vietnamese sports.</p>
+        
+        <div style="display:flex;justify-content:center">
         <img src="/img/cam12.jpg" alt="Athlete Hoang Thi Trang and two excellent players winning medals" style="width: 100%; max-width: 400px; margin: 10px 0;">
+        </div>
         <p>At the 2024 Asian Swimming Championship that just took place in the Philippines (from February 26, 2024, to March 1, 2024), Hoang Thi Trang participated in backstroke. This is a large-scale continental-level sports arena. It is a test for athletes from countries and territories in Asia to accumulate scores which provides them with good opportunities to attend the 2024 Olympics. This is also the first international tournament in 2024 of the Thanh Hoa swimming team and sports.</p>
+        
+        <div style="display:flex;justify-content:center">
         <img src="/img/cam13.jpg" alt="Hoang Thi Trang and her bronze medal in Asian Swimming 2024" style="width: 100%; max-width: 400px; margin: 10px 0;">
+        </div>
         <p>Accordingly, on the morning of March 1, 2024, Hoang Thi Trang completed her competition events. She won a bronze medal in the 200m backstroke (age group 18 and up). This is her valuable medal in the Asian sports arena.</p>
         <p>With her proud achievements, student Hoang Thi Trang not only became the pride of TUCST but also inspired many students studying at TUCST.</p>
         </div>
@@ -150,7 +158,7 @@ export const DATA_DETAIL = [
     },
     {
         id: "news7",
-        category: "international cooperation",
+        category: "international_cooperation",
         title:
             "THE 2024 INTERNATIONAL PROGRAM OF  STUDENT EXCHANGE BETWEEN TUCST AND TAIWAN UNIVERSITIES",
         content: `
@@ -181,7 +189,7 @@ export const DATA_DETAIL = [
     },
     {
         id: "news8",
-        category: "international cooperation",
+        category: "international_cooperation",
         title:
             "JOB EXCHANGE PROGRAM BETWEEN TUCST AND SSGV SINGAPORE JOINT VENTURE COMPANY",
         content: `
@@ -205,7 +213,7 @@ export const DATA_DETAIL = [
     },
     {
         id: "news9",
-        category: "international cooperation",
+        category: "international_cooperation",
         title: "TUCST KEY OFFICIAL WORKING VISIT TO TAIWAN",
         content: `
         <p style="margin-bottom: 10px;">In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023, to November 1, 2023, the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha - TUCST President had a working visit to Taiwan and signed a memorandum of cooperation with three universities including Chungyu University of Film and Arts; Hsuan Chuang University; Chien Hsin University of Science and Technology and visited some student internship facilities.</p>
@@ -221,6 +229,97 @@ export const DATA_DETAIL = [
         <img src="/img/icop7.jpg" style="width: 100%; margin: 1rem 0;">
         <img src="/img/icop8.jpg" style="width: 100%; margin: 1rem 0;">
        
+        `,
+    },
+    {
+        id: "rec_1",
+        category: "recruitment",
+        title: "THE SIGNING CEREMONY OF A MEMORANDUM OF COOPERATION ON TRAINING AND SUPPLYING TOURISM HUMAN RESOURCES BETWEEN THANH HOA UNIVERSITY OF CULTURE, SPORTS AND TOURISM AND MELIÃ VINPEARL THANH HOA HOTEL",
+        content: `
+        <p>With the aim of strengthening cooperation in training and supplying human resources for the tourism industry of Thanh Hoa province in particular and the whole country in general, on June 13, 2023, TUCST has signed a cooperation agreement with Meliã Vinpearl Thanh Hoa Hotel. This event has a very important meaning in further promoting the ability to create the training cooperation between educational institutions and businesses, in accordance with the general trend of the times and the social needs.</p>
+        <p style="margin-top:1rem;font-style: italic;">Attending the ceremony were representatives of both sides including:</p>
+        <ul>
+            <li>- Dr. Vu Van Tuyen - Deputy Secretary of the Party Committee, Chairman of TUCST’s Council</li>
+            <li>- Associate Professor Dr. Nguyen Thi Thuc - Member of the Party Executive Committee, TUCST’s Vice President</li>
+            <li>- Heads of Admissions & Job Consulting Center, Training Management Department, Tourism Departments, and all lecturers of the Tourism Department</li>
+            <li>- Ms. Guyomarch Celine Marie Lucette - Regional General Director</li>
+            <li>- Ms. Vu Thi Huong Giang - Regional Human Resources Manager</li>
+            <li>- Mr. Nguyen Ba Thien - General Manager of Melia Vinpearl</li>
+            <li>- Mr. Nguyen Ngoc Hieu - General Manager of Meliã Vinpearl Thanh Hoa</li>
+            <li>- Heads of human resources departments of Meliã Vinpearl Thanh Hoa hotel</li>
+        </ul>
+        <p style="margin-top:1rem">At the beginning, Ms. Guyomarch Celine Marie Lucette, representative of Meliã Vinpearl Thanh Hoa Hotel, stated:</p>
+        <blockquote>
+            <p>"Meliã Vinpearl Thanh Hoa is a 5-star international hotel with luxurious and modern design. Currently, we are very interested in TUCST’s training programs, especially the training program of tourism practice according to social need, contributing to providing high-quality human resources for Meliã Vinpearl Thanh Hoa hotel in particular and Vietnam tourism in general. We look forward to collaborating with TUCST in tourism skills and practice training programs so that TUCST's students can be confident and quickly integrate into the corporate culture and professional working environment at the hotel during their internship program or after graduation. This is the time for TUCST and Meliã Vinpearl Thanh Hoa Hotel to sign bilateral development cooperation."</p>
+        </blockquote>
+        <p style="margin-top:1rem;">On behalf of TUCST leaders, Dr. Vu Van Tuyen - Deputy Secretary of the Party Committee, Chairman of TUCST’s Council presented a brief overview of TUCST’s development, especially the ability to meet high-quality tourism human resources for Thanh Hoa province and countrywide. He shared:</p>
+        <blockquote>
+            <p>"With a rich tradition of more than 55 years of construction and development, TUCST is always proud to be the most prestigious and quality higher education institution in Culture, Arts - Sports and Tourism for the whole country. Every year, TUCST supplies the labor market with thousands of students and practitioners who are good at their profession and dedicated to their profession. The reputation and brand of TUCST recognized by society and highly appreciated by businesses. Currently, TUCST has been invested in by the Province to build spacious, modern, and synchronous facilities, ensuring the best conditions for students to study. In order for students of the Faculty of Tourism to have a practice environment, TUCST currently provides 01 Center for Training - Practice in Tourism and Event Organization; practice rooms for tour guides, rooms, tables, bars, kitchens... For many years, TUCST has cooperated with large corporations such as VinGroup, SunGroup, FLC Group... to train human resources tourism for corporations as well as corporations that create an environment for students to practice, intern and expand job opportunities after graduation."</p>
+        </blockquote>
+        <p style="margin-top:1rem;">Finally, Dr. Vu Van Tuyen emphasized effective cooperation, strategic, and affirmed the coordination between TUCST and Meliã Vinpearl Thanh Hoa Hotel is the right direction for higher education in the integration period and will become a model in cooperation between universities and businesses in Thanh Hoa province in the future.</p>
+        <p style="margin-top:1rem;">At the ceremony, representatives of TUCST and Meliã Vinpearl Thanh Hoa Hotel signed a Memorandum of Cooperation on training and supplying tourism human resources. The two sides agree to cooperate comprehensively in training and supplying tourism human resources for sustainable development, harmonizing the interests of the parties, specifically:</p>
+        <ol>
+            <li>Support for internships and job opportunities, supplementing knowledge and practical experience for students, helping students be equipped with content suitable for reality, ready to work in a 5-star standard environment right after graduation and have the opportunity to be recruited into businesses;</li>
+            <li>Support training experts and coordinate to organize training, internship, and practice programs at the facility to meet the needs of businesses as well as the training needs of TUCST;</li>
+            <li>Coordinate student support, communication, and recruitment activities such as the Tourism career counseling program, business scholarship program, and practical career tour program to create an environment for students to have the opportunity to exchange experiences, visit and learn about the business environment, and clearly understand the needs and work challenges of Meliã Vinpearl Thanh Hoa Hotel so that students can have the right orientation and choice for their development of knowledge, skills, and experience.</li>
+        </ol>
+        <p style="margin-top:1rem;">The signing ceremony took place successfully; the cooperation agreements aim at cooperation in training as well as supporting students in practice, internships, and post-graduation jobs, together. Collaborating to develop training programs that meet social needs as well as business recruitment requirements has opened up opportunities for comprehensive and sustainable cooperation between the School and Meliã Vinpearl Thanh Hoa Hotel in the future.</p>
+        <h2 style="margin-top:1rem; text-align:center;font-weight: bold">Some photos at the ceremony</h2>
+        <div style="display:flex;justify-content:center">
+        <img src="/img/ssp1.png" alt="">
+        </div>
+        <div style="text-align:center;font-style:italic;margin-top:8px">Ms. Guyomarch Celine Marie Lucette - Regional General Director</div>
+        <div style="display:flex;justify-content:center; margin-top:1rem">
+        <img src="/img/ssp2.jpg" alt="">
+        </div>
+        <div style="text-align:center;font-style:italic;margin-top:8px">Dr. Vu Van Tuyen - Deputy Secretary of the Party Committee, Chairman of TUCST Council</div>
+        <div style="display:flex;justify-content:center; margin-top:1rem">
+        <img src="/img/ssp3.jpg" alt="">
+        </div>
+        <div style="text-align:center;font-style:italic;margin-top:8px">TUCST key officials and Meliã Vinpearl Thanh Hoa Hotel signed a cooperation memorandum
+        </div>
+        <div style="display:flex;justify-content:center; margin-top:1rem">
+        <img src="/img/ssp4.jpg" alt="">
+        </div>
+        <div style="text-align:center;font-style:italic;margin-top:8px">TUCST’s key officals leaders and Meliã Vinpearl Thanh Hoa Hotel
+        </div>
+        `,
+    },
+    {
+        id: "rec_2",
+        category: "recruitment",
+        title: "THE SIGNING CEREMONY OF COOPERATION FOR HUMAN RESOURCE DEVELOPMENT BETWEEN THANH HOA UNIVERSITY OF CULTURE, SPORTS & TOURISM AND SUN GROUP",
+        content: `
+        <p>Following the "Human Resource Development Cooperation Signing Ceremony" of Sun Group - Department of Labor, War Invalids & Social Affairs and Training institutions of tourism human resource in Thanh Hoa province, Thanh Hoa University of Culture, Sports & Tourism (TUCST) and Sun Group has signed a human resource development cooperation agreement on July 29, 2022, at Ballroom 1, 6th floor, Vinpearl Hotel Thanh Hoa.</p>
+    <p style="margin-top:1rem;font-style: italic;">Attending the ceremony were provincial leaders including:</p>
+    <ul>
+        <li>- Mr. Dau Thanh Tung - Vice Chairman of the Provincial People's Committee</li>
+        <li>- Key officials of the Department of Labor, War Invalids and Social Affairs</li>
+        <li>- Dr. Le Thanh Ha – TUCST President</li>
+        <li>- Dr. Vu Van Tuyen - Chairman of TUCST’s Council</li>
+        <li>- Head of Training Management Department and Dean of Tourism Faculty</li>
+        <li>- Mr. Nguyen Quang Huy - Chairman of Sun Group’s Capital Region</li>
+        <li>- Ms. Pham Tu Cau - Vice President and General Director of Sun Group’s Capital Region</li>
+        <li>- Mr. Duong Van Manh - Chief Representative of Sun Group’s Capital Region in Thanh Hoa</li>
+        <li>- Members of the head of the group's human resources department</li>
+    </ul>
+    <img src="/img/ssp5.jpg" alt="">
+    <p style="margin-top:1rem;">Along with the major projects being implemented by Sun Group in Thanh Hoa province, the need for human resources in 2022 and the following years are expected to be as follows:</p>
+    <ul>
+        <li>- 622 employees (2022)</li>
+        <li>- 3590 employees (2023)</li>
+        <li>- 4795 employees (2024)</li>
+        <li>- 5095 employees (2025)</li>
+    </ul>
+    <p style="margin-top:1rem;">Among these items, 5863 employees include:</p>
+    <ul>
+        <li>- 3249 employees of hotel and restaurant services</li>
+        <li>- 1684 employees of sports</li>
+        <li>- 930 employees of arts performance</li>
+    </ul>
+    <p style="margin-top:1rem;">The cooperation agreement aims at cooperation in training as well as supporting students in practice, internships, and employment after graduation. At the same time, the parties work together to develop a training program that meets social needs as well as the recruitment requirements of Sun Group.</p>
+    <img style="margin-top:1rem;" src="/img/ssp6.jpg" alt="">
+    <p style="margin-top:1rem;">Here, Dr. Vu Van Tuyen - Chairman of TUCST’s Council affirmed: "TUCST is always proud to be the most prestigious and quality higher education institution in training human resources in Culture, Arts, and Sports." and Tourism for the whole country. Every year, the School supplies the labor market with thousands of students who are good at their profession and dedicated to their profession. TUCST's reputation and brand have been recognized by society and highly appreciated by businesses. The signing ceremony will be a milestone in cooperation, training, and the use of tourism human resources between TUCST and Sun Group. Hopefully, this will become a model for cooperation between universities and businesses in Thanh Hoa province in the future.</p>
         `,
     },
 ];

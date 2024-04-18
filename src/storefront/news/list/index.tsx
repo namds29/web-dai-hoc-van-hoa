@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./index.module.scss";
 import { useEffect, useState } from "react";
 import {
@@ -24,7 +24,7 @@ enum DATA_NEWS_LIST_URL {
 
 enum DATA_NAME {
   DATA_SCHOOL_ACTIVITIES = "School Activities",
-  DATA_CAMPUS_LIFE = "Campusl Life",
+  DATA_CAMPUS_LIFE = "Campus Life",
   DATA_INTERNATIONAL_COOPERATION = "International Cooperation",
 }
 
@@ -32,8 +32,9 @@ const NewsListComponent = () => {
   const { name } = useParams();
   const [data, setData] = useState<DataListItem[] | []>();
   const [dataName, setDataName] = useState<string>("");
-
+  const navigate = useNavigate();
   useEffect(() => {
+  
     let dataItem: DataListItem[];
     if (name) {
       switch (name) {
@@ -56,6 +57,7 @@ const NewsListComponent = () => {
           break;
       }
     }
+    console.log(data)
   }, [name]);
 
   return (
@@ -69,8 +71,8 @@ const NewsListComponent = () => {
             {data?.map((item) => {
               return (
                 <div
-                  className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5"
-                  key={item.id}
+                  className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5 cursor-pointer"
+                  key={item.id} onClick={()=> navigate(`/news/${item.id}`)}
                 >
                   <div className="w-52 h-40 rounded">
                     <img

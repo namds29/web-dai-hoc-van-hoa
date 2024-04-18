@@ -22,6 +22,29 @@ const Announcements = () => {
             cardDescription: "In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023 to November 1, 2023, the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha- TUCST President had a working visit to Taiwan..."
         },
     ];
+    const DATA_ANNOUCEMENT = [
+        {
+            id: "1",
+            date: "10/04/2024",
+            content: "ANNOUNCEMENT OF THE HOLIDAY SCHEDULE OF HUNG KINGS COMMEMORATION DAY IN 2024"
+        },
+        {
+            id: "2",
+            date: "10/04/2024",
+            content: "ANNOUNCEMENT OF THE ORGANIZATION OF A DIALOGUE CONFERENCE BETWEEN SCHOOL PRINCIPALS AND STUDENTS 2023 - 2024 SCHOOL YEAR"
+        },
+        {
+            id: "3",
+            date: "10/04/2024",
+            content: "PLAN OF ORGANIZING THE 2024 STUDENT FOOTBALL TOURNAMENT TO CELEBRATE THE 93rd ANNIVERSARY OF THE ESTABLISHMENT OF THE HO CHI MINH COMMUNIST YOUTH UNION (March 26, 1931 - March 26, 2024)"
+        },
+        {
+            id: "4",
+            date: "10/04/2024",
+            content: "PLAN OF 'TUCST RUNNING 2024' ORGANIZATION"
+        },
+
+    ]
 
     return (
         <section className="bg-gray-100 w-full px-4 md:px-24 py-8">
@@ -41,31 +64,14 @@ const Announcements = () => {
                 ))}
             </div>
             <div className={styles.sub_news}>
-                <div className={styles.sub_news_box}>
-                    <div className="text-orange-500 font-bold flex gap-1 items-center">
-                        <CalendarOutlined /> 10/04/2024 <img className="w-[40px] h-[20px] ml-2" src="/img/icon-new.gif" alt="gif new" />
+                {DATA_ANNOUCEMENT.map(item => (
+                    <div className={styles.sub_news_box}>
+                        <div className="text-orange-500 font-bold flex gap-1 items-center">
+                            <CalendarOutlined /> {item.date} <img className="w-[40px] h-[20px] ml-2" src="/img/icon-new.gif" alt="gif new" />
+                        </div>
+                        <div className={styles.sub_news_description}>{item.content}</div>
                     </div>
-                    <div className={styles.sub_news_description}>THÔNG BÁO VỀ VIỆC NGHỈ LỄ GIỖ TỔ HÙNG VƯƠNG NĂM 2024</div>
-                </div>
-                <div className={styles.sub_news_box}>
-                <div className="text-orange-500 font-bold flex gap-1 items-center">
-                        <CalendarOutlined /> 10/04/2024 <img className="w-[40px] h-[20px] ml-2" src="/img/icon-new.gif" alt="gif new" />
-                    </div>
-                    <div className={styles.sub_news_description}>THÔNG BÁO TỔ CHỨC HỘI NGHỊ ĐỐI THOẠI GIỮA HIỆU TRƯỞNG NHÀ TRƯỜNG VỚI HỌC SINH, SINH VIÊN NĂM HỌC 2023 - 2024</div>
-                </div>
-                <div className={styles.sub_news_box}>
-                <div className="text-orange-500 font-bold flex gap-1 items-center">
-                        <CalendarOutlined /> 10/04/2024 <img className="w-[40px] h-[20px] ml-2" src="/img/icon-new.gif" alt="gif new" />
-                    </div>
-                    <div className={styles.sub_news_description}>THÔNG BÁO VỀ VIỆC NGHỈ LỄ GIỖ TỔ HÙNG VƯƠNG NĂM 2024</div>
-                </div>
-                <div className={styles.sub_news_box}>
-                <div className="text-orange-500 font-bold flex gap-1 items-center">
-                        <CalendarOutlined /> 10/04/2024
-                    </div>
-                    <div className={styles.sub_news_description}>THÔNG BÁO VỀ VIỆC NGHỈ LỄ GIỖ TỔ HÙNG VƯƠNG NĂM 2024</div>
-                </div>
-
+                ))}
             </div>
             <div className="w-full text-center mt-8">
                 <button className="text-base border text-orange-500 border-orange-400 hover:bg-orange-100 px-6 rounded py-3" onClick={() => navigate("/news")}>

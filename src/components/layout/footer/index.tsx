@@ -81,10 +81,14 @@ const Footer = () => {
                     <div className="block">
                         <p className="font-bold text-lg">Social Media </p>
                         <div className="mt-4">
-                            <a href="https://www.facebook.com/profile.php?id=100064751773340" target="_blank">Đoàn Trường Đại học Văn Hóa, Thể Thao và Du Lịch Thanh Hóa</a>
+                            <a className="underline" href="https://www.facebook.com/profile.php?id=100064751773340" target="_blank">
+                                Thanh Hoa University of Culture, Sports and Tourism Youth Union fanpage
+                            </a>
                         </div>
                         <div className="mt-4">
-                            <a href="https://www.facebook.com/tuyensinh.dvtdt.edu.vn" target="_blank">Tuyển sinh Trường Đại học Văn hoá, Thể thao và Du lịch Thanh Hoá</a>
+                            <a className="underline" href="https://www.facebook.com/tuyensinh.dvtdt.edu.vn" target="_blank">
+                                Thanh Hoa University of Culture, Sports and Tourism Admissions fanpage
+                            </a>
                         </div>
                     </div>
 
