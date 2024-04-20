@@ -1,7 +1,7 @@
 import { FACULTY_UNITS } from "src/utils/constant";
 import { useState } from "react";
 import Banner from "src/components/banner";
-import styles from "./index.module.scss";
+// import styles from "./index.module.scss";
 
 const Faculties = () => {
   const [unitId, setUnitId] = useState<number>(1);
