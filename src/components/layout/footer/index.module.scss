@@ -1,4 +1,4 @@
-.fixed_bg{
+.fixed_bg {
     background-attachment: fixed;
     background-image: url('/img/office.jpg');
     background-position: center center;
@@ -7,6 +7,13 @@
 
     position: relative;
 }
-.footer{
-    height: 450px;
+
+.footer {
+    min-height: 450px;
+}
+
+@media only screen and (max-width: 750px) {
+    .footer {
+        min-height: 750px;
+    }
 }
