@@ -3,12 +3,13 @@ import {
   Button,
   Modal,
   Upload,
+  UploadFile,
   UploadProps,
   message,
 } from "antd";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 
-import { MODAL_TYPE } from "src/interfaces";
+import { LIST_TYPE, MODAL_TYPE } from "src/interfaces";
 import TextEditor from "../text-editor";
 import {
   InboxOutlined,
@@ -17,6 +18,7 @@ import {
 } from "@ant-design/icons";
 
 type IProps = {
+  editType: number;
   type: string;
   data: any;
   show?: boolean;
@@ -45,6 +47,7 @@ enum BUTTON_TEXT {
 const { Dragger } = Upload;
 
 function EvcModal({
+  editType,
   type,
   data,
   show,
@@ -55,6 +58,7 @@ function EvcModal({
 
   const [contentState, setContentState] = useState(data.content);
   const [titleState, setTitleState] = useState(data.title);
+  const [imgFile, setImgFile] = useState<UploadFile>();
   const buttonOkRef = useRef<HTMLButtonElement>(null);
 
   const messageText = (type: string): MessageText => {
@@ -97,6 +101,7 @@ function EvcModal({
       const { status } = info.file;
       if (status !== "uploading") {
         console.log(info.file, info.fileList);
+        setImgFile(info.file.originFileObj);
       }
       if (status === "done") {
         message.success(`${info.file.name} file uploaded successfully.`);
@@ -122,6 +127,7 @@ function EvcModal({
       id: data.id,
       title: titleState,
       content: contentState,
+      imgFile: imgFile,
     };
 
     onOk(value);
@@ -153,7 +159,12 @@ function EvcModal({
               >
                 {messageText(type).okText}
               </Button>,
-              <Button className="confirm-btn" key="cancel" onClick={onCancel} type="text">
+              <Button
+                className="confirm-btn"
+                key="cancel"
+                onClick={onCancel}
+                type="text"
+              >
                 {messageText(type).cancelText}
               </Button>,
             ]
@@ -161,33 +172,43 @@ function EvcModal({
       }
     >
       <div className="w-full">
-        <div className="h-44">
+        {editType !== LIST_TYPE.IMAGE ? (
           <AutoComplete
             value={titleState}
             placeholder="Title"
             className="w-full mb-3"
             onChange={onChangeTitle}
           />
+        ) : (
+          <></>
+        )}
+        {editType !== LIST_TYPE.IMAGE && editType !== LIST_TYPE.IMAGE_TITLE ? (
           <TextEditor
             content={contentState}
             editContent={editContentState}
           ></TextEditor>
+        ) : (
+          <></>
+        )}
+      </div>
+      {editType !== LIST_TYPE.TITLE_CONTENT ? (
+        <div className="h-44">
+          <Dragger {...props}>
+            <p className="ant-upload-drag-icon">
+              <InboxOutlined />
+            </p>
+            <p className="ant-upload-text">
+              Click or drag file to this area to upload
+            </p>
+            <p className="ant-upload-hint">
+              Support for a single or bulk upload. Strictly prohibited from
+              uploading company data or other banned files.
+            </p>
+          </Dragger>
         </div>
-      </div>
-      <div className="h-44">
-        <Dragger {...props}>
-          <p className="ant-upload-drag-icon">
-            <InboxOutlined />
-          </p>
-          <p className="ant-upload-text">
-            Click or drag file to this area to upload
-          </p>
-          <p className="ant-upload-hint">
-            Support for a single or bulk upload. Strictly prohibited from
-            uploading company data or other banned files.
-          </p>
-        </Dragger>
-      </div>
+      ) : (
+        <></>
+      )}
     </Modal>
   );
 }

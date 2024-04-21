@@ -3,12 +3,7 @@ import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
-import { MODAL_TYPE } from "src/interfaces";
-
-type IItemType = {
-  label: string;
-  key: string;
-};
+import { MODAL_TYPE, LIST_TYPE, IDropdownItemType } from "src/interfaces";
 
 enum ITEM_DROPDOWN {
   HOT_NEWS = "hotnews",
@@ -25,7 +20,7 @@ type IEditType = {
 type DataType = { id: string; title: string; content: string };
 
 const AdminNews = () => {
-  const [dropdownValue, setDropdownValue] = useState<IItemType>({
+  const [dropdownValue, setDropdownValue] = useState<IDropdownItemType>({
     label: "Section",
     key: "",
   });
@@ -85,15 +80,27 @@ const AdminNews = () => {
     setEditTypeValue({ id, type });
   };
 
-  const dropdownData: IItemType[] = [
-    { label: "Hot news", key: ITEM_DROPDOWN.HOT_NEWS },
-    { label: "School activities", key: ITEM_DROPDOWN.SCHOOL_ACTIVITIES },
+  const dropdownData: IDropdownItemType[] = [
+    {
+      label: "Hot news",
+      key: ITEM_DROPDOWN.HOT_NEWS,
+      listType: LIST_TYPE.IMAGE,
+    },
+    {
+      label: "School activities",
+      key: ITEM_DROPDOWN.SCHOOL_ACTIVITIES,
+      listType: LIST_TYPE.IMAGE,
+    },
     {
       label: "International cooperation",
       key: ITEM_DROPDOWN.INTERNATIONAL_COOPERATION,
+      listType: LIST_TYPE.IMAGE,
     },
-    { label: "Campus life", key: ITEM_DROPDOWN.CAMPUS_LIFE },
-    
+    {
+      label: "Campus life",
+      key: ITEM_DROPDOWN.CAMPUS_LIFE,
+      listType: LIST_TYPE.IMAGE,
+    },
   ];
 
   const dropdownItems: MenuProps["items"] = dropdownData;
@@ -148,12 +155,18 @@ const AdminNews = () => {
       </div>
       <div className="mt-10">
         {dropdownValue.key ? (
-          <ListData section={dropdownValue.label} data={data} action={handleEditType}></ListData>
+          <ListData
+            section={dropdownValue.label}
+            data={data}
+            action={handleEditType}
+            type={dropdownValue.listType}
+          ></ListData>
         ) : (
           <div>Please select dropdown to edit section</div>
         )}
       </div>
       <EditModal
+        editType={dropdownValue.listType ?? 0}
         data={editValue}
         show={openModal}
         type={modalType}

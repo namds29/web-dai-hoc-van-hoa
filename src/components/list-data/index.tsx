@@ -1,7 +1,7 @@
 import React from "react";
 import { EditOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 import { Button, List } from "antd";
-import { LIST_TYPE } from "src/interfaces";
+import { IPostDataType, LIST_TYPE } from "src/interfaces";
 
 const IconText = ({
   icon,
@@ -25,7 +25,7 @@ const ListData = ({
   action,
   type,
 }: {
-  data: any;
+  data: IPostDataType[];
   section: string;
   action?: any;
   type?: number;
@@ -51,13 +51,13 @@ const ListData = ({
         }
         bordered
         dataSource={data}
-        renderItem={(item: any) => (
+        renderItem={(item: IPostDataType) => (
           <List.Item
             extra={
               <img
                 width={272}
                 alt="logo"
-                src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+                src={`${import.meta.env.VITE_API_URL}${item.path}`}
               />
             }
             actions={

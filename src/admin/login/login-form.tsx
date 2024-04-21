@@ -36,7 +36,7 @@ const LoginForm = () => {
     }
   };
 
-  useEffect(() => { }, [navigate]);
+  
   return (
     <div className={styles.container}>
       <p className="text-2xl font-bold">Login</p>

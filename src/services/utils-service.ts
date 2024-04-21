@@ -25,6 +25,7 @@ export const apiPost = async (url: string, params?: any) => {
     const res = await axiosInstance.request(config);
     return res;
 }
+
 export const apiCreate = async (url: string, params?: any) => {
     const config = {
         method: METHOD_API.POST,
@@ -35,6 +36,18 @@ export const apiCreate = async (url: string, params?: any) => {
     const res = await axiosInstance.request(config);
     return res;
 }
+
+export const apiCreateFormData = async (url: string, formData?: any) => {
+    const config = {
+        method: METHOD_API.POST,
+        url: url,
+        data: formData,
+    };
+
+    const res = await axiosInstance.request(config);
+    return res;
+}
+
 export const apiUpdate = async (url: string, params?: any) => {
     const config = {
         method: METHOD_API.PUT,
@@ -44,4 +57,13 @@ export const apiUpdate = async (url: string, params?: any) => {
 
     const res = await axiosInstance.request(config);
     return res;
+}
+
+export const apiDelete = async (url: string) => {
+    const config = {
+        method: METHOD_API.DELETE,
+        url: url,
+    };
+    const res = await axiosInstance.request(config);
+    return res
 }
