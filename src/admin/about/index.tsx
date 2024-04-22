@@ -1,9 +1,18 @@
-import { MenuProps } from "antd";
+import { MenuProps, message } from "antd";
 import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
-import { MODAL_TYPE, IDropdownItemType, LIST_TYPE } from "src/interfaces";
+import {
+  MODAL_TYPE,
+  IDropdownItemType,
+  LIST_TYPE,
+  IPostDataType,
+  ICreatePostType,
+  DataType,
+  IEditType,
+} from "src/interfaces";
+import HomepageService from "src/services/homepage/homepageService";
 
 enum ITEM_DROPDOWN {
   PRESIDENT_MESSAGE = "president-msg",
@@ -11,13 +20,6 @@ enum ITEM_DROPDOWN {
   ABOUT_TUCST = "about",
   FOUR_ELEMENT = "four-element",
 }
-
-type IEditType = {
-  id?: string;
-  type: string;
-};
-
-type DataType = { id: string; title: string; content: string };
 
 const AdminAbout = () => {
   const [dropdownValue, setDropdownValue] = useState<IDropdownItemType>({
@@ -27,7 +29,7 @@ const AdminAbout = () => {
   });
 
   const [editValue, setEditValue] = useState<DataType>({
-    id: "0",
+    id: 0,
     title: "",
     content: "",
   });
@@ -36,33 +38,13 @@ const AdminAbout = () => {
   const [modalType, setModalType] = useState("");
   const [editTypeValue, setEditTypeValue] = useState<IEditType>();
 
-  const arrayOfObjects = [
-    {
-      title: "First Object",
-      id: "1",
-      content: "This is the content of the first object.",
-    },
-    {
-      title: "Second Object",
-      id: "2",
-      content: "This is the content of the second object.",
-    },
-    {
-      title: "Third Object",
-      id: "3",
-      content: "This is the content of the third object.",
-    },
-  ];
-
-  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+  const [data, setData] = useState<IPostDataType[]>([]);
 
   useEffect(() => {
     if (editTypeValue?.type === MODAL_TYPE.EDIT) {
       setOpenModal(true);
       setModalType(MODAL_TYPE.EDIT);
-      const choosenValue = arrayOfObjects.find(
-        (item) => item.id === editTypeValue.id
-      );
+      const choosenValue = data.find((item) => item.id === editTypeValue.id);
       if (choosenValue) {
         setEditValue(choosenValue);
       }
@@ -75,7 +57,24 @@ const AdminAbout = () => {
       setOpenModal(true);
       setModalType(MODAL_TYPE.VIEW);
     }
+    if (editTypeValue?.type === "delete") {
+      handleDeleteDataItem(editTypeValue.id ?? 0);
+    }
   }, [editTypeValue]);
+
+  const handleDeleteDataItem = async (id: number) => {
+    try {
+      const res = await HomepageService.deletePostHomepage(id);
+      if (res.message == "success") {
+        message.success(`Delete successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
 
   const handleEditType = ({ id, type }: IEditType) => {
     setEditTypeValue({ id, type });
@@ -118,30 +117,77 @@ const AdminAbout = () => {
     setOpenModal(false);
   };
 
-  const handleOk = (value: any) => {
+  const handleOk = (value: {
+    title: string;
+    content: string;
+    imgFile: File;
+  }) => {
     if (editTypeValue?.type === MODAL_TYPE.CREATE) {
-      const newObj = {
-        id: arrayOfObjects.length.toString(),
+      const newObj: ICreatePostType = {
         title: value.title,
         content: value.content,
+        thumpnailImage: value.imgFile,
+        brief: "",
+        typeID: 0,
+        categoryID: 0,
       };
-      arrayOfObjects.push(newObj);
-      setData(arrayOfObjects);
+      createPost(newObj);
       setOpenModal(false);
     }
     if (editTypeValue?.type === MODAL_TYPE.EDIT) {
-      const newData = arrayOfObjects.map((item) => {
-        if (editValue.id && item.id === editValue.id) {
-          item = {
-            id: value.id,
-            title: value.title,
-            content: value.content,
-          };
+      const dataById: IPostDataType | undefined =
+        data.find((item) => editValue.id && item.id === editValue.id) ??
+        undefined;
+
+      if (dataById) {
+        const newDataItem: IPostDataType = {
+          ...dataById,
+          title: value.title ?? "",
+          content: value.content ?? "",
+        };
+        if (newDataItem) {
+          editPost(editValue.id, newDataItem);
         }
-        return item;
-      });
-      setData(newData);
+      }
       setOpenModal(false);
+    }
+  };
+
+  const createPost = async (data: ICreatePostType) => {
+    try {
+      const res = await HomepageService.createPostHomepage(data);
+      if (res.message == "success") {
+        message.success(`Create successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const editPost = async (id: number, data: IPostDataType) => {
+    try {
+      const res = await HomepageService.editPostHomepage(id, data);
+      console.log(res);
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const getPostList = async () => {
+    try {
+      const res = await HomepageService.listPostHomepage();
+      if (res?.data) {
+        setData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
     }
   };
 

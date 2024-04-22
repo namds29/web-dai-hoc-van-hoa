@@ -9,6 +9,7 @@ import {
   IDropdownItemType,
   IPostDataType,
   ICreatePostType,
+  IEditType,
 } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
 
@@ -20,11 +21,6 @@ enum ITEM_DROPDOWN {
   CAMPUS_LIFE = "campuslife",
   MVV = "mvv",
 }
-
-type IEditType = {
-  id?: number;
-  type: string;
-};
 
 type DataType = { id: number; title: string; content: string };
 

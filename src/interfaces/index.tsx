@@ -36,7 +36,7 @@ export type IPostDataType = {
   isDeleted?: number;
   createdAt?: string;
   updatedAt?: string;
-  categoryID: number;
+  categoryID: string;
   name?: string;
   type?: number;
   path?: string;
@@ -50,7 +50,7 @@ export type ICreatePostType = {
   content: string;
   typeID: number;
   categoryID: number;
-}
+};
 
 export enum PostCategory {
   HIGHLIGHT = "highlight",
@@ -61,5 +61,12 @@ export enum PostCategory {
   RECRUITMENT = "recruitment",
   SCIENCE_TOPIC = "scienceTopic",
   CONFERENCES = "conferences",
-  PUBLISH = "publish"
+  PUBLISH = "publish",
 }
+
+export type DataType = { id: number; title: string; content: string };
+
+export type IEditType = {
+  id?: number;
+  type: string;
+};
