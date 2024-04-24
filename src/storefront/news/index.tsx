@@ -13,8 +13,8 @@ const News = () => {
   return (
     <section className="w-full">
       <Banner />
-      <section className="flex gap-5 w-full text-orange-500 font-bold  justify-between px-8 xl:px-16 py-8">
-        <div className="w-full">
+      <section className="flex gap-5 w-full text-orange-500 font-bold flex-wrap xl:flex-nowrap  justify-between px-8 xl:px-16 py-8">
+        <div className="w-full xl:w-1/2">
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
           <div className="overflow-hidden w-full h-[21.7rem] flex  justify-center items-center relative rounded">
             <img className={styles.hot_new_pic} src="/img/thumb1.png" alt="" />
@@ -23,10 +23,10 @@ const News = () => {
             </p>
           </div>
         </div>
-        <div className="w-1/2 h-full ">
-          <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
-          <div className="flex flex-col h-[19.925rem]  pr-4 gap-2 w-full text-white">
-            <div className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-4 mb-5">
+        <div className="w-full xl:w-1/2 h-full ">
+          <p className="text-xl border-b-4 mb-8">NEWS</p>
+          <div className="flex flex-col h-[19.925rem] xl:pr-4 gap-2 w-full text-white">
+            <div className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-4 mb-5 ">
               <div className="w-52 h-full rounded">
                 <img
                   className="w-52 h-full rounded object-cover"
@@ -43,9 +43,6 @@ const News = () => {
                   Aliquam rhoncus dignissim risus, et consectetur massa
                   tincidunt sit amet. Nam elementum vulputate metus
                 </p>
-                <a className="text-white hover:text-gray-300 underline">
-                  Link website
-                </a>
               </div>
             </div>
 
@@ -66,46 +63,12 @@ const News = () => {
                   Aliquam rhoncus dignissim risus, et consectetur massa
                   tincidunt sit amet. Nam elementum vulputate metus
                 </p>
-                <a className="text-white hover:text-gray-300 underline">
-                  Link website
-                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="px-8 xl:px-16 py-8 bg-gray-200">
-        <div className="flex gap-4 text-white">
-          <div className="w-full rounded bg-[#1e6bff]">
-            <div className="w-full">
-              <img
-                className="w-full h-full object-cover overflow-hidden rounded"
-                src="/img/bvhtt.png"
-                alt=""
-              />
-            </div>
-          </div>
-          <div className="w-full rounded bg-white">
-            <div className="w-full">
-              <img
-                className="w-full h-full object-cover overflow-hidden rounded"
-                src="/img/bogd.jpeg"
-                alt=""
-              />
-            </div>
-          </div>
-          <div className="w-full rounded">
-            <div className="w-full">
-              <img
-                className="w-full h-full object-cover overflow-hidden rounded"
-                src="/img/baothanhhoa.png"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="bg-gray-100 w-full px-24 py-8">
+      <section className="bg-gray-100 w-full px-8 xl:px-24 py-8">
         <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
           <p className="text-xl border-b-4">SCHOOL ACTIVITIES</p>
           <button
@@ -131,7 +94,7 @@ const News = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 w-full px-24 py-8">
+      <section className="bg-gray-100 w-full px-8 xl:px-24 py-8">
         <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
           <p className="text-xl border-b-4">CAMPUS LIFE</p>
           <button
@@ -157,7 +120,7 @@ const News = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 w-full px-24 py-8">
+      <section className="bg-gray-100 w-full px-8 xl:px-24 py-8">
         <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
           <p className="text-xl border-b-4">INTERNATIONAL COOPERATION</p>
           <button
@@ -180,6 +143,48 @@ const News = () => {
               cardDescription={newsItem.cardDescription}
             />
           ))}
+        </div>
+      </section>
+      <section>
+        <div className="flex gap-4 text-white">
+          <div className="w-full rounded">
+            <div className="w-full flex items-center h-full">
+              <img
+                className="w-full h-full object-contain overflow-hidden rounded"
+                src="/img/bvhtt.png"
+                alt="Bộ văn hóa thể thao và du lịch"
+              />
+            </div>
+          </div>
+          <div className="w-full rounded bg-white">
+            <div className="w-full flex items-center h-full" >
+              <img
+                className="w-full h-[150px] object-contain overflow-hidden rounded"
+                src="/img/bogd.jpeg"
+                alt="Bộ giáo dục và đào tạo"
+              />
+            </div>
+          </div>
+          <div className="w-full rounded">
+            <div className="w-full flex items-center h-full">
+              <img
+                className="w-full h-[200px] object-contain overflow-hidden rounded"
+                src="/img/baothanhhoa.png"
+                alt="Báo Thanh Hóa"
+              />
+            </div>
+          </div>
+          <div className="w-full rounded">
+            <div className="w-full flex items-center h-full">
+              <a href="https://en-us.thanhhoa.gov.vn/portal/Pages/default.aspx" target="_blank" rel="noopener noreferrer">
+                <img
+                  className="w-full h-full object-contain overflow-hidden rounded"
+                  src="/img/cttdt.jpg"
+                  alt="Cổng thông tin điện tử Thanh Hóa"
+                />
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </section>

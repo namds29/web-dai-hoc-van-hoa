@@ -65,7 +65,7 @@ const Footer = () => {
                         }}
                     />
                 </div>
-                <div className="flex flex-col lg:flex-row gap-16 absolute w-full h-full px-8 xl:px-24 py-8">
+                <div className="flex flex-wrap md:flex-nowrap lg:flex-row gap-10 xl:gap-16 absolute w-full h-full px-8 xl:px-24 py-8">
                     <div className="text-sm">
                         <p className="font-bold text-lg mb-4">CONNECT WITH TUCST</p>
                         <p>Address: No. 561 Quang Trung 3, Dong Ve Ward, City. Thanh Hoa</p>
@@ -75,16 +75,20 @@ const Footer = () => {
                         <p>Email: dvtdt@dvtdt.edu.vn</p>
                         <p>Website: http://www.dvtdt.edu.vn</p>
                         <div className="mt-7">
-                            <iframe className={styles.maps_size} src="https://maps.google.com/maps?q=Thanh%20Hoa%20University%20of%20Culture&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed" scrolling="no" ></iframe>
+                            <iframe src="https://maps.google.com/maps?q=Thanh%20Hoa%20University%20of%20Culture&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed" scrolling="no" ></iframe>
                         </div>
                     </div>
                     <div className="block">
                         <p className="font-bold text-lg">Social Media </p>
                         <div className="mt-4">
-                            <a href="https://www.facebook.com/profile.php?id=100064751773340" target="_blank">Đoàn Trường Đại học Văn Hóa, Thể Thao và Du Lịch Thanh Hóa</a>
+                            <a className="underline" href="https://www.facebook.com/profile.php?id=100064751773340" target="_blank">
+                                Thanh Hoa University of Culture, Sports and Tourism Youth Union fanpage
+                            </a>
                         </div>
                         <div className="mt-4">
-                            <a href="https://www.facebook.com/tuyensinh.dvtdt.edu.vn" target="_blank">Tuyển sinh Trường Đại học Văn hoá, Thể thao và Du lịch Thanh Hoá</a>
+                            <a className="underline" href="https://www.facebook.com/tuyensinh.dvtdt.edu.vn" target="_blank">
+                                Thanh Hoa University of Culture, Sports and Tourism Admissions fanpage
+                            </a>
                         </div>
                     </div>
 

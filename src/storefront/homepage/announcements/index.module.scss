@@ -10,11 +10,11 @@
     color: black;
     gap: 1.5rem;
     margin-top: 1.5rem;
-
     flex-wrap: wrap;
 
     .sub_news_box {
-        width: calc(50% - 0.75rem);
+        flex: 1 0 48%;
+        min-width: 300px;
         max-height: 170px;
         background-color: white;
         border-radius: 8px;
