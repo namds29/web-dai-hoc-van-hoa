@@ -8,67 +8,64 @@ import {
 } from "src/data/data";
 import { useNavigate } from "react-router-dom";
 
+const NEWS = [
+  {
+    id: "news8",
+    imgUrl: "/img/ic9.JPG",
+    date: "01/09/2024",
+    cardTitle: "JOB EXCHANGE PROGRAM BETWEEN TUCST AND SSGV SINGAPORE JOINT VENTURE COMPANY",
+    cardDescription: "On the morning of January 11, 2024, a job career exchange program between TUCST and SkillsSG Ventures, Singapore (SSGV) was held at TUCST. Attending the program were representatives from Singapore including Mr. Cheng Hong Siang - CEO of SSGV and from TUCST including Assoc.Pror. Dr. Nguyen Thi Thuc - Vice President, teaching staff and students..."
+  },
+  {
+    id: "news9",
+    imgUrl: "/img/icop5.jpg",
+    date: "01/09/2024",
+    cardTitle: "TUCST KEY OFFICIAL WORKING VISIT TO TAIWAN",
+    cardDescription: "In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023 to November 1, 2023, the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha- TUCST President had a working visit to Taiwan..."
+  },
+];
 const News = () => {
   const navigate = useNavigate();
   return (
     <section className="w-full">
       <Banner />
-      <section className="flex gap-5 w-full text-orange-500 font-bold flex-wrap xl:flex-nowrap  justify-between px-8 xl:px-16 py-8">
-        <div className="w-full xl:w-1/2">
+      <section className="flex gap-5 w-full text-orange-500 font-bold flex-wrap xl:flex-nowrap  justify-between px-4 xl:px-16 py-8">
+        <div className="w-full xl:w-2/3">
           <p className="text-xl border-b-4 mb-8">HOT NEWS</p>
           <div className="overflow-hidden w-full h-[21.7rem] flex  justify-center items-center relative rounded">
-            <img className={styles.hot_new_pic} src="/img/thumb1.png" alt="" />
+            <img className={styles.hot_new_pic} src="/img/ban3.png" alt="" />
             <p className="absolute text-2xl text-white cursor-pointer">
-              Sinh viên TUCST đạt giải cao
+              Student of TUCST won high brize
             </p>
           </div>
         </div>
-        <div className="w-full xl:w-1/2 h-full ">
+        <div className="w-full xl:w-1/3 h-full ">
           <p className="text-xl border-b-4 mb-8">NEWS</p>
-          <div className="flex flex-col h-[19.925rem] xl:pr-4 gap-2 w-full text-white">
-            <div className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-4 mb-5 ">
-              <div className="w-52 h-full rounded">
-                <img
-                  className="w-52 h-full rounded object-cover"
-                  src="/img/img1.png"
-                  alt=""
-                />
-              </div>
-              <div className={styles.card_science}>
-                <p className="title text-xl font-bold letter tracking-wider">
-                  Science Title
-                </p>
-                <p className={styles.card_science_description}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquam rhoncus dignissim risus, et consectetur massa
-                  tincidunt sit amet. Nam elementum vulputate metus
-                </p>
-              </div>
-            </div>
 
-            <div className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-4 mb-5">
-              <div className="w-52 h-full rounded">
+          <div className="flex flex-col h-[19.925rem] xl:pr-4 gap-2 w-full text-white">
+            {NEWS.map(item => (<div className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-3 mb-5 ">
+              <div className="w-52 h-full rounded cursor-pointer" onClick={()=> navigate(`/news/${item.id}`)}>
                 <img
                   className="w-52 h-full rounded object-cover"
-                  src="/img/img1.png"
+                  src={item.imgUrl}
                   alt=""
                 />
               </div>
               <div className={styles.card_science}>
-                <p className="title text-xl font-bold letter tracking-wider">
-                  Science Title
+                <p className="title truncate font-bold letter tracking-wider">
+                  {item.cardTitle}
                 </p>
                 <p className={styles.card_science_description}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Aliquam rhoncus dignissim risus, et consectetur massa
-                  tincidunt sit amet. Nam elementum vulputate metus
+                  {item.cardDescription}
                 </p>
               </div>
             </div>
+            ))}
           </div>
+
         </div>
       </section>
-      <section className="bg-gray-100 w-full px-8 xl:px-24 py-8">
+      <section className="bg-gray-100 w-full px-4 xl:px-24 py-8">
         <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
           <p className="text-xl border-b-4">SCHOOL ACTIVITIES</p>
           <button
@@ -94,7 +91,7 @@ const News = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 w-full px-8 xl:px-24 py-8">
+      <section className="bg-gray-100 w-full px-4 xl:px-24 py-8">
         <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
           <p className="text-xl border-b-4">CAMPUS LIFE</p>
           <button
@@ -120,7 +117,7 @@ const News = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 w-full px-8 xl:px-24 py-8">
+      <section className="bg-gray-100 w-full px-4 xl:px-24 py-8">
         <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
           <p className="text-xl border-b-4">INTERNATIONAL COOPERATION</p>
           <button
@@ -146,7 +143,7 @@ const News = () => {
         </div>
       </section>
       <section>
-        <div className="flex gap-4 text-white">
+        <div className="flex flex-wrap sm:flex-nowrap gap-4 text-white">
           <div className="w-full rounded">
             <div className="w-full flex items-center h-full">
               <img
@@ -175,7 +172,7 @@ const News = () => {
             </div>
           </div>
           <div className="w-full rounded">
-            <div className="w-full flex items-center h-full">
+            <div className="w-full flex items-center justify-center h-full">
               <a href="https://en-us.thanhhoa.gov.vn/portal/Pages/default.aspx" target="_blank" rel="noopener noreferrer">
                 <img
                   className="w-full h-full object-contain overflow-hidden rounded"

@@ -61,9 +61,11 @@ const PARTNER_LIST = [
 const InternationalPartners = () => {
   return (
     <section className="w-full">
-      <Banner />
+      <div>
+        <img className="w-full h-full" src="/img/inter-partner.png" alt="" />
+      </div>
       <div className="flex min-h-[100vh] gap-10">
-        <section className="bg-yellow-700 w-1/3 flex flex-col p-4">
+        <section className="bg-subColor w-1/3 flex flex-col p-4">
           <p className="font-bold text-2xl mb-4">Partner List</p>
           {PARTNER_LIST.map(item => <Fragment key={item.title + "1"}>
           <a className="mb-4 cursor-pointer hover:opacity-80">

@@ -4,6 +4,15 @@ import {
 // import styles from "./index.module.scss";
 import { useState } from "react";
 
+const contentStyle: React.CSSProperties = {
+  margin: 0,
+  width: "100%",
+  height: "100%",
+  lineHeight: "160px",
+  textAlign: "center",
+  background: "white",
+  objectFit: "contain",
+};
 const FormalTraining = () => {
   const [unitId, setUnitId] = useState<number>(1);
 
@@ -2450,7 +2459,7 @@ const FormalTraining = () => {
             </section>
           </div>
         );
-     
+
       default:
         return <></>;
     }
@@ -2458,12 +2467,8 @@ const FormalTraining = () => {
 
   return (
     <section className="w-full">
-      <div className="w-full h-400">
-        <img
-          className="w-full h-400 object-cover"
-          src="/img/banner3.png"
-          alt=""
-        />
+      <div className="w-full">
+        <img style={contentStyle} src="/img/ban5.png" alt="banner 2" />
       </div>
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <p className="text-3xl border-b-4 text-center">Academics</p>

@@ -23,6 +23,7 @@ import FormalTraining from "./storefront/academics/formal-training";
 import NewsDetailComponent from "./storefront/news/detail/news-detail";
 import NewsListComponent from "./storefront/news/list/index";
 import Faculties from "./storefront/faculties";
+import TrainingProgramComponent from "./storefront/academics/training-program-detail";
 
 const AboutComponent = lazy(() => import("./storefront/about"));
 const NewsComponent = lazy(() => import("./storefront/news"));
@@ -60,6 +61,7 @@ function App() {
             <Route path="/news/:id" element={<NewsDetailComponent />} />
             <Route path="/news-list/:name" element={<NewsListComponent />} />
             <Route path="/academics" element={<AcademicsComponent />} />
+            <Route path="/academics/:programId" element={<TrainingProgramComponent />} />
             <Route
               path="/academics/formal-training"
               element={<FormalTraining />}

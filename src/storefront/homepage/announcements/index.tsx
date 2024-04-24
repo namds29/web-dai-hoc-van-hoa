@@ -65,7 +65,7 @@ const Announcements = () => {
             </div>
             <div className={styles.sub_news}>
                 {DATA_ANNOUCEMENT.map(item => (
-                    <div className={styles.sub_news_box}>
+                    <div key={item.id} className={styles.sub_news_box}>
                         <div className="text-orange-500 font-bold flex gap-1 items-center">
                             <CalendarOutlined /> {item.date} <img className="w-[40px] h-[20px] ml-2" src="/img/icon-new.gif" alt="gif new" />
                         </div>
