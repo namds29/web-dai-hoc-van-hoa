@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import Banner from "src/components/banner";
 
 const PARTNER_LIST = [
   {
