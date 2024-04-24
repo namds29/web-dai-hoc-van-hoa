@@ -15,7 +15,7 @@ export const DATA_SCHOOL_ACTIVITIES = [
     },
     {
         id: "news3",
-        imgUrl: "/img/img1.png",
+        imgUrl: "/img/school12.jpg",
         date: "18/01/2024",
         cardTitle: "THANH HOA UNIVERSITY OF CULTURE, SPORTS, AND TOURISM ATTENDS THE OPENING CEREMONY OF THANH HOA-DIEN BIEN TOURISM AND CULTURE WEEK 2024",
         cardDescription: "Towards celebrating the 70th anniversary of the Dien Bien Phu Victory (May 7, 1954 - May 7, 2024), 115 years of the establishment of Dien Bien province (June 28, 1909 - June 28, 2024) and 75 years of the establishment of  Thanh Hoa Provincial Party Committee (October 10, 1949 - October 10, 2024), Thanh Hoa Provincial People's Committee coordinated with Dien Bien Provincial People's Committee to organize Thanh Hoa-Dien Bien Tourism and Culture Week 2024 in Thanh Hoa province. Attending the program on the evening of January 19, 2024, was Dr. Vu Van Tuyen - Chairman of TUCST’s Council."
