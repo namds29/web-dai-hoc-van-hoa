@@ -586,7 +586,7 @@ const Academics = () => {
   return (
     <section className="w-full">
       <div className="w-full">
-        <img style={contentStyle} src="/img/ban5.png" alt="banner 2" />
+        <img style={contentStyle} src="/img/academics.png" alt="banner 2" />
       </div>
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <p className="text-3xl border-b-4 text-center">Academics</p>
@@ -620,7 +620,11 @@ const Academics = () => {
                   <a className="text-xl font-bold">{item.parent_title}</a>
                   <div className="cursor-pointer ml-4 text-white font-normal ">
                     {item.children_title.map((child) => (
-                      <div key={child.link} className="underline hover:text-gray-300" onClick={() => navigate(child.link)}>
+                      <div
+                        key={child.link}
+                        className="underline hover:text-gray-300"
+                        onClick={() => navigate(child.link)}
+                      >
                         {child.title}
                       </div>
                     ))}
@@ -634,7 +638,11 @@ const Academics = () => {
                 <div className="flex mt-8 gap-10">
                   <div className="w-full flex flex-col justify-center items-center">
                     <div className="w-full rounded-xl bg-orange-500 cursor-pointer">
-                      <img className="w-full h-full rounded" src="/img/aca_formal.png" alt=" Formal training" />
+                      <img
+                        className="w-full h-full rounded"
+                        src="/img/aca_formal.png"
+                        alt=" Formal training"
+                      />
                     </div>
                     <div
                       className="w-1/2 px-4 py-2 mt-8 bg-subColor text-center rounded cursor-pointer hover:bg-orange-400 text-white"
@@ -646,7 +654,11 @@ const Academics = () => {
 
                   <div className="w-full flex flex-col justify-center items-center">
                     <div className="w-full rounded-xl bg-orange-500 cursor-pointer">
-                      <img className="w-full h-full rounded" src="/img/aca_transition.png" alt="Transition training" />
+                      <img
+                        className="w-full h-full rounded"
+                        src="/img/aca_transition.png"
+                        alt="Transition training"
+                      />
                     </div>
                     <div className="w-1/2 px-4 py-2 mt-8 bg-subColor text-center rounded cursor-pointer hover:bg-orange-400 text-white">
                       Transition training
@@ -655,13 +667,16 @@ const Academics = () => {
 
                   <div className="w-full flex flex-col justify-center items-center">
                     <div className="w-full rounded-xl bg-orange-500 cursor-pointer">
-                      <img className="w-full h-full object-contains rounded" src="/img/aca_2nd.png" alt="Second-degree training" />
+                      <img
+                        className="w-full h-full object-contains rounded"
+                        src="/img/aca_2nd.png"
+                        alt="Second-degree training"
+                      />
                     </div>
                     <div className="w-2/3 px-4 py-2 mt-8 bg-subColor text-center rounded cursor-pointer hover:bg-orange-400 text-white">
                       Second-degree training
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>

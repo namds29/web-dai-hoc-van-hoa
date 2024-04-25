@@ -1,30 +1,30 @@
-export const BASE_API_URL = import.meta.env.VITE_API_URL
+export const BASE_API_URL = import.meta.env.VITE_API_URL;
 
-export const TOKEN_KEY = import.meta.env.VITE_TOKEN_KEY
+export const TOKEN_KEY = import.meta.env.VITE_TOKEN_KEY;
 export const ACADEMICS_FUCTIONAL_UNITS = [
   {
     id: 1,
-    title: "General Administration Department",
+    title: "Department of General Administration",
   },
   {
     id: 2,
-    title: "Personnel Organization Department",
+    title: "Department of Personnel Organization",
   },
   {
     id: 3,
-    title: "Finance & Planning Department",
+    title: "Department of Finance & Planning",
   },
   {
     id: 4,
-    title: "Academic Affairs Department",
+    title: "Department of Training Management",
   },
   {
     id: 5,
-    title: "Postgraduate Training Department",
+    title: "Department of Postgraduate Training",
   },
   {
     id: 6,
-    title: "Politics & Student Affairs Department",
+    title: "Department of Politics & Student Affairs",
   },
   {
     id: 7,
@@ -32,19 +32,19 @@ export const ACADEMICS_FUCTIONAL_UNITS = [
   },
   {
     id: 8,
-    title: "Inspection Department",
+    title: "Department of Inspection",
   },
   {
     id: 9,
-    title: "Testing and Quality Assurance Department",
+    title: "Department of Testing and Quality Assurance",
   },
   {
     id: 10,
-    title: "Assets Management & Security Department",
+    title: "Department of Facilities Management",
   },
   {
     id: 11,
-    title: "Advisory Center of Admission and Job",
+    title: "Center of Admissions Consulting and Job Introduction",
   },
   {
     id: 12,
@@ -52,17 +52,16 @@ export const ACADEMICS_FUCTIONAL_UNITS = [
   },
   {
     id: 13,
-    title: "Informatics – Foreign Language Center",
+    title: "Center of Informatics – Foreign Languages",
   },
   {
     id: 14,
-    title: "Center of Tourism training & Event Organization",
+    title: "Center of Tourism Training & Event Organization",
   },
   {
     id: 15,
-    title: "Library and Information Center",
+    title: "Center of Library and Information",
   },
-
 ];
 
 export const FACULTY_UNITS = [
@@ -98,7 +97,7 @@ export const FACULTY_UNITS = [
     id: 8,
     title: "Falcuty of Foreign Languages",
   },
-]
+];
 
 export const ACADEMICS_TRAINING_PROGRAM = [
   {
@@ -106,8 +105,8 @@ export const ACADEMICS_TRAINING_PROGRAM = [
     children_title: [
       {
         title: "Cultural Management",
-        link: "doctor-of-culture-management"
-      }
+        link: "doctor-of-culture-management",
+      },
     ],
   },
   {
@@ -115,13 +114,13 @@ export const ACADEMICS_TRAINING_PROGRAM = [
     children_title: [
       {
         title: "Cultural Management",
-        link: "master-of-culture-management"
+        link: "master-of-culture-management",
       },
       {
         title: "Public Management",
-        link: "master-of-public-administration-management"
+        link: "master-of-public-administration-management",
       },
-     ],
+    ],
   },
   // {
   //   parent_title: "Gifted intermediate level",
@@ -175,7 +174,7 @@ export const ACADEMICS_FORMAL_TRAINING = [
   },
   {
     id: 8,
-    title: "SPORTS TRAINING MAJOR",
+    title: "SPORTS TRAINING",
   },
   {
     id: 9,
@@ -195,7 +194,7 @@ export const ACADEMICS_FORMAL_TRAINING = [
   },
   {
     id: 13,
-    title: "PHYSICAL EDUCATION",
+    title: "SPORTS MANAGEMENT",
   },
   {
     id: 14,
@@ -207,15 +206,15 @@ export const ACADEMICS_FORMAL_TRAINING = [
   },
   {
     id: 16,
-    title: "State Management",
+    title: "STATE MANAGEMENT",
   },
   {
     id: 17,
-    title: "COMMUNICATION TECHNOLOGY MAJOR",
+    title: "COMMUNICATION TECHNOLOGY",
   },
   {
     id: 18,
-    title: "SOCIAL WORK MAJOR",
+    title: "SOCIAL WORK",
   },
   {
     id: 19,
@@ -223,7 +222,7 @@ export const ACADEMICS_FORMAL_TRAINING = [
   },
   {
     id: 20,
-    title: "CULTURAL MANAGEMENT MAJOR",
+    title: "CULTURAL MANAGEMENT",
   },
   {
     id: 21,

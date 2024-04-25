@@ -3,6 +3,7 @@ import styles from "./index.module.scss";
 import CustomModal from "../../components/custom-modal";
 import { IMessage } from "src/interfaces";
 import Banner from "../../components/banner";
+import { ReactJSXElement } from "node_modules/@emotion/react/types/jsx-namespace";
 
 const About = () => {
   const [open, setOpen] = useState(false);
@@ -21,7 +22,7 @@ const About = () => {
       ),
       content: (
         <div className="text-lg">
-          <strong >
+          <strong>
             Thanh Hoa University of Culture, Sports and Tourism is a public
             university within the national education system, under the
             management of the People's Committee of Thanh Hoa Province and the
@@ -57,49 +58,122 @@ const About = () => {
     });
   };
 
-  const handleOpenPresident = () => {
+  const handleOpenPresident = (title: string) => {
     setOpen(true);
+    let renderContent: ReactJSXElement = <></>;
+    switch (title) {
+      case "Assoc .Prof. Dr. Nguyen Thi Thuc":
+        renderContent = (
+          <>
+            <p className="ml-4 text-xl">
+              - Support the President’s aspects: Training Management; Facilities
+              Management; Quality Assurance; Quality Accreditation; Education
+              Inspection; Administrative Management and some other tasks
+              assigned by the President.
+            </p>
+            <br />
+            <p className="ml-4 text-xl">
+              - Handle tasks on behalf of the President when the President is
+              away.
+            </p>
+            <br />
+            <p className="ml-4 text-xl">
+              -Monitor and promote the activities of the following units:
+              Department of Training Management; Department of Facilities
+              Management; Department of General Administration; Center for
+              Tourism Training, Practice & Event Organization; Academic
+              Faculties.
+            </p>
+            <br />
+            <p className="ml-4 text-xl">
+              - Take responsibility for information posted on TUCST’s website
+              regarding specific areas.
+            </p>
+            <p className="ml-4 text-xl">
+              - Working as a teacher at the Faculty of Culture-Information; Be a
+              Party member of the Party Cell of Training Management - Admissions
+              Consulting & Job counseling.
+            </p>
+          </>
+        );
+        break;
+      case "Assoc. Prof. Dr. Le Thanh Ha":
+        renderContent = (
+          <>
+            <p className="ml-4 text-xl">
+              - Comprehensively manage TUCST's operations according to the
+              functions, tasks, and powers specified in TUCST's Organization and
+              Operation Regulations and relevant legal provisions; take full
+              responsibility before the People's Committee of Thanh Hoa province
+              and the Ministry of Education and Training for all aspects of
+              TUCST's operations.
+            </p>
+            <br />
+            <p className="ml-4 text-xl">
+              - In charge of all aspects: Political ideology; TUCST’s
+              development strategy and planning; Personnel Organization; Science
+              and Technology; International Cooperation; Finance; Emulation and
+              Reward.
+            </p>
+
+            <br />
+            <p className="ml-4 text-xl">
+              - Monitor and promote the activities of the following units:
+              Department of Personnel Organization; Department of Scientific
+              Management and International Cooperation; Department of Financial
+              Planning; Department of Postgraduate Education; Department of
+              Inspection; Department of Testing and Educational Quality
+              Assurance; Center for Continuing & Joint Training Center; Center
+              for Foreign Languages and Information Technology; Center for
+              Admissions Consulting & Job counseling; Center of
+              Information-Library.
+            </p>
+            <br />
+            <p className="ml-4 text-xl">
+              - Work as a teacher at the Faculty of Foreign Language; Be a Party
+              member of the Party Cell of Personnel Organization and Financial
+              Planning.
+            </p>
+          </>
+        );
+
+        break;
+      case "Dr. Dong Huong Lan":
+        renderContent = (
+          <>
+            <p className="ml-4 text-xl">
+              - Support the President’s aspects: Sports, Student Affairs, Ho Chi
+              Minh Communist Youth Union, Study Promotion Association, and some
+              other tasks assigned by the President.
+            </p>
+            <br />
+            <p className="ml-4 text-xl">
+              - Monitor and promote the activities of the following units:
+              Department of Political Affairs – Students; Ho Chi Minh Communist
+              Youth Union; Study Promotion Association.
+            </p>
+
+            <br />
+            <p className="ml-4 text-xl">
+              - Take responsibility for information posted on TUCST’s website
+              regarding specific areas.
+            </p>
+            <br />
+            <p className="ml-4 text-xl">
+              - Working as a teacher at the Faculty of Sports; Be a Party member
+              of the Party Cell of Sports.
+            </p>
+          </>
+        );
+        break;
+      default:
+        break;
+    }
     setModalContent({
-      title: <p className="text-2xl">President - Assoc. Prof. Le Thanh Ha</p>,
-      content: (
-        <>
-          <p className="ml-4 text-xl">
-            - Comprehensively manage TUCST's operations according to the
-            functions, tasks, and powers specified in TUCST's Organization and
-            Operation Regulations and relevant legal provisions; take full
-            responsibility before the People's Committee of Thanh Hoa province
-            and the Ministry of Education and Training for all aspects of
-            TUCST's operations.
-          </p>
-          <br />
-          <p className="ml-4 text-xl">
-            - In charge of all aspects: Political ideology; TUCST’s development
-            strategy and planning; Personnel Organization; Science and
-            Technology; International Cooperation; Finance; Emulation and
-            Reward.
-          </p>
-          <br />
-          <p className="ml-4 text-xl">
-            - Monitor and promote the activities of the following units:
-            Department of Personnel Organization; Department of Scientific
-            Management and International Cooperation; Department of Financial
-            Planning; Department of Postgraduate Education; Department of
-            Inspection; Department of Testing and Educational Quality Assurance;
-            Center for Continuing & Joint Training Center; Center for Foreign
-            Languages and Information Technology; Center for Admissions
-            Consulting & Job counseling; Center of Information-Library.
-          </p>
-          <br />
-          <p className="ml-4 text-xl">
-            - Work as a teacher at the Faculty of Foreign Language; Be a Party
-            member of the Party Cell of Personnel Organization and Financial
-            Planning.
-          </p>
-        </>
-      ),
+      title: <p className="text-2xl">{title}</p>,
+      content: renderContent,
     });
   };
-
   const handleOpenModalMission = () => {
     setOpen(true);
     setModalContent({
@@ -203,28 +277,32 @@ const About = () => {
             learners have all the knowledge, skills and qualities necessary to
             become successful citizens in society.
             <p className="flex flex-row-reverse mt-3">
-              Assoc. Prof. Le Thanh Ha
+              Assoc. Prof. Dr. Le Thanh Ha
             </p>
           </blockquote>
-
         </div>
       </section>
 
       <section className={`bg_gradient_blue_to_light w-full px-24 py-8 `}>
         <div className="flex justify-center text-white font-bold mb-10">
-          <p className={`text-4xl border-b-4`}>BOARD OF DIRECTORS</p>
+          <p className={`text-4xl border-b-4`}>Governing Board</p>
         </div>
         <div className="grid grid-cols-3 gap-4 text-black pb-10">
           <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
-            <div className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer">
+            <div
+              className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer"
+              onClick={() =>
+                handleOpenPresident("Assoc .Prof. Dr. Nguyen Thi Thuc")
+              }
+            >
               <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/vicepresident3.jpg"
-                alt="Assoc. Prof. Nguyen Thi Thuc"
+                alt="Assoc .Prof. Dr. Nguyen Thi Thuc"
               />
             </div>
             <div className="text-center text-white mt-4 ">
-              Assoc. Prof. Nguyen Thi Thuc
+              Assoc .Prof. Dr. Nguyen Thi Thuc
               <br />
               (Vice president)
             </div>
@@ -232,30 +310,35 @@ const About = () => {
           <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div
               className="w-full h-full grayscale hover:grayscale-0 duration-500 cursor-pointer"
-              onClick={handleOpenPresident}
+              onClick={() =>
+                handleOpenPresident("Assoc. Prof. Dr. Le Thanh Ha")
+              }
             >
               <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/vicepresident2.jpg"
-                alt="Assoc. Prof. Le Thanh Ha"
+                alt="Assoc. Prof. Dr. Le Thanh Ha"
               />
             </div>
             <div className="text-center text-white mt-4">
-              Assoc. Prof. Le Thanh Ha
+              Assoc. Prof. Dr. Le Thanh Ha
               <br />
               (President)
             </div>
           </div>
           <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
-            <div className="w-full h-full grayscale hover:grayscale-0 duration-500 bg-slate-500  cursor-pointer">
+            <div
+              className="w-full h-full grayscale hover:grayscale-0 duration-500 bg-slate-500  cursor-pointer"
+              onClick={() => handleOpenPresident("Dr. Dong Huong Lan")}
+            >
               <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/vicepresident1.jpg"
-                alt="Ph.D Do Huong Lan"
+                alt="Dr. Dong Huong Lan"
               />
             </div>
             <div className="text-center text-white mt-4">
-              Ph.D Do Huong Lan
+              Dr. Dong Huong Lan
               <br />
               (Vice president)
             </div>
@@ -284,11 +367,25 @@ const About = () => {
         </div>
       </section>
       <section className="flex justify-center text-xl bold text-center gap-16 bg-gray-200 w-full text-black  font-bold px-20 py-8">
-        <div onClick={handleOpenModalHistory} className="w-[20rem] h-[20rem] rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer" >
-          <img className="rounded-lg w-full h-full" src="/img/history_img.png" alt="" />
+        <div
+          onClick={handleOpenModalHistory}
+          className="w-[20rem] h-[20rem] rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer"
+        >
+          <img
+            className="rounded-lg w-full h-full"
+            src="/img/history_img.png"
+            alt=""
+          />
         </div>
-        <div onClick={handleOpenModalMission} className="w-[20rem] h-[20rem] rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer">
-          <img className="rounded-lg w-full h-full" src="/img/mission_img.png" alt="" />
+        <div
+          onClick={handleOpenModalMission}
+          className="w-[20rem] h-[20rem] rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer"
+        >
+          <img
+            className="rounded-lg w-full h-full"
+            src="/img/mission_img.png"
+            alt=""
+          />
         </div>
       </section>
       <section>
@@ -303,7 +400,7 @@ const About = () => {
             </div>
           </div>
           <div className="w-full rounded bg-white">
-            <div className="w-full flex items-center h-full" >
+            <div className="w-full flex items-center h-full">
               <img
                 className="w-full h-[150px] object-contain overflow-hidden rounded"
                 src="/img/bogd.jpeg"
@@ -322,7 +419,11 @@ const About = () => {
           </div>
           <div className="w-full rounded">
             <div className="w-full flex items-center h-full">
-              <a href="https://en-us.thanhhoa.gov.vn/portal/Pages/default.aspx" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://en-us.thanhhoa.gov.vn/portal/Pages/default.aspx"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   className="w-full h-full object-contain overflow-hidden rounded"
                   src="/img/cttdt.jpg"
