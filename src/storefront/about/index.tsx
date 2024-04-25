@@ -62,7 +62,7 @@ const About = () => {
     setOpen(true);
     let renderContent: ReactJSXElement = <></>;
     switch (title) {
-      case "Assoc. Prof. Nguyen Thi Thuc":
+      case "Assoc.Prof. Dr. Nguyen Thi Thuc":
         renderContent = (
           <>
             <p className="ml-4 text-xl">
@@ -138,7 +138,7 @@ const About = () => {
         );
 
         break;
-      case "Ph.D Dong Huong Lan":
+      case "Dr. Dong Huong Lan":
         renderContent = (
           <>
             <p className="ml-4 text-xl">
@@ -292,17 +292,17 @@ const About = () => {
             <div
               className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer"
               onClick={() =>
-                handleOpenPresident("Assoc. Prof. Nguyen Thi Thuc")
+                handleOpenPresident("Assoc.Prof. Dr. Nguyen Thi Thuc")
               }
             >
               <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/vicepresident3.jpg"
-                alt="Assoc. Prof. Nguyen Thi Thuc"
+                alt="Assoc.Prof. Dr. Nguyen Thi Thuc"
               />
             </div>
             <div className="text-center text-white mt-4 ">
-              Assoc. Prof. Nguyen Thi Thuc
+              Assoc.Prof. Dr. Nguyen Thi Thuc
               <br />
               (Vice president)
             </div>
@@ -327,16 +327,16 @@ const About = () => {
           <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div
               className="w-full h-full grayscale hover:grayscale-0 duration-500 bg-slate-500  cursor-pointer"
-              onClick={() => handleOpenPresident("Ph.D Dong Huong Lan")}
+              onClick={() => handleOpenPresident("Dr. Dong Huong Lan")}
             >
               <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/vicepresident1.jpg"
-                alt="Ph.D Dong Huong Lan"
+                alt="Dr. Dong Huong Lan"
               />
             </div>
             <div className="text-center text-white mt-4">
-              Ph.D Dong Huong Lan
+              Dr. Dong Huong Lan
               <br />
               (Vice president)
             </div>
