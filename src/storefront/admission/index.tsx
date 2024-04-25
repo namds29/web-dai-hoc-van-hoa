@@ -5,7 +5,6 @@ import Banner from "src/components/banner";
 
 const Admission = () => {
   const [currentSelect, setCurrentSelect] = useState<number>(1);
-
   const items: CollapseProps["items"] = [
     {
       key: "1",
