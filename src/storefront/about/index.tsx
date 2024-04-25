@@ -62,7 +62,7 @@ const About = () => {
     setOpen(true);
     let renderContent: ReactJSXElement = <></>;
     switch (title) {
-      case "Assoc.Prof. Dr. Nguyen Thi Thuc":
+      case "Assoc .Prof. Dr. Nguyen Thi Thuc":
         renderContent = (
           <>
             <p className="ml-4 text-xl">
@@ -97,7 +97,7 @@ const About = () => {
           </>
         );
         break;
-      case "Assoc. Prof. Le Thanh Ha":
+      case "Assoc. Prof. Dr. Le Thanh Ha":
         renderContent = (
           <>
             <p className="ml-4 text-xl">
@@ -277,7 +277,7 @@ const About = () => {
             learners have all the knowledge, skills and qualities necessary to
             become successful citizens in society.
             <p className="flex flex-row-reverse mt-3">
-              Assoc. Prof. Le Thanh Ha
+              Assoc. Prof. Dr. Le Thanh Ha
             </p>
           </blockquote>
         </div>
@@ -292,17 +292,17 @@ const About = () => {
             <div
               className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer"
               onClick={() =>
-                handleOpenPresident("Assoc.Prof. Dr. Nguyen Thi Thuc")
+                handleOpenPresident("Assoc .Prof. Dr. Nguyen Thi Thuc")
               }
             >
               <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/vicepresident3.jpg"
-                alt="Assoc.Prof. Dr. Nguyen Thi Thuc"
+                alt="Assoc .Prof. Dr. Nguyen Thi Thuc"
               />
             </div>
             <div className="text-center text-white mt-4 ">
-              Assoc.Prof. Dr. Nguyen Thi Thuc
+              Assoc .Prof. Dr. Nguyen Thi Thuc
               <br />
               (Vice president)
             </div>
@@ -310,16 +310,18 @@ const About = () => {
           <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div
               className="w-full h-full grayscale hover:grayscale-0 duration-500 cursor-pointer"
-              onClick={() => handleOpenPresident("Assoc. Prof. Le Thanh Ha")}
+              onClick={() =>
+                handleOpenPresident("Assoc. Prof. Dr. Le Thanh Ha")
+              }
             >
               <img
                 className="w-full h-full rounded-t-xl object-cover"
                 src="/img/vicepresident2.jpg"
-                alt="Assoc. Prof. Le Thanh Ha"
+                alt="Assoc. Prof. Dr. Le Thanh Ha"
               />
             </div>
             <div className="text-center text-white mt-4">
-              Assoc. Prof. Le Thanh Ha
+              Assoc. Prof. Dr. Le Thanh Ha
               <br />
               (President)
             </div>
