@@ -6619,7 +6619,7 @@ const FormalTraining = () => {
   return (
     <section className="w-full">
       <div className="w-full">
-        <img style={contentStyle} src="/img/ban5.jpg" alt="banner 2" />
+        <img style={contentStyle} src="/img/ban5.png" alt="banner 2" />
       </div>
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <p className="text-3xl border-b-4 text-center">Academics</p>

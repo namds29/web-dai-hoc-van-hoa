@@ -26,7 +26,7 @@ const Banner = () => {
           <img style={contentStyle} src="/img/ban4.png" alt="banner 5" />
         </div>
         <div>
-          <img style={contentStyle} src="/img/ban5.jpg" alt="banner 6" />
+          <img style={contentStyle} src="/img/ban5.png" alt="banner 6" />
         </div>
         <div>
           <img
