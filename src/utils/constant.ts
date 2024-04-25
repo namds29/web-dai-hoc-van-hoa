@@ -174,7 +174,7 @@ export const ACADEMICS_FORMAL_TRAINING = [
   },
   {
     id: 8,
-    title: "SPORTS TRAINING MAJOR",
+    title: "SPORTS TRAINING",
   },
   {
     id: 9,
@@ -194,7 +194,7 @@ export const ACADEMICS_FORMAL_TRAINING = [
   },
   {
     id: 13,
-    title: "PHYSICAL EDUCATION",
+    title: "SPORTS MANAGEMENT",
   },
   {
     id: 14,
@@ -214,7 +214,7 @@ export const ACADEMICS_FORMAL_TRAINING = [
   },
   {
     id: 18,
-    title: "SOCIAL WORK MAJOR",
+    title: "SOCIAL WORK",
   },
   {
     id: 19,
@@ -222,7 +222,7 @@ export const ACADEMICS_FORMAL_TRAINING = [
   },
   {
     id: 20,
-    title: "CULTURAL MANAGEMENT MAJOR",
+    title: "CULTURAL MANAGEMENT",
   },
   {
     id: 21,
