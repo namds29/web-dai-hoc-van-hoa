@@ -189,7 +189,7 @@ const AdminHomepage = () => {
           <p className="text-3xl underline">INTRODUCTION</p>
         </div>
         <div className="flex justify-center">
-          <iframe width="860" height="415" src="https://www.youtube.com/embed/_GKSgjcPGFg?si=gySiMM7pYac4iuuL" title="Intro TUCST" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+          <iframe width="860" height="415" src="https://www.youtube.com/embed/OEKQ6fQPJ58?si=K4yhJ1NZjG-Gq33B" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
         </div>
       </section>
 
