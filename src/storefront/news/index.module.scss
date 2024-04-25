@@ -81,14 +81,20 @@
 }
 .card_science{
   width: calc(100% - 16rem);
-
 }
 .card_science_description{
   display: -webkit-box;
   font-size: 14px;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   font-weight: 500;
+  margin-top: 10px;
   /* Set the number of lines to be displayed before truncating */
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+@media screen and (max-width: 880px) {
+  .card_science{
+    width: calc(100% - 6rem);
+  }
 }

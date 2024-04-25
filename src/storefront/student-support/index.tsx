@@ -2,28 +2,142 @@ import { useNavigate } from "react-router-dom";
 import styles from "./index.module.scss";
 
 import { Card } from "antd";
-
+import { useState } from "react";
+import { IMessage } from "src/interfaces";
+import CustomModal from "src/components/custom-modal";
 
 const StudentSupport = () => {
+  const [open, setOpen] = useState(false);
+  const [modalContent, setModalContent] = useState<IMessage>({
+    title: <></>,
+    content: <></>,
+  });
   const navigate = useNavigate()
-  const departmentData = [
-    {
-      id: "1",
-      label: "Scientific management & International Cooperation Department",
-      link: "abc",
-    },
-    { id: "2", label: "Training Department", link: "abc" },
-    { id: "3", label: "Student Political Affairs Department", link: "abc" },
-  ];
+  const handleCancel = () => {
+    setOpen(false);
+  };
 
-  const serviceData = [
-    {
-      id: "1",
-      label: "Dormitory",
-      link: "abc",
-    },
-    { id: "2", label: "External services", link: "abc" },
-  ];
+  const handleOk = () => {
+    setOpen(false);
+  };
+  const handleOpenCooperationDepartment = () => {
+    setOpen(true);
+    setModalContent({
+      title: (
+        <p className="text-2xl">
+          Scientific management & International Cooperation Department:
+        </p>
+      ),
+      content: (
+        <div className="text-lg">
+          <p >
+            Contact us to discuss issues related to Training programs and links with international partners, Extracurricular programs and international events, Visa and Passport information,...
+          </p>
+          <p className="mt-6">
+            Address: Rooms 401, 402, 403, 404, Building A, Thanh Hoa University of Culture, Sports and Tourism, No. 561, Quang Trung Street, Dong Ve Ward, Thanh Hoa City.
+          </p>
+          <p className="mt-6">
+            Website: <a href="http://qlkhhtqt.tucst.edu.vn">http://qlkhhtqt.tucst.edu.vn</a>
+          </p>
+        </div>
+      ),
+    });
+  };
+  const handleOpenTrainingDepartment = () => {
+    setOpen(true);
+    setModalContent({
+      title: (
+        <p className="text-2xl">
+          Training Department
+        </p>
+      ),
+      content: (
+        <div className="text-lg">
+          <p >
+            Contact us to learn about training programs at the School
+          </p>
+          <p className="mt-6">
+            Address: Room 101, Building B, Thanh Hoa University of Culture, Sports and Tourism, No. 561, Quang Trung Street, Dong Ve Ward, Thanh Hoa City.
+          </p>
+          <p className="mt-6">
+            Phone: +(84) 2373 857 421
+          </p>
+          <p className="mt-6">
+            Email: nguyenthiha@dvtdt.edu.vn
+          </p>
+          <p className="mt-6">
+            Website: <a href="http://qldt.tucst.edu.vn">http://qldt.tucst.edu.vn</a>
+          </p>
+        </div>
+      ),
+    });
+  };
+  const handleOpenStudentPolitical = () => {
+    setOpen(true);
+    setModalContent({
+      title: (
+        <p className="text-2xl">
+          Student Political Affairs Department
+        </p>
+      ),
+      content: (
+        <div className="text-lg">
+          <p >
+            Contact us to discuss issues related to international student management including Dormitories, General regulations, Procedures - Permits for out-of-province visits,...
+          </p>
+          <p className="mt-6">
+            Address: Room 104 - 105 A, Thanh Hoa University of Culture, Sports and Tourism, No. 561, Quang Trung Street, Dong Ve Ward, Thanh Hoa City.
+
+          </p>
+          <p className="mt-6">
+            Phone: 0911688181
+          </p>
+          <p className="mt-6">
+            Email: lexuanson@dvtdt.edu.vn
+          </p>
+          <p className="mt-6">
+            Website:  <a href="http://ctcthssv.tucst.edu.vn">http://ctcthssv.tucst.edu.vn</a>
+          </p>
+        </div>
+      ),
+    });
+  };
+  const handleOpenExternal = () => {
+    setOpen(true);
+    setModalContent({
+      title: (
+        <p className="text-2xl">
+          External services
+        </p>
+      ),
+      content: (
+        <div className="text-lg">
+          Within a radius of 6km, students studying abroad and interning at TUCST can access a full range of amenities outside of school including:
+          <ul>
+            <li>- Commercial services: Vincom Plaza Commercial Center (located at Tran Phu Street, Lam Son Ward, Thanh Hoa City)</li>
+            <li>- Medical services: Thanh Hoa City General Hospital (located at 181 Hai Thuong Lan Ong, Thanh Hoa City)</li>
+            <li>- Entertainment services: Lam Son Square (located at RQ7C+475, Phan Chu Trinh Street, Dong Tho Ward); The shopping and coffee street is located on Le Hoan Street</li>
+            <li>- Academic services: Viet Ly Bookstore, Tien Tho Bookstore, Tien Phong Bookstore</li>
+          </ul>
+        </div>
+      ),
+    });
+  };
+  const handleOpenDorm = () => {
+    setOpen(true);
+    setModalContent({
+      title: (
+        <p className="text-2xl">
+          Dormitory
+        </p>
+      ),
+      content: (
+        <div className="text-lg">
+          The 200-seat dormitory has been invested in, built, and handed over by Hua Phan province (Laos) located on the campus of Hong Duc University (right next to TUCST), serving Lao students studying abroad, practicing in Thanh Hoa province. The dormitory has 4 floors, and 40 rooms, and can accommodate 200 Lao officials and students studying in Thanh Hoa province. The dormitory for Lao international students is a special project, clearly demonstrating the friendly relationship between Thanh Hoa Province and Hua Phan Province.
+        </div>
+      ),
+    });
+  };
 
   const DATA_RECRUITMENT = [
     {
@@ -55,23 +169,40 @@ const StudentSupport = () => {
           <p className="text-xl border-b-4">SUPPORT DEPARTMENTS</p>
         </div>
         <div className="grid grid-cols-3 gap-4 w-full">
-          {departmentData.map((item) => {
-            return (
-              <div
-                key={item.id}
-                className="m-10 relative flex items-center justify-center"
-              >
-                <img
-                  className="object-cover w-full h-full rounded-lg filter brightness-50"
-                  src="/img/img1.png"
-                  alt=""
-                />
-                <div className="absolute flex text-center font-bold m-8 text-2xl">
-                  {item.label}
-                </div>
-              </div>
-            );
-          })}
+          <div className="m-10 relative flex items-center justify-center cursor-pointer" onClick={handleOpenCooperationDepartment}>
+            <img
+              className="object-cover w-full h-full rounded-lg filter brightness-50"
+              src="/img/ssp3.jpg"
+              alt=""
+            />
+            <div className="absolute flex text-center font-bold m-8 text-2xl">
+              Scientific management & International Cooperation Department
+            </div>
+          </div>
+
+          <div className="m-10 relative flex items-center justify-center cursor-pointer" onClick={handleOpenTrainingDepartment}>
+            <img
+              className="object-cover w-full h-full rounded-lg filter brightness-50"
+              src="/img/school3.jpg"
+              alt=""
+            />
+            <div className="absolute flex text-center font-bold m-8 text-2xl">
+              Training Department
+            </div>
+          </div>
+
+          <div className="m-10 relative flex items-center justify-center cursor-pointer" onClick={handleOpenStudentPolitical}>
+            <img
+              className="object-cover w-full h-full rounded-lg filter brightness-50"
+              src="/img/ssp41.jpg"
+              alt=""
+            />
+            <div className="absolute flex text-center font-bold m-8 text-2xl">
+              Student Political Affairs Department
+            </div>
+          </div>
+
+
         </div>
       </section>
 
@@ -80,23 +211,33 @@ const StudentSupport = () => {
           <p className="text-xl border-b-4">STUDENT SERVICES</p>
         </div>
         <div className="flex gap-4 w-full">
-          {serviceData.map((item) => {
-            return (
-              <div
-                key={item.id}
-                className="mx-10 relative flex items-center justify-center w-full h-80"
-              >
-                <img
-                  className="w-full object-cover rounded-lg filter brightness-50 h-full"
-                  src={"/img/img1.png"}
-                  alt=""
-                />
-                <div className="absolute flex text-center font-bold m-8 text-2xl">
-                  {item.label}
-                </div>
-              </div>
-            );
-          })}
+          <div
+            className="mx-10 relative flex items-center justify-center w-full h-80"
+            onClick={handleOpenDorm}
+          >
+            <img
+              className="w-full rounded-lg filter brightness-50 h-full"
+              src="/img/Dormitory.png"
+              alt=""
+            />
+            <div className="absolute flex text-center font-bold m-8 text-2xl">
+              Dormitory
+            </div>
+          </div>
+          <div
+            className="mx-10 relative flex items-center justify-center w-full h-80"
+            onClick={handleOpenExternal}
+          >
+            <img
+              className="w-full rounded-lg filter brightness-50 h-full"
+              src="/img/ex-service.png"
+              alt=""
+            />
+            <div className="absolute flex text-center font-bold m-8 text-2xl">
+              External services
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -108,7 +249,7 @@ const StudentSupport = () => {
           {DATA_RECRUITMENT.map((item) => {
             return (
               <Card key={item.id} className="my-4 shadow-lg">
-                <div className="flex flex-row cursor-pointer" onClick={()=> navigate(`/news/${item.id}`)}>
+                <div className="flex flex-row cursor-pointer" onClick={() => navigate(`/news/${item.id}`)}>
                   <img
                     src={item.thumbnail}
                     className="w-1/4 rounded mr-6 object-cover translate-z-5"
@@ -124,6 +265,13 @@ const StudentSupport = () => {
           })}
         </div>
       </section>
+      <CustomModal
+        message={modalContent}
+        type=""
+        onCancel={handleCancel}
+        onOk={handleOk}
+        show={open}
+      />
     </div>
   );
 };

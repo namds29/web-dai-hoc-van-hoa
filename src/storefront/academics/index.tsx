@@ -5,8 +5,16 @@ import {
 // import styles from "./index.module.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Banner from "src/components/banner";
 
+const contentStyle: React.CSSProperties = {
+  margin: 0,
+  width: "100%",
+  height: "100%",
+  lineHeight: "160px",
+  textAlign: "center",
+  background: "white",
+  objectFit: "contain",
+};
 const Academics = () => {
   const [unitId, setUnitId] = useState<number>(1);
   const navigate = useNavigate();
@@ -577,7 +585,9 @@ const Academics = () => {
 
   return (
     <section className="w-full">
-      <Banner />
+      <div className="w-full">
+        <img style={contentStyle} src="/img/academics.png" alt="banner 2" />
+      </div>
       <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
         <p className="text-3xl border-b-4 text-center">Academics</p>
         <section id="functional_unit">
@@ -586,6 +596,7 @@ const Academics = () => {
             <div className="title w-1/3 rounded-l-xl bg-orange-400">
               {ACADEMICS_FUCTIONAL_UNITS.map((item) => (
                 <div
+                  key={item.id}
                   onClick={() => handleChangeUnit(item.id)}
                   className="border-b font-normal text-xl flex justify-between items-center cursor-pointer text-white hover:text-gray-300 px-4 py-2"
                 >
@@ -603,14 +614,18 @@ const Academics = () => {
             Training Program
           </p>
           <div className="flex text-black border-black mt-4">
-            <div className="title w-1/3 bg-orange-400">
+            <div className="title w-1/3 bg-orange-400 rounded-xl">
               {ACADEMICS_TRAINING_PROGRAM.map((item) => (
-                <div className=" text-black px-4 py-2">
+                <div key={item.parent_title} className=" text-black px-4 py-2">
                   <a className="text-xl font-bold">{item.parent_title}</a>
                   <div className="cursor-pointer ml-4 text-white font-normal ">
                     {item.children_title.map((child) => (
-                      <div className="underline hover:text-gray-300">
-                        {child}
+                      <div
+                        key={child.link}
+                        className="underline hover:text-gray-300"
+                        onClick={() => navigate(child.link)}
+                      >
+                        {child.title}
                       </div>
                     ))}
                   </div>
@@ -622,9 +637,15 @@ const Academics = () => {
                 <p className="font-bold text-center text-2xl">University</p>
                 <div className="flex mt-8 gap-10">
                   <div className="w-full flex flex-col justify-center items-center">
-                    <div className="w-full h-96 rounded-xl bg-orange-500 cursor-pointer"></div>
+                    <div className="w-full rounded-xl bg-orange-500 cursor-pointer">
+                      <img
+                        className="w-full h-full rounded"
+                        src="/img/aca_formal.png"
+                        alt=" Formal training"
+                      />
+                    </div>
                     <div
-                      className="w-1/2 px-4 py-2 mt-8 bg-orange-500 text-center rounded cursor-pointer hover:bg-orange-400 text-white"
+                      className="w-1/2 px-4 py-2 mt-8 bg-subColor text-center rounded cursor-pointer hover:bg-orange-400 text-white"
                       onClick={() => navigate("/academics/formal-training")}
                     >
                       Formal training
@@ -632,20 +653,30 @@ const Academics = () => {
                   </div>
 
                   <div className="w-full flex flex-col justify-center items-center">
-                    <div className="w-full h-96 rounded-xl bg-orange-500 cursor-pointer">
+                    <div className="w-full rounded-xl bg-orange-500 cursor-pointer">
+                      <img
+                        className="w-full h-full rounded"
+                        src="/img/aca_transition.png"
+                        alt="Transition training"
+                      />
                     </div>
-                    <div className="w-1/2 px-4 py-2 mt-8 bg-orange-500 text-center rounded cursor-pointer hover:bg-orange-400 text-white">
+                    <div className="w-1/2 px-4 py-2 mt-8 bg-subColor text-center rounded cursor-pointer hover:bg-orange-400 text-white">
                       Transition training
                     </div>
                   </div>
 
                   <div className="w-full flex flex-col justify-center items-center">
-                    <div className="w-full h-96 rounded-xl bg-orange-500 cursor-pointer"></div>
-                    <div className="w-2/3 px-4 py-2 mt-8 bg-orange-500 text-center rounded cursor-pointer hover:bg-orange-400 text-white">
+                    <div className="w-full rounded-xl bg-orange-500 cursor-pointer">
+                      <img
+                        className="w-full h-full object-contains rounded"
+                        src="/img/aca_2nd.png"
+                        alt="Second-degree training"
+                      />
+                    </div>
+                    <div className="w-2/3 px-4 py-2 mt-8 bg-subColor text-center rounded cursor-pointer hover:bg-orange-400 text-white">
                       Second-degree training
                     </div>
                   </div>
-
                 </div>
               </div>
             </div>

@@ -29,7 +29,11 @@ const Banner = () => {
           <img style={contentStyle} src="/img/ban5.png" alt="banner 6" />
         </div>
         <div>
-          <img style={contentStyle} src="/img/ban6.png" alt="banner 2" />
+          <img
+            style={contentStyle}
+            src="/img/inter-partner.png"
+            alt="banner 2"
+          />
         </div>
       </Carousel>
     </div>

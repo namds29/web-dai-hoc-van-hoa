@@ -1,10 +1,11 @@
 export const DATA_DETAIL = [
-    {
-        id: "news1",
-        category: "school_activities",
-        title:
-            "TUCST TAKES PART IN THE 2024 ADMISSION CONSULTATION – CAREER GUIDANCE DAY OF TUOI TRE NEWSPAPER",
-        content: `<p style="margin-bottom: 1rem">On the morning of January 14, the 2024 Admission Consultation-Career Guidance Day of Tuoi Tre Newspaper officially took place at Hong Duc University with the attendance of many big training institutions across the country. Attending this event was Dr. Vu Van Tuyen - Chairman of TUCST’s Council.</p>
+  {
+    id: "news1",
+    category: "school_activities",
+    createdDate: "Tuesday 23/04/2024",
+    title:
+      "TUCST TAKES PART IN THE 2024 ADMISSION CONSULTATION – CAREER GUIDANCE DAY OF TUOI TRE NEWSPAPER",
+    content: `<p style="margin-bottom: 1rem">On the morning of January 14, the 2024 Admission Consultation-Career Guidance Day of Tuoi Tre Newspaper officially took place at Hong Duc University with the attendance of many big training institutions across the country. Attending this event was Dr. Vu Van Tuyen - Chairman of TUCST’s Council.</p>
         <img src="/img/school1.jpg" />
         <p style="margin-bottom: 1rem; margin-top:1rem">The 2024 Admission Consultation-Career Guidance Day is organized by the coordination of Tuoi Tre Newspaper, the Department of Higher Education (Ministry of Education and Training), the General Department of Vocational Education (Ministry of Labor, War Invalids and Social Affairs), Thanh Hoa Department of Education and Training, Hong Duc University, and Vingroup.</p>
         <img src="/img/school2.jpg" />
@@ -14,20 +15,21 @@ export const DATA_DETAIL = [
         <img src="/img/school4.jpg" />
         <p style="margin-bottom: 1rem; margin-top:1rem">With the participation of thousands of students from many high schools in Thanh Hoa City and neighboring districts, the successful organization of activities at the 2024 Admission Consultation-Career Guidance Day will not only be a bridge between students in the province and TUCST but also create promising opportunities for the university enrollment in the 2024-2025 academic year.</p>
         `,
-    },
-    {
-        id: "news2",
-        category: "school_activities",
-        title:
-            "MR LE DUC GIANG, VICE CHAIRMAN OF THE PEOPLE'S COMMITTEE OF THANH HOA PROVINCE, HAS A WORKING VISIT TO TUCST",
-        content: `
+  },
+  {
+    id: "news2",
+    category: "school_activities",
+    createdDate: "Tuesday 23/04/2024",
+    title:
+      "MR LE DUC GIANG, VICE CHAIRMAN OF THE PEOPLE'S COMMITTEE OF THANH HOA PROVINCE, HAS A WORKING VISIT TO TUCST",
+    content: `
         <p style="margin-bottom: 1rem; margin-top:1rem">On the morning of January 18, 2024, Mr. Le Duc Giang- Provincial Party Committee member, Vice Chairman of Thanh Hoa Provincial People's Committee has a working visit to Thanh Hoa University of Culture, Sports and Tourism on the results of the scientific and Technology in the period 2020-2023 with the future tasks to the year 2030, the vision to 2045.</p>
         <img src="/img/school5.jpg" />
         <p style="margin-bottom: 1rem; margin-top:1rem">Along with Mr. Le Duc Giang are leaders of relevant departments: Mr. Tran Duy Binh, Director of the Department of Science and Technology; Ms. Vuong Thi Hai Yen - Deputy Director of the Department of Culture, Sports and Tourism; Ms. Bui Thi Thanh - Deputy Director of the Department of Education and Training; Mr. Nguyen Van Tuoc - Deputy Director of the Department of Information and Communications; Mr. Nguyen Quoc Uy - Vice Chairman of Thanh Hoa Province Union of Science and Technology Associations; Mr. Cao Thanh Tung - Deputy Chief of Provincial People's Committee Office.</p>
         <p style="margin-bottom: 1rem; margin-top:1rem">The representatives of TUCST are Assoc.Prof.Dr. Le Thanh Ha – TUCST President; Dr. Vu Van Tuyen - Chairman of TUCST's Council; members of the Party Committee Standing Committee; Party Executive Committee; Governing Board; Heads of TUCST’s departments and faculties; lecturers and  200 students.</p>
         <img src="/img/school6.jpg" />
         <p style="margin-bottom: 1rem; margin-top:1rem">At the meeting, Ms. Le Thanh Ha – TUCST President reported on some achievements of TUCST after 57 years of construction and development. TUCST is a multidisciplinary public university, directly under the People's Committee of Thanh Hoa province and under the management of the Ministry of Education and Training. TUCST trains 21 undergraduate majors, 03 master's majors, and 01 doctoral major. Every year, TUCST enrolls about 2,500 students. TUCST meets the standards for quality accreditation of university education in 2021 and has completed accreditation of 8 training programs. Currently, TUCST has 23 affiliated units, including 08 training faculties; 10 rooms, and 05 centers. The total number of staff and lecturers of the University is 223 people, including 03 Associate Professors, 31 PhDs, 152 Masters, 21 University and other degrees. The proportion of lecturers with a doctorate or higher is 23% (about 21% higher than the average average of universities in the country).</p>
-        <p style="margin-bottom: 1rem; margin-top:1rem">Also at the meeting, Ms. Le Thanh Ha presented the Summary Report on Science and Technology activities for the period 2020-2023 with the vision to 2023 and until 2045. Accordingly, in the period 2020-2023, the whole TUCST has been implementing 14 provincial-level projects, having a positive impact on research and training in the fields of culture - arts, sports, and tourism of the province.  In 2023, TUCST was approved by the Provincial Science and Technology Council for 04 titles, being the unit with the highest number of approved titles in the province, accounting for 4/41 projects in the province. Most of the titles are applied in training, contributing to improving the quality of human resources and management efficiency at TUCST; Many titles are deployed and applied in practical management, production and life. TUCST has built research groups and expert groups in strong fields. In the academic year 2020-2023, TUCST has implemented 70 titles, including many key titles with excellent grades. The student's scientific research project has carried out 75 titles, focusing on solving scientific problems associated with subjects, majors and current situations, solutions to improve learning, and research results at TUCST. At the same time, it contributes to improving the quality of human resource training of the school towards an output approach and fostering knowledge and professional skills for students.</p>
+        <p style="margin-bottom: 1rem; margin-top:1rem">Also at the meeting, Ms. Le Thanh Ha presented the Summary Report on Science and Technology activities for the period 2020-2023 with the vision to 2023 and until 2045. Accordingly, in the period 2020-2023, the whole TUCST has been implementing 14 provincial-level projects, having a positive impact on research and training in the fields of culture - arts, sports, and tourism of the province.  In 2023, TUCST was approved by the Provincial Science and Technology Council for 04 titles, being the unit with the highest number of approved titles in the province, accounting for 4/041 projects in the province. Most of the titles are applied in training, contributing to improving the quality of human resources and management efficiency at TUCST; Many titles are deployed and applied in practical management, production and life. TUCST has built research groups and expert groups in strong fields. In the academic year 2020-2023, TUCST has implemented 70 titles, including many key titles with excellent grades. The student's scientific research project has carried out 75 titles, focusing on solving scientific problems associated with subjects, majors and current situations, solutions to improve learning, and research results at TUCST. At the same time, it contributes to improving the quality of human resource training of the school towards an output approach and fostering knowledge and professional skills for students.</p>
         <p style="margin-bottom: 1rem; margin-top:1rem">In the period 2020-2023, TUCST has a total of 16 book titles to serve teaching work. TUCST's Science Magazine was approved by the State Council for Professors as a scoring scientific magazine in 2022 and was granted an international identification code DOI (Digital Object Identifier). Also during this period, TUCST had 370 scientific articles, including 170 scientific articles published in specialized journals; More than 40 articles published in international journals (ISI, Scopus and online international journals), and 140 articles in TUCST journals. On average, there are 0.15 international articles/lecturer and 0.29 domestic articles/lecturer. TUCST has organized 32 conferences and seminars at all levels. Regarding international cooperation, TUCST continues to strengthen international cooperation with traditional partners such as the Philippines, Poland, Korea, Philippines and expand international cooperation activities with new partners in Taiwan...</p>
         <p style="margin-bottom: 1rem; margin-top:1rem">In addition to the results achieved, the report also points out some limitations of science and technology activities in recent times, at the same time analyzes the causes and proposes many directions, tasks, and solutions in the period 2030-2045...</p>
         <p style="margin-bottom: 1rem; margin-top:1rem">Under the management of Mr. Le Duc Giang - Vice Chairman of the Provincial People's Committee and Associate Professor, PhD. Le Thanh Ha Principal of TUCST, delegates listened to the proposals and recommendations of TUCST's lecturers and staff on science and technology activities. Some meaningful comments associated with the practice of developing science and technology activities of the training faculty; expanding topics at all levels; Prioritize investment in Culture - Tourism development projects; strengthening team training, attracting quality human resources, thereby building a highly capable and professional Evaluation Council; Strengthen international cooperation activities in the field of tourism with several neighboring countries to develop the province's tourism towards sustainability...</p>
@@ -43,13 +45,14 @@ export const DATA_DETAIL = [
         <img style="margin-top:1.4rem; border-radius:5px" src="/img/school10.jpg" />
         <img style="margin-top:1.4rem; border-radius:5px" src="/img/school11.jpg" />
         `,
-    },
-    {
-        id: "news3",
-        category: "school_activities",
-        title:
-            "THANH HOA UNIVERSITY OF CULTURE, SPORTS, AND TOURISM ATTENDS THE OPENING CEREMONY OF THANH HOA-DIEN BIEN TOURISM AND CULTURE WEEK 2024",
-        content: `
+  },
+  {
+    id: "news3",
+    category: "school_activities",
+    createdDate: "Tuesday 23/04/2024",
+    title:
+      "THANH HOA UNIVERSITY OF CULTURE, SPORTS, AND TOURISM ATTENDS THE OPENING CEREMONY OF THANH HOA-DIEN BIEN TOURISM AND CULTURE WEEK 2024",
+    content: `
         <div style="font-size: 1rem; line-height: 1.6;">
         <p style="margin-bottom: 10px;">Towards celebrating the 70th anniversary of the Dien Bien Phu Victory (May 7, 1954 - May 7, 2024), 115 years of the establishment of Dien Bien province (June 28, 1909 - June 28, 2024) and 75 years of the establishment of Thanh Hoa Provincial Party Committee (October 10, 1949 - October 10, 2024), Thanh Hoa Provincial People's Committee coordinated with Dien Bien Provincial People's Committee to organize Thanh Hoa-Dien Bien Tourism and Culture Week 2024 in Thanh Hoa province. Attending the program on the evening of January 19, 2024, was Dr. Vu Van Tuyen - Chairman of TUCST’s Council.</p>
         <p style="margin-bottom: 10px;">Attending the ceremony were leaders of the National Tourism Administration (Ministry of Culture, Sports and Tourism); leaders of departments under the Central Inspection Committee, Central Organizing Committee, representatives of the Standing Committee of Thanh Hoa Provincial Party Committee, Standing Committee of Thanh Hoa Provincial People's Council, Thanh Hoa Provincial People's Committee, Thanh Hoa Provincial Fatherland Front Committee; leaders of departments, organizations at provincial level and districts, towns, cities, associations, businesses of the two provinces of Thanh Hoa and Dien Bien; and some representatives of some other provinces.</p>
@@ -59,13 +62,14 @@ export const DATA_DETAIL = [
         <p style="margin-bottom: 10px;">Thanh Hoa-Dien Bien Tourism and Culture Week presents not only the relationship between the two provinces but also a strategic event for cooperation and development of culture and tourism in the future.</p>
         </div>
         `,
-    },
-    {
-        id: "news4",
-        category: "campus_life",
-        title:
-            "YOUTH MONTH ACTIVITIES AT TUCST TO CELEBRATE THE 93RD ANNIVERSARY OF THE FOUNDING OF THE HO CHI MINH COMMUNIST YOUTH UNION",
-        content: `<h1 style="font-weight:700;margin-bottom:1rem">TUCST Youth Month Activities 2024</h1>
+  },
+  {
+    id: "news4",
+    category: "campus_life",
+    createdDate: "Tuesday 23/04/2024",
+    title:
+      "YOUTH MONTH ACTIVITIES AT TUCST TO CELEBRATE THE 93RD ANNIVERSARY OF THE FOUNDING OF THE HO CHI MINH COMMUNIST YOUTH UNION",
+    content: `<h1 style="font-weight:700;margin-bottom:1rem">TUCST Youth Month Activities 2024</h1>
             <p style="margin-bottom: 1rem">TUCST jubilantly welcomes Youth Month 2024 with a series of meaningful activities for students and union members.</p>
             <p style="margin-bottom: 1rem">At the beginning of Youth Month 2024, TUCST's Youth Union launched the Contest "Understanding history and culture of Thanh Hoa and tradition of Ho Chi Minh Communist Youth Union". The contest has been taking place for two weeks at the Information and Library Center with enthusiastic responses from students. Contest entries are continuously sent and officially posted on TUCST's Youth Union page.</p>
             <p style="margin-bottom: 1rem">Besides academic competitions, TUCST is also interested in sports activities. The most prominent is TUCST Running 2024 including 03 competitions: a 4 x 100m relay race (800m for women and 1500m for men) to develop physical strength, improve the health of teaching staff and students, and effectively implement the campaign "All people exercise their bodies following Uncle Ho's example" with the desire to celebrate the 78th anniversary of Vietnam Sports Day (March 27, 2046 - March 27, 2024). 107 male and female athletes registered to participate in TUCST Running 2024, including 08 teams registered to participate in the relay race.</p>
@@ -105,18 +109,19 @@ export const DATA_DETAIL = [
             <p style="margin-bottom: 1rem">With a fierce spirit, resilient will, youthful aspirations, and the enthusiastic encouragement of teachers and students, the contestants completed the race completely, achieving brilliant victories.</p>
             <p style="margin-bottom: 1rem">On the same day, March 17, TUCST's Youth Union participated in the "GREEN SUNDAY" program. The program was organized to improve students' awareness of protecting a green - clean - beautiful and friendly environment at TUCST.</p>
             <p style="margin-bottom: 1rem">Also in Youth Month 2024, TUCST organizes the 2024 Student Football Tournament. The event organized by the Faculty of Sports and Physical Education will take place from March 22 to March 24.</p>`,
-    },
-    {
-        id: "news5",
-        category: "campus_life",
-        title:
-            "CLOSING CEREMONY OF THE 2024 STUDENT FOOTBALL TOURNAMENT: AN EXPLOSION OF EMOTION",
-        content: `
+  },
+  {
+    id: "news5",
+    category: "campus_life",
+    createdDate: "Tuesday 23/04/2024",
+    title:
+      "CLOSING CEREMONY OF THE 2024 STUDENT FOOTBALL TOURNAMENT: AN EXPLOSION OF EMOTION",
+    content: `
         <div style=" font-size: 1rem; line-height: 1.6;">
         <p style="margin-bottom: 10px;">After a series of football matches taking place over three days (March 29 - March 31), the 2024 Student Football Tournament ended with the championship belonging to the TUCST host team.</p>
         <p style="margin-bottom: 10px;">Not only is the tournament host, TUCST student Team is also the champion. The 2024 Student Football Tournament is a meaningful event for the youth union work at TUCST in particular and is the pride of a leading training unit in physical education and sports in the province in general. TUCST once again affirmed its position and development potential in sports education and training.</p>
         <img style="margin-bottom:1rem; margin-top:1rem" src="/img/cam5.jpg" />
-        <p style="margin-bottom: 10px;">The closing ceremony took place right after the final match with the result 8 - 2 in favor of TUCST. Attending the ceremony were honor guests including Mr. Le Van Chau - Member of the Central Executive Committee of the Youth Union, Provincial Party Committee member, Secretary of the Provincial Youth Union, Chairman of Thanh Hoa Provincial Youth Union; Ms. Phung To Linh - Deputy Secretary of the Provincial Youth Union, President of Thanh Hoa Student Association, Head of the tournament organizing committee; Mr. Nguyen Duy Tu - Deputy Director of Thanh Hoa Department of Culture, Sports and Tourism; TUCST Governing Board including Assoc.Prof. Dr. Le Thanh Ha- Party Committee Secretary- TUCST President, Dr. Vu Van Tuyen - Deputy Secretary of the Party Committee - Chairman of TUCST Council, TUCST key officials and students.</p>
+        <p style="margin-bottom: 10px;">The closing ceremony took place right after the final match with the result 8 - 2 in favor of TUCST. Attending the ceremony were honor guests including Mr. Le Van Chau - Member of the Central Executive Committee of the Youth Union, Provincial Party Committee member, Secretary of the Provincial Youth Union, Chairman of Thanh Hoa Provincial Youth Union; Ms. Phung To Linh - Deputy Secretary of the Provincial Youth Union, President of Thanh Hoa Student Association, Head of the tournament organizing committee; Mr. Nguyen Duy Tu - Deputy Director of Thanh Hoa Department of Culture, Sports and Tourism; TUCST Governing Board including Assoc .Prof. Dr. Le Thanh Ha- Party Committee Secretary- TUCST President, Dr. Vu Van Tuyen - Deputy Secretary of the Party Committee - Chairman of TUCST Council, TUCST key officials and students.</p>
         <img style="margin-bottom:1rem; margin-top:1rem" src="/img/cam6.jpg" />
         <p style="margin-bottom: 10px;">In addition, representatives of Thanh Hoa Department of Education and Training, Thanh Hoa Football Federation, leaders of universities, colleges, and high schools; Team leaders, coaches, and athletes... also attended the closing ceremony. News agencies and radio stations attended to report on the tournament.</p>
         <img style="margin-bottom:1rem; margin-top:1rem" src="/img/cam7.jpg" />
@@ -130,12 +135,13 @@ export const DATA_DETAIL = [
         <p style="margin-bottom: 10px;">The 2024 Student Football Tournament left a special mark on the 93rd anniversary of the founding of the Ho Chi Minh Communist Youth Union (March 26, 1931-March 26, 2024).</p>
         </div>
         `,
-    },
-    {
-        id: "news6",
-        category: "campus_life",
-        title: "TUCST STUDENTS WON A BRONZE MEDAL IN SWIMMING AT THE ASIAN ARENA",
-        content: `
+  },
+  {
+    id: "news6",
+    category: "campus_life",
+    createdDate: "Tuesday 23/04/2024",
+    title: "TUCST STUDENTS WON A BRONZE MEDAL IN SWIMMING AT THE ASIAN ARENA",
+    content: `
         <div style="font-size: 16px; line-height: 1.6;">
         <p>As a member of the Vietnam National Team participating in the 2024 Asian Swimming Championship, athlete Hoang Thi Trang - a student of Sports Management Class K11 has brought proud achievements to Thanh Hoa province in general and to TUCST in particular.</p>
         <div style="display:flex;justify-content:center">
@@ -155,17 +161,18 @@ export const DATA_DETAIL = [
         <p>With her proud achievements, student Hoang Thi Trang not only became the pride of TUCST but also inspired many students studying at TUCST.</p>
         </div>
         `,
-    },
-    {
-        id: "news7",
-        category: "international_cooperation",
-        title:
-            "THE 2024 INTERNATIONAL PROGRAM OF  STUDENT EXCHANGE BETWEEN TUCST AND TAIWAN UNIVERSITIES",
-        content: `
+  },
+  {
+    id: "news7",
+    category: "international_cooperation",
+    createdDate: "Tuesday 23/04/2024",
+    title:
+      "THE 2024 INTERNATIONAL PROGRAM OF  STUDENT EXCHANGE BETWEEN TUCST AND TAIWAN UNIVERSITIES",
+    content: `
         <div style="font-size: 16px; line-height: 1.6;">
         <p style="margin-bottom: 10px;">Following TUCST key officials’ working visit to Taiwan in October 2024, on the morning of March 25, 2024, the 2024 international student exchange program between TUCST and Taiwan universities was held at TUCST.</p>
-        <p style="margin-bottom: 10px;">Attending the program were representatives of TUCST and Taiwan universities including Mr. Jian Shao Qi - President of Hsuan Chuang University, Mr.Lai Ting Zhang - Head of External Relations and Admission Department of Hsuan Chuang University, Mrs. Tai Shu Zhen – Head of the International Cooperation of Hsuan Chuang University, Mrs. Pham Hoa Hue – Secretary of Taiwan Vocational Education Association concurrently Head of External Relation and Admission Department of Chungyu University of Film and Arts; Assoc.Prof. Dr. Le Thanh Ha – TUCST President, Dr. Vu Van Tuyen – Chairman of TUCST Council, TUCST key officials, TUCST teaching staff and students.</p>
-        <p style="margin-bottom: 10px;">After the art performance of TUCST students, Assoc.Prof. Dr. Le Thanh Ha – TUCST President welcomed the working visit of Taiwan universities’ key officials to TUCST. Mrs. Ha also had an overview of TUCST including its development, scale, organizational structure, potential, and major international cooperation programs. Thus, TUCST owns many advantages of its history, geography, training scale, curriculum, teaching staff, and facilities… that have created good conditions for TUCST to perform effective international cooperation programs. Mrs. Ha emphasized the importance of international cooperation in higher education nowadays and TUCST’s effort to improve the activities of international cooperation.</p>
+        <p style="margin-bottom: 10px;">Attending the program were representatives of TUCST and Taiwan universities including Mr. Jian Shao Qi - President of Hsuan Chuang University, Mr.Lai Ting Zhang - Head of External Relations and Admission Department of Hsuan Chuang University, Mrs. Tai Shu Zhen – Head of the International Cooperation of Hsuan Chuang University, Mrs. Pham Hoa Hue – Secretary of Taiwan Vocational Education Association concurrently Head of External Relation and Admission Department of Chungyu University of Film and Arts; Assoc .Prof. Dr. Le Thanh Ha – TUCST President, Dr. Vu Van Tuyen – Chairman of TUCST Council, TUCST key officials, TUCST teaching staff and students.</p>
+        <p style="margin-bottom: 10px;">After the art performance of TUCST students, Assoc .Prof. Dr. Le Thanh Ha – TUCST President welcomed the working visit of Taiwan universities’ key officials to TUCST. Mrs. Ha also had an overview of TUCST including its development, scale, organizational structure, potential, and major international cooperation programs. Thus, TUCST owns many advantages of its history, geography, training scale, curriculum, teaching staff, and facilities… that have created good conditions for TUCST to perform effective international cooperation programs. Mrs. Ha emphasized the importance of international cooperation in higher education nowadays and TUCST’s effort to improve the activities of international cooperation.</p>
         <img src="/img/lib_1.jpg" style="width: 100%; margin: 1rem 0;">
         <p style="text-align:center;font-size:14px; margin: 1rem 0;font-style: italic;">Assoc.Prof.Dr. Le Thanh Ha welcomed the international delegations and had an overview of TUCST.</p>
         <p style="margin-bottom: 10px;">TUCST President hoped that the long-term and promising cooperation between TUCST and Taiwan universities will bring good opportunities for both sides to learn and share experiences in university administration, training programs, science and technology, lecturers and student exchange...</p>
@@ -186,16 +193,17 @@ export const DATA_DETAIL = [
         <p style="margin-bottom: 10px;">The exchange program at TUCST marks a new development stage of international cooperation in higher education between TUCST and Taiwan universities.</p>
         </div>
         `,
-    },
-    {
-        id: "news8",
-        category: "international_cooperation",
-        title:
-            "JOB EXCHANGE PROGRAM BETWEEN TUCST AND SSGV SINGAPORE JOINT VENTURE COMPANY",
-        content: `
+  },
+  {
+    id: "news8",
+    category: "international_cooperation",
+    createdDate: "Tuesday 23/04/2024",
+    title:
+      "JOB EXCHANGE PROGRAM BETWEEN TUCST AND SSGV SINGAPORE JOINT VENTURE COMPANY",
+    content: `
         <div style="font-size: 16px; line-height: 1.6;">
         <p style="margin-bottom: 10px; ">On the morning of January 11, 2024, a job career exchange program between TUCST and SkillsSG Ventures, Singapore (SSGV) was held at TUCST.</p>
-        <p style="margin-bottom: 10px; ">Attending the program were representatives from Singapore including Mr. Cheng Hong Siang - CEO of SSGV and from TUCST including Assoc.Pror. Dr. Nguyen Thi Thuc - Vice President, teaching staff and students.</p>
+        <p style="margin-bottom: 10px; ">Attending the program were representatives from Singapore including Mr. Cheng Hong Siang - CEO of SSGV and from TUCST including Assoc .Prof. Dr. Nguyen Thi Thuc - Vice President, teaching staff and students.</p>
         <img src="/img/ic9.JPG" style="width: 100%; margin: 1rem 0;">
         <p style="margin-bottom: 10px; ">First, Ms. Nguyen Thi Thuc – TUCST Vice President welcomed Mr. Cheng Hong Siang - CEO of SSGV for his attendance in the job exchange program for TUCST students. Ms. Thuc emphasized that this is a practical and meaningful activity for students to improve their awareness of job opportunities after graduation. The program also demonstrated the international cooperation between TUCST and SSGV.</p>
         <p style="margin-bottom: 10px; ">Previously, on May 4, 2023, TUCST and SSGV (Singapore) signed an official Memorandum of Understanding marking the beginning of a sustainable cooperative relationship between TUCST and SSGV as well as the cooperative relationship between Thanh Hoa and Singapore. The first job exchange program in 2024 is so important to the Memorandum of Understanding.</p>
@@ -210,12 +218,13 @@ export const DATA_DETAIL = [
         <img src="/img/ic13.JPG" style="width: 100%; margin: 1rem 0;">
         </div>
         `,
-    },
-    {
-        id: "news9",
-        category: "international_cooperation",
-        title: "TUCST KEY OFFICIAL WORKING VISIT TO TAIWAN",
-        content: `
+  },
+  {
+    id: "news9",
+    category: "international_cooperation",
+    createdDate: "Tuesday 23/04/2024",
+    title: "TUCST KEY OFFICIAL WORKING VISIT TO TAIWAN",
+    content: `
         <p style="margin-bottom: 10px;">In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023, to November 1, 2023, the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha - TUCST President had a working visit to Taiwan and signed a memorandum of cooperation with three universities including Chungyu University of Film and Arts; Hsuan Chuang University; Chien Hsin University of Science and Technology and visited some student internship facilities.</p>
         <p style="margin-bottom: 10px;">On the first day, TUCST’s key officials had a working program with the Governing Board of Chungyu University of Film and Arts.</p>
         <p style="margin-bottom: 10px;">At the meeting, key officials of the two universities had an overview of the whole university and training programs as well as each university’s advantages in training management, academic exchange, international cooperation, scientific research, and experimental practice.</p>
@@ -230,12 +239,14 @@ export const DATA_DETAIL = [
         <img src="/img/icop8.jpg" style="width: 100%; margin: 1rem 0;">
        
         `,
-    },
-    {
-        id: "rec_1",
-        category: "recruitment",
-        title: "THE SIGNING CEREMONY OF A MEMORANDUM OF COOPERATION ON TRAINING AND SUPPLYING TOURISM HUMAN RESOURCES BETWEEN THANH HOA UNIVERSITY OF CULTURE, SPORTS AND TOURISM AND MELIÃ VINPEARL THANH HOA HOTEL",
-        content: `
+  },
+  {
+    id: "rec_1",
+    category: "recruitment",
+    createdDate: "Tuesday 23/04/2024",
+    title:
+      "THE SIGNING CEREMONY OF A MEMORANDUM OF COOPERATION ON TRAINING AND SUPPLYING TOURISM HUMAN RESOURCES BETWEEN THANH HOA UNIVERSITY OF CULTURE, SPORTS AND TOURISM AND MELIÃ VINPEARL THANH HOA HOTEL",
+    content: `
         <p>With the aim of strengthening cooperation in training and supplying human resources for the tourism industry of Thanh Hoa province in particular and the whole country in general, on June 13, 2023, TUCST has signed a cooperation agreement with Meliã Vinpearl Thanh Hoa Hotel. This event has a very important meaning in further promoting the ability to create the training cooperation between educational institutions and businesses, in accordance with the general trend of the times and the social needs.</p>
         <p style="margin-top:1rem;font-style: italic;">Attending the ceremony were representatives of both sides including:</p>
         <ul>
@@ -284,12 +295,14 @@ export const DATA_DETAIL = [
         <div style="text-align:center;font-style:italic;margin-top:8px">TUCST’s key officals leaders and Meliã Vinpearl Thanh Hoa Hotel
         </div>
         `,
-    },
-    {
-        id: "rec_2",
-        category: "recruitment",
-        title: "THE SIGNING CEREMONY OF COOPERATION FOR HUMAN RESOURCE DEVELOPMENT BETWEEN THANH HOA UNIVERSITY OF CULTURE, SPORTS & TOURISM AND SUN GROUP",
-        content: `
+  },
+  {
+    id: "rec_2",
+    category: "recruitment",
+    createdDate: "Tuesday 23/04/2024",
+    title:
+      "THE SIGNING CEREMONY OF COOPERATION FOR HUMAN RESOURCE DEVELOPMENT BETWEEN THANH HOA UNIVERSITY OF CULTURE, SPORTS & TOURISM AND SUN GROUP",
+    content: `
         <p>Following the "Human Resource Development Cooperation Signing Ceremony" of Sun Group - Department of Labor, War Invalids & Social Affairs and Training institutions of tourism human resource in Thanh Hoa province, Thanh Hoa University of Culture, Sports & Tourism (TUCST) and Sun Group has signed a human resource development cooperation agreement on July 29, 2022, at Ballroom 1, 6th floor, Vinpearl Hotel Thanh Hoa.</p>
     <p style="margin-top:1rem;font-style: italic;">Attending the ceremony were provincial leaders including:</p>
     <ul>
@@ -321,5 +334,162 @@ export const DATA_DETAIL = [
     <img style="margin-top:1rem;" src="/img/ssp6.jpg" alt="">
     <p style="margin-top:1rem;">Here, Dr. Vu Van Tuyen - Chairman of TUCST’s Council affirmed: "TUCST is always proud to be the most prestigious and quality higher education institution in training human resources in Culture, Arts, and Sports." and Tourism for the whole country. Every year, the School supplies the labor market with thousands of students who are good at their profession and dedicated to their profession. TUCST's reputation and brand have been recognized by society and highly appreciated by businesses. The signing ceremony will be a milestone in cooperation, training, and the use of tourism human resources between TUCST and Sun Group. Hopefully, this will become a model for cooperation between universities and businesses in Thanh Hoa province in the future.</p>
         `,
-    },
+  },
+  {
+    id: "doctor-of-culture-management",
+    category: "training-program",
+    createdDate: "",
+    title: "DOCTOR OF CULTURE MANAGEMENT",
+    content: `
+        <div style="max-width: 800px; margin: 20px auto; padding: 0 20px;" class="container">
+    <section>
+      <h2 style="margin-top: 20px;font-weight: bold;">I. Course Information</h2>
+      <ul>
+        <li>- Name of course in Vietnamese: Quản lý Văn hóa</li>
+        <li>- Name of course in English: Culture Management</li>
+        <li>- Code: 9229042</li>
+        <li>- Training degree: Doctor</li>
+        <li>- Time of training: 4 years</li>
+        <li>- Place of training: Thanh Hoa University of Culture, Sports and Tourism</li>
+      </ul>
+    </section>
+    <section>
+      <h2 style="margin-top: 20px;font-weight: bold;">II. Curriculum</h2>
+      <p>The doctoral training program in Cultural Management at Thanh Hoa University of Culture, Sports and Tourism includes:</p>
+      <ol>
+        <li>- Study additional subjects at the master's level</li>
+        <li>- Study doctoral level courses</li>
+        <li>- Participate in scientific research activities</li>
+        <li>- Research and write doctoral dissertations</li>
+        <li>- Research, write and defend doctoral dissertation</li>
+      </ol>
+      <p>The total amount of knowledge of the doctoral training program in Cultural Management at Thanh Ho University of Culture, Sports and Tourism is 90 credits for people with a master's degree.</p>
+      <!-- Table of modules -->
+     
+      <table style="width: 100%; border-collapse: collapse; margin-top: 10px; border: 1px solid #ddd;">
+  <caption style="font-weight: bold; margin-bottom: 16px">List of modules in the Cultural Management training program at the doctoral degree.</caption>
+  <thead>
+    <tr>
+      <th style="background-color: #f2f2f2; border: 1px solid black; padding: 5px; text-align: center">No.</th>
+      <th style="background-color: #f2f2f2; border: 1px solid black; padding: 5px; text-align: center">Name of modules</th>
+      <th style="background-color: #f2f2f2; border: 1px solid black; padding: 5px; text-align: center">Amount of credits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center; font-weight: bold">I</td>
+      <td style="border: 1px solid black; padding: 5px;font-weight: bold">Compulsory modules</td>
+      <td style="border: 1px solid black; padding: 5px;text-align:center; font-weight: bold">8</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center">1</td>
+      <td style="border: 1px solid black; padding: 5px">History of Cultural Management</td>
+      <td style="border: 1px solid black;text-align:center; padding: 5px">2</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center">2</td>
+      <td style="border: 1px solid black; padding: 5px">Theory and research method of Cultural management</td>
+      <td style="border: 1px solid black;text-align:center; padding: 5px">2</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center">3</td>
+      <td style="border: 1px solid black; padding: 5px">Policies, laws and strategies of Cultural Management in Vietnam</td>
+      <td style="border: 1px solid black;text-align:center; padding: 5px">2</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center">4</td>
+      <td style="border: 1px solid black; padding: 5px">Cultural human resource management</td>
+      <td style="border: 1px solid black;text-align:center; padding: 5px">2</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center;font-weight: bold">II</td>
+      <td style="border: 1px solid black; padding: 5px;font-weight: bold">Elective modules</td>
+      <td style="border: 1px solid black;text-align:center; padding: 5px;font-weight: bold">4</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center">5</td>
+      <td style="border: 1px solid black; padding: 5px">Advanced project management and assessment of cultural projects</td>
+      <td style="border: 1px solid black;text-align:center; padding: 5px">2</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center">6</td>
+      <td style="border: 1px solid black; padding: 5px">Performing arts management</td>
+      <td style="border: 1px solid black;text-align:center; padding: 5px">2</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center">7</td>
+      <td style="border: 1px solid black; padding: 5px">Some current cultural industry issues</td>
+      <td style="border: 1px solid black;text-align:center; padding: 5px">2</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center">8</td>
+      <td style="border: 1px solid black; padding: 5px">Preserve and promote cultural heritage values in the current context</td>
+      <td style="border: 1px solid black;text-align:center; padding: 5px">2</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center">9</td>
+      <td style="border: 1px solid black; padding: 5px">Media activiy management</td>
+      <td style="border: 1px solid black;text-align:center; padding: 5px">2</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid black; padding: 5px; text-align:center">10</td>
+      <td style="border: 1px solid black; padding: 5px">Cultural management and sustainable development</td>
+      <td style="border: 1px solid black;text-align:center; padding: 5px">2</td>
+    </tr>
+  </tbody>
+</table>
+
+    </section>
+    <section>
+      <h2 style="margin-top: 20px;font-weight: bold;">III. Program Learning Outcomes</h2>
+      <h3 style="margin-top: 10px;font-weight: bold;">3.1. Knowledge</h3>
+      <ul>
+        <li>- PLO1.1 Postgraduate students master core knowledge, foundation and theories about culture, advanced and in-depth cultural management</li>
+        <li>- PLO1.2 An ability to organize scientific research and apply  technology in research activities in the field of cultural management;</li>
+        <li>- PLO1.3 An ability to combine theoretical issues with practice in cultural management, orientation, management and organization of activities in the current context</li>
+      </ul>
+      <h3 style="margin-top: 10px;font-weight: bold;">3.2. Skills</h3>
+      <ul>
+        <li>- PLO2.1 Master scientific theories/treatises, have reasonable scientific methods, design research toolkits in the field of culture in general and cultural management in particular</li>
+        <li>- PLO2.2 Skills in analyzing, arguing, and deducing scientific issues about culture and coming up with appropriate, creative, scientific, and convincing solutions</li>
+        <li>- PLO2.3 Skills in disseminating and spreading scientific knowledge about culture;  be able to establish domestic and international cooperation networks in management, administration, and dissemination of research results in cultural management activities;</li>
+        <li>- PLO2.4 Have innovative capacity, self-direction, professional leadership, be able to make expert scientific conclusions and recommendations;</li>
+        <li>- PLO2.5 Consult on the organization and management of cultural and artistic activities for domestic and foreign organizations and individuals</li>
+      </ul>
+      <h3 style="margin-top: 10px;font-weight: bold;">3.3. Autonomy and Responsibility</h3>
+      <ul>
+        <li>- PLO3.1 Be able to explore, research, and create new perspectives and knowledge in the management and administration of cultural activities;</li>
+        <li>- PLO3.2 Perform new and appropriate ideas and knowledge in each complex and different specific situation</li>
+        <li>- PLO3.3 Be adaptable in the context of cultural changes and international integration, self-orientation and lead others;
+        </li>
+        <li>- PLO3.4 Independent thinking, boldly making valuable and appropriate scientific judgments, conclusions and recommendations; respect the sense of objectivity and science in discovering and explaining problems of professional activities;
+        </li>
+        <li>- PLO3.5   Plan, coordinate, manage the resources, evaluate and improve the effectiveness of professional activities; self-study, accumulate knowledge and experience to improve professional qualifications;
+        </li>
+        <li>- PLO3.6  Develop a progressive spirit, studious, passion on scientific research as well as lifelong learning to develop professional knowledge, experience and create new ideas and new processes;
+        </li>
+        <li>- PLO3.7 Always be conscious of preserving and promoting national cultural identity and respecting the cultural differences and diversity of other countries and peoples.
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2 style="margin-top: 20px;font-weight: bold;">IV. Career Prospects</h2>
+      <ul>
+        <li>- The graduates can work as experts in policy and direction planning agencies of the Party and State, organizations within the political system, and socio-economic organizations that use knowledge of cultural management</li>
+        <li>- The graduates can take on different positions in the cultural field; be able to manage and operate cultural management activities in modern society; be able to research and implement the topic; Specialized teaching at Postgraduate, University and College levels at domestic Cultural Management training establishments.
+        </li>
+      </ul>
+    </section>
+    <div class="contact-info" style="margin-top: 20px;">
+      <h2 style="font-weight: bold;">V. Contact Information</h2>
+      <p>Address: Postgraduate Training Department, Room 109, Building B, Thanh Hoa University of Culture, Sports and Tourism, No. 561, Quang Trung III Street, Dong Ve Ward, Thanh Hoa City, Thanh Hoa province.</p>
+      <p>Contact Info:</p>
+      <ul>
+        <li>- Dr. Ha Dinh Hung, Head of Postgraduate Training Department: 0912501982; </br> Email: <span style="font-weight: bold">hadinhhung@dvtdt.edu.vn</span> </li>
+        <li>- M.A.Vu Thi Dung, Deputy Head of Postgraduate Training Department: 0918836186; </br> Email: <span style="font-weight: bold">vuthidung@dvtdt.edu.vn</span> 
+        </li>
+      </ul>
+    </div>
+  </div> `,
+  },
 ];

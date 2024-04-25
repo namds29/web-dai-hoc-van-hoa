@@ -5,13 +5,12 @@ import Banner from "src/components/banner";
 
 const Admission = () => {
   const [currentSelect, setCurrentSelect] = useState<number>(1);
-
   const items: CollapseProps["items"] = [
     {
       key: "1",
       label: "Undergraduate",
       children: (
-        <div onClick={() => setCurrentSelect(1)}>
+        <div className="cursor-pointer" onClick={() => setCurrentSelect(1)}>
           <p>- Overview</p>
           <p>- Majors</p>
           <p>- Requirements</p>
@@ -23,7 +22,7 @@ const Admission = () => {
       key: "2",
       label: "Graduate",
       children: (
-        <div onClick={() => setCurrentSelect(2)}>
+        <div className="cursor-pointer" onClick={() => setCurrentSelect(2)}>
           <p>- Overview</p>
           <p>- Apply</p>
         </div>
@@ -33,7 +32,7 @@ const Admission = () => {
       key: "3",
       label: "Exchange programs",
       children: (
-        <div onClick={() => setCurrentSelect(3)}>
+        <div className="cursor-pointer" onClick={() => setCurrentSelect(3)}>
           <p>- Overview</p>
           <p>- Programs</p>
           <p>- Contact</p>
@@ -44,7 +43,7 @@ const Admission = () => {
       key: "4",
       label: "Vietnamese intensive courses",
       children: (
-        <div onClick={() => setCurrentSelect(4)}>
+        <div className="cursor-pointer" onClick={() => setCurrentSelect(4)}>
           <p>- Overview</p>
           <p>- Programs</p>
           <p>- Contact</p>

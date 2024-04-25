@@ -10,8 +10,8 @@ import Banner from "../../components/banner";
 import { useEffect, useState } from "react";
 import { IMessage, IPostDataType } from "src/interfaces";
 import CustomModal from "src/components/custom-modal";
-import { useNavigate } from "react-router-dom";
 import HomepageService from "src/services/homepage/homepageService";
+import { Link, useNavigate } from "react-router-dom";
 
 const SlickButtonFix = ({
   currentSlide,
@@ -231,11 +231,12 @@ const AdminHomepage = () => {
           </div>
         </Carousel>
         <div className="text-center ">
-          <button
+          <Link
+            to={"/faculties"}
             className={`${styles.btn_see_more} text-white border-double border-4 hover:opacity-70 border-white`}
           >
             See more
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -247,8 +248,8 @@ const AdminHomepage = () => {
           <iframe
             width="860"
             height="415"
-            src="https://www.youtube.com/embed/_GKSgjcPGFg?si=gySiMM7pYac4iuuL"
-            title="Intro TUCST"
+            src="https://www.youtube.com/embed/OEKQ6fQPJ58?si=K4yhJ1NZjG-Gq33B"
+            title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
