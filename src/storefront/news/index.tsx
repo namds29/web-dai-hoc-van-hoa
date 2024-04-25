@@ -35,7 +35,7 @@ const News = () => {
           <div className="overflow-hidden w-full h-[21.7rem] flex  justify-center items-center relative rounded">
             <img className={styles.hot_new_pic} src="/img/ban3.png" alt="" />
             <p className="absolute text-2xl text-white cursor-pointer">
-              Student of TUCST won high brize
+              Student of TUCST won high prize
             </p>
           </div>
         </div>

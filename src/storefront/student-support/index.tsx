@@ -172,7 +172,7 @@ const StudentSupport = () => {
           <div className="m-10 relative flex items-center justify-center cursor-pointer" onClick={handleOpenCooperationDepartment}>
             <img
               className="object-cover w-full h-full rounded-lg filter brightness-50"
-              src="/img/img1.png"
+              src="/img/ssp3.jpg"
               alt=""
             />
             <div className="absolute flex text-center font-bold m-8 text-2xl">
@@ -183,7 +183,7 @@ const StudentSupport = () => {
           <div className="m-10 relative flex items-center justify-center cursor-pointer" onClick={handleOpenTrainingDepartment}>
             <img
               className="object-cover w-full h-full rounded-lg filter brightness-50"
-              src="/img/img1.png"
+              src="/img/school3.jpg"
               alt=""
             />
             <div className="absolute flex text-center font-bold m-8 text-2xl">
@@ -194,7 +194,7 @@ const StudentSupport = () => {
           <div className="m-10 relative flex items-center justify-center cursor-pointer" onClick={handleOpenStudentPolitical}>
             <img
               className="object-cover w-full h-full rounded-lg filter brightness-50"
-              src="/img/img1.png"
+              src="/img/ssp41.jpg"
               alt=""
             />
             <div className="absolute flex text-center font-bold m-8 text-2xl">
