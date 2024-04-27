@@ -10,16 +10,19 @@ import {
   IPostDataType,
   ICreatePostType,
   IEditType,
+  IEditPostType,
+  IEditBannerType,
+  ICreateBannerType,
 } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
 
 enum ITEM_DROPDOWN {
-  BANNER_IMG = "bannerimg",
-  SMALL_BANNER = "smallbanner",
-  HIGHLIGHT_ANNOUNCEMENT = "highlight",
-  FACULTIES = "faculties",
-  CAMPUS_LIFE = "campuslife",
+  BANNER_IMG = "homepage_banner",
+  HIGHLIGHT = "highlight",
+  ANNOUNCEMENT = "announcement",
+  FACULTIES = "homepage_faculties",
   MVV = "mvv",
+  IMG_LIB = "homepage_imglib",
 }
 
 type DataType = { id: number; title: string; content: string };
@@ -61,7 +64,7 @@ const AdminHomePage = () => {
       setModalType(MODAL_TYPE.VIEW);
     }
     if (editTypeValue?.type === "delete") {
-      handleDeleteDataItem(editTypeValue.id ?? 0)
+      handleDeleteDataItem(editTypeValue.id ?? 0);
     }
   }, [editTypeValue]);
 
@@ -81,7 +84,7 @@ const AdminHomePage = () => {
         console.log(error);
       }
     }
-  } 
+  };
 
   const dropdownData: IDropdownItemType[] = [
     {
@@ -90,26 +93,30 @@ const AdminHomePage = () => {
       listType: LIST_TYPE.IMAGE,
     },
     {
-      label: "Small banner",
-      key: ITEM_DROPDOWN.SMALL_BANNER,
-      listType: LIST_TYPE.IMAGE_TITLE,
+      label: "Highlights",
+      key: ITEM_DROPDOWN.HIGHLIGHT,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
     },
     {
-      label: "Highlights & Announcement",
-      key: ITEM_DROPDOWN.HIGHLIGHT_ANNOUNCEMENT,
-      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+      label: "Announcement",
+      key: ITEM_DROPDOWN.ANNOUNCEMENT,
+      listType: LIST_TYPE.IMAGE_TITLE,
     },
     {
       label: "Faculties",
       key: ITEM_DROPDOWN.FACULTIES,
-      listType: LIST_TYPE.IMAGE_TITLE,
+      listType: LIST_TYPE.IMAGE,
     },
     {
-      label: "Campus life",
-      key: ITEM_DROPDOWN.CAMPUS_LIFE,
-      listType: LIST_TYPE.IMAGE_TITLE,
+      label: "MVV",
+      key: ITEM_DROPDOWN.MVV,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
     },
-    { label: "MVV", key: ITEM_DROPDOWN.MVV, listType: LIST_TYPE.IMAGE_TITLE },
+    {
+      label: "Image library",
+      key: ITEM_DROPDOWN.IMG_LIB,
+      listType: LIST_TYPE.IMAGE,
+    },
   ];
 
   const dropdownItems: MenuProps["items"] = dropdownData;
@@ -131,20 +138,36 @@ const AdminHomePage = () => {
   };
 
   const handleOk = (value: {
-    title: string;
-    content: string;
+    title?: string;
+    content?: string;
     imgFile: File;
   }) => {
     if (editTypeValue?.type === MODAL_TYPE.CREATE) {
       const newObj: ICreatePostType = {
-        title: value.title,
-        content: value.content,
+        title: value.title ?? "",
+        content: value.content ?? "",
         thumpnailImage: value.imgFile,
         brief: "",
         typeID: 0,
-        categoryID: 0,
+        categoryID: dropdownValue.key,
       };
-      createPost(newObj);
+
+      const newBanner: ICreateBannerType = {
+        thumpnailImage: value.imgFile,
+        name: "",
+        categoryID: dropdownValue.key,
+        ordering: 0,
+        timeOut: 3000,
+      };
+
+      if (newObj && dropdownValue.listType != LIST_TYPE.IMAGE) {
+        createPost(newObj);
+      }
+
+      if (newBanner && dropdownValue.listType == LIST_TYPE.IMAGE) {
+        createBanner(newBanner);
+      }
+
       setOpenModal(false);
     }
     if (editTypeValue?.type === MODAL_TYPE.EDIT) {
@@ -153,26 +176,34 @@ const AdminHomePage = () => {
         undefined;
 
       if (dataById) {
-        const newDataItem: IPostDataType = {
-          ...dataById,
+        const newDataItem: IEditPostType = {
+          brief: dataById.brief,
+          thumpnailImage: value.imgFile,
           title: value.title ?? "",
           content: value.content ?? "",
         };
-        if (newDataItem) {
+
+        const newBannerData: IEditBannerType = {
+          thumpnailImage: value.imgFile,
+        };
+
+        if (newDataItem && dropdownValue.listType != LIST_TYPE.IMAGE) {
           editPost(editValue.id, newDataItem);
+        }
+
+        if (newBannerData && dropdownValue.listType == LIST_TYPE.IMAGE) {
+          editBanner(editValue.id, newBannerData);
         }
       }
       setOpenModal(false);
     }
   };
 
-
-
-  const createPost = async (data: ICreatePostType) => {
+  const createBanner = async (data: ICreateBannerType) => {
     try {
-      const res = await HomepageService.createPostHomepage(data);
+      const res = await HomepageService.createBannerHomepage(data);
       if (res.message == "success") {
-        message.success(`Create successfully.`);
+        message.success(`Create banner successfully.`);
         getPostList();
       }
     } catch (error: any) {
@@ -182,10 +213,41 @@ const AdminHomePage = () => {
     }
   };
 
-  const editPost = async (id: number, data: IPostDataType) => {
+  const createPost = async (data: ICreatePostType) => {
+    try {
+      const res = await HomepageService.createPostHomepage(data);
+      if (res.message == "success") {
+        message.success(`Create post successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const editPost = async (id: number, data: IEditPostType) => {
     try {
       const res = await HomepageService.editPostHomepage(id, data);
-      console.log(res);
+      if (res.message == "success") {
+        message.success(`Create post successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const editBanner = async (id: number, data: IEditBannerType) => {
+    try {
+      const res = await HomepageService.editBannerHomepage(id, data);
+      if (res.message == "success") {
+        message.success(`Create banner successfully.`);
+        getPostList();
+      }
     } catch (error: any) {
       if (error) {
         console.log(error);
@@ -206,9 +268,26 @@ const AdminHomePage = () => {
     }
   };
 
+  const getBannerList = async () => {
+    try {
+      const res = await HomepageService.listBannerHomepage();
+      if (res?.data) {
+        setData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
   useEffect(() => {
-    getPostList();
-  }, []);
+    if (dropdownValue.listType === LIST_TYPE.IMAGE) {
+      getBannerList();
+    } else {
+      getPostList();
+    }
+  }, [dropdownValue]);
 
   return (
     <div>
@@ -224,7 +303,7 @@ const AdminHomePage = () => {
         {dropdownValue.key ? (
           <ListData
             section={dropdownValue.label}
-            data={data}
+            data={data.filter((item) => item.categoryID === dropdownValue.key)}
             action={handleEditType}
             type={dropdownValue.listType}
           ></ListData>

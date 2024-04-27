@@ -1,4 +1,4 @@
-import { MenuProps } from "antd";
+import { MenuProps, message } from "antd";
 import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
@@ -8,7 +8,10 @@ import {
   LIST_TYPE,
   IDropdownItemType,
   IPostDataType,
+  ICreatePostType,
+  IEditPostType,
 } from "src/interfaces";
+import HomepageService from "src/services/homepage/homepageService";
 
 enum ITEM_DROPDOWN {
   HOT_NEWS = "hotnews",
@@ -125,6 +128,61 @@ const AdminNews = () => {
   const handleOk = (value: any) => {
     console.log(value);
     setData([]);
+  };
+
+  const getPostList = async () => {
+    try {
+      const res = await HomepageService.listPostHomepage();
+      if (res?.data) {
+        setData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const createPost = async (data: ICreatePostType) => {
+    try {
+      const res = await HomepageService.createPostHomepage(data);
+      if (res.message == "success") {
+        message.success(`Create post successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const editPost = async (id: number, data: IEditPostType) => {
+    try {
+      const res = await HomepageService.editPostHomepage(id, data);
+      if (res.message == "success") {
+        message.success(`Create post successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const handleDeleteDataItem = async (id: number) => {
+    try {
+      const res = await HomepageService.deletePostHomepage(id);
+      if (res.message == "success") {
+        message.success(`Delete successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (

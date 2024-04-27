@@ -25,11 +25,13 @@ const ListData = ({
   action,
   type,
 }: {
-  data: IPostDataType[];
+  data: any;
   section: string;
   action?: any;
   type?: number;
 }) => {
+  console.log(data);
+  
   return (
     <div>
       <div className="flex justify-end mb-4">
@@ -113,8 +115,14 @@ const ListData = ({
                   ]
             }
           >
-            <List.Item.Meta title={<p className="text-xl">{item.title}</p>} />
-            {item.content}
+            <List.Item.Meta
+              title={
+                <p className="text-xl">
+                  {type !== LIST_TYPE.IMAGE ? item.title : ""}
+                </p>
+              }
+            />
+            {type === LIST_TYPE.IMAGE_TITLE_CONTENT || type === LIST_TYPE.TITLE_CONTENT ? item.content : ""}
           </List.Item>
         )}
       />

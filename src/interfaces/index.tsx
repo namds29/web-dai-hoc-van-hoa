@@ -49,7 +49,26 @@ export type ICreatePostType = {
   brief: string;
   content: string;
   typeID: number;
-  categoryID: number;
+  categoryID: string;
+};
+
+export type ICreateBannerType = {
+  thumpnailImage: File;
+  name: string;
+  timeOut: number;
+  ordering: number;
+  categoryID: string;
+};
+
+export type IEditPostType = {
+  thumpnailImage: File;
+  title: string;
+  brief: string;
+  content: string;
+};
+
+export type IEditBannerType = {
+  thumpnailImage: File;
 };
 
 export enum PostCategory {

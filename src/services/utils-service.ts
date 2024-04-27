@@ -59,6 +59,17 @@ export const apiUpdate = async (url: string, params?: any) => {
     return res;
 }
 
+export const apiUpdateFormData = async (url: string, formData?: any) => {
+    const config = {
+        method: METHOD_API.PUT,
+        url: url,
+        data: formData,
+    };
+
+    const res = await axiosInstance.request(config);
+    return res;
+}
+
 export const apiDelete = async (url: string) => {
     const config = {
         method: METHOD_API.DELETE,
