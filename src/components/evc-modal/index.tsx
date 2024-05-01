@@ -1,6 +1,7 @@
 import {
   AutoComplete,
   Button,
+  Input,
   Modal,
   Upload,
   UploadFile,
@@ -16,6 +17,8 @@ import {
   PlusCircleOutlined,
   SaveOutlined,
 } from "@ant-design/icons";
+
+import "react-quill/dist/quill.core.css";
 
 type IProps = {
   editType: number;
@@ -45,6 +48,7 @@ enum BUTTON_TEXT {
 }
 
 const { Dragger } = Upload;
+const { TextArea } = Input;
 
 function EvcModal({
   editType,
@@ -58,8 +62,12 @@ function EvcModal({
 
   const [contentState, setContentState] = useState(data.content);
   const [titleState, setTitleState] = useState(data.title);
+  const [briefState, setBriefState] = useState(data.brief);
   const [imgFile, setImgFile] = useState<UploadFile>();
   const buttonOkRef = useRef<HTMLButtonElement>(null);
+
+  console.log(contentState);
+  console.log(data.content);
 
   const messageText = (type: string): MessageText => {
     switch (type) {
@@ -87,9 +95,11 @@ function EvcModal({
   useEffect(() => {
     setContentState(data.content);
     setTitleState(data.title);
+    setBriefState(data.brief);
     if (type === MODAL_TYPE.CREATE) {
       setContentState("");
       setTitleState("");
+      setBriefState("");
     }
   }, [data, type]);
 
@@ -98,6 +108,8 @@ function EvcModal({
     multiple: true,
     action: "https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188",
     onChange(info) {
+      console.log(info);
+
       const { status } = info.file;
       if (status !== "uploading") {
         console.log(info.file, info.fileList);
@@ -122,11 +134,16 @@ function EvcModal({
     setTitleState(data);
   };
 
+  const onChangeBrief = (event: any) => {
+    setBriefState(event.target.value);
+  };
+
   const handleClickOk = () => {
     const value = {
       id: data.id,
       title: titleState,
       content: contentState,
+      brief: briefState,
       imgFile: imgFile,
     };
 
@@ -171,43 +188,62 @@ function EvcModal({
           : []
       }
     >
-      <div className="w-full">
-        {editType !== LIST_TYPE.IMAGE ? (
-          <AutoComplete
-            value={titleState}
-            placeholder="Title"
-            className="w-full mb-3"
-            onChange={onChangeTitle}
-          />
-        ) : (
-          <></>
-        )}
-        {editType !== LIST_TYPE.IMAGE && editType !== LIST_TYPE.IMAGE_TITLE ? (
-          <TextEditor
-            content={contentState}
-            editContent={editContentState}
-          ></TextEditor>
-        ) : (
-          <></>
-        )}
-      </div>
-      {editType !== LIST_TYPE.TITLE_CONTENT ? (
-        <div className="h-44">
-          <Dragger {...props}>
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined />
-            </p>
-            <p className="ant-upload-text">
-              Click or drag file to this area to upload
-            </p>
-            <p className="ant-upload-hint">
-              Support for a single or bulk upload. Strictly prohibited from
-              uploading company data or other banned files.
-            </p>
-          </Dragger>
-        </div>
+      {type === MODAL_TYPE.VIEW ? (
+        <div
+          className="view ql-editor"
+          dangerouslySetInnerHTML={{ __html: contentState }}
+        ></div>
       ) : (
-        <></>
+        <>
+          <div className="w-full">
+            {editType !== LIST_TYPE.IMAGE ? (
+              <AutoComplete
+                value={titleState}
+                placeholder="Title"
+                className="w-full mb-3"
+                onChange={onChangeTitle}
+              />
+            ) : (
+              <></>
+            )}
+            {editType !== LIST_TYPE.IMAGE &&
+            editType !== LIST_TYPE.IMAGE_TITLE ? (
+              <div className="mb-3">
+                <TextArea
+                  rows={4}
+                  value={briefState}
+                  placeholder="Please input brief in here"
+                  className="mb-3"
+                  onChange={onChangeBrief}
+                />
+                <TextEditor
+                  content={contentState}
+                  editContent={editContentState}
+                ></TextEditor>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+          {editType !== LIST_TYPE.TITLE_CONTENT ? (
+            <div className="h-44">
+              <Dragger {...props}>
+                <p className="ant-upload-drag-icon">
+                  <InboxOutlined />
+                </p>
+                <p className="ant-upload-text">
+                  Click or drag file to this area to upload
+                </p>
+                <p className="ant-upload-hint">
+                  Support for a single or bulk upload. Strictly prohibited from
+                  uploading company data or other banned files.
+                </p>
+              </Dragger>
+            </div>
+          ) : (
+            <></>
+          )}
+        </>
       )}
     </Modal>
   );

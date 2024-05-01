@@ -1,4 +1,4 @@
-import { MenuProps } from "antd";
+import { MenuProps, message } from "antd";
 import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
@@ -8,7 +8,12 @@ import {
   LIST_TYPE,
   IDropdownItemType,
   IPostDataType,
+  ICreateBannerType,
+  ICreatePostType,
+  IEditPostType,
+  IEditBannerType,
 } from "src/interfaces";
+import HomepageService from "src/services/homepage/homepageService";
 
 enum ITEM_DROPDOWN {
   JOURNAL = "journal",
@@ -119,6 +124,88 @@ const AdminResearch = () => {
     setData([]);
   };
 
+  const createBanner = async (data: ICreateBannerType) => {
+    try {
+      const res = await HomepageService.createBannerHomepage(data);
+      if (res.message == "success") {
+        message.success(`Create banner successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const createPost = async (data: ICreatePostType) => {
+    try {
+      const res = await HomepageService.createPostHomepage(data);
+      if (res.message == "success") {
+        message.success(`Create post successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const editPost = async (id: number, data: IEditPostType) => {
+    try {
+      const res = await HomepageService.editPostHomepage(id, data);
+      if (res.message == "success") {
+        message.success(`Create post successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const editBanner = async (id: number, data: IEditBannerType) => {
+    try {
+      const res = await HomepageService.editBannerHomepage(id, data);
+      if (res.message == "success") {
+        message.success(`Create banner successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const getPostList = async () => {
+    try {
+      const res = await HomepageService.listPostHomepage();
+      if (res?.data) {
+        setData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const getBannerList = async () => {
+    try {
+      const res = await HomepageService.listBannerHomepage();
+      if (res?.data) {
+        setData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <div>
       <div>
@@ -132,7 +219,7 @@ const AdminResearch = () => {
         {dropdownValue.key ? (
           <ListData
             section={dropdownValue.label}
-            data={data}
+            data={data.filter((item) => item.categoryID === dropdownValue.key)}
             action={handleEditType}
             type={dropdownValue.listType}
           ></ListData>

@@ -31,7 +31,8 @@ const ListData = ({
   type?: number;
 }) => {
   console.log(data);
-  
+  console.log(type);
+
   return (
     <div>
       <div className="flex justify-end mb-4">
@@ -122,7 +123,10 @@ const ListData = ({
                 </p>
               }
             />
-            {type === LIST_TYPE.IMAGE_TITLE_CONTENT || type === LIST_TYPE.TITLE_CONTENT ? item.content : ""}
+            {type === LIST_TYPE.IMAGE_TITLE_CONTENT ||
+            type === LIST_TYPE.TITLE_CONTENT
+              ? item.brief
+              : ""}
           </List.Item>
         )}
       />
