@@ -12,6 +12,7 @@ import {
   ICreatePostType,
   IEditPostType,
   IEditBannerType,
+  IEditType,
 } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
 
@@ -22,12 +23,7 @@ enum ITEM_DROPDOWN {
   PUBLISH = "publish",
 }
 
-type IEditType = {
-  id?: string;
-  type: string;
-};
-
-type DataType = { id: string; title: string; content: string };
+type DataType = { id: number; title: string; content: string };
 
 const AdminResearch = () => {
   const [dropdownValue, setDropdownValue] = useState<IDropdownItemType>({
@@ -36,7 +32,7 @@ const AdminResearch = () => {
   });
 
   const [editValue, setEditValue] = useState<DataType>({
-    id: "0",
+    id: 0,
     title: "",
     content: "",
   });
@@ -45,33 +41,13 @@ const AdminResearch = () => {
   const [modalType, setModalType] = useState("");
   const [editTypeValue, setEditTypeValue] = useState<IEditType>();
 
-  const arrayOfObjects = [
-    {
-      title: "First Object",
-      id: "1",
-      content: "This is the content of the first object.",
-    },
-    {
-      title: "Second Object",
-      id: "2",
-      content: "This is the content of the second object.",
-    },
-    {
-      title: "Third Object",
-      id: "3",
-      content: "This is the content of the third object.",
-    },
-  ];
-
   const [data, setData] = useState<IPostDataType[]>([]);
 
   useEffect(() => {
     if (editTypeValue?.type === MODAL_TYPE.EDIT) {
       setOpenModal(true);
       setModalType(MODAL_TYPE.EDIT);
-      const choosenValue = arrayOfObjects.find(
-        (item) => item.id === editTypeValue.id
-      );
+      const choosenValue = data.find((item) => item.id === editTypeValue.id);
       if (choosenValue) {
         setEditValue(choosenValue);
       }
@@ -117,11 +93,6 @@ const AdminResearch = () => {
 
   const handleCancel = () => {
     setOpenModal(false);
-  };
-
-  const handleOk = (value: any) => {
-    console.log(value);
-    setData([]);
   };
 
   const createBanner = async (data: ICreateBannerType) => {
@@ -193,16 +164,78 @@ const AdminResearch = () => {
     }
   };
 
-  const getBannerList = async () => {
-    try {
-      const res = await HomepageService.listBannerHomepage();
-      if (res?.data) {
-        setData(res?.data);
+  // const getBannerList = async () => {
+  //   try {
+  //     const res = await HomepageService.listBannerHomepage();
+  //     if (res?.data) {
+  //       setData(res?.data);
+  //     }
+  //   } catch (error: any) {
+  //     if (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // };
+
+  const handleOk = (value: {
+    title?: string;
+    content?: string;
+    imgFile: File;
+  }) => {
+    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
+      const newObj: ICreatePostType = {
+        title: value.title ?? "",
+        content: value.content ?? "",
+        thumpnailImage: value.imgFile,
+        brief: "",
+        typeID: 0,
+        categoryID: dropdownValue.key,
+      };
+
+      const newBanner: ICreateBannerType = {
+        thumpnailImage: value.imgFile,
+        name: "",
+        categoryID: dropdownValue.key,
+        ordering: 0,
+        timeOut: 3000,
+      };
+
+      if (newObj && dropdownValue.listType != LIST_TYPE.IMAGE) {
+        createPost(newObj);
       }
-    } catch (error: any) {
-      if (error) {
-        console.log(error);
+
+      if (newBanner && dropdownValue.listType == LIST_TYPE.IMAGE) {
+        createBanner(newBanner);
       }
+
+      setOpenModal(false);
+    }
+    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+      const dataById: IPostDataType | undefined =
+        data.find((item) => editValue.id && item.id === editValue.id) ??
+        undefined;
+
+      if (dataById) {
+        const newDataItem: IEditPostType = {
+          brief: dataById.brief,
+          thumpnailImage: value.imgFile,
+          title: value.title ?? "",
+          content: value.content ?? "",
+        };
+
+        const newBannerData: IEditBannerType = {
+          thumpnailImage: value.imgFile,
+        };
+
+        if (newDataItem && dropdownValue.listType != LIST_TYPE.IMAGE) {
+          editPost(editValue.id, newDataItem);
+        }
+
+        if (newBannerData && dropdownValue.listType == LIST_TYPE.IMAGE) {
+          editBanner(editValue.id, newBannerData);
+        }
+      }
+      setOpenModal(false);
     }
   };
 

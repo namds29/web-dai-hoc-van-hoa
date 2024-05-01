@@ -1,6 +1,5 @@
 import {
   ICreatePostType,
-  IPostDataType,
   IEditPostType,
   IEditBannerType,
   ICreateBannerType,

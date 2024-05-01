@@ -11,6 +11,7 @@ import {
   ICreatePostType,
   DataType,
   IEditType,
+  IEditPostType,
 } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
 
@@ -129,7 +130,7 @@ const AdminAbout = () => {
         thumpnailImage: value.imgFile,
         brief: "",
         typeID: 0,
-        categoryID: 0,
+        categoryID: "",
       };
       createPost(newObj);
       setOpenModal(false);
@@ -140,8 +141,9 @@ const AdminAbout = () => {
         undefined;
 
       if (dataById) {
-        const newDataItem: IPostDataType = {
-          ...dataById,
+        const newDataItem: IEditPostType = {
+          brief: dataById.brief,
+          thumpnailImage: value.imgFile,
           title: value.title ?? "",
           content: value.content ?? "",
         };
@@ -167,7 +169,7 @@ const AdminAbout = () => {
     }
   };
 
-  const editPost = async (id: number, data: IPostDataType) => {
+  const editPost = async (id: number, data: IEditPostType) => {
     try {
       const res = await HomepageService.editPostHomepage(id, data);
       console.log(res);
