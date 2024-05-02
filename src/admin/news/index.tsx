@@ -11,16 +11,9 @@ import {
   ICreatePostType,
   IEditPostType,
   IEditType,
+  ITEM_NEWS,
 } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
-
-enum ITEM_DROPDOWN {
-  HOT_NEWS = "hot_news",
-  NEWS = "news",
-  SCHOOL_ACTIVITIES = "school_activities",
-  CAMPUS_LIFE = "campus_life",
-  INTERNATIONAL_COOPERATION = "inter_coop",
-}
 
 type DataType = { id: number; title: string; content: string };
 
@@ -70,27 +63,27 @@ const AdminNews = () => {
   const dropdownData: IDropdownItemType[] = [
     {
       label: "Hot news",
-      key: ITEM_DROPDOWN.HOT_NEWS,
+      key: ITEM_NEWS.HOT_NEWS,
       listType: LIST_TYPE.IMAGE_TITLE,
     },
     {
       label: "News",
-      key: ITEM_DROPDOWN.NEWS,
+      key: ITEM_NEWS.NEWS,
       listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
     },
     {
       label: "School activities",
-      key: ITEM_DROPDOWN.SCHOOL_ACTIVITIES,
+      key: ITEM_NEWS.SCHOOL_ACTIVITIES,
       listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
     },
     {
       label: "International cooperation",
-      key: ITEM_DROPDOWN.INTERNATIONAL_COOPERATION,
+      key: ITEM_NEWS.INTERNATIONAL_COOPERATION,
       listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
     },
     {
       label: "Campus life",
-      key: ITEM_DROPDOWN.CAMPUS_LIFE,
+      key: ITEM_NEWS.CAMPUS_LIFE,
       listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
     },
   ];
@@ -100,7 +93,11 @@ const AdminNews = () => {
   const onClick: MenuProps["onClick"] = ({ key }) => {
     dropdownData.map((item) => {
       if (item.key === key) {
-        setDropdownValue({ label: item.label, key: key, listType: item.listType });
+        setDropdownValue({
+          label: item.label,
+          key: key,
+          listType: item.listType,
+        });
       }
     });
   };

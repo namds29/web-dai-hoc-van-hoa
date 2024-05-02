@@ -89,3 +89,11 @@ export type IEditType = {
   id?: number;
   type: string;
 };
+
+export enum ITEM_NEWS {
+  HOT_NEWS = "hot_news",
+  NEWS = "news",
+  SCHOOL_ACTIVITIES = "school_activities",
+  CAMPUS_LIFE = "campus_life",
+  INTERNATIONAL_COOPERATION = "inter_coop",
+}

@@ -23,6 +23,11 @@ const listBannerHomepage = async (): Promise<any> => {
   return res;
 };
 
+const getPostById = async (id: number): Promise<any> => {
+  const res = await apiGet(`${API_ADMIN.HOMEPAGE.POST}/${id}`);
+  return res;
+};
+
 const editPostHomepage = async (
   id: number,
   params: IEditPostType
@@ -99,5 +104,6 @@ const HomepageService = {
   editBannerHomepage,
   createBannerHomepage,
   deleteBannerHomepage,
+  getPostById
 };
 export default HomepageService;

@@ -56,13 +56,6 @@ const ListData = ({
         dataSource={data}
         renderItem={(item: IPostDataType) => (
           <List.Item
-            extra={
-              <img
-                width={272}
-                alt="logo"
-                src={`${import.meta.env.VITE_API_URL}${item.path}`}
-              />
-            }
             actions={
               type === LIST_TYPE.IMAGE || type === LIST_TYPE.IMAGE_TITLE
                 ? [
@@ -116,17 +109,29 @@ const ListData = ({
                   ]
             }
           >
-            <List.Item.Meta
-              title={
-                <p className="text-xl">
-                  {type !== LIST_TYPE.IMAGE ? item.title : ""}
-                </p>
-              }
-            />
-            {type === LIST_TYPE.IMAGE_TITLE_CONTENT ||
-            type === LIST_TYPE.TITLE_CONTENT
-              ? item.brief
-              : ""}
+            <div className="w-full">
+              <List.Item.Meta
+                title={
+                  <p className="text-xl">
+                    {type !== LIST_TYPE.IMAGE ? item.title : ""}
+                  </p>
+                }
+                description={
+                  <p>
+                    {type === LIST_TYPE.IMAGE_TITLE_CONTENT ||
+                    type === LIST_TYPE.TITLE_CONTENT
+                      ? item.brief
+                      : ""}
+                  </p>
+                }
+                className="mb-3"
+              />
+              <img
+                width={272}
+                alt="logo"
+                src={`${import.meta.env.VITE_API_URL}${item.path}`}
+              />
+            </div>
           </List.Item>
         )}
       />
