@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
-import { MODAL_TYPE } from "src/interfaces";
-
-type IItemType = {
-  label: string;
-  key: string;
-};
+import {
+  MODAL_TYPE,
+  IDropdownItemType,
+  LIST_TYPE,
+  IPostDataType,
+} from "src/interfaces";
 
 enum ITEM_DROPDOWN {
   FUNCTIONAL_UNITS = "funcunits",
@@ -24,7 +24,7 @@ type IEditType = {
 type DataType = { id: string; title: string; content: string };
 
 const AdminAcademics = () => {
-  const [dropdownValue, setDropdownValue] = useState<IItemType>({
+  const [dropdownValue, setDropdownValue] = useState<IDropdownItemType>({
     label: "Section",
     key: "",
   });
@@ -57,7 +57,7 @@ const AdminAcademics = () => {
     },
   ];
 
-  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+  const [data, setData] = useState<IPostDataType[]>();
 
   useEffect(() => {
     if (editTypeValue?.type === MODAL_TYPE.EDIT) {
@@ -84,9 +84,17 @@ const AdminAcademics = () => {
     setEditTypeValue({ id, type });
   };
 
-  const dropdownData: IItemType[] = [
-    { label: "Functional units", key: ITEM_DROPDOWN.FUNCTIONAL_UNITS },
-    { label: "Training program", key: ITEM_DROPDOWN.TRAINING_PROGRAM },
+  const dropdownData: IDropdownItemType[] = [
+    {
+      label: "Functional units",
+      key: ITEM_DROPDOWN.FUNCTIONAL_UNITS,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+    },
+    {
+      label: "Training program",
+      key: ITEM_DROPDOWN.TRAINING_PROGRAM,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+    },
     {
       label: "University",
       key: ITEM_DROPDOWN.UNIVERSITY,
@@ -108,30 +116,8 @@ const AdminAcademics = () => {
   };
 
   const handleOk = (value: any) => {
-    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
-      const newObj = {
-        id: arrayOfObjects.length.toString(),
-        title: value.title,
-        content: value.content,
-      };
-      arrayOfObjects.push(newObj);
-      setData(arrayOfObjects);
-      setOpenModal(false);
-    }
-    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
-      const newData = arrayOfObjects.map((item) => {
-        if (editValue.id && item.id === editValue.id) {
-          item = {
-            id: value.id,
-            title: value.title,
-            content: value.content,
-          };
-        }
-        return item;
-      });
-      setData(newData);
-      setOpenModal(false);
-    }
+    console.log(value);
+    setData([]);
   };
 
   return (
@@ -148,14 +134,16 @@ const AdminAcademics = () => {
         {dropdownValue.key ? (
           <ListData
             section={dropdownValue.label}
-            data={data}
+            data={data ?? []}
             action={handleEditType}
+            type={dropdownValue.listType}
           ></ListData>
         ) : (
           <div>Please select dropdown to edit section</div>
         )}
       </div>
       <EditModal
+        editType={dropdownValue.listType ?? 0}
         data={editValue}
         show={openModal}
         type={modalType}

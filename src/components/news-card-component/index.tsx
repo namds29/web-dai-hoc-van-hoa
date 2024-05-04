@@ -3,7 +3,7 @@ import styles from "./index.module.scss";
 import { CalendarOutlined } from "@ant-design/icons";
 
 type Props = {
-    id: string,
+    id: number,
     imgUrl: string,
     date: string,
     cardTitle: string,

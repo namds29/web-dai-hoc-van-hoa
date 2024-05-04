@@ -7,9 +7,10 @@ import { Carousel } from "antd";
 
 import Announcements from "./announcements";
 import Banner from "../../components/banner";
-import { useState } from "react";
-import { IMessage } from "src/interfaces";
+import { useEffect, useState } from "react";
+import { IMessage, IPostDataType } from "src/interfaces";
 import CustomModal from "src/components/custom-modal";
+import HomepageService from "src/services/homepage/homepageService";
 import { Link, useNavigate } from "react-router-dom";
 
 const SlickButtonFix = ({
@@ -25,6 +26,7 @@ const AdminHomepage = () => {
     title: <></>,
     content: <></>,
   });
+  const [data, setData] = useState<IPostDataType[]>([]);
   const navigate = useNavigate();
   const settings = {
     className: "center",
@@ -66,14 +68,12 @@ const AdminHomepage = () => {
     setModalContent({
       title: <p className="text-center text-2xl">Vision</p>,
       content: (
-        <>
-          <p className="mt-8 ml-4 mb-4 text-xl">
-            By 2045, TUCST will be one of the top prestigious training
-            institutions in the whole country in scientific research on social
-            sciences in the South Red River region - North Central region and
-            training programs of culture - arts, sports and tourism.
-          </p>
-        </>
+        <p className="mt-8 ml-4 mb-4 text-xl">
+          By 2045, TUCST will be one of the top prestigious training
+          institutions in the whole country in scientific research on social
+          sciences in the South Red River region - North Central region and
+          training programs of culture - arts, sports and tourism.
+        </p>
       ),
     });
   };
@@ -95,18 +95,34 @@ const AdminHomepage = () => {
     setModalContent({
       title: <p className="text-center text-2xl">MISSION</p>,
       content: (
-        <>
-          <p className="mt-8 ml-4 mb-4 text-xl">
-            TUCT has the mission of training high-quality human resources and
-            scientific research in social sciences with 3 main areas: Culture -
-            Arts, Sports and Tourism; contributing to the socio-economic
-            development of Thanh Hoa province, the South Red River region -
-            North Central region and the whole country.
-          </p>
-        </>
+        <p className="mt-8 ml-4 mb-4 text-xl">
+          TUCT has the mission of training high-quality human resources and
+          scientific research in social sciences with 3 main areas: Culture -
+          Arts, Sports and Tourism; contributing to the socio-economic
+          development of Thanh Hoa province, the South Red River region - North
+          Central region and the whole country.
+        </p>
       ),
     });
   };
+
+  useEffect(() => {
+    getPostList();
+  }, []);
+
+  const getPostList = async () => {
+    try {
+      const res = await HomepageService.listPostHomepage();
+      if (res?.data) {
+        setData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Banner />
@@ -133,7 +149,7 @@ const AdminHomepage = () => {
         </div>
       </section>
 
-      <Announcements />
+      <Announcements data={data} />
       <section className={`bg_gradient_blue_to_light w-full xl:px-24 py-8`}>
         <div className="flex justify-center text-white-700 font-bold mb-6">
           <p className={` ${styles.letter_space} text-4xl border-b-4`}>

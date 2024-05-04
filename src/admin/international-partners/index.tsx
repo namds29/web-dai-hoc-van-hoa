@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
-import { MODAL_TYPE } from "src/interfaces";
-
-type IItemType = {
-  label: string;
-  key: string;
-};
+import {
+  MODAL_TYPE,
+  IDropdownItemType,
+  LIST_TYPE,
+  IPostDataType,
+} from "src/interfaces";
 
 enum ITEM_DROPDOWN {
   PARTNER_LIST = "partnerlist",
@@ -23,9 +23,10 @@ type IEditType = {
 type DataType = { id: string; title: string; content: string };
 
 const AdminInternationalPartnerss = () => {
-  const [dropdownValue, setDropdownValue] = useState<IItemType>({
+  const [dropdownValue, setDropdownValue] = useState<IDropdownItemType>({
     label: "Section",
     key: "",
+    listType: 0,
   });
 
   const [editValue, setEditValue] = useState<DataType>({
@@ -56,7 +57,7 @@ const AdminInternationalPartnerss = () => {
     },
   ];
 
-  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+  const [data, setData] = useState<IPostDataType[]>([]);
 
   useEffect(() => {
     if (editTypeValue?.type === MODAL_TYPE.EDIT) {
@@ -83,9 +84,17 @@ const AdminInternationalPartnerss = () => {
     setEditTypeValue({ id, type });
   };
 
-  const dropdownData: IItemType[] = [
-    { label: "Partner list", key: ITEM_DROPDOWN.PARTNER_LIST },
-    { label: "Partner with us", key: ITEM_DROPDOWN.PARTNER_WITH_US },
+  const dropdownData: IDropdownItemType[] = [
+    {
+      label: "Partner list",
+      key: ITEM_DROPDOWN.PARTNER_LIST,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+    },
+    {
+      label: "Partner with us",
+      key: ITEM_DROPDOWN.PARTNER_WITH_US,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+    },
   ];
 
   const dropdownItems: MenuProps["items"] = dropdownData;
@@ -103,30 +112,8 @@ const AdminInternationalPartnerss = () => {
   };
 
   const handleOk = (value: any) => {
-    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
-      const newObj = {
-        id: arrayOfObjects.length.toString(),
-        title: value.title,
-        content: value.content,
-      };
-      arrayOfObjects.push(newObj);
-      setData(arrayOfObjects);
-      setOpenModal(false);
-    }
-    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
-      const newData = arrayOfObjects.map((item) => {
-        if (editValue.id && item.id === editValue.id) {
-          item = {
-            id: value.id,
-            title: value.title,
-            content: value.content,
-          };
-        }
-        return item;
-      });
-      setData(newData);
-      setOpenModal(false);
-    }
+    console.log(value);
+    setData([]);
   };
 
   return (
@@ -145,12 +132,14 @@ const AdminInternationalPartnerss = () => {
             section={dropdownValue.label}
             data={data}
             action={handleEditType}
+            type={dropdownValue.listType ?? 0}
           ></ListData>
         ) : (
           <div>Please select dropdown to edit section</div>
         )}
       </div>
       <EditModal
+        editType={dropdownValue.listType ?? 0}
         data={editValue}
         show={openModal}
         type={modalType}

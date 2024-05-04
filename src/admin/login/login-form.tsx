@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./login-form.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { sha256 } from "js-sha256";
+// import { sha256 } from "js-sha256";
 import AuthService from "src/services/auth/authServices";
 
 const LoginForm = () => {
@@ -22,7 +22,7 @@ const LoginForm = () => {
     password,
   }: User) => {
     try {
-      const res = await AuthService.login({ userID: username, password: sha256(password) });
+      const res = await AuthService.login({ userID: username, password: password });
       console.log(res)
       if (res?.message === "success") {
         AuthService.setToken(res.data.accessToken);
@@ -36,7 +36,7 @@ const LoginForm = () => {
     }
   };
 
-  useEffect(() => { }, [navigate]);
+  
   return (
     <div className={styles.container}>
       <p className="text-2xl font-bold">Login</p>

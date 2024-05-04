@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
-import { MODAL_TYPE } from "src/interfaces";
-
-type IItemType = {
-  label: string;
-  key: string;
-};
+import {
+  MODAL_TYPE,
+  IDropdownItemType,
+  LIST_TYPE,
+  IPostDataType,
+} from "src/interfaces";
 
 enum ITEM_DROPDOWN {
   BANNER_IMG = "bannerimg",
@@ -25,7 +25,7 @@ type IEditType = {
 type DataType = { id: string; title: string; content: string };
 
 const AdminStudentSupport = () => {
-  const [dropdownValue, setDropdownValue] = useState<IItemType>({
+  const [dropdownValue, setDropdownValue] = useState<IDropdownItemType>({
     label: "Section",
     key: "",
   });
@@ -58,7 +58,7 @@ const AdminStudentSupport = () => {
     },
   ];
 
-  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+  const [data, setData] = useState<IPostDataType[]>([]);
 
   useEffect(() => {
     if (editTypeValue?.type === MODAL_TYPE.EDIT) {
@@ -85,14 +85,27 @@ const AdminStudentSupport = () => {
     setEditTypeValue({ id, type });
   };
 
-  const dropdownData: IItemType[] = [
-    { label: "Banner image", key: ITEM_DROPDOWN.BANNER_IMG },
-    { label: "Support departments", key: ITEM_DROPDOWN.SUPPORT_DEPARTMENTS },
+  const dropdownData: IDropdownItemType[] = [
+    {
+      label: "Banner image",
+      key: ITEM_DROPDOWN.BANNER_IMG,
+      listType: LIST_TYPE.IMAGE,
+    },
+    {
+      label: "Support departments",
+      key: ITEM_DROPDOWN.SUPPORT_DEPARTMENTS,
+      listType: LIST_TYPE.IMAGE,
+    },
     {
       label: "Student services",
       key: ITEM_DROPDOWN.STUDENT_SERVICES,
+      listType: LIST_TYPE.IMAGE,
     },
-    { label: "Recruitment", key: ITEM_DROPDOWN.RECRUITMENT },
+    {
+      label: "Recruitment",
+      key: ITEM_DROPDOWN.RECRUITMENT,
+      listType: LIST_TYPE.IMAGE,
+    },
   ];
 
   const dropdownItems: MenuProps["items"] = dropdownData;
@@ -110,30 +123,8 @@ const AdminStudentSupport = () => {
   };
 
   const handleOk = (value: any) => {
-    if (editTypeValue?.type === MODAL_TYPE.CREATE) {
-      const newObj = {
-        id: arrayOfObjects.length.toString(),
-        title: value.title,
-        content: value.content,
-      };
-      arrayOfObjects.push(newObj);
-      setData(arrayOfObjects);
-      setOpenModal(false);
-    }
-    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
-      const newData = arrayOfObjects.map((item) => {
-        if (editValue.id && item.id === editValue.id) {
-          item = {
-            id: value.id,
-            title: value.title,
-            content: value.content,
-          };
-        }
-        return item;
-      });
-      setData(newData);
-      setOpenModal(false);
-    }
+    console.log(value);
+    setData([]);
   };
 
   return (
@@ -148,12 +139,18 @@ const AdminStudentSupport = () => {
 
       <div className="mt-10">
         {dropdownValue.key ? (
-          <ListData section={dropdownValue.label} data={data} action={handleEditType}></ListData>
+          <ListData
+            section={dropdownValue.label}
+            data={data}
+            action={handleEditType}
+            type={dropdownValue.listType}
+          ></ListData>
         ) : (
           <div>Please select dropdown to edit section</div>
         )}
       </div>
       <EditModal
+        editType={dropdownValue.listType ?? 0}
         data={editValue}
         show={openModal}
         type={modalType}

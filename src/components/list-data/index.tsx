@@ -1,7 +1,7 @@
 import React from "react";
 import { EditOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 import { Button, List } from "antd";
-import { LIST_TYPE } from "src/interfaces";
+import { IPostDataType, LIST_TYPE } from "src/interfaces";
 
 const IconText = ({
   icon,
@@ -30,6 +30,9 @@ const ListData = ({
   action?: any;
   type?: number;
 }) => {
+  console.log(data);
+  console.log(type);
+
   return (
     <div>
       <div className="flex justify-end mb-4">
@@ -51,15 +54,8 @@ const ListData = ({
         }
         bordered
         dataSource={data}
-        renderItem={(item: any) => (
+        renderItem={(item: IPostDataType) => (
           <List.Item
-            extra={
-              <img
-                width={272}
-                alt="logo"
-                src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-              />
-            }
             actions={
               type === LIST_TYPE.IMAGE || type === LIST_TYPE.IMAGE_TITLE
                 ? [
@@ -113,8 +109,29 @@ const ListData = ({
                   ]
             }
           >
-            <List.Item.Meta title={<p className="text-xl">{item.title}</p>} />
-            {item.content}
+            <div className="w-full">
+              <List.Item.Meta
+                title={
+                  <p className="text-xl">
+                    {type !== LIST_TYPE.IMAGE ? item.title : ""}
+                  </p>
+                }
+                description={
+                  <p>
+                    {type === LIST_TYPE.IMAGE_TITLE_CONTENT ||
+                    type === LIST_TYPE.TITLE_CONTENT
+                      ? item.brief
+                      : ""}
+                  </p>
+                }
+                className="mb-3"
+              />
+              <img
+                width={272}
+                alt="logo"
+                src={`${import.meta.env.VITE_API_URL}${item.path}`}
+              />
+            </div>
           </List.Item>
         )}
       />

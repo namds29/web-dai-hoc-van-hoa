@@ -1,37 +1,30 @@
-import { MenuProps } from "antd";
+import { MenuProps, message } from "antd";
 import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
-import { MODAL_TYPE } from "src/interfaces";
+import {
+  MODAL_TYPE,
+  LIST_TYPE,
+  IDropdownItemType,
+  IPostDataType,
+  ICreatePostType,
+  IEditPostType,
+  IEditType,
+  ITEM_NEWS,
+} from "src/interfaces";
+import HomepageService from "src/services/homepage/homepageService";
 
-type IItemType = {
-  label: string;
-  key: string;
-};
-
-enum ITEM_DROPDOWN {
-  HOT_NEWS = "hotnews",
-  SCHOOL_ACTIVITIES = "schoolactivities",
-  CAMPUS_LIFE = "campuslife",
-  INTERNATIONAL_COOPERATION = "intercoop",
-}
-
-type IEditType = {
-  id?: string;
-  type: string;
-};
-
-type DataType = { id: string; title: string; content: string };
+type DataType = { id: number; title: string; content: string };
 
 const AdminNews = () => {
-  const [dropdownValue, setDropdownValue] = useState<IItemType>({
+  const [dropdownValue, setDropdownValue] = useState<IDropdownItemType>({
     label: "Section",
     key: "",
   });
 
   const [editValue, setEditValue] = useState<DataType>({
-    id: "0",
+    id: 0,
     title: "",
     content: "",
   });
@@ -40,33 +33,16 @@ const AdminNews = () => {
   const [modalType, setModalType] = useState("");
   const [editTypeValue, setEditTypeValue] = useState<IEditType>();
 
-  const arrayOfObjects = [
-    {
-      title: "First Object",
-      id: "1",
-      content: "This is the content of the first object.",
-    },
-    {
-      title: "Second Object",
-      id: "2",
-      content: "This is the content of the second object.",
-    },
-    {
-      title: "Third Object",
-      id: "3",
-      content: "This is the content of the third object.",
-    },
-  ];
-
-  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+  const [data, setData] = useState<IPostDataType[]>([]);
 
   useEffect(() => {
-    if (editTypeValue?.type === MODAL_TYPE.EDIT) {
+    if (
+      editTypeValue?.type === MODAL_TYPE.EDIT ||
+      editTypeValue?.type === MODAL_TYPE.VIEW
+    ) {
       setOpenModal(true);
-      setModalType(MODAL_TYPE.EDIT);
-      const choosenValue = arrayOfObjects.find(
-        (item) => item.id === editTypeValue.id
-      );
+      setModalType(editTypeValue?.type);
+      const choosenValue = data.find((item) => item.id === editTypeValue.id);
       if (choosenValue) {
         setEditValue(choosenValue);
       }
@@ -75,9 +51,8 @@ const AdminNews = () => {
       setOpenModal(true);
       setModalType(MODAL_TYPE.CREATE);
     }
-    if (editTypeValue?.type === MODAL_TYPE.VIEW) {
-      setOpenModal(true);
-      setModalType(MODAL_TYPE.VIEW);
+    if (editTypeValue?.type === "delete") {
+      handleDeleteDataItem(editTypeValue.id ?? 0);
     }
   }, [editTypeValue]);
 
@@ -85,15 +60,32 @@ const AdminNews = () => {
     setEditTypeValue({ id, type });
   };
 
-  const dropdownData: IItemType[] = [
-    { label: "Hot news", key: ITEM_DROPDOWN.HOT_NEWS },
-    { label: "School activities", key: ITEM_DROPDOWN.SCHOOL_ACTIVITIES },
+  const dropdownData: IDropdownItemType[] = [
+    {
+      label: "Hot news",
+      key: ITEM_NEWS.HOT_NEWS,
+      listType: LIST_TYPE.IMAGE_TITLE,
+    },
+    {
+      label: "News",
+      key: ITEM_NEWS.NEWS,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+    },
+    {
+      label: "School activities",
+      key: ITEM_NEWS.SCHOOL_ACTIVITIES,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+    },
     {
       label: "International cooperation",
-      key: ITEM_DROPDOWN.INTERNATIONAL_COOPERATION,
+      key: ITEM_NEWS.INTERNATIONAL_COOPERATION,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
     },
-    { label: "Campus life", key: ITEM_DROPDOWN.CAMPUS_LIFE },
-    
+    {
+      label: "Campus life",
+      key: ITEM_NEWS.CAMPUS_LIFE,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+    },
   ];
 
   const dropdownItems: MenuProps["items"] = dropdownData;
@@ -101,7 +93,11 @@ const AdminNews = () => {
   const onClick: MenuProps["onClick"] = ({ key }) => {
     dropdownData.map((item) => {
       if (item.key === key) {
-        setDropdownValue({ label: item.label, key: key });
+        setDropdownValue({
+          label: item.label,
+          key: key,
+          listType: item.listType,
+        });
       }
     });
   };
@@ -110,32 +106,107 @@ const AdminNews = () => {
     setOpenModal(false);
   };
 
-  const handleOk = (value: any) => {
+  const handleOk = (value: {
+    title?: string;
+    content?: string;
+    brief?: string;
+    imgFile: File;
+  }) => {
     if (editTypeValue?.type === MODAL_TYPE.CREATE) {
-      const newObj = {
-        id: arrayOfObjects.length.toString(),
-        title: value.title,
-        content: value.content,
+      const newObj: ICreatePostType = {
+        title: value.title ?? "",
+        content: value.content ?? "",
+        thumpnailImage: value.imgFile,
+        brief: value.brief ?? "",
+        typeID: 0,
+        categoryID: dropdownValue.key,
       };
-      arrayOfObjects.push(newObj);
-      setData(arrayOfObjects);
+
+      if (newObj) {
+        createPost(newObj);
+      }
+
       setOpenModal(false);
     }
     if (editTypeValue?.type === MODAL_TYPE.EDIT) {
-      const newData = arrayOfObjects.map((item) => {
-        if (editValue.id && item.id === editValue.id) {
-          item = {
-            id: value.id,
-            title: value.title,
-            content: value.content,
-          };
+      const dataById: IPostDataType | undefined =
+        data.find((item) => editValue.id && item.id === editValue.id) ??
+        undefined;
+
+      if (dataById) {
+        const newDataItem: IEditPostType = {
+          brief: value.brief ?? "",
+          thumpnailImage: value.imgFile,
+          title: value.title ?? "",
+          content: value.content ?? "",
+        };
+
+        if (newDataItem) {
+          editPost(editValue.id, newDataItem);
         }
-        return item;
-      });
-      setData(newData);
+      }
       setOpenModal(false);
     }
   };
+
+  const getPostList = async () => {
+    try {
+      const res = await HomepageService.listPostHomepage();
+      if (res?.data) {
+        setData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const createPost = async (data: ICreatePostType) => {
+    try {
+      const res = await HomepageService.createPostHomepage(data);
+      if (res.message == "success") {
+        message.success(`Create post successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const editPost = async (id: number, data: IEditPostType) => {
+    try {
+      const res = await HomepageService.editPostHomepage(id, data);
+      if (res.message == "success") {
+        message.success(`Update post successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const handleDeleteDataItem = async (id: number) => {
+    try {
+      const res = await HomepageService.deletePostHomepage(id);
+      if (res.message == "success") {
+        message.success(`Delete successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getPostList();
+  }, []);
 
   return (
     <div>
@@ -148,12 +219,18 @@ const AdminNews = () => {
       </div>
       <div className="mt-10">
         {dropdownValue.key ? (
-          <ListData section={dropdownValue.label} data={data} action={handleEditType}></ListData>
+          <ListData
+            section={dropdownValue.label}
+            data={data.filter((item) => item.categoryID === dropdownValue.key)}
+            action={handleEditType}
+            type={dropdownValue.listType}
+          ></ListData>
         ) : (
           <div>Please select dropdown to edit section</div>
         )}
       </div>
       <EditModal
+        editType={dropdownValue.listType ?? 0}
         data={editValue}
         show={openModal}
         type={modalType}

@@ -1,41 +1,41 @@
-import { MenuProps } from "antd";
+import { MenuProps, message } from "antd";
 import { useEffect, useState } from "react";
 import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
-import { LIST_TYPE, MODAL_TYPE } from "src/interfaces";
-
-type IItemType = {
-  label: string;
-  key: string;
-  listType?: number;
-};
+import {
+  LIST_TYPE,
+  MODAL_TYPE,
+  IDropdownItemType,
+  IPostDataType,
+  ICreatePostType,
+  IEditType,
+  IEditPostType,
+  IEditBannerType,
+  ICreateBannerType,
+} from "src/interfaces";
+import HomepageService from "src/services/homepage/homepageService";
 
 enum ITEM_DROPDOWN {
-  BANNER_IMG = "bannerimg",
-  SMALL_BANNER = "smallbanner",
-  HIGHLIGHT_ANNOUNCEMENT = "highlight",
-  FACULTIES = "faculties",
-  CAMPUS_LIFE = "campuslife",
+  BANNER_IMG = "homepage_banner",
+  HIGHLIGHT = "highlight",
+  ANNOUNCEMENT = "announcement",
+  FACULTIES = "homepage_faculties",
   MVV = "mvv",
+  IMG_LIB = "homepage_imglib",
 }
 
-type IEditType = {
-  id?: string;
-  type: string;
-};
-
-type DataType = { id: string; title: string; content: string };
+type DataType = { id: number; title: string; content: string };
 
 const AdminHomePage = () => {
-  const [dropdownValue, setDropdownValue] = useState<IItemType>({
+  const [dropdownValue, setDropdownValue] = useState<IDropdownItemType>({
     label: "Section",
     key: "",
     listType: 0,
   });
 
   const [editValue, setEditValue] = useState<DataType>({
-    id: "0",
+    id: 0,
     title: "",
     content: "",
   });
@@ -44,33 +44,13 @@ const AdminHomePage = () => {
   const [modalType, setModalType] = useState("");
   const [editTypeValue, setEditTypeValue] = useState<IEditType>();
 
-  const arrayOfObjects = [
-    {
-      title: "First Object",
-      id: "1",
-      content: "This is the content of the first object.",
-    },
-    {
-      title: "Second Object",
-      id: "2",
-      content: "This is the content of the second object.",
-    },
-    {
-      title: "Third Object",
-      id: "3",
-      content: "This is the content of the third object.",
-    },
-  ];
-
-  const [data, setData] = useState<DataType[]>(arrayOfObjects);
+  const [data, setData] = useState<IPostDataType[]>([]);
 
   useEffect(() => {
     if (editTypeValue?.type === MODAL_TYPE.EDIT) {
       setOpenModal(true);
       setModalType(MODAL_TYPE.EDIT);
-      const choosenValue = arrayOfObjects.find(
-        (item) => item.id === editTypeValue.id
-      );
+      const choosenValue = data.find((item) => item.id === editTypeValue.id);
       if (choosenValue) {
         setEditValue(choosenValue);
       }
@@ -83,39 +63,60 @@ const AdminHomePage = () => {
       setOpenModal(true);
       setModalType(MODAL_TYPE.VIEW);
     }
+    if (editTypeValue?.type === "delete") {
+      handleDeleteDataItem(editTypeValue.id ?? 0);
+    }
   }, [editTypeValue]);
 
   const handleEditType = ({ id, type }: IEditType) => {
     setEditTypeValue({ id, type });
   };
 
-  const dropdownData: IItemType[] = [
+  const handleDeleteDataItem = async (id: number) => {
+    try {
+      const res = await HomepageService.deletePostHomepage(id);
+      if (res.message == "success") {
+        message.success(`Delete successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const dropdownData: IDropdownItemType[] = [
     {
       label: "Banner image",
       key: ITEM_DROPDOWN.BANNER_IMG,
       listType: LIST_TYPE.IMAGE,
     },
     {
-      label: "Small banner",
-      key: ITEM_DROPDOWN.SMALL_BANNER,
-      listType: LIST_TYPE.IMAGE_TITLE,
+      label: "Highlights",
+      key: ITEM_DROPDOWN.HIGHLIGHT,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
     },
     {
-      label: "Highlights & Announcement",
-      key: ITEM_DROPDOWN.HIGHLIGHT_ANNOUNCEMENT,
-      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+      label: "Announcement",
+      key: ITEM_DROPDOWN.ANNOUNCEMENT,
+      listType: LIST_TYPE.IMAGE_TITLE,
     },
     {
       label: "Faculties",
       key: ITEM_DROPDOWN.FACULTIES,
-      listType: LIST_TYPE.IMAGE_TITLE,
+      listType: LIST_TYPE.IMAGE,
     },
     {
-      label: "Campus life",
-      key: ITEM_DROPDOWN.CAMPUS_LIFE,
-      listType: LIST_TYPE.IMAGE_TITLE,
+      label: "MVV",
+      key: ITEM_DROPDOWN.MVV,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
     },
-    { label: "MVV", key: ITEM_DROPDOWN.MVV, listType: LIST_TYPE.IMAGE_TITLE },
+    {
+      label: "Image library",
+      key: ITEM_DROPDOWN.IMG_LIB,
+      listType: LIST_TYPE.IMAGE,
+    },
   ];
 
   const dropdownItems: MenuProps["items"] = dropdownData;
@@ -123,7 +124,11 @@ const AdminHomePage = () => {
   const onClick: MenuProps["onClick"] = ({ key }) => {
     dropdownData.map((item) => {
       if (item.key === key) {
-        setDropdownValue({ label: item.label, key: key, listType: item.listType });
+        setDropdownValue({
+          label: item.label,
+          key: key,
+          listType: item.listType,
+        });
       }
     });
   };
@@ -132,32 +137,157 @@ const AdminHomePage = () => {
     setOpenModal(false);
   };
 
-  const handleOk = (value: any) => {
+  const handleOk = (value: {
+    title?: string;
+    content?: string;
+    imgFile: File;
+  }) => {
     if (editTypeValue?.type === MODAL_TYPE.CREATE) {
-      const newObj = {
-        id: arrayOfObjects.length.toString(),
-        title: value.title,
-        content: value.content,
+      const newObj: ICreatePostType = {
+        title: value.title ?? "",
+        content: value.content ?? "",
+        thumpnailImage: value.imgFile,
+        brief: "",
+        typeID: 0,
+        categoryID: dropdownValue.key,
       };
-      arrayOfObjects.push(newObj);
-      setData(arrayOfObjects);
+
+      const newBanner: ICreateBannerType = {
+        thumpnailImage: value.imgFile,
+        name: "",
+        categoryID: dropdownValue.key,
+        ordering: 0,
+        timeOut: 3000,
+      };
+
+      if (newObj && dropdownValue.listType != LIST_TYPE.IMAGE) {
+        createPost(newObj);
+      }
+
+      if (newBanner && dropdownValue.listType == LIST_TYPE.IMAGE) {
+        createBanner(newBanner);
+      }
+
       setOpenModal(false);
     }
     if (editTypeValue?.type === MODAL_TYPE.EDIT) {
-      const newData = arrayOfObjects.map((item) => {
-        if (editValue.id && item.id === editValue.id) {
-          item = {
-            id: value.id,
-            title: value.title,
-            content: value.content,
-          };
+      const dataById: IPostDataType | undefined =
+        data.find((item) => editValue.id && item.id === editValue.id) ??
+        undefined;
+
+      if (dataById) {
+        const newDataItem: IEditPostType = {
+          brief: dataById.brief,
+          thumpnailImage: value.imgFile,
+          title: value.title ?? "",
+          content: value.content ?? "",
+        };
+
+        const newBannerData: IEditBannerType = {
+          thumpnailImage: value.imgFile,
+        };
+
+        if (newDataItem && dropdownValue.listType != LIST_TYPE.IMAGE) {
+          editPost(editValue.id, newDataItem);
         }
-        return item;
-      });
-      setData(newData);
+
+        if (newBannerData && dropdownValue.listType == LIST_TYPE.IMAGE) {
+          editBanner(editValue.id, newBannerData);
+        }
+      }
       setOpenModal(false);
     }
   };
+
+  const createBanner = async (data: ICreateBannerType) => {
+    try {
+      const res = await HomepageService.createBannerHomepage(data);
+      if (res.message == "success") {
+        message.success(`Create banner successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const createPost = async (data: ICreatePostType) => {
+    try {
+      const res = await HomepageService.createPostHomepage(data);
+      if (res.message == "success") {
+        message.success(`Create post successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const editPost = async (id: number, data: IEditPostType) => {
+    try {
+      const res = await HomepageService.editPostHomepage(id, data);
+      if (res.message == "success") {
+        message.success(`Create post successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const editBanner = async (id: number, data: IEditBannerType) => {
+    try {
+      const res = await HomepageService.editBannerHomepage(id, data);
+      if (res.message == "success") {
+        message.success(`Create banner successfully.`);
+        getPostList();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const getPostList = async () => {
+    try {
+      const res = await HomepageService.listPostHomepage();
+      if (res?.data) {
+        setData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const getBannerList = async () => {
+    try {
+      const res = await HomepageService.listBannerHomepage();
+      if (res?.data) {
+        setData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (dropdownValue.listType === LIST_TYPE.IMAGE) {
+      getBannerList();
+    } else {
+      getPostList();
+    }
+  }, [dropdownValue]);
 
   return (
     <div>
@@ -173,7 +303,7 @@ const AdminHomePage = () => {
         {dropdownValue.key ? (
           <ListData
             section={dropdownValue.label}
-            data={data}
+            data={data.filter((item) => item.categoryID === dropdownValue.key)}
             action={handleEditType}
             type={dropdownValue.listType}
           ></ListData>
@@ -182,6 +312,7 @@ const AdminHomePage = () => {
         )}
       </div>
       <EditModal
+        editType={dropdownValue.listType ?? 0}
         data={editValue}
         show={openModal}
         type={modalType}

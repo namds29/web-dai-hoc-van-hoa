@@ -7,24 +7,76 @@ import {
   DATA_SCHOOL_ACTIVITIES,
 } from "src/data/data";
 import { useNavigate } from "react-router-dom";
+import HomepageService from "src/services/homepage/homepageService";
+import { useEffect, useState } from "react";
+import { IPostDataType, ITEM_NEWS } from "src/interfaces";
+import moment from "moment";
 
 const NEWS = [
   {
     id: "news8",
     imgUrl: "/img/ic9.JPG",
     date: "01/09/2024",
-    cardTitle: "JOB EXCHANGE PROGRAM BETWEEN TUCST AND SSGV SINGAPORE JOINT VENTURE COMPANY",
-    cardDescription: "On the morning of January 11, 2024, a job career exchange program between TUCST and SkillsSG Ventures, Singapore (SSGV) was held at TUCST. Attending the program were representatives from Singapore including Mr. Cheng Hong Siang - CEO of SSGV and from TUCST including Assoc.Pror. Dr. Nguyen Thi Thuc - Vice President, teaching staff and students..."
+    cardTitle:
+      "JOB EXCHANGE PROGRAM BETWEEN TUCST AND SSGV SINGAPORE JOINT VENTURE COMPANY",
+    cardDescription:
+      "On the morning of January 11, 2024, a job career exchange program between TUCST and SkillsSG Ventures, Singapore (SSGV) was held at TUCST. Attending the program were representatives from Singapore including Mr. Cheng Hong Siang - CEO of SSGV and from TUCST including Assoc.Pror. Dr. Nguyen Thi Thuc - Vice President, teaching staff and students...",
   },
   {
     id: "news9",
     imgUrl: "/img/icop5.jpg",
     date: "01/09/2024",
     cardTitle: "TUCST KEY OFFICIAL WORKING VISIT TO TAIWAN",
-    cardDescription: "In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023 to November 1, 2023, the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha- TUCST President had a working visit to Taiwan..."
+    cardDescription:
+      "In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023 to November 1, 2023, the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha- TUCST President had a working visit to Taiwan...",
   },
 ];
 const News = () => {
+  const [newsData, setNewsData] = useState<IPostDataType[]>([]);
+  const [schoolActData, setSchoolActData] = useState<IPostDataType[]>([]);
+  const [campusLifeData, setCampusLifeData] = useState<IPostDataType[]>([]);
+  const [interCoopData, setInterCoopData] = useState<IPostDataType[]>([]);
+
+  const url = import.meta.env.VITE_API_URL;
+
+  const getPostList = async () => {
+    try {
+      const res = await HomepageService.listPostHomepage();
+      if (res?.data) {
+        setNewsData(
+          res?.data.filter(
+            (item: IPostDataType) => item.categoryID === ITEM_NEWS.NEWS
+          )
+        );
+        setSchoolActData(
+          res?.data.filter(
+            (item: IPostDataType) =>
+              item.categoryID === ITEM_NEWS.SCHOOL_ACTIVITIES
+          )
+        );
+        setCampusLifeData(
+          res?.data.filter(
+            (item: IPostDataType) => item.categoryID === ITEM_NEWS.CAMPUS_LIFE
+          )
+        );
+        setInterCoopData(
+          res?.data.filter(
+            (item: IPostDataType) =>
+              item.categoryID === ITEM_NEWS.INTERNATIONAL_COOPERATION
+          )
+        );
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getPostList();
+  }, []);
+
   const navigate = useNavigate();
   return (
     <section className="w-full">
@@ -43,26 +95,32 @@ const News = () => {
           <p className="text-xl border-b-4 mb-8">NEWS</p>
 
           <div className="flex flex-col h-[19.925rem] xl:pr-4 gap-2 w-full text-white">
-            {NEWS.map(item => (<div className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-3 mb-5 ">
-              <div className="w-52 h-full rounded cursor-pointer" onClick={()=> navigate(`/news/${item.id}`)}>
-                <img
-                  className="w-52 h-full rounded object-cover"
-                  src={item.imgUrl}
-                  alt=""
-                />
+            {newsData.map((item) => (
+              <div
+                key={item.id}
+                className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-3 mb-5 "
+              >
+                <div
+                  className="w-52 h-full rounded cursor-pointer"
+                  onClick={() => navigate(`/news/${item.id}`)}
+                >
+                  <img
+                    className="w-52 h-full rounded object-cover"
+                    src={`${url}${item.path}`}
+                    alt=""
+                  />
+                </div>
+                <div className={styles.card_science}>
+                  <p className="title truncate font-bold letter tracking-wider">
+                    {item.title}
+                  </p>
+                  <p className={styles.card_science_description}>
+                    {item.brief}
+                  </p>
+                </div>
               </div>
-              <div className={styles.card_science}>
-                <p className="title truncate font-bold letter tracking-wider">
-                  {item.cardTitle}
-                </p>
-                <p className={styles.card_science_description}>
-                  {item.cardDescription}
-                </p>
-              </div>
-            </div>
             ))}
           </div>
-
         </div>
       </section>
       <section className="bg-gray-100 w-full px-4 xl:px-24 py-8">
@@ -78,14 +136,14 @@ const News = () => {
           </button>
         </div>
         <div className={styles.newest_new}>
-          {DATA_SCHOOL_ACTIVITIES.map((newsItem, index) => (
+          {schoolActData.map((newsItem) => (
             <NewsCardComponent
               id={newsItem.id}
-              key={index}
-              imgUrl={newsItem.imgUrl}
-              date={newsItem.date}
-              cardTitle={newsItem.cardTitle}
-              cardDescription={newsItem.cardDescription}
+              key={newsItem.id}
+              imgUrl={`${url}${newsItem.path}`}
+              date={moment(newsItem.createdAt ?? "").format("YYYY/MM/DD")}
+              cardTitle={newsItem.title}
+              cardDescription={newsItem.brief}
             />
           ))}
         </div>
@@ -104,14 +162,14 @@ const News = () => {
           </button>
         </div>
         <div className={styles.newest_new}>
-          {DATA_CAMPUS_LIFE.map((newsItem, index) => (
+          {campusLifeData.map((newsItem) => (
             <NewsCardComponent
               id={newsItem.id}
-              key={index}
-              imgUrl={newsItem.imgUrl}
-              date={newsItem.date}
-              cardTitle={newsItem.cardTitle}
-              cardDescription={newsItem.cardDescription}
+              key={newsItem.id}
+              imgUrl={`${url}${newsItem.path}`}
+              date={moment(newsItem.createdAt ?? "").format("YYYY/MM/DD")}
+              cardTitle={newsItem.title}
+              cardDescription={newsItem.brief}
             />
           ))}
         </div>
@@ -130,14 +188,14 @@ const News = () => {
           </button>
         </div>
         <div className={styles.newest_new}>
-          {DATA_INTERNATIONAL_COOPERATION.map((newsItem, index) => (
+          {interCoopData.map((newsItem) => (
             <NewsCardComponent
               id={newsItem.id}
-              key={index}
-              imgUrl={newsItem.imgUrl}
-              date={newsItem.date}
-              cardTitle={newsItem.cardTitle}
-              cardDescription={newsItem.cardDescription}
+              key={newsItem.id}
+              imgUrl={`${url}${newsItem.path}`}
+              date={moment(newsItem.createdAt ?? "").format("YYYY/MM/DD")}
+              cardTitle={newsItem.title}
+              cardDescription={newsItem.brief}
             />
           ))}
         </div>
@@ -154,7 +212,7 @@ const News = () => {
             </div>
           </div>
           <div className="w-full rounded bg-white">
-            <div className="w-full flex items-center h-full" >
+            <div className="w-full flex items-center h-full">
               <img
                 className="w-full h-[150px] object-contain overflow-hidden rounded"
                 src="/img/bogd.jpeg"
@@ -173,7 +231,11 @@ const News = () => {
           </div>
           <div className="w-full rounded">
             <div className="w-full flex items-center justify-center h-full">
-              <a href="https://en-us.thanhhoa.gov.vn/portal/Pages/default.aspx" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://en-us.thanhhoa.gov.vn/portal/Pages/default.aspx"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   className="w-full h-full object-contain overflow-hidden rounded"
                   src="/img/cttdt.jpg"
