@@ -25,7 +25,7 @@ const Announcements = (input: { data: Array<IPostDataType> }) => {
       <div className={styles.newest_new}>
         {highlightData.map((newsItem, index) => (
           <NewsCardComponent
-            id={newsItem.id.toString()}
+            id={newsItem.id}
             key={index}
             imgUrl={`${import.meta.env.VITE_API_URL}${newsItem.path}`}
             date={moment(newsItem.createdAt).format("YYYY/MM/DD")}

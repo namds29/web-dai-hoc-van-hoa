@@ -43,6 +43,40 @@ export type IPostDataType = {
   displayOnImageLibrary?: number;
 };
 
+export type IBannerDataType = {
+  id: number;
+  name: string;
+  timeOut: number;
+  mediaFileID: number;
+  modifiedByUserID: number;
+  createdByUserID: number;
+  createdAt: string;
+  updatedAt: string;
+  ordering: number;
+  isDeleted: number;
+  categoryID: string;
+  fileID: number;
+  path: string;
+};
+
+export type IAddmissionDataType = {
+  id: number;
+  title: string;
+  mediaFileID: any;
+  ordering: number;
+  categoryID: number;
+  urlToExternalMedia: string;
+  modifiedByUserID: number;
+  createdByUserID: number;
+  createdAt: string;
+  updatedAt: string;
+  content: string;
+};
+
+export type IGetAddmissionType = {
+  categoryID: number;
+};
+
 export type ICreatePostType = {
   thumpnailImage: File;
   title: string;
@@ -52,11 +86,20 @@ export type ICreatePostType = {
   categoryID: string;
 };
 
+export type ICreateAddmissionType = {
+  title: string;
+  content: string;
+  mediaFileID?: any;
+  ordering?: number;
+  categoryID: string;
+  urlToExternalMedia?: string;
+};
+
 export type ICreateBannerType = {
   thumpnailImage: File;
   name: string;
-  timeOut: number;
-  ordering: number;
+  timeOut?: number;
+  ordering?: number;
   categoryID: string;
 };
 
@@ -65,6 +108,14 @@ export type IEditPostType = {
   title: string;
   brief: string;
   content: string;
+};
+
+export type IEditAddmissionType = {
+  title: string;
+  content: string;
+  mediaFileID?: any;
+  ordering?: number;
+  urlToExternalMedia?: string;
 };
 
 export type IEditBannerType = {
@@ -96,4 +147,18 @@ export enum ITEM_NEWS {
   SCHOOL_ACTIVITIES = "school_activities",
   CAMPUS_LIFE = "campus_life",
   INTERNATIONAL_COOPERATION = "inter_coop",
+}
+
+export enum ITEM_HOMEPAGE {
+  BANNER_IMG = "homepage_banner",
+  HIGHLIGHT = "highlight",
+  ANNOUNCEMENT = "announcement",
+  FACULTIES = "homepage_faculties",
+  MVV = "mvv",
+  IMG_LIB = "homepage_imglib",
+}
+
+export enum CATEGORY_ID {
+  FUNTIONAL_UNITS = 2,
+  FORMAL_TRAINING = 3,
 }

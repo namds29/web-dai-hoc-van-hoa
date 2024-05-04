@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { EditOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
 import { Button, List } from "antd";
-import { IPostDataType, LIST_TYPE } from "src/interfaces";
+import { IMessage, IPostDataType, LIST_TYPE } from "src/interfaces";
+import CustomModal from "../custom-modal";
 
 const IconText = ({
   icon,
@@ -30,8 +31,30 @@ const ListData = ({
   action?: any;
   type?: number;
 }) => {
-  console.log(data);
-  console.log(type);
+  const [open, setOpen] = useState(false);
+  const [modalContent, setModalContent] = useState<IMessage>({
+    title: <></>,
+    content: <></>,
+  });
+  const [currentItem, setCurrentItem] = useState();
+
+  const hanleDelete = (id: any) => {
+    setOpen(true);
+    setCurrentItem(id);
+    setModalContent({
+      title: <p className="text-xl">Confirm</p>,
+      content: <div>Do you want delete this ?</div>,
+    });
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+  };
+
+  const handleOk = () => {
+    action({ id: currentItem, type: "delete" });
+    setOpen(false);
+  };
 
   return (
     <div>
@@ -73,9 +96,7 @@ const ListData = ({
                       icon={DeleteOutlined}
                       text="Delete"
                       danger={true}
-                      onClick={() => {
-                        action({ id: item.id, type: "delete" });
-                      }}
+                      onClick={() => hanleDelete(item.id)}
                     />,
                   ]
                 : [
@@ -103,7 +124,7 @@ const ListData = ({
                       text="Delete"
                       danger={true}
                       onClick={() => {
-                        action({ id: item.id, type: "delete" });
+                        action(() => hanleDelete(item.id));
                       }}
                     />,
                   ]
@@ -134,6 +155,13 @@ const ListData = ({
             </div>
           </List.Item>
         )}
+      />
+      <CustomModal
+        message={modalContent}
+        type="confirm"
+        onCancel={handleCancel}
+        onOk={handleOk}
+        show={open}
       />
     </div>
   );

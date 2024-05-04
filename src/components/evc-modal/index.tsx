@@ -59,6 +59,7 @@ function EvcModal({
   onOk,
 }: Readonly<IProps>): JSX.Element {
   console.log(data);
+  console.log(type, editType);
 
   const [contentState, setContentState] = useState(data.content);
   const [titleState, setTitleState] = useState(data.title);
@@ -137,6 +138,12 @@ function EvcModal({
     onOk(value);
   };
 
+  const showImgImport = editType !== LIST_TYPE.TITLE_CONTENT;
+  const showTextEditor =
+    editType !== LIST_TYPE.IMAGE && editType !== LIST_TYPE.IMAGE_TITLE;
+  const showTextArea = showTextEditor && editType !== LIST_TYPE.TITLE_CONTENT;
+  const showTitleEdit = editType !== LIST_TYPE.IMAGE;
+
   return (
     <Modal
       className="custom-modal"
@@ -183,7 +190,7 @@ function EvcModal({
       ) : (
         <>
           <div className="w-full">
-            {editType !== LIST_TYPE.IMAGE ? (
+            {showTitleEdit ? (
               <AutoComplete
                 value={titleState}
                 placeholder="Title"
@@ -193,16 +200,20 @@ function EvcModal({
             ) : (
               <></>
             )}
-            {editType !== LIST_TYPE.IMAGE &&
-            editType !== LIST_TYPE.IMAGE_TITLE ? (
+            {showTextArea ? (
               <div className="mb-3">
                 <TextArea
                   rows={4}
                   value={briefState}
                   placeholder="Please input brief in here"
-                  className="mb-3"
                   onChange={onChangeBrief}
                 />
+              </div>
+            ) : (
+              <></>
+            )}
+            {showTextEditor ? (
+              <div className="mb-3">
                 <TextEditor
                   content={contentState}
                   editContent={editContentState}
@@ -212,7 +223,7 @@ function EvcModal({
               <></>
             )}
           </div>
-          {editType !== LIST_TYPE.TITLE_CONTENT ? (
+          {showImgImport ? (
             <div className="h-44 mb-9">
               <Dragger {...props}>
                 <p className="ant-upload-drag-icon">

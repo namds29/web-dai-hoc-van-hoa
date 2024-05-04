@@ -9,29 +9,11 @@ import {
 import { useNavigate } from "react-router-dom";
 import HomepageService from "src/services/homepage/homepageService";
 import { useEffect, useState } from "react";
-import { IPostDataType, ITEM_NEWS } from "src/interfaces";
+import { IBannerDataType, IPostDataType, ITEM_NEWS } from "src/interfaces";
 import moment from "moment";
 
-const NEWS = [
-  {
-    id: "news8",
-    imgUrl: "/img/ic9.JPG",
-    date: "01/09/2024",
-    cardTitle:
-      "JOB EXCHANGE PROGRAM BETWEEN TUCST AND SSGV SINGAPORE JOINT VENTURE COMPANY",
-    cardDescription:
-      "On the morning of January 11, 2024, a job career exchange program between TUCST and SkillsSG Ventures, Singapore (SSGV) was held at TUCST. Attending the program were representatives from Singapore including Mr. Cheng Hong Siang - CEO of SSGV and from TUCST including Assoc.Pror. Dr. Nguyen Thi Thuc - Vice President, teaching staff and students...",
-  },
-  {
-    id: "news9",
-    imgUrl: "/img/icop5.jpg",
-    date: "01/09/2024",
-    cardTitle: "TUCST KEY OFFICIAL WORKING VISIT TO TAIWAN",
-    cardDescription:
-      "In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023 to November 1, 2023, the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha- TUCST President had a working visit to Taiwan...",
-  },
-];
 const News = () => {
+  const [bannerData, setBannerData] = useState<IBannerDataType[]>([]);
   const [newsData, setNewsData] = useState<IPostDataType[]>([]);
   const [schoolActData, setSchoolActData] = useState<IPostDataType[]>([]);
   const [campusLifeData, setCampusLifeData] = useState<IPostDataType[]>([]);
@@ -73,8 +55,22 @@ const News = () => {
     }
   };
 
+  const getBannerList = async () => {
+    try {
+      const res = await HomepageService.listBannerHomepage();
+      if (res?.data) {
+        setBannerData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
   useEffect(() => {
     getPostList();
+    getBannerList()
   }, []);
 
   const navigate = useNavigate();

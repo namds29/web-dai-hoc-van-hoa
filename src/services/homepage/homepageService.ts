@@ -3,6 +3,9 @@ import {
   IEditPostType,
   IEditBannerType,
   ICreateBannerType,
+  IEditAddmissionType,
+  ICreateAddmissionType,
+  IGetAddmissionType,
 } from "src/interfaces";
 import { API_ADMIN } from "../constant";
 import {
@@ -10,6 +13,7 @@ import {
   apiUpdate,
   apiCreateFormData,
   apiDelete,
+  apiGetData,
   apiUpdateFormData,
 } from "../utils-service";
 
@@ -20,6 +24,13 @@ const listPostHomepage = async (): Promise<any> => {
 
 const listBannerHomepage = async (): Promise<any> => {
   const res = await apiGet(API_ADMIN.HOMEPAGE.BANNER);
+  return res;
+};
+
+const getAddmissionByCategoryId = async (
+  params: IGetAddmissionType
+): Promise<any> => {
+  const res = await apiGetData(API_ADMIN.HOMEPAGE.ADDMISSION, params);
   return res;
 };
 
@@ -56,6 +67,14 @@ const editBannerHomepage = async (
   return res;
 };
 
+const editAddmissionHomepage = async (
+  id: number,
+  params: IEditAddmissionType
+): Promise<any> => {
+  const res = await apiUpdate(API_ADMIN.HOMEPAGE.ADDMISSION + "/" + id, params);
+  return res;
+};
+
 const deletePostHomepage = async (id: number): Promise<any> => {
   const res = await apiDelete(API_ADMIN.HOMEPAGE.POST + "/" + id);
   return res;
@@ -66,9 +85,12 @@ const deleteBannerHomepage = async (id: number): Promise<any> => {
   return res;
 };
 
-const createPostHomepage = async (params: ICreatePostType): Promise<any> => {
-  console.log(params, "casjnckasjdnjck");
+const deleteAddmissionHomepage = async (id: number): Promise<any> => {
+  const res = await apiDelete(API_ADMIN.HOMEPAGE.ADDMISSION + "/" + id);
+  return res;
+};
 
+const createPostHomepage = async (params: ICreatePostType): Promise<any> => {
   const formData = new FormData();
   formData.append("thumpnailImage", params.thumpnailImage);
   formData.append("title", params.title);
@@ -87,11 +109,24 @@ const createBannerHomepage = async (
   const formData = new FormData();
   formData.append("thumpnailImage", params.thumpnailImage);
   formData.append("name", params.name);
-  formData.append("ordering", params.ordering.toString());
-  formData.append("timeOut", params.timeOut.toString());
   formData.append("categoryID", params.categoryID.toString());
 
-  const res = await apiCreateFormData(API_ADMIN.HOMEPAGE.POST, formData);
+  const res = await apiCreateFormData(API_ADMIN.HOMEPAGE.BANNER, formData);
+  return res;
+};
+
+const createAddmissionHomepage = async (
+  params: ICreateAddmissionType
+): Promise<any> => {
+  const formData = new FormData();
+  formData.append("title", params.title);
+  formData.append("content", params.content);
+  // formData.append("mediaFileID", params.mediaFileID);
+  // formData.append("urlToExternalMedia", params.urlToExternalMedia ?? "");
+  // formData.append("ordering", params.ordering?.toString() ?? "");
+  formData.append("categoryID", params.categoryID.toString());
+
+  const res = await apiCreateFormData(API_ADMIN.HOMEPAGE.ADDMISSION, formData);
   return res;
 };
 
@@ -104,6 +139,10 @@ const HomepageService = {
   editBannerHomepage,
   createBannerHomepage,
   deleteBannerHomepage,
-  getPostById
+  getPostById,
+  getAddmissionByCategoryId,
+  createAddmissionHomepage,
+  editAddmissionHomepage,
+  deleteAddmissionHomepage,
 };
 export default HomepageService;
