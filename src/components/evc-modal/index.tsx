@@ -6,7 +6,6 @@ import {
   Upload,
   UploadFile,
   UploadProps,
-  message,
 } from "antd";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 

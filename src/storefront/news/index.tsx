@@ -1,19 +1,13 @@
 import Banner from "src/components/banner";
 import styles from "./index.module.scss";
 import NewsCardComponent from "src/components/news-card-component";
-import {
-  DATA_CAMPUS_LIFE,
-  DATA_INTERNATIONAL_COOPERATION,
-  DATA_SCHOOL_ACTIVITIES,
-} from "src/data/data";
 import { useNavigate } from "react-router-dom";
 import HomepageService from "src/services/homepage/homepageService";
 import { useEffect, useState } from "react";
-import { IBannerDataType, IPostDataType, ITEM_NEWS } from "src/interfaces";
+import { IPostDataType, ITEM_NEWS } from "src/interfaces";
 import moment from "moment";
 
 const News = () => {
-  const [bannerData, setBannerData] = useState<IBannerDataType[]>([]);
   const [newsData, setNewsData] = useState<IPostDataType[]>([]);
   const [schoolActData, setSchoolActData] = useState<IPostDataType[]>([]);
   const [campusLifeData, setCampusLifeData] = useState<IPostDataType[]>([]);
@@ -55,22 +49,8 @@ const News = () => {
     }
   };
 
-  const getBannerList = async () => {
-    try {
-      const res = await HomepageService.listBannerHomepage();
-      if (res?.data) {
-        setBannerData(res?.data);
-      }
-    } catch (error: any) {
-      if (error) {
-        console.log(error);
-      }
-    }
-  };
-
   useEffect(() => {
     getPostList();
-    getBannerList()
   }, []);
 
   const navigate = useNavigate();
