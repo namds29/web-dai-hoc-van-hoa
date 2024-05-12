@@ -123,9 +123,7 @@ const ListData = ({
                       icon={DeleteOutlined}
                       text="Delete"
                       danger={true}
-                      onClick={() => {
-                        action(() => hanleDelete(item.id));
-                      }}
+                      onClick={() => hanleDelete(item.id)}
                     />,
                   ]
             }

@@ -18,6 +18,8 @@ import CustomModal from "src/components/custom-modal";
 import HomepageService from "src/services/homepage/homepageService";
 import { Link, useNavigate } from "react-router-dom";
 
+const SIZE = 3;
+
 const SlickButtonFix = ({
   currentSlide,
   slideCount,
@@ -31,7 +33,9 @@ const AdminHomepage = () => {
     title: <></>,
     content: <></>,
   });
-  const [data, setData] = useState<IPostDataType[]>([]);
+  const [higlightData, setHiglightData] = useState<IPostDataType[]>([]);
+  const [announcementData, setAnnouncementData] = useState<IPostDataType[]>([]);
+  const [mvvData, setMvvData] = useState<IPostDataType[]>([]);
   const [bannerData, setBannerData] = useState<IBannerDataType[]>([]);
   const navigate = useNavigate();
   const settings = {
@@ -84,15 +88,29 @@ const AdminHomepage = () => {
   };
 
   useEffect(() => {
-    getPostList();
+    getPostList(ITEM_HOMEPAGE.ANNOUNCEMENT);
+    getPostList(ITEM_HOMEPAGE.HIGHLIGHT);
+    getPostList(ITEM_HOMEPAGE.MVV);
     getBannerList();
   }, []);
 
-  const getPostList = async () => {
+  const getPostList = async (id: any) => {
     try {
-      const res = await HomepageService.listPostHomepage();
+      const res = await HomepageService.listPostHomepageWithCategoryId(id);
       if (res?.data) {
-        setData(res?.data);
+        switch (id) {
+          case ITEM_HOMEPAGE.ANNOUNCEMENT:
+            setAnnouncementData(res?.data);
+            break;
+          case ITEM_HOMEPAGE.HIGHLIGHT:
+            setHiglightData(res?.data);
+            break;
+          case ITEM_HOMEPAGE.MVV:
+            setMvvData(res?.data);
+            break;
+          default:
+            break;
+        }
       }
     } catch (error: any) {
       if (error) {
@@ -140,7 +158,10 @@ const AdminHomepage = () => {
         </div>
       </section>
 
-      <Announcements data={data} />
+      <Announcements
+        highlightData={higlightData}
+        announcementData={announcementData}
+      />
       <section className={`bg_gradient_blue_to_light w-full xl:px-24 py-8`}>
         <div className="flex justify-center text-white-700 font-bold mb-6">
           <p className={` ${styles.letter_space} text-4xl border-b-4`}>
@@ -203,25 +224,23 @@ const AdminHomepage = () => {
           </p>
         </div>
         <div className={styles.small_card}>
-          {data
-            .filter((item) => item.categoryID === ITEM_HOMEPAGE.MVV)
-            .map((item) => {
-              return (
-                <div
-                  className={styles.news}
-                  onClick={() => handleOpenModalMVV(item.title, item.content)}
-                  key={item.id}
-                >
-                  <div className={styles.news_img}>
-                    <img
-                      className="w-full h-full"
-                      src={`${import.meta.env.VITE_API_URL}${item.path}`}
-                      alt={item.name}
-                    />
-                  </div>
+          {mvvData.slice(0, SIZE).map((item) => {
+            return (
+              <div
+                className={styles.news}
+                onClick={() => handleOpenModalMVV(item.title, item.content)}
+                key={item.id}
+              >
+                <div className={styles.news_img}>
+                  <img
+                    className="w-full h-full"
+                    src={`${import.meta.env.VITE_API_URL}${item.path}`}
+                    alt={item.name}
+                  />
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
         </div>
       </section>
 

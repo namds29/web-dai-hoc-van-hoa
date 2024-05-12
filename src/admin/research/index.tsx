@@ -8,20 +8,12 @@ import {
   LIST_TYPE,
   IDropdownItemType,
   IPostDataType,
-  ICreateBannerType,
   ICreatePostType,
   IEditPostType,
-  IEditBannerType,
   IEditType,
+  ITEM_RESEARCH
 } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
-
-enum ITEM_DROPDOWN {
-  JOURNAL = "journal",
-  SCIENCE_TOPIC = "sciencetopic",
-  CONFERENCES = "conferences",
-  PUBLISH = "publish",
-}
 
 type DataType = { id: number; title: string; content: string };
 
@@ -67,18 +59,21 @@ const AdminResearch = () => {
   };
 
   const dropdownData: IDropdownItemType[] = [
-    { label: "Journal", key: ITEM_DROPDOWN.JOURNAL, listType: LIST_TYPE.IMAGE },
     {
       label: "Science topic",
-      key: ITEM_DROPDOWN.SCIENCE_TOPIC,
-      listType: LIST_TYPE.IMAGE,
+      key: ITEM_RESEARCH.SCIENCE_TOPIC,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
     },
     {
       label: "Conferences",
-      key: ITEM_DROPDOWN.CONFERENCES,
-      listType: LIST_TYPE.IMAGE,
+      key: ITEM_RESEARCH.CONFERENCES,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
     },
-    { label: "Publish", key: ITEM_DROPDOWN.PUBLISH, listType: LIST_TYPE.IMAGE },
+    {
+      label: "Publish",
+      key: ITEM_RESEARCH.PUBLISH,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+    },
   ];
 
   const dropdownItems: MenuProps["items"] = dropdownData;
@@ -93,20 +88,6 @@ const AdminResearch = () => {
 
   const handleCancel = () => {
     setOpenModal(false);
-  };
-
-  const createBanner = async (data: ICreateBannerType) => {
-    try {
-      const res = await HomepageService.createBannerHomepage(data);
-      if (res.message == "success") {
-        message.success(`Create banner successfully.`);
-        getPostList();
-      }
-    } catch (error: any) {
-      if (error) {
-        console.log(error);
-      }
-    }
   };
 
   const createPost = async (data: ICreatePostType) => {
@@ -137,24 +118,12 @@ const AdminResearch = () => {
     }
   };
 
-  const editBanner = async (id: number, data: IEditBannerType) => {
-    try {
-      const res = await HomepageService.editBannerHomepage(id, data);
-      if (res.message == "success") {
-        message.success(`Create banner successfully.`);
-        getPostList();
-      }
-    } catch (error: any) {
-      if (error) {
-        console.log(error);
-      }
-    }
-  };
-
   const getPostList = async () => {
     try {
       const res = await HomepageService.listPostHomepage();
       if (res?.data) {
+        console.log(res?.data);
+        
         setData(res?.data);
       }
     } catch (error: any) {
@@ -163,19 +132,6 @@ const AdminResearch = () => {
       }
     }
   };
-
-  // const getBannerList = async () => {
-  //   try {
-  //     const res = await HomepageService.listBannerHomepage();
-  //     if (res?.data) {
-  //       setData(res?.data);
-  //     }
-  //   } catch (error: any) {
-  //     if (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // };
 
   const handleOk = (value: {
     title?: string;
@@ -192,20 +148,8 @@ const AdminResearch = () => {
         categoryID: dropdownValue.key,
       };
 
-      const newBanner: ICreateBannerType = {
-        thumpnailImage: value.imgFile,
-        name: "",
-        categoryID: dropdownValue.key,
-        ordering: 0,
-        timeOut: 3000,
-      };
-
       if (newObj && dropdownValue.listType != LIST_TYPE.IMAGE) {
         createPost(newObj);
-      }
-
-      if (newBanner && dropdownValue.listType == LIST_TYPE.IMAGE) {
-        createBanner(newBanner);
       }
 
       setOpenModal(false);
@@ -223,16 +167,8 @@ const AdminResearch = () => {
           content: value.content ?? "",
         };
 
-        const newBannerData: IEditBannerType = {
-          thumpnailImage: value.imgFile,
-        };
-
         if (newDataItem && dropdownValue.listType != LIST_TYPE.IMAGE) {
           editPost(editValue.id, newDataItem);
-        }
-
-        if (newBannerData && dropdownValue.listType == LIST_TYPE.IMAGE) {
-          editBanner(editValue.id, newBannerData);
         }
       }
       setOpenModal(false);

@@ -158,6 +158,13 @@ export enum ITEM_HOMEPAGE {
   IMG_LIB = "homepage_imglib",
 }
 
+export enum ITEM_RESEARCH {
+  JOURNAL = "journal",
+  SCIENCE_TOPIC = "science_topic",
+  CONFERENCES = "conferences",
+  PUBLISH = "publish",
+}
+
 export enum CATEGORY_ID {
   FUNTIONAL_UNITS = 2,
   FORMAL_TRAINING = 3,

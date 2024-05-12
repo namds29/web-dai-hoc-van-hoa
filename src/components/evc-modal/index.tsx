@@ -57,17 +57,17 @@ function EvcModal({
   onCancel,
   onOk,
 }: Readonly<IProps>): JSX.Element {
-  console.log(data);
-  console.log(type, editType);
-
-  const [contentState, setContentState] = useState(data.content);
-  const [titleState, setTitleState] = useState(data.title);
-  const [briefState, setBriefState] = useState(data.brief);
+  const [contentState, setContentState] = useState(
+    data.content !== "" ? data.content : "content"
+  );
+  const [titleState, setTitleState] = useState(
+    data.title !== "" ? data.title : "title"
+  );
+  const [briefState, setBriefState] = useState(
+    data.brief !== "" ? data.brief : "brief"
+  );
   const [imgFile, setImgFile] = useState<UploadFile>();
   const buttonOkRef = useRef<HTMLButtonElement>(null);
-
-  console.log(contentState);
-  console.log(data.content);
 
   const messageText = (type: string): MessageText => {
     switch (type) {
@@ -133,6 +133,8 @@ function EvcModal({
       brief: briefState,
       imgFile: imgFile,
     };
+
+    console.log(value);
 
     onOk(value);
   };

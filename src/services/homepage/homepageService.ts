@@ -18,7 +18,12 @@ import {
 } from "../utils-service";
 
 const listPostHomepage = async (): Promise<any> => {
-  const res = await apiGet(API_ADMIN.HOMEPAGE.POST);
+  const res = await apiGet(API_ADMIN.HOMEPAGE.POST.INDEX);
+  return res;
+};
+
+const listPostHomepageWithCategoryId = async (id: any): Promise<any> => {
+  const res = await apiGet(API_ADMIN.HOMEPAGE.POST.WITH_CATEGORY_ID + id);
   return res;
 };
 
@@ -35,7 +40,7 @@ const getAddmissionByCategoryId = async (
 };
 
 const getPostById = async (id: number): Promise<any> => {
-  const res = await apiGet(`${API_ADMIN.HOMEPAGE.POST}/${id}`);
+  const res = await apiGet(`${API_ADMIN.HOMEPAGE.POST.INDEX}/${id}`);
   return res;
 };
 
@@ -50,7 +55,7 @@ const editPostHomepage = async (
   formData.append("content", params.content);
 
   const res = await apiUpdateFormData(
-    API_ADMIN.HOMEPAGE.POST + "/" + id,
+    API_ADMIN.HOMEPAGE.POST.INDEX + "/" + id,
     formData
   );
   return res;
@@ -76,7 +81,7 @@ const editAddmissionHomepage = async (
 };
 
 const deletePostHomepage = async (id: number): Promise<any> => {
-  const res = await apiDelete(API_ADMIN.HOMEPAGE.POST + "/" + id);
+  const res = await apiDelete(API_ADMIN.HOMEPAGE.POST.INDEX + "/" + id);
   return res;
 };
 
@@ -99,7 +104,7 @@ const createPostHomepage = async (params: ICreatePostType): Promise<any> => {
   formData.append("typeID", params.typeID.toString());
   formData.append("categoryID", params.categoryID.toString());
 
-  const res = await apiCreateFormData(API_ADMIN.HOMEPAGE.POST, formData);
+  const res = await apiCreateFormData(API_ADMIN.HOMEPAGE.POST.INDEX, formData);
   return res;
 };
 
@@ -132,6 +137,7 @@ const createAddmissionHomepage = async (
 
 const HomepageService = {
   listPostHomepage,
+  listPostHomepageWithCategoryId,
   editPostHomepage,
   createPostHomepage,
   deletePostHomepage,
