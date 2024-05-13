@@ -1,4 +1,7 @@
 import { Carousel } from "antd";
+import { useEffect, useState } from "react";
+import { IBannerDataType, ITEM_HOMEPAGE } from "src/interfaces";
+import HomepageService from "src/services/homepage/homepageService";
 
 const contentStyle: React.CSSProperties = {
   margin: 0,
@@ -10,31 +13,41 @@ const contentStyle: React.CSSProperties = {
   objectFit: "contain",
 };
 const Banner = () => {
+  const [bannerData, setBannerData] = useState<IBannerDataType[]>([]);
+
+  const getBannerList = async () => {
+    try {
+      const res = await HomepageService.listBannerHomepage();
+      if (res?.data) {
+        setBannerData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getBannerList();
+  }, []);
+
   return (
     <div className="w-full">
       <Carousel autoplay>
-        <div>
-          <img style={contentStyle} src="/img/ban2.png" alt="Slogan" />
-        </div>
-        <div>
-          <img style={contentStyle} src="/img/ban1.png" alt="banner 1" />
-        </div>
-        <div>
-          <img style={contentStyle} src="/img/ban3.png" alt="banner 4" />
-        </div>
-        <div>
-          <img style={contentStyle} src="/img/ban4.png" alt="banner 5" />
-        </div>
-        <div>
-          <img style={contentStyle} src="/img/ban5.png" alt="banner 6" />
-        </div>
-        <div>
-          <img
-            style={contentStyle}
-            src="/img/inter-partner.png"
-            alt="banner 2"
-          />
-        </div>
+        {bannerData
+          .filter((item) => item.categoryID === ITEM_HOMEPAGE.BANNER_IMG)
+          .map((item) => {
+            return (
+              <div key={item.id}>
+                <img
+                  style={contentStyle}
+                  src={`${import.meta.env.VITE_API_URL}${item.path}`}
+                  alt="Slogan"
+                />
+              </div>
+            );
+          })}
       </Carousel>
     </div>
   );

@@ -6,7 +6,6 @@ import {
   Upload,
   UploadFile,
   UploadProps,
-  message,
 } from "antd";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 
@@ -58,16 +57,17 @@ function EvcModal({
   onCancel,
   onOk,
 }: Readonly<IProps>): JSX.Element {
-  console.log(data);
-
-  const [contentState, setContentState] = useState(data.content);
-  const [titleState, setTitleState] = useState(data.title);
-  const [briefState, setBriefState] = useState(data.brief);
+  const [contentState, setContentState] = useState(
+    data.content !== "" ? data.content : "content"
+  );
+  const [titleState, setTitleState] = useState(
+    data.title !== "" ? data.title : "title"
+  );
+  const [briefState, setBriefState] = useState(
+    data.brief !== "" ? data.brief : "brief"
+  );
   const [imgFile, setImgFile] = useState<UploadFile>();
   const buttonOkRef = useRef<HTMLButtonElement>(null);
-
-  console.log(contentState);
-  console.log(data.content);
 
   const messageText = (type: string): MessageText => {
     switch (type) {
@@ -134,8 +134,16 @@ function EvcModal({
       imgFile: imgFile,
     };
 
+    console.log(value);
+
     onOk(value);
   };
+
+  const showImgImport = editType !== LIST_TYPE.TITLE_CONTENT;
+  const showTextEditor =
+    editType !== LIST_TYPE.IMAGE && editType !== LIST_TYPE.IMAGE_TITLE;
+  const showTextArea = showTextEditor && editType !== LIST_TYPE.TITLE_CONTENT;
+  const showTitleEdit = editType !== LIST_TYPE.IMAGE;
 
   return (
     <Modal
@@ -183,7 +191,7 @@ function EvcModal({
       ) : (
         <>
           <div className="w-full">
-            {editType !== LIST_TYPE.IMAGE ? (
+            {showTitleEdit ? (
               <AutoComplete
                 value={titleState}
                 placeholder="Title"
@@ -193,16 +201,20 @@ function EvcModal({
             ) : (
               <></>
             )}
-            {editType !== LIST_TYPE.IMAGE &&
-            editType !== LIST_TYPE.IMAGE_TITLE ? (
+            {showTextArea ? (
               <div className="mb-3">
                 <TextArea
                   rows={4}
                   value={briefState}
                   placeholder="Please input brief in here"
-                  className="mb-3"
                   onChange={onChangeBrief}
                 />
+              </div>
+            ) : (
+              <></>
+            )}
+            {showTextEditor ? (
+              <div className="mb-3">
                 <TextEditor
                   content={contentState}
                   editContent={editContentState}
@@ -212,7 +224,7 @@ function EvcModal({
               <></>
             )}
           </div>
-          {editType !== LIST_TYPE.TITLE_CONTENT ? (
+          {showImgImport ? (
             <div className="h-44 mb-9">
               <Dragger {...props}>
                 <p className="ant-upload-drag-icon">

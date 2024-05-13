@@ -2,19 +2,17 @@ import NewsCardComponent from "src/components/news-card-component";
 import styles from "./index.module.scss";
 import { useNavigate } from "react-router-dom";
 import { CalendarOutlined } from "@ant-design/icons";
-import { IPostDataType, PostCategory } from "src/interfaces";
+import { IPostDataType } from "src/interfaces";
 import moment from "moment";
 
-const Announcements = (input: { data: Array<IPostDataType> }) => {
-  const navigate = useNavigate();
-  const highlightData =
-    input.data.filter((item) => item.categoryID === PostCategory.HIGHLIGHT) ??
-    [];
+const HIGHTLIGHT_SIZE = 2;
+const ANNOUNCEMENT_SIZE = 4;
 
-  const announcementData =
-    input.data.filter(
-      (item) => item.categoryID === PostCategory.ANNOUNCEMENT
-    ) ?? [];
+const Announcements = (input: {
+  highlightData: Array<IPostDataType>;
+  announcementData: Array<IPostDataType>;
+}) => {
+  const navigate = useNavigate();
   return (
     <section className="bg-gray-100 w-full px-4 md:px-24 py-8">
       <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
@@ -23,9 +21,9 @@ const Announcements = (input: { data: Array<IPostDataType> }) => {
         </p>
       </div>
       <div className={styles.newest_new}>
-        {highlightData.map((newsItem, index) => (
+        {input.highlightData.slice(0, HIGHTLIGHT_SIZE).map((newsItem, index) => (
           <NewsCardComponent
-            id={newsItem.id.toString()}
+            id={newsItem.id}
             key={index}
             imgUrl={`${import.meta.env.VITE_API_URL}${newsItem.path}`}
             date={moment(newsItem.createdAt).format("YYYY/MM/DD")}
@@ -35,7 +33,7 @@ const Announcements = (input: { data: Array<IPostDataType> }) => {
         ))}
       </div>
       <div className={styles.sub_news}>
-        {announcementData.map((newsItem, index) => {
+        {input.announcementData.slice(0, ANNOUNCEMENT_SIZE).map((newsItem, index) => {
           return (
             <div className={styles.sub_news_box} key={index}>
               <div className="text-orange-500 font-bold flex gap-1 items-center">

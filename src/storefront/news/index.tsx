@@ -1,36 +1,15 @@
 import Banner from "src/components/banner";
 import styles from "./index.module.scss";
 import NewsCardComponent from "src/components/news-card-component";
-import {
-  DATA_CAMPUS_LIFE,
-  DATA_INTERNATIONAL_COOPERATION,
-  DATA_SCHOOL_ACTIVITIES,
-} from "src/data/data";
 import { useNavigate } from "react-router-dom";
 import HomepageService from "src/services/homepage/homepageService";
 import { useEffect, useState } from "react";
 import { IPostDataType, ITEM_NEWS } from "src/interfaces";
 import moment from "moment";
 
-const NEWS = [
-  {
-    id: "news8",
-    imgUrl: "/img/ic9.JPG",
-    date: "01/09/2024",
-    cardTitle:
-      "JOB EXCHANGE PROGRAM BETWEEN TUCST AND SSGV SINGAPORE JOINT VENTURE COMPANY",
-    cardDescription:
-      "On the morning of January 11, 2024, a job career exchange program between TUCST and SkillsSG Ventures, Singapore (SSGV) was held at TUCST. Attending the program were representatives from Singapore including Mr. Cheng Hong Siang - CEO of SSGV and from TUCST including Assoc.Pror. Dr. Nguyen Thi Thuc - Vice President, teaching staff and students...",
-  },
-  {
-    id: "news9",
-    imgUrl: "/img/icop5.jpg",
-    date: "01/09/2024",
-    cardTitle: "TUCST KEY OFFICIAL WORKING VISIT TO TAIWAN",
-    cardDescription:
-      "In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023 to November 1, 2023, the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha- TUCST President had a working visit to Taiwan...",
-  },
-];
+const NEWS_SIZE = 2;
+const CATE_SIZE = 3;
+
 const News = () => {
   const [newsData, setNewsData] = useState<IPostDataType[]>([]);
   const [schoolActData, setSchoolActData] = useState<IPostDataType[]>([]);
@@ -39,32 +18,27 @@ const News = () => {
 
   const url = import.meta.env.VITE_API_URL;
 
-  const getPostList = async () => {
+  const getPostList = async (id: any) => {
     try {
-      const res = await HomepageService.listPostHomepage();
+      const res = await HomepageService.listPostHomepageWithCategoryId(id);
       if (res?.data) {
-        setNewsData(
-          res?.data.filter(
-            (item: IPostDataType) => item.categoryID === ITEM_NEWS.NEWS
-          )
-        );
-        setSchoolActData(
-          res?.data.filter(
-            (item: IPostDataType) =>
-              item.categoryID === ITEM_NEWS.SCHOOL_ACTIVITIES
-          )
-        );
-        setCampusLifeData(
-          res?.data.filter(
-            (item: IPostDataType) => item.categoryID === ITEM_NEWS.CAMPUS_LIFE
-          )
-        );
-        setInterCoopData(
-          res?.data.filter(
-            (item: IPostDataType) =>
-              item.categoryID === ITEM_NEWS.INTERNATIONAL_COOPERATION
-          )
-        );
+        switch (id) {
+          case ITEM_NEWS.NEWS:
+            setNewsData(res?.data);
+            break;
+          case ITEM_NEWS.SCHOOL_ACTIVITIES:
+            setSchoolActData(res?.data);
+            break;
+          case ITEM_NEWS.CAMPUS_LIFE:
+            setCampusLifeData(res?.data);
+            break;
+          case ITEM_NEWS.INTERNATIONAL_COOPERATION:
+            setInterCoopData(res?.data);
+            break;
+
+          default:
+            break;
+        }
       }
     } catch (error: any) {
       if (error) {
@@ -74,7 +48,10 @@ const News = () => {
   };
 
   useEffect(() => {
-    getPostList();
+    getPostList(ITEM_NEWS.NEWS);
+    getPostList(ITEM_NEWS.SCHOOL_ACTIVITIES);
+    getPostList(ITEM_NEWS.CAMPUS_LIFE);
+    getPostList(ITEM_NEWS.INTERNATIONAL_COOPERATION);
   }, []);
 
   const navigate = useNavigate();
@@ -95,7 +72,7 @@ const News = () => {
           <p className="text-xl border-b-4 mb-8">NEWS</p>
 
           <div className="flex flex-col h-[19.925rem] xl:pr-4 gap-2 w-full text-white">
-            {newsData.map((item) => (
+            {newsData.slice(0, NEWS_SIZE).map((item) => (
               <div
                 key={item.id}
                 className="bg-subColor w-full h-40 text-white rounded flex gap-6 p-3 mb-5 "
@@ -136,7 +113,7 @@ const News = () => {
           </button>
         </div>
         <div className={styles.newest_new}>
-          {schoolActData.map((newsItem) => (
+          {schoolActData.slice(0, CATE_SIZE).map((newsItem) => (
             <NewsCardComponent
               id={newsItem.id}
               key={newsItem.id}
@@ -162,7 +139,7 @@ const News = () => {
           </button>
         </div>
         <div className={styles.newest_new}>
-          {campusLifeData.map((newsItem) => (
+          {campusLifeData.slice(0, CATE_SIZE).map((newsItem) => (
             <NewsCardComponent
               id={newsItem.id}
               key={newsItem.id}
@@ -188,7 +165,7 @@ const News = () => {
           </button>
         </div>
         <div className={styles.newest_new}>
-          {interCoopData.map((newsItem) => (
+          {interCoopData.slice(0, CATE_SIZE).map((newsItem) => (
             <NewsCardComponent
               id={newsItem.id}
               key={newsItem.id}

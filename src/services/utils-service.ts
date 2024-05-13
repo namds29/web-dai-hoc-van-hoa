@@ -15,6 +15,19 @@ export const apiGet = async (url: string) => {
     const res = await axiosInstance.request(config);
     return res
 }
+
+export const apiGetData = async (url: string, params?: any) => {
+    console.log(params);
+    
+    const config = {
+        method: METHOD_API.GET,
+        url: url,
+        data: qs.stringify(params),
+    };
+    const res = await axiosInstance.request(config);
+    return res
+}
+
 export const apiPost = async (url: string, params?: any) => {
     const config = {
         method: METHOD_API.POST,

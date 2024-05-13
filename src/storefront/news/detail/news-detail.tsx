@@ -10,10 +10,10 @@ const NewsDetailComponent = () => {
   const url = import.meta.env.VITE_API_URL;
   const [randomItems, setRandomItems] = useState<IPostDataType[]>([]);
   const navigate = useNavigate();
-  const selectRandomItem = (array: any) => {
-    const randomIndex = Math.floor(Math.random() * array.length);
-    return array[randomIndex];
-  };
+  // const selectRandomItem = (array: any) => {
+  //   const randomIndex = Math.floor(Math.random() * array.length);
+  //   return array[randomIndex];
+  // };
 
   useEffect(() => {
     if (id) {
@@ -22,7 +22,7 @@ const NewsDetailComponent = () => {
   }, [id]);
 
   useEffect(() => {
-    getPostList();
+    getPostList(ITEM_NEWS.SCHOOL_ACTIVITIES);
   }, []);
 
   const getPostWithId = async (id: number) => {
@@ -38,9 +38,9 @@ const NewsDetailComponent = () => {
     }
   };
 
-  const getPostList = async () => {
+  const getPostList = async (id: any) => {
     try {
-      const res = await HomepageService.listPostHomepage();
+      const res = await HomepageService.listPostHomepageWithCategoryId(id);
       if (res?.data) {
         setPostList(res?.data);
       }
@@ -52,29 +52,30 @@ const NewsDetailComponent = () => {
   };
 
   useEffect(() => {
-    const randomSchoolActivity = selectRandomItem(
-      postList.filter((item) => item.categoryID === ITEM_NEWS.SCHOOL_ACTIVITIES)
-    );
-    const randomCampusLife = selectRandomItem(
-      postList.filter((item) => item.categoryID === ITEM_NEWS.CAMPUS_LIFE)
-    );
-    const randomInternationalCooperation = selectRandomItem(
-      postList.filter(
-        (item) => item.categoryID === ITEM_NEWS.INTERNATIONAL_COOPERATION
-      )
-    );
+    // const randomSchoolActivity = selectRandomItem(
+    //   postList.filter((item) => item.categoryID === ITEM_NEWS.SCHOOL_ACTIVITIES)
+    // );
+    // const randomCampusLife = selectRandomItem(
+    //   postList.filter((item) => item.categoryID === ITEM_NEWS.CAMPUS_LIFE)
+    // );
+    // const randomInternationalCooperation = selectRandomItem(
+    //   postList.filter(
+    //     (item) => item.categoryID === ITEM_NEWS.INTERNATIONAL_COOPERATION
+    //   )
+    // );
 
-    if (
-      randomSchoolActivity &&
-      randomCampusLife &&
-      randomInternationalCooperation
-    ) {
-      setRandomItems([
-        randomSchoolActivity,
-        randomCampusLife,
-        randomInternationalCooperation,
-      ]);
-    }
+    // if (
+    //   randomSchoolActivity &&
+    //   randomCampusLife &&
+    //   randomInternationalCooperation
+    // ) {
+    //   setRandomItems([
+    //     randomSchoolActivity,
+    //     randomCampusLife,
+    //     randomInternationalCooperation,
+    //   ]);
+    // }
+    setRandomItems(postList);
   }, [postList]);
 
   return (

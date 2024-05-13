@@ -149,9 +149,9 @@ const AdminNews = () => {
     }
   };
 
-  const getPostList = async () => {
+  const getPostList = async (id: any) => {
     try {
-      const res = await HomepageService.listPostHomepage();
+      const res = await HomepageService.listPostHomepageWithCategoryId(id);
       if (res?.data) {
         setData(res?.data);
       }
@@ -167,7 +167,7 @@ const AdminNews = () => {
       const res = await HomepageService.createPostHomepage(data);
       if (res.message == "success") {
         message.success(`Create post successfully.`);
-        getPostList();
+        getPostList(dropdownValue.key);
       }
     } catch (error: any) {
       if (error) {
@@ -181,7 +181,7 @@ const AdminNews = () => {
       const res = await HomepageService.editPostHomepage(id, data);
       if (res.message == "success") {
         message.success(`Update post successfully.`);
-        getPostList();
+        getPostList(dropdownValue.key);
       }
     } catch (error: any) {
       if (error) {
@@ -195,7 +195,7 @@ const AdminNews = () => {
       const res = await HomepageService.deletePostHomepage(id);
       if (res.message == "success") {
         message.success(`Delete successfully.`);
-        getPostList();
+        getPostList(dropdownValue.key);
       }
     } catch (error: any) {
       if (error) {
@@ -205,8 +205,8 @@ const AdminNews = () => {
   };
 
   useEffect(() => {
-    getPostList();
-  }, []);
+      getPostList(dropdownValue.key);
+  }, [dropdownValue]);
 
   return (
     <div>
@@ -221,7 +221,7 @@ const AdminNews = () => {
         {dropdownValue.key ? (
           <ListData
             section={dropdownValue.label}
-            data={data.filter((item) => item.categoryID === dropdownValue.key)}
+            data={data}
             action={handleEditType}
             type={dropdownValue.listType}
           ></ListData>

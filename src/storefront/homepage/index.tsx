@@ -8,10 +8,17 @@ import { Carousel } from "antd";
 import Announcements from "./announcements";
 import Banner from "../../components/banner";
 import { useEffect, useState } from "react";
-import { IMessage, IPostDataType } from "src/interfaces";
+import {
+  IBannerDataType,
+  IMessage,
+  IPostDataType,
+  ITEM_HOMEPAGE,
+} from "src/interfaces";
 import CustomModal from "src/components/custom-modal";
 import HomepageService from "src/services/homepage/homepageService";
 import { Link, useNavigate } from "react-router-dom";
+
+const SIZE = 3;
 
 const SlickButtonFix = ({
   currentSlide,
@@ -26,7 +33,10 @@ const AdminHomepage = () => {
     title: <></>,
     content: <></>,
   });
-  const [data, setData] = useState<IPostDataType[]>([]);
+  const [higlightData, setHiglightData] = useState<IPostDataType[]>([]);
+  const [announcementData, setAnnouncementData] = useState<IPostDataType[]>([]);
+  const [mvvData, setMvvData] = useState<IPostDataType[]>([]);
+  const [bannerData, setBannerData] = useState<IBannerDataType[]>([]);
   const navigate = useNavigate();
   const settings = {
     className: "center",
@@ -63,58 +73,57 @@ const AdminHomepage = () => {
   const handleOk = () => {
     setOpen(false);
   };
-  const handleOpenModalVision = () => {
+
+  const handleOpenModalMVV = (title: string, content: string) => {
     setOpen(true);
     setModalContent({
-      title: <p className="text-center text-2xl">Vision</p>,
+      title: <p className="text-center text-2xl">{title}</p>,
       content: (
-        <p className="mt-8 ml-4 mb-4 text-xl">
-          By 2045, TUCST will be one of the top prestigious training
-          institutions in the whole country in scientific research on social
-          sciences in the South Red River region - North Central region and
-          training programs of culture - arts, sports and tourism.
-        </p>
-      ),
-    });
-  };
-  const handleOpenModalValue = () => {
-    setOpen(true);
-    setModalContent({
-      title: <p className="text-center text-2xl">Value</p>,
-      content: (
-        <div className="text-center">
-          <p className="mt-8 ml-4 mb-4 text-xl ">
-            Quality - Professionalism - Cooperation - Development.
-          </p>
-        </div>
-      ),
-    });
-  };
-  const handleOpenModalMission = () => {
-    setOpen(true);
-    setModalContent({
-      title: <p className="text-center text-2xl">MISSION</p>,
-      content: (
-        <p className="mt-8 ml-4 mb-4 text-xl">
-          TUCT has the mission of training high-quality human resources and
-          scientific research in social sciences with 3 main areas: Culture -
-          Arts, Sports and Tourism; contributing to the socio-economic
-          development of Thanh Hoa province, the South Red River region - North
-          Central region and the whole country.
-        </p>
+        <div
+          className="view ql-editor"
+          dangerouslySetInnerHTML={{ __html: content }}
+        ></div>
       ),
     });
   };
 
   useEffect(() => {
-    getPostList();
+    getPostList(ITEM_HOMEPAGE.ANNOUNCEMENT);
+    getPostList(ITEM_HOMEPAGE.HIGHLIGHT);
+    getPostList(ITEM_HOMEPAGE.MVV);
+    getBannerList();
   }, []);
 
-  const getPostList = async () => {
+  const getPostList = async (id: any) => {
     try {
-      const res = await HomepageService.listPostHomepage();
+      const res = await HomepageService.listPostHomepageWithCategoryId(id);
       if (res?.data) {
-        setData(res?.data);
+        switch (id) {
+          case ITEM_HOMEPAGE.ANNOUNCEMENT:
+            setAnnouncementData(res?.data);
+            break;
+          case ITEM_HOMEPAGE.HIGHLIGHT:
+            setHiglightData(res?.data);
+            break;
+          case ITEM_HOMEPAGE.MVV:
+            setMvvData(res?.data);
+            break;
+          default:
+            break;
+        }
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const getBannerList = async () => {
+    try {
+      const res = await HomepageService.listBannerHomepage();
+      if (res?.data) {
+        setBannerData(res?.data);
       }
     } catch (error: any) {
       if (error) {
@@ -149,7 +158,10 @@ const AdminHomepage = () => {
         </div>
       </section>
 
-      <Announcements data={data} />
+      <Announcements
+        highlightData={higlightData}
+        announcementData={announcementData}
+      />
       <section className={`bg_gradient_blue_to_light w-full xl:px-24 py-8`}>
         <div className="flex justify-center text-white-700 font-bold mb-6">
           <p className={` ${styles.letter_space} text-4xl border-b-4`}>
@@ -157,78 +169,23 @@ const AdminHomepage = () => {
           </p>
         </div>
         <Carousel {...settings}>
-          <div
-            className="p-4 cursor-pointer'"
-            onClick={() => navigate("/faculties")}
-          >
-            <img className={styles.fal_img} src="/img/fal-art.png" alt="Art" />
-          </div>
-          <div
-            className="p-4 cursor-pointer'"
-            onClick={() => navigate("/faculties")}
-          >
-            <img
-              className={styles.fal_img}
-              src="/img/fal-cul.png"
-              alt="Cultures"
-            />
-          </div>
-          <div
-            className="p-4 cursor-pointer'"
-            onClick={() => navigate("/faculties")}
-          >
-            <img
-              className={styles.fal_img}
-              src="/img/fal-lang.png"
-              alt="Language"
-            />
-          </div>
-          <div
-            className="p-4 cursor-pointer'"
-            onClick={() => navigate("/faculties")}
-          >
-            <img className={styles.fal_img} src="/img/fal-law.png" alt="Law" />
-          </div>
-          <div
-            className="p-4 cursor-pointer'"
-            onClick={() => navigate("/faculties")}
-          >
-            <img
-              className={styles.fal_img}
-              src="/img/fal-music.png"
-              alt="Music"
-            />
-          </div>
-          <div
-            className="p-4 cursor-pointer'"
-            onClick={() => navigate("/faculties")}
-          >
-            <img
-              className={styles.fal_img}
-              src="/img/fal-physic.png"
-              alt="Physic"
-            />
-          </div>
-          <div
-            className="p-4 cursor-pointer'"
-            onClick={() => navigate("/faculties")}
-          >
-            <img
-              className={styles.fal_img}
-              src="/img/fal-preschool.png"
-              alt="preschool"
-            />
-          </div>
-          <div
-            className="p-4 cursor-pointer'"
-            onClick={() => navigate("/faculties")}
-          >
-            <img
-              className={styles.fal_img}
-              src="/img/fal-tourism.png"
-              alt="Tourism"
-            />
-          </div>
+          {bannerData
+            .filter((item) => item.categoryID === ITEM_HOMEPAGE.FACULTIES)
+            .map((item) => {
+              return (
+                <div
+                  key={item.id}
+                  className="p-4 cursor-pointer'"
+                  onClick={() => navigate("/faculties")}
+                >
+                  <img
+                    className={styles.fal_img}
+                    src={`${import.meta.env.VITE_API_URL}${item.path}`}
+                    alt={item.name}
+                  />
+                </div>
+              );
+            })}
         </Carousel>
         <div className="text-center ">
           <Link
@@ -267,21 +224,23 @@ const AdminHomepage = () => {
           </p>
         </div>
         <div className={styles.small_card}>
-          <div className={styles.news} onClick={handleOpenModalMission}>
-            <div className={styles.news_img}>
-              <img className="w-full h-full" src="/img/Mission.png" alt="" />
-            </div>
-          </div>
-          <div className={styles.news} onClick={handleOpenModalVision}>
-            <div className={styles.news_img}>
-              <img className="w-full h-full" src="/img/Vision.png" alt="" />
-            </div>
-          </div>
-          <div className={styles.news} onClick={handleOpenModalValue}>
-            <div className={styles.news_img}>
-              <img className="w-full h-full" src="/img/Value.png" alt="" />
-            </div>
-          </div>
+          {mvvData.slice(0, SIZE).map((item) => {
+            return (
+              <div
+                className={styles.news}
+                onClick={() => handleOpenModalMVV(item.title, item.content)}
+                key={item.id}
+              >
+                <div className={styles.news_img}>
+                  <img
+                    className="w-full h-full"
+                    src={`${import.meta.env.VITE_API_URL}${item.path}`}
+                    alt={item.name}
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -318,33 +277,18 @@ const AdminHomepage = () => {
           <p className="text-xl border-b-4">IMAGE LIBRARY</p>
         </div>
         <Carousel {...settings}>
-          <div className={styles.lib_card}>
-            <img src="/img/lib_1.jpg" alt="Lib 1" />
-          </div>
-          <div className={styles.lib_card}>
-            <img src="/img/lib_2.jpg" alt="Lib 2" />
-          </div>
-          <div className={styles.lib_card}>
-            <img src="/img/lib-3.jpg" alt="Lib 3" />
-          </div>
-          <div className={styles.lib_card}>
-            <img src="/img/lib-4.jpg" alt="Lib 4" />
-          </div>
-          <div className={styles.lib_card}>
-            <img src="/img/lib-5.jpg" alt="Lib 5" />
-          </div>
-          <div className={styles.lib_card}>
-            <img src="/img/lib-6.jpg" alt="Lib 6" />
-          </div>
-          <div className={styles.lib_card}>
-            <img src="/img/lib-7.jpg" alt="Lib 7" />
-          </div>
-          <div className={styles.lib_card}>
-            <img src="/img/lib-9.jpg" alt="Lib 9" />
-          </div>
-          <div className={styles.lib_card}>
-            <img src="/img/lib-10.jpg" alt="Lib 10" />
-          </div>
+          {bannerData
+            .filter((item) => item.categoryID === ITEM_HOMEPAGE.IMG_LIB)
+            .map((item) => {
+              return (
+                <div className={styles.lib_card} key={item.id}>
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}${item.path}`}
+                    alt={item.name}
+                  />
+                </div>
+              );
+            })}
         </Carousel>
       </section>
       <CustomModal

@@ -76,16 +76,17 @@ function CustomModal({
     switch (type) {
       case MESSAGE_TYPE.ERROR:
         return (
-          <CloseCircleFilled style={{ color: "#f40000", fontSize: "2.6em" }}   />
+          <CloseCircleFilled style={{ color: "#f40000", fontSize: "2.6em" }} />
         );
       case MESSAGE_TYPE.WARNING:
         return (
-          <WarningFilled style={{ color: "#ffd965", fontSize: "2.6em" }}   />
+          <WarningFilled style={{ color: "#ffd965", fontSize: "2.6em" }} />
         );
       case MESSAGE_TYPE.CONFIRM:
         return (
           <QuestionCircleFilled
-            style={{ color: "#0033cc", fontSize: "2.6em" }}            />
+            style={{ color: "#0033cc", fontSize: "2.6em" }}
+          />
         );
       default:
         return <></>;
@@ -93,19 +94,18 @@ function CustomModal({
   };
 
   return (
-    <>
-      <Modal
-        className="custom-modal"
-        title={message.title}
-        centered
-        open={show}
-        onCancel={onCancel}
-        width={type === MESSAGE_TYPE.DEFAULT ? 800 : ""}
-        footer={
-          type !== MESSAGE_TYPE.CONFIRM
-            ? type === MESSAGE_TYPE.DEFAULT
-              ? []
-              : [
+    <Modal
+      className="custom-modal"
+      title={message.title}
+      centered
+      open={show}
+      onCancel={onCancel}
+      width={type === MESSAGE_TYPE.DEFAULT ? 800 : ""}
+      footer={
+        type !== MESSAGE_TYPE.CONFIRM
+          ? type === MESSAGE_TYPE.DEFAULT
+            ? []
+            : [
                 <Button
                   className="confirm-btn"
                   key="ok"
@@ -115,7 +115,7 @@ function CustomModal({
                   {messageText(type).okText}
                 </Button>,
               ]
-            : [
+          : [
               <Button
                 className="confirm-btn"
                 key="ok"
@@ -128,14 +128,13 @@ function CustomModal({
                 {messageText(type).cancelText}
               </Button>,
             ]
-        }
-      >
-        <div className="flex items-center">
-          <div className="mr-2">{showIcon(type)}</div>
-          <div className="w-full">{message.content}</div>
-        </div>
-      </Modal>
-    </>
+      }
+    >
+      <div className="flex items-center">
+        <div className="mr-2">{showIcon(type)}</div>
+        <div className="w-full">{message.content}</div>
+      </div>
+    </Modal>
   );
 }
 
