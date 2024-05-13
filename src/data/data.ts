@@ -67,3 +67,26 @@ export const DATA_INTERNATIONAL_COOPERATION = [
         cardDescription: "In order to expand international cooperation relationships and further strengthen friendship and cooperation in training and scientific research between Vietnam and Taiwan, from October 27, 2023 to November 1, 2023,  the delegation of TUCST’s key officials led by Associate Professor Dr. Le Thanh Ha- TUCST President had a working visit to Taiwan and signed a memorandum of cooperation with three universities including Chungyu University of Film and Arts; Hsuan Chuang University; Chien Hsin University of Science and Technology and visited some student internship facilities."
     }
 ]
+export const DATA_ANNOUCEMENT = [
+    {
+        id: "1",
+        date: "10/04/2024",
+        content: "ANNOUNCEMENT OF THE HOLIDAY SCHEDULE OF HUNG KINGS COMMEMORATION DAY IN 2024"
+    },
+    {
+        id: "2",
+        date: "10/04/2024",
+        content: "ANNOUNCEMENT OF THE ORGANIZATION OF A DIALOGUE CONFERENCE BETWEEN SCHOOL PRINCIPALS AND STUDENTS 2023 - 2024 SCHOOL YEAR"
+    },
+    {
+        id: "3",
+        date: "10/04/2024",
+        content: "PLAN OF ORGANIZING THE 2024 STUDENT FOOTBALL TOURNAMENT TO CELEBRATE THE 93rd ANNIVERSARY OF THE ESTABLISHMENT OF THE HO CHI MINH COMMUNIST YOUTH UNION (March 26, 1931 - March 26, 2024)"
+    },
+    {
+        id: "4",
+        date: "10/04/2024",
+        content: "PLAN OF 'TUCST RUNNING 2024' ORGANIZATION"
+    },
+
+]

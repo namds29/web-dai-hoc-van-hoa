@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { CalendarOutlined } from "@ant-design/icons";
 import { IPostDataType } from "src/interfaces";
 import moment from "moment";
+import { DATA_ANNOUCEMENT } from "src/data/data";
 
 const HIGHTLIGHT_SIZE = 2;
-const ANNOUNCEMENT_SIZE = 4;
+// const ANNOUNCEMENT_SIZE = 4;
 
 const Announcements = (input: {
   highlightData: Array<IPostDataType>;
@@ -33,7 +34,23 @@ const Announcements = (input: {
         ))}
       </div>
       <div className={styles.sub_news}>
-        {input.announcementData.slice(0, ANNOUNCEMENT_SIZE).map((newsItem, index) => {
+        {DATA_ANNOUCEMENT.map((item, index) => (
+          <div className={styles.sub_news_box} key={index}>
+            <div className="text-orange-500 font-bold flex gap-1 items-center">
+              <CalendarOutlined />{" "}
+              {moment(item.date).format("YYYY/MM/DD")}{" "}
+              <img
+                className="w-[40px] h-[20px] ml-2"
+                src="/img/icon-new.gif"
+                alt="gif new"
+              />
+            </div>
+            <div className={styles.sub_news_description}>
+              {item.content}
+            </div>
+          </div>
+        ))}
+        {/* {input.announcementData.slice(0, ANNOUNCEMENT_SIZE).map((newsItem, index) => {
           return (
             <div className={styles.sub_news_box} key={index}>
               <div className="text-orange-500 font-bold flex gap-1 items-center">
@@ -50,7 +67,7 @@ const Announcements = (input: {
               </div>
             </div>
           );
-        })}
+        })} */}
       </div>
       <div className="w-full text-center mt-8">
         <button
