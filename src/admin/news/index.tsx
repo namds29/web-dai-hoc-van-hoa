@@ -54,6 +54,10 @@ const AdminNews = () => {
     if (editTypeValue?.type === "delete") {
       handleDeleteDataItem(editTypeValue.id ?? 0);
     }
+
+    if (editTypeValue?.type === "approve") {
+      handleApproveDataItem(editTypeValue.id ?? 0, { isApproved: true });
+    }
   }, [editTypeValue]);
 
   const handleEditType = ({ id, type }: IEditType) => {
@@ -204,8 +208,25 @@ const AdminNews = () => {
     }
   };
 
+  const handleApproveDataItem = async (
+    id: number,
+    data: { isApproved: boolean }
+  ) => {
+    try {
+      const res = await HomepageService.approvePostHomepage(id, data);
+      if (res?.message === "success") {
+        message.success(`Approve post successfully.`);
+        getPostList(dropdownValue.key);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
   useEffect(() => {
-      getPostList(dropdownValue.key);
+    getPostList(dropdownValue.key);
   }, [dropdownValue]);
 
   return (

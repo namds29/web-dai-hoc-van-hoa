@@ -4,7 +4,8 @@ export const API_ADMIN = Object.freeze(
         HOMEPAGE: {
             POST: {
                 INDEX: "posts",
-                WITH_CATEGORY_ID: "posts?categoryID="
+                WITH_CATEGORY_ID: "posts?categoryID=",
+                APPROVE: "posts/approve"
             },
             BANNER: "banners",
             ADDMISSION: "accordions"

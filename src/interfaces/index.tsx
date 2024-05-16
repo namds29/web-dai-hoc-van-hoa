@@ -9,6 +9,7 @@ export enum MODAL_TYPE {
   EDIT = "edit",
   CREATE = "create",
   VIEW = "view",
+  APPROVE = "approve"
 }
 
 export enum LIST_TYPE {
@@ -33,6 +34,7 @@ export type IPostDataType = {
   typeID: number;
   modifiedByUserID?: number;
   createdByUserID?: number;
+  isApproved?: number;
   isDeleted?: number;
   createdAt?: string;
   updatedAt?: string;

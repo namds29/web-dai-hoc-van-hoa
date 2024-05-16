@@ -80,6 +80,14 @@ const editAddmissionHomepage = async (
   return res;
 };
 
+const approvePostHomepage = async (
+  id: number,
+  params: { isApproved: boolean }
+): Promise<any> => {
+  const res = await apiUpdate(API_ADMIN.HOMEPAGE.POST.APPROVE + "/" + id, params);
+  return res;
+};
+
 const deletePostHomepage = async (id: number): Promise<any> => {
   const res = await apiDelete(API_ADMIN.HOMEPAGE.POST.INDEX + "/" + id);
   return res;
@@ -150,5 +158,6 @@ const HomepageService = {
   createAddmissionHomepage,
   editAddmissionHomepage,
   deleteAddmissionHomepage,
+  approvePostHomepage
 };
 export default HomepageService;
