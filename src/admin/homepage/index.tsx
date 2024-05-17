@@ -57,6 +57,10 @@ const AdminHomePage = () => {
     if (editTypeValue?.type === "delete") {
       handleDeleteDataItem(editTypeValue.id ?? 0);
     }
+
+    if (editTypeValue?.type === "approve") {
+      handleApproveDataItem(editTypeValue.id ?? 0, { isApproved: true });
+    }
   }, [editTypeValue]);
 
   const handleEditType = ({ id, type }: IEditType) => {
@@ -65,12 +69,35 @@ const AdminHomePage = () => {
 
   const handleDeleteDataItem = async (id: number) => {
     try {
-      const res = await HomepageService.deletePostHomepage(id);
+      let res;
+      if (dropdownValue.listType === LIST_TYPE.IMAGE) {
+        res = await HomepageService.deleteBannerHomepage(id);
+      } else {
+        res = await HomepageService.deletePostHomepage(id);
+      }
+
       if (res.message == "success") {
         message.success(`Delete successfully.`);
         dropdownValue.listType === LIST_TYPE.IMAGE
           ? getBannerList()
           : getPostList(dropdownValue.key);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const handleApproveDataItem = async (
+    id: number,
+    data: { isApproved: boolean }
+  ) => {
+    try {
+      const res = await HomepageService.approvePostHomepage(id, data);
+      if (res?.message === "success") {
+        message.success(`Approve post successfully.`);
+        getPostList(dropdownValue.key);
       }
     } catch (error: any) {
       if (error) {

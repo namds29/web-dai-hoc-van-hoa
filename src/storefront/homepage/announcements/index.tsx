@@ -21,7 +21,7 @@ const Announcements = (input: {
         </p>
       </div>
       <div className={styles.newest_new}>
-        {input.highlightData.slice(0, HIGHTLIGHT_SIZE).map((newsItem, index) => (
+        {input.highlightData.filter((item) => item.isApproved).slice(0, HIGHTLIGHT_SIZE).map((newsItem, index) => (
           <NewsCardComponent
             id={newsItem.id}
             key={index}
@@ -33,7 +33,7 @@ const Announcements = (input: {
         ))}
       </div>
       <div className={styles.sub_news}>
-        {input.announcementData.slice(0, ANNOUNCEMENT_SIZE).map((newsItem, index) => {
+        {input.announcementData.filter((item) => item.isApproved).slice(0, ANNOUNCEMENT_SIZE).map((newsItem, index) => {
           return (
             <div className={styles.sub_news_box} key={index}>
               <div className="text-orange-500 font-bold flex gap-1 items-center">

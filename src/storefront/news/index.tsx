@@ -18,27 +18,35 @@ const News = () => {
 
   const url = import.meta.env.VITE_API_URL;
 
-  const getPostList = async (id: any) => {
+  const getPostList = async () => {
     try {
-      const res = await HomepageService.listPostHomepageWithCategoryId(id);
+      const res = await HomepageService.listPostHomepage();
       if (res?.data) {
-        switch (id) {
-          case ITEM_NEWS.NEWS:
-            setNewsData(res?.data);
-            break;
-          case ITEM_NEWS.SCHOOL_ACTIVITIES:
-            setSchoolActData(res?.data);
-            break;
-          case ITEM_NEWS.CAMPUS_LIFE:
-            setCampusLifeData(res?.data);
-            break;
-          case ITEM_NEWS.INTERNATIONAL_COOPERATION:
-            setInterCoopData(res?.data);
-            break;
-
-          default:
-            break;
-        }
+        setNewsData(
+          res?.data.filter(
+            (item: IPostDataType) =>
+              item.categoryID === ITEM_NEWS.NEWS && item.isApproved
+          )
+        );
+        setSchoolActData(
+          res?.data.filter(
+            (item: IPostDataType) =>
+              item.categoryID === ITEM_NEWS.SCHOOL_ACTIVITIES && item.isApproved
+          )
+        );
+        setCampusLifeData(
+          res?.data.filter(
+            (item: IPostDataType) =>
+              item.categoryID === ITEM_NEWS.CAMPUS_LIFE && item.isApproved
+          )
+        );
+        setInterCoopData(
+          res?.data.filter(
+            (item: IPostDataType) =>
+              item.categoryID === ITEM_NEWS.INTERNATIONAL_COOPERATION &&
+              item.isApproved
+          )
+        );
       }
     } catch (error: any) {
       if (error) {
@@ -48,10 +56,7 @@ const News = () => {
   };
 
   useEffect(() => {
-    getPostList(ITEM_NEWS.NEWS);
-    getPostList(ITEM_NEWS.SCHOOL_ACTIVITIES);
-    getPostList(ITEM_NEWS.CAMPUS_LIFE);
-    getPostList(ITEM_NEWS.INTERNATIONAL_COOPERATION);
+    getPostList();
   }, []);
 
   const navigate = useNavigate();

@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { EditOutlined, DeleteOutlined, EyeOutlined } from "@ant-design/icons";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  EyeOutlined,
+  CheckCircleOutlined,
+} from "@ant-design/icons";
 import { Button, List } from "antd";
 import { IMessage, IPostDataType, LIST_TYPE } from "src/interfaces";
 import CustomModal from "../custom-modal";
@@ -8,14 +13,21 @@ const IconText = ({
   icon,
   text,
   danger,
+  disable = false,
   onClick,
 }: {
   icon: React.FC;
   text: string;
   danger: boolean;
+  disable?: boolean;
   onClick: () => void;
 }) => (
-  <Button icon={React.createElement(icon)} danger={danger} onClick={onClick}>
+  <Button
+    icon={React.createElement(icon)}
+    danger={danger}
+    onClick={onClick}
+    disabled={disable}
+  >
     {text}
   </Button>
 );
@@ -37,13 +49,25 @@ const ListData = ({
     content: <></>,
   });
   const [currentItem, setCurrentItem] = useState();
+  const [actionType, setActionType] = useState<string>();
 
   const hanleDelete = (id: any) => {
     setOpen(true);
     setCurrentItem(id);
+    setActionType('delete');
     setModalContent({
       title: <p className="text-xl">Confirm</p>,
       content: <div>Do you want delete this ?</div>,
+    });
+  };
+
+  const hanleApprove = (id: any) => {
+    setOpen(true);
+    setCurrentItem(id);
+    setActionType('approve');
+    setModalContent({
+      title: <p className="text-xl">Confirm</p>,
+      content: <div>Do you want approve this ?</div>,
     });
   };
 
@@ -52,7 +76,7 @@ const ListData = ({
   };
 
   const handleOk = () => {
-    action({ id: currentItem, type: "delete" });
+    action({ id: currentItem, type: actionType });
     setOpen(false);
   };
 
@@ -117,6 +141,14 @@ const ListData = ({
                       onClick={() => {
                         action({ id: item.id, type: "edit" });
                       }}
+                    />,
+                    <IconText
+                      key={item.id}
+                      icon={CheckCircleOutlined}
+                      text="Approve"
+                      danger={false}
+                      disable={Boolean(item.isApproved)}
+                      onClick={() => hanleApprove(item.id)}
                     />,
                     <IconText
                       key={item.id}
