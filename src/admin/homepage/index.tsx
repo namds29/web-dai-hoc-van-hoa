@@ -14,8 +14,10 @@ import {
   IEditBannerType,
   ICreateBannerType,
   ITEM_HOMEPAGE,
+  ITabsType,
 } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
+import TabsItem from "src/components/Tabs/TabsItem";
 
 type DataType = { id: number; title: string; content: string };
 
@@ -38,12 +40,39 @@ const AdminHomePage = () => {
 
   const [data, setData] = useState<IPostDataType[]>([]);
 
+  const getPostList = async (id: any) => {
+    try {
+      const res = await HomepageService.listPostHomepageWithCategoryId(id);
+      if (res?.data) {
+        setData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const getBannerList = async () => {
+    try {
+      const res = await HomepageService.listBannerHomepage();
+      if (res?.data) {
+        console.log(res.data)
+        setData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
   useEffect(() => {
     if (
       editTypeValue?.type === MODAL_TYPE.EDIT ||
       editTypeValue?.type === MODAL_TYPE.VIEW
     ) {
       setOpenModal(true);
+      console.log(editTypeValue)
       setModalType(editTypeValue?.type);
       const choosenValue = data.find((item) => item.id === editTypeValue.id);
       if (choosenValue) {
@@ -62,7 +91,9 @@ const AdminHomePage = () => {
       handleApproveDataItem(editTypeValue.id ?? 0, { isApproved: true });
     }
   }, [editTypeValue]);
-
+  useEffect(() => {
+    getBannerList();
+  }, [])
   const handleEditType = ({ id, type }: IEditType) => {
     setEditTypeValue({ id, type });
   };
@@ -260,6 +291,7 @@ const AdminHomePage = () => {
   };
 
   const editBanner = async (id: number, data: IEditBannerType) => {
+    console.log(id, data)
     try {
       const res = await HomepageService.editBannerHomepage(id, data);
       if (res.message == "success") {
@@ -273,66 +305,97 @@ const AdminHomePage = () => {
     }
   };
 
-  const getPostList = async (id: any) => {
-    try {
-      const res = await HomepageService.listPostHomepageWithCategoryId(id);
-      if (res?.data) {
-        setData(res?.data);
-      }
-    } catch (error: any) {
-      if (error) {
-        console.log(error);
-      }
-    }
-  };
 
-  const getBannerList = async () => {
-    try {
-      const res = await HomepageService.listBannerHomepage();
-      if (res?.data) {
-        setData(res?.data);
-      }
-    } catch (error: any) {
-      if (error) {
-        console.log(error);
-      }
-    }
+  const tabsItem: ITabsType[] = [
+    {
+      label: "Banner image",
+      key: ITEM_HOMEPAGE.BANNER_IMG,
+      listType: LIST_TYPE.IMAGE,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={
+            data.filter((item) => item.categoryID === ITEM_HOMEPAGE.BANNER_IMG)
+          }
+          action={handleEditType}
+          type={dropdownValue.listType}
+        ></ListData>
+      )
+    },
+    {
+      label: "Highlights",
+      key: ITEM_HOMEPAGE.HIGHLIGHT,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.HIGHLIGHT)}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        ></ListData>
+      )
+    },
+    {
+      label: "Announcement",
+      key: ITEM_HOMEPAGE.ANNOUNCEMENT,
+      listType: LIST_TYPE.IMAGE_TITLE,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.ANNOUNCEMENT)}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        ></ListData>
+      )
+    },
+    {
+      label: "Faculties",
+      key: ITEM_HOMEPAGE.FACULTIES,
+      listType: LIST_TYPE.IMAGE,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.FACULTIES)}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        ></ListData>
+      )
+    },
+    {
+      label: "MVV",
+      key: ITEM_HOMEPAGE.MVV,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.MVV)}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        ></ListData>
+      )
+    },
+    {
+      label: "Image library",
+      key: ITEM_HOMEPAGE.IMG_LIB,
+      listType: LIST_TYPE.IMAGE,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.IMG_LIB)}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        ></ListData>
+      )
+    },
+  ];
+  const onChange = (key: string) => {
+    // console.log(key)
   };
-
-  useEffect(() => {
-    if (dropdownValue.listType === LIST_TYPE.IMAGE) {
-      getBannerList();
-    } else {
-      getPostList(dropdownValue.key);
-    }
-  }, [dropdownValue]);
 
   return (
     <div>
-      <div>
-        <DropdownItem
-          items={dropdownItems}
-          onClick={onClick}
-          label={dropdownValue.label}
-        />
-      </div>
+      <TabsItem tab={tabsItem} onChange={onChange} />
 
-      <div className="mt-10">
-        {dropdownValue.key ? (
-          <ListData
-            section={dropdownValue.label}
-            data={
-              dropdownValue.listType === LIST_TYPE.IMAGE
-                ? data.filter((item) => item.categoryID === dropdownValue.key)
-                : data
-            }
-            action={handleEditType}
-            type={dropdownValue.listType}
-          ></ListData>
-        ) : (
-          <div>Please select dropdown to edit section</div>
-        )}
-      </div>
       <EditModal
         editType={dropdownValue.listType ?? 0}
         data={editValue}
