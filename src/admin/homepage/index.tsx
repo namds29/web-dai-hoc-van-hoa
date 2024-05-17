@@ -1,6 +1,5 @@
-import { MenuProps, message } from "antd";
+import { message } from "antd";
 import { useEffect, useState } from "react";
-import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
 import {
@@ -25,7 +24,7 @@ const AdminHomePage = () => {
   const [dropdownValue, setDropdownValue] = useState<IDropdownItemType>({
     label: "Section",
     key: "",
-    listType: 0,
+    listType: 1,
   });
 
   const [editValue, setEditValue] = useState<DataType>({
@@ -43,9 +42,8 @@ const AdminHomePage = () => {
   const getPostList = async (id: any) => {
     try {
       const res = await HomepageService.listPostHomepageWithCategoryId(id);
-      if (res?.data) {
-        setData(res?.data);
-      }
+      if (res?.data) setData(res.data);
+      
     } catch (error: any) {
       if (error) {
         console.log(error);
@@ -56,10 +54,7 @@ const AdminHomePage = () => {
   const getBannerList = async () => {
     try {
       const res = await HomepageService.listBannerHomepage();
-      if (res?.data) {
-        console.log(res.data)
-        setData(res?.data);
-      }
+      if (res?.data) setData(res?.data);
     } catch (error: any) {
       if (error) {
         console.log(error);
@@ -72,7 +67,6 @@ const AdminHomePage = () => {
       editTypeValue?.type === MODAL_TYPE.VIEW
     ) {
       setOpenModal(true);
-      console.log(editTypeValue)
       setModalType(editTypeValue?.type);
       const choosenValue = data.find((item) => item.id === editTypeValue.id);
       if (choosenValue) {
@@ -92,8 +86,12 @@ const AdminHomePage = () => {
     }
   }, [editTypeValue]);
   useEffect(() => {
-    getBannerList();
-  }, [])
+    if (dropdownValue.listType === LIST_TYPE.IMAGE) {
+      getBannerList();
+    } else {
+      getPostList(dropdownValue.key);
+    }
+  }, [dropdownValue]);
   const handleEditType = ({ id, type }: IEditType) => {
     setEditTypeValue({ id, type });
   };
@@ -135,53 +133,6 @@ const AdminHomePage = () => {
         console.log(error);
       }
     }
-  };
-
-  const dropdownData: IDropdownItemType[] = [
-    {
-      label: "Banner image",
-      key: ITEM_HOMEPAGE.BANNER_IMG,
-      listType: LIST_TYPE.IMAGE,
-    },
-    {
-      label: "Highlights",
-      key: ITEM_HOMEPAGE.HIGHLIGHT,
-      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
-    },
-    {
-      label: "Announcement",
-      key: ITEM_HOMEPAGE.ANNOUNCEMENT,
-      listType: LIST_TYPE.IMAGE_TITLE,
-    },
-    {
-      label: "Faculties",
-      key: ITEM_HOMEPAGE.FACULTIES,
-      listType: LIST_TYPE.IMAGE,
-    },
-    {
-      label: "MVV",
-      key: ITEM_HOMEPAGE.MVV,
-      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
-    },
-    {
-      label: "Image library",
-      key: ITEM_HOMEPAGE.IMG_LIB,
-      listType: LIST_TYPE.IMAGE,
-    },
-  ];
-
-  const dropdownItems: MenuProps["items"] = dropdownData;
-
-  const onClick: MenuProps["onClick"] = ({ key }) => {
-    dropdownData.map((item) => {
-      if (item.key === key) {
-        setDropdownValue({
-          label: item.label,
-          key: key,
-          listType: item.listType,
-        });
-      }
-    });
   };
 
   const handleCancel = () => {
@@ -305,7 +256,6 @@ const AdminHomePage = () => {
     }
   };
 
-
   const tabsItem: ITabsType[] = [
     {
       label: "Banner image",
@@ -389,7 +339,15 @@ const AdminHomePage = () => {
     },
   ];
   const onChange = (key: string) => {
-    // console.log(key)
+    tabsItem.map((item) => {
+      if (item.key === key) {
+        setDropdownValue({
+          label: item.label,
+          key: key,
+          listType: item.listType,
+        });
+      }
+    });
   };
 
   return (
