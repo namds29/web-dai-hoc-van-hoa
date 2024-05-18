@@ -269,7 +269,7 @@ const AdminHomePage = () => {
           }
           action={handleEditType}
           type={dropdownValue.listType}
-        ></ListData>
+        />
       )
     },
     {
@@ -282,7 +282,7 @@ const AdminHomePage = () => {
           data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.HIGHLIGHT)}
           action={handleEditType}
           type={dropdownValue.listType}
-        ></ListData>
+        />
       )
     },
     {
@@ -295,7 +295,7 @@ const AdminHomePage = () => {
           data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.ANNOUNCEMENT)}
           action={handleEditType}
           type={dropdownValue.listType}
-        ></ListData>
+        />
       )
     },
     {
@@ -308,7 +308,7 @@ const AdminHomePage = () => {
           data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.FACULTIES)}
           action={handleEditType}
           type={dropdownValue.listType}
-        ></ListData>
+        />
       )
     },
     {
@@ -321,7 +321,7 @@ const AdminHomePage = () => {
           data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.MVV)}
           action={handleEditType}
           type={dropdownValue.listType}
-        ></ListData>
+        />
       )
     },
     {
@@ -334,7 +334,7 @@ const AdminHomePage = () => {
           data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.IMG_LIB)}
           action={handleEditType}
           type={dropdownValue.listType}
-        ></ListData>
+        />
       )
     },
   ];
