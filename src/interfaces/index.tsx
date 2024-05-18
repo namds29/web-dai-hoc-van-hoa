@@ -28,7 +28,7 @@ export type ITabsType = {
   label: string;
   key: string;
   listType?: number;
-  children: React.ReactNode
+  children: any
 };
 export type IPostDataType = {
   id: number;

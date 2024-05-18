@@ -134,8 +134,6 @@ function EvcModal({
       imgFile: imgFile,
     };
 
-    console.log(value);
-
     onOk(value);
   };
 
@@ -152,34 +150,34 @@ function EvcModal({
       centered
       open={show}
       onCancel={onCancel}
-      width={900}
+      width={showTextEditor ? 1200 : 900}
       footer={
         type !== MODAL_TYPE.VIEW
           ? [
-              <Button
-                icon={
-                  type === MODAL_TYPE.CREATE ? (
-                    <PlusCircleOutlined />
-                  ) : (
-                    <SaveOutlined />
-                  )
-                }
-                className="confirm-btn"
-                key="ok"
-                onClick={handleClickOk}
-                ref={buttonOkRef}
-              >
-                {messageText(type).okText}
-              </Button>,
-              <Button
-                className="confirm-btn"
-                key="cancel"
-                onClick={onCancel}
-                type="text"
-              >
-                {messageText(type).cancelText}
-              </Button>,
-            ]
+            <Button
+              icon={
+                type === MODAL_TYPE.CREATE ? (
+                  <PlusCircleOutlined />
+                ) : (
+                  <SaveOutlined />
+                )
+              }
+              className="confirm-btn"
+              key="ok"
+              onClick={handleClickOk}
+              ref={buttonOkRef}
+            >
+              {messageText(type).okText}
+            </Button>,
+            <Button
+              className="confirm-btn"
+              key="cancel"
+              onClick={onCancel}
+              type="text"
+            >
+              {messageText(type).cancelText}
+            </Button>,
+          ]
           : []
       }
     >
@@ -189,60 +187,57 @@ function EvcModal({
           dangerouslySetInnerHTML={{ __html: contentState }}
         ></div>
       ) : (
-        <>
-          <div className="w-full">
-            {showTitleEdit ? (
-              <AutoComplete
-                value={titleState}
-                placeholder="Title"
-                className="w-full mb-3"
-                onChange={onChangeTitle}
-              />
-            ) : (
-              <></>
-            )}
-            {showTextArea ? (
-              <div className="mb-3">
-                <TextArea
-                  rows={4}
-                  value={briefState}
-                  placeholder="Please input brief in here"
-                  onChange={onChangeBrief}
+        <div className="flex">
+          <div className="w-1/3">
+            <div className="w-full">
+              {showTitleEdit ? (
+                <AutoComplete
+                  value={titleState}
+                  placeholder="Title"
+                  className="w-full mb-3"
+                  onChange={onChangeTitle}
                 />
-              </div>
-            ) : (
-              <></>
-            )}
-            {showTextEditor ? (
-              <div className="mb-3">
-                <TextEditor
-                  content={contentState}
-                  editContent={editContentState}
-                ></TextEditor>
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
-          {showImgImport ? (
-            <div className="h-44 mb-9">
-              <Dragger {...props}>
-                <p className="ant-upload-drag-icon">
-                  <InboxOutlined />
-                </p>
-                <p className="ant-upload-text">
-                  Click or drag file to this area to upload
-                </p>
-                <p className="ant-upload-hint">
-                  Support for a single or bulk upload. Strictly prohibited from
-                  uploading company data or other banned files.
-                </p>
-              </Dragger>
+              ) : (
+                <></>
+              )}
+              {showTextArea && (
+                <div className="mb-3">
+                  <TextArea
+                    rows={4}
+                    value={briefState}
+                    placeholder="Please input brief in here"
+                    onChange={onChangeBrief}
+                  />
+                </div>
+              )}
+
             </div>
-          ) : (
-            <></>
+            {showImgImport && (
+              <div className="h-44 w-full mb-9">
+                <Dragger {...props}>
+                  <p className="ant-upload-drag-icon">
+                    <InboxOutlined />
+                  </p>
+                  <p className="ant-upload-text">
+                    Click or drag image banner here
+                  </p>
+                  <p className="ant-upload-hint">
+                    Support for a single or bulk upload
+                  </p>
+                </Dragger>
+              </div>
+            )}
+
+          </div>
+          {showTextEditor && (
+            <div className="w-2/3 ml-10 mb-3">
+              <TextEditor
+                content={contentState}
+                editContent={editContentState}
+              ></TextEditor>
+            </div>
           )}
-        </>
+        </div>
       )}
     </Modal>
   );
