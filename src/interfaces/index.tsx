@@ -24,7 +24,12 @@ export type IDropdownItemType = {
   key: string;
   listType?: number;
 };
-
+export type ITabsType = {
+  label: string;
+  key: string;
+  listType?: number;
+  children: React.ReactNode
+};
 export type IPostDataType = {
   id: number;
   title: string;
