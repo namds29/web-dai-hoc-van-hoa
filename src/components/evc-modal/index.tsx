@@ -154,30 +154,30 @@ function EvcModal({
       footer={
         type !== MODAL_TYPE.VIEW
           ? [
-            <Button
-              icon={
-                type === MODAL_TYPE.CREATE ? (
-                  <PlusCircleOutlined />
-                ) : (
-                  <SaveOutlined />
-                )
-              }
-              className="confirm-btn"
-              key="ok"
-              onClick={handleClickOk}
-              ref={buttonOkRef}
-            >
-              {messageText(type).okText}
-            </Button>,
-            <Button
-              className="confirm-btn"
-              key="cancel"
-              onClick={onCancel}
-              type="text"
-            >
-              {messageText(type).cancelText}
-            </Button>,
-          ]
+              <Button
+                icon={
+                  type === MODAL_TYPE.CREATE ? (
+                    <PlusCircleOutlined />
+                  ) : (
+                    <SaveOutlined />
+                  )
+                }
+                className="confirm-btn"
+                key="ok"
+                onClick={handleClickOk}
+                ref={buttonOkRef}
+              >
+                {messageText(type).okText}
+              </Button>,
+              <Button
+                className="confirm-btn"
+                key="cancel"
+                onClick={onCancel}
+                type="text"
+              >
+                {messageText(type).cancelText}
+              </Button>,
+            ]
           : []
       }
     >
@@ -200,7 +200,7 @@ function EvcModal({
               ) : (
                 <></>
               )}
-              {showTextArea && (
+              {showTextArea ? (
                 <div className="mb-3">
                   <TextArea
                     rows={4}
@@ -209,10 +209,11 @@ function EvcModal({
                     onChange={onChangeBrief}
                   />
                 </div>
+              ) : (
+                <></>
               )}
-
             </div>
-            {showImgImport && (
+            {showImgImport ? (
               <div className="h-44 w-full mb-9">
                 <Dragger {...props}>
                   <p className="ant-upload-drag-icon">
@@ -226,16 +227,19 @@ function EvcModal({
                   </p>
                 </Dragger>
               </div>
+            ) : (
+              <></>
             )}
-
           </div>
-          {showTextEditor && (
+          {showTextEditor ? (
             <div className="w-2/3 ml-10 mb-3">
               <TextEditor
                 content={contentState}
                 editContent={editContentState}
               ></TextEditor>
             </div>
+          ) : (
+            <></>
           )}
         </div>
       )}

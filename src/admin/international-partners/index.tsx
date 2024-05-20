@@ -1,6 +1,4 @@
-import { MenuProps } from "antd";
 import { useEffect, useState } from "react";
-import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
 import {
@@ -8,7 +6,9 @@ import {
   IDropdownItemType,
   LIST_TYPE,
   IPostDataType,
+  ITabsType,
 } from "src/interfaces";
+import TabsItem from "src/components/Tabs/TabsItem";
 
 enum ITEM_DROPDOWN {
   PARTNER_LIST = "partnerlist",
@@ -84,25 +84,43 @@ const AdminInternationalPartnerss = () => {
     setEditTypeValue({ id, type });
   };
 
-  const dropdownData: IDropdownItemType[] = [
+  const tabsItem: ITabsType[] = [
     {
       label: "Partner list",
       key: ITEM_DROPDOWN.PARTNER_LIST,
       listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        />
+      ),
     },
     {
       label: "Partner with us",
       key: ITEM_DROPDOWN.PARTNER_WITH_US,
       listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        />
+      ),
     },
   ];
 
-  const dropdownItems: MenuProps["items"] = dropdownData;
-
-  const onClick: MenuProps["onClick"] = ({ key }) => {
-    dropdownData.map((item) => {
+  const onChange = (key: string) => {
+    tabsItem.map((item) => {
       if (item.key === key) {
-        setDropdownValue({ label: item.label, key: key });
+        setDropdownValue({
+          label: item.label,
+          key: key,
+          listType: item.listType,
+        });
       }
     });
   };
@@ -116,28 +134,17 @@ const AdminInternationalPartnerss = () => {
     setData([]);
   };
 
+  useEffect(() => {
+    setDropdownValue({
+      key: tabsItem[0].key,
+      label: tabsItem[0].label,
+      listType: tabsItem[0].listType,
+    });
+  }, []);
+
   return (
     <div>
-      <div>
-        <DropdownItem
-          items={dropdownItems}
-          onClick={onClick}
-          label={dropdownValue.label}
-        />
-      </div>
-
-      <div className="mt-10">
-        {dropdownValue.key ? (
-          <ListData
-            section={dropdownValue.label}
-            data={data}
-            action={handleEditType}
-            type={dropdownValue.listType ?? 0}
-          ></ListData>
-        ) : (
-          <div>Please select dropdown to edit section</div>
-        )}
-      </div>
+      <TabsItem tab={tabsItem} onChange={onChange} />
       <EditModal
         editType={dropdownValue.listType ?? 0}
         data={editValue}

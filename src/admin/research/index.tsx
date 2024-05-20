@@ -1,6 +1,5 @@
-import { MenuProps, message } from "antd";
+import { message } from "antd";
 import { useEffect, useState } from "react";
-import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
 import {
@@ -11,9 +10,11 @@ import {
   ICreatePostType,
   IEditPostType,
   IEditType,
-  ITEM_RESEARCH
+  ITEM_RESEARCH,
+  ITabsType
 } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
+import TabsItem from "src/components/Tabs/TabsItem";
 
 type DataType = { id: number; title: string; content: string };
 
@@ -58,34 +59,6 @@ const AdminResearch = () => {
     setEditTypeValue({ id, type });
   };
 
-  const dropdownData: IDropdownItemType[] = [
-    {
-      label: "Science topic",
-      key: ITEM_RESEARCH.SCIENCE_TOPIC,
-      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
-    },
-    {
-      label: "Conferences",
-      key: ITEM_RESEARCH.CONFERENCES,
-      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
-    },
-    {
-      label: "Publish",
-      key: ITEM_RESEARCH.PUBLISH,
-      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
-    },
-  ];
-
-  const dropdownItems: MenuProps["items"] = dropdownData;
-
-  const onClick: MenuProps["onClick"] = ({ key }) => {
-    dropdownData.map((item) => {
-      if (item.key === key) {
-        setDropdownValue({ label: item.label, key: key });
-      }
-    });
-  };
-
   const handleCancel = () => {
     setOpenModal(false);
   };
@@ -116,6 +89,60 @@ const AdminResearch = () => {
         console.log(error);
       }
     }
+  };
+
+  const tabsItem: ITabsType[] = [
+    {
+      label: "Science topic",
+      key: ITEM_RESEARCH.SCIENCE_TOPIC,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        />
+      ),
+    },
+    {
+      label: "Conferences",
+      key: ITEM_RESEARCH.CONFERENCES,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        />
+      ),
+    },
+    {
+      label: "Publish",
+      key: ITEM_RESEARCH.PUBLISH,
+      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        />
+      ),
+    },
+  ];
+
+  const onChange = (key: string) => {
+    tabsItem.map((item) => {
+      if (item.key === key) {
+        setDropdownValue({
+          label: item.label,
+          key: key,
+          listType: item.listType,
+        });
+      }
+    });
   };
 
   const getPostList = async () => {
@@ -175,27 +202,17 @@ const AdminResearch = () => {
     }
   };
 
+  useEffect(() => {
+    setDropdownValue({
+      key: tabsItem[0].key,
+      label: tabsItem[0].label,
+      listType: tabsItem[0].listType,
+    });
+  }, []);
+
   return (
     <div>
-      <div>
-        <DropdownItem
-          items={dropdownItems}
-          onClick={onClick}
-          label={dropdownValue.label}
-        />
-      </div>
-      <div className="mt-10">
-        {dropdownValue.key ? (
-          <ListData
-            section={dropdownValue.label}
-            data={data.filter((item) => item.categoryID === dropdownValue.key)}
-            action={handleEditType}
-            type={dropdownValue.listType}
-          ></ListData>
-        ) : (
-          <div>Please select dropdown to edit section</div>
-        )}
-      </div>
+      <TabsItem tab={tabsItem} onChange={onChange} />
       <EditModal
         editType={dropdownValue.listType ?? 0}
         data={editValue}
