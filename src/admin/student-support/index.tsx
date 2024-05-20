@@ -1,6 +1,4 @@
-import { MenuProps } from "antd";
 import { useEffect, useState } from "react";
-import DropdownItem from "src/components/dropdown/dropdown-item";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
 import {
