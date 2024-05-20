@@ -350,6 +350,14 @@ const AdminHomePage = () => {
     });
   };
 
+  useEffect(() => {
+    setDropdownValue({
+      key: tabsItem[0].key,
+      label: tabsItem[0].label,
+      listType: tabsItem[0].listType,
+    });
+  }, []);
+
   return (
     <div>
       <TabsItem tab={tabsItem} onChange={onChange} />

@@ -13,8 +13,10 @@ import {
   IAddmissionDataType,
   IEditType,
   IGetAddmissionType,
+  ITabsType,
 } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
+import TabsItem from "src/components/Tabs/TabsItem";
 
 type DataType = { id: number; title: string; content: string };
 
@@ -22,6 +24,7 @@ const AdminAcademics = () => {
   const [dropdownValue, setDropdownValue] = useState<IDropdownItemType>({
     label: "Section",
     key: "",
+    listType: 0,
   });
 
   const [editValue, setEditValue] = useState<DataType>({
@@ -73,33 +76,6 @@ const AdminAcademics = () => {
 
   const handleEditType = ({ id, type }: IEditType) => {
     setEditTypeValue({ id, type });
-  };
-
-  const dropdownData: IDropdownItemType[] = [
-    {
-      label: "Functional units",
-      key: CATEGORY_ID.FUNTIONAL_UNITS.toString(),
-      listType: LIST_TYPE.TITLE_CONTENT,
-    },
-    {
-      label: "Training program",
-      key: CATEGORY_ID.FORMAL_TRAINING.toString(),
-      listType: LIST_TYPE.TITLE_CONTENT,
-    },
-  ];
-
-  const dropdownItems: MenuProps["items"] = dropdownData;
-
-  const onClick: MenuProps["onClick"] = ({ key }) => {
-    dropdownData.map((item) => {
-      if (item.key === key) {
-        setDropdownValue({
-          label: item.label,
-          key: key,
-          listType: item.listType,
-        });
-      }
-    });
   };
 
   const handleCancel = () => {
@@ -169,7 +145,7 @@ const AdminAcademics = () => {
         categoryID: id,
       };
       console.log(payload);
-      
+
       const res = await HomepageService.getAddmissionByCategoryId(payload);
       if (res?.data) {
         setData(res?.data);
@@ -181,32 +157,65 @@ const AdminAcademics = () => {
     }
   };
 
+  const tabsItem: ITabsType[] = [
+    {
+      label: "Functional units",
+      key: CATEGORY_ID.FUNTIONAL_UNITS.toString(),
+      listType: LIST_TYPE.TITLE_CONTENT,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        />
+      ),
+    },
+    {
+      label: "Training program",
+      key: CATEGORY_ID.FORMAL_TRAINING.toString(),
+      listType: LIST_TYPE.TITLE_CONTENT,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        />
+      ),
+    },
+  ];
+
+  const onChange = (key: string) => {
+    console.log(key);
+
+    tabsItem.map((item) => {
+      if (item.key === key) {
+        setDropdownValue({
+          label: item.label,
+          key: key,
+          listType: item.listType,
+        });
+      }
+    });
+  };
+
   useEffect(() => {
     getAddmissionList(Number(dropdownValue.key));
+    console.log(dropdownValue);
   }, [dropdownValue]);
+
+  useEffect(() => {
+    setDropdownValue({
+      key: tabsItem[0].key,
+      label: tabsItem[0].label,
+      listType: tabsItem[0].listType,
+    });
+  }, []);
 
   return (
     <div>
-      <div>
-        <DropdownItem
-          items={dropdownItems}
-          onClick={onClick}
-          label={dropdownValue.label}
-        />
-      </div>
-
-      <div className="mt-10">
-        {dropdownValue.key ? (
-          <ListData
-            section={dropdownValue.label}
-            data={data ?? []}
-            action={handleEditType}
-            type={dropdownValue.listType}
-          ></ListData>
-        ) : (
-          <div>Please select dropdown to edit section</div>
-        )}
-      </div>
+      <TabsItem tab={tabsItem} onChange={onChange} />
       <EditModal
         editType={dropdownValue.listType ?? 0}
         data={editValue}

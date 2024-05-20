@@ -8,7 +8,9 @@ import {
   IDropdownItemType,
   LIST_TYPE,
   IPostDataType,
+  ITabsType,
 } from "src/interfaces";
+import TabsItem from "src/components/Tabs/TabsItem";
 
 enum ITEM_DROPDOWN {
   BANNER_IMG = "bannerimg",
@@ -85,35 +87,69 @@ const AdminStudentSupport = () => {
     setEditTypeValue({ id, type });
   };
 
-  const dropdownData: IDropdownItemType[] = [
+  const tabsItem: ITabsType[] = [
     {
       label: "Banner image",
       key: ITEM_DROPDOWN.BANNER_IMG,
       listType: LIST_TYPE.IMAGE,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        />
+      ),
     },
     {
       label: "Support departments",
       key: ITEM_DROPDOWN.SUPPORT_DEPARTMENTS,
       listType: LIST_TYPE.IMAGE,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        />
+      ),
     },
     {
       label: "Student services",
       key: ITEM_DROPDOWN.STUDENT_SERVICES,
       listType: LIST_TYPE.IMAGE,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        />
+      ),
     },
     {
       label: "Recruitment",
       key: ITEM_DROPDOWN.RECRUITMENT,
       listType: LIST_TYPE.IMAGE,
+      children: (
+        <ListData
+          section={dropdownValue.label}
+          data={data}
+          action={handleEditType}
+          type={dropdownValue.listType}
+        />
+      ),
     },
   ];
 
-  const dropdownItems: MenuProps["items"] = dropdownData;
-
-  const onClick: MenuProps["onClick"] = ({ key }) => {
-    dropdownData.map((item) => {
+  const onChange = (key: string) => {
+    tabsItem.map((item) => {
       if (item.key === key) {
-        setDropdownValue({ label: item.label, key: key });
+        setDropdownValue({
+          label: item.label,
+          key: key,
+          listType: item.listType,
+        });
       }
     });
   };
@@ -127,28 +163,17 @@ const AdminStudentSupport = () => {
     setData([]);
   };
 
+  useEffect(() => {
+    setDropdownValue({
+      key: tabsItem[0].key,
+      label: tabsItem[0].label,
+      listType: tabsItem[0].listType,
+    });
+  }, []);
+
   return (
     <div>
-      <div>
-        <DropdownItem
-          items={dropdownItems}
-          onClick={onClick}
-          label={dropdownValue.label}
-        />
-      </div>
-
-      <div className="mt-10">
-        {dropdownValue.key ? (
-          <ListData
-            section={dropdownValue.label}
-            data={data}
-            action={handleEditType}
-            type={dropdownValue.listType}
-          ></ListData>
-        ) : (
-          <div>Please select dropdown to edit section</div>
-        )}
-      </div>
+      <TabsItem tab={tabsItem} onChange={onChange} />
       <EditModal
         editType={dropdownValue.listType ?? 0}
         data={editValue}
