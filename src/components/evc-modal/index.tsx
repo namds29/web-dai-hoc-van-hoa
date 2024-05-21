@@ -137,9 +137,12 @@ function EvcModal({
     onOk(value);
   };
 
-  const showImgImport = editType !== LIST_TYPE.TITLE_CONTENT;
+  const showImgImport =
+    editType !== LIST_TYPE.TITLE_CONTENT && editType !== LIST_TYPE.TITLE;
   const showTextEditor =
-    editType !== LIST_TYPE.IMAGE && editType !== LIST_TYPE.IMAGE_TITLE;
+    editType !== LIST_TYPE.IMAGE &&
+    editType !== LIST_TYPE.IMAGE_TITLE &&
+    editType !== LIST_TYPE.TITLE;
   const showTextArea = showTextEditor && editType !== LIST_TYPE.TITLE_CONTENT;
   const showTitleEdit = editType !== LIST_TYPE.IMAGE;
 
@@ -188,7 +191,7 @@ function EvcModal({
         ></div>
       ) : (
         <div className="flex">
-          <div className="w-1/3">
+          <div className={showTextEditor ? "w-1/3" : "w-full"}>
             <div className="w-full">
               {showTitleEdit ? (
                 <AutoComplete

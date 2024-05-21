@@ -6,6 +6,7 @@ import {
   IEditAddmissionType,
   ICreateAddmissionType,
   IGetAddmissionType,
+  IEditAnnouncementType,
 } from "src/interfaces";
 import { API_ADMIN } from "../constant";
 import {
@@ -19,6 +20,11 @@ import {
 
 const listPostHomepage = async (): Promise<any> => {
   const res = await apiGet(API_ADMIN.HOMEPAGE.POST.INDEX);
+  return res;
+};
+
+const listAnnouncement = async (): Promise<any> => {
+  const res = await apiGet(API_ADMIN.HOMEPAGE.ANNOUNCEMENT);
   return res;
 };
 
@@ -42,7 +48,7 @@ const getAddmissionByCategoryId = async (
 const getPostById = async (id: number): Promise<any> => {
   const res = await apiGet(`${API_ADMIN.HOMEPAGE.POST.INDEX}/${id}`);
   return res;
-};
+}
 
 const editPostHomepage = async (
   id: number,
@@ -72,6 +78,14 @@ const editBannerHomepage = async (
   return res;
 };
 
+const editAnnouncement = async (
+  id: number,
+  params: IEditAnnouncementType
+): Promise<any> => {
+  const res = await apiUpdate(API_ADMIN.HOMEPAGE.ANNOUNCEMENT + "/" + id, params);
+  return res;
+};
+
 const editAddmissionHomepage = async (
   id: number,
   params: IEditAddmissionType
@@ -98,6 +112,11 @@ const deleteBannerHomepage = async (id: number): Promise<any> => {
   return res;
 };
 
+const deleteAnnouncement = async (id: number): Promise<any> => {
+  const res = await apiDelete(API_ADMIN.HOMEPAGE.ANNOUNCEMENT + "/" + id);
+  return res;
+};
+
 const deleteAddmissionHomepage = async (id: number): Promise<any> => {
   const res = await apiDelete(API_ADMIN.HOMEPAGE.ADDMISSION + "/" + id);
   return res;
@@ -113,6 +132,13 @@ const createPostHomepage = async (params: ICreatePostType): Promise<any> => {
   formData.append("categoryID", params.categoryID.toString());
 
   const res = await apiCreateFormData(API_ADMIN.HOMEPAGE.POST.INDEX, formData);
+  return res;
+};
+
+const createAnnouncement = async (
+  params: IEditAnnouncementType
+): Promise<any> => {
+  const res = await apiCreateFormData(API_ADMIN.HOMEPAGE.ANNOUNCEMENT, params);
   return res;
 };
 
@@ -146,18 +172,22 @@ const createAddmissionHomepage = async (
 const HomepageService = {
   listPostHomepage,
   listPostHomepageWithCategoryId,
-  editPostHomepage,
-  createPostHomepage,
-  deletePostHomepage,
+  listAnnouncement,
   listBannerHomepage,
+  editPostHomepage,
   editBannerHomepage,
+  editAddmissionHomepage,
+  editAnnouncement,
+  createAnnouncement,
+  createPostHomepage,
   createBannerHomepage,
+  createAddmissionHomepage,
+  deletePostHomepage,
+  deleteAnnouncement,
   deleteBannerHomepage,
+  deleteAddmissionHomepage,
   getPostById,
   getAddmissionByCategoryId,
-  createAddmissionHomepage,
-  editAddmissionHomepage,
-  deleteAddmissionHomepage,
   approvePostHomepage
 };
 export default HomepageService;

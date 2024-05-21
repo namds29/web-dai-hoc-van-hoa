@@ -13,6 +13,7 @@ import {
   IMessage,
   IPostDataType,
   ITEM_HOMEPAGE,
+  ITEM_NEWS,
 } from "src/interfaces";
 import CustomModal from "src/components/custom-modal";
 import HomepageService from "src/services/homepage/homepageService";
@@ -88,10 +89,10 @@ const AdminHomepage = () => {
   };
 
   useEffect(() => {
-    getPostList(ITEM_HOMEPAGE.ANNOUNCEMENT);
-    getPostList(ITEM_HOMEPAGE.HIGHLIGHT);
+    getPostList(ITEM_NEWS.NEWS);
     getPostList(ITEM_HOMEPAGE.MVV);
     getBannerList();
+    getAnnouncement();
   }, []);
 
   const getPostList = async (id: any) => {
@@ -99,10 +100,7 @@ const AdminHomepage = () => {
       const res = await HomepageService.listPostHomepageWithCategoryId(id);
       if (res?.data) {
         switch (id) {
-          case ITEM_HOMEPAGE.ANNOUNCEMENT:
-            setAnnouncementData(res?.data);
-            break;
-          case ITEM_HOMEPAGE.HIGHLIGHT:
+          case ITEM_NEWS.NEWS:
             setHiglightData(res?.data);
             break;
           case ITEM_HOMEPAGE.MVV:
@@ -124,6 +122,20 @@ const AdminHomepage = () => {
       const res = await HomepageService.listBannerHomepage();
       if (res?.data) {
         setBannerData(res?.data);
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const getAnnouncement = async () => {
+    try {
+      const res = await HomepageService.listAnnouncement();
+      if (res?.data) {
+        console.log(res?.data);
+        setAnnouncementData(res?.data);
       }
     } catch (error: any) {
       if (error) {

@@ -9,7 +9,7 @@ export enum MODAL_TYPE {
   EDIT = "edit",
   CREATE = "create",
   VIEW = "view",
-  APPROVE = "approve"
+  APPROVE = "approve",
 }
 
 export enum LIST_TYPE {
@@ -17,6 +17,7 @@ export enum LIST_TYPE {
   IMAGE_TITLE = 2,
   IMAGE_TITLE_CONTENT = 3,
   TITLE_CONTENT = 4,
+  TITLE = 5
 }
 
 export type IDropdownItemType = {
@@ -28,7 +29,7 @@ export type ITabsType = {
   label: string;
   key: string;
   listType?: number;
-  children: any
+  children: any;
 };
 export type IPostDataType = {
   id: number;
@@ -127,6 +128,11 @@ export type IEditAddmissionType = {
 
 export type IEditBannerType = {
   thumpnailImage: File;
+};
+
+export type IEditAnnouncementType = {
+  title: string;
+  postID?: number;
 };
 
 export enum PostCategory {

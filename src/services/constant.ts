@@ -8,6 +8,7 @@ export const API_ADMIN = Object.freeze(
                 APPROVE: "posts/approve"
             },
             BANNER: "banners",
+            ANNOUNCEMENT: "announcements",
             ADDMISSION: "accordions"
         }
     }
