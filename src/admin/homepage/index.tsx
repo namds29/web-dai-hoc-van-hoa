@@ -14,6 +14,7 @@ import {
   ICreateBannerType,
   ITEM_HOMEPAGE,
   ITabsType,
+  IEditAnnouncementType,
 } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
 import TabsItem from "src/components/Tabs/TabsItem";
@@ -38,12 +39,12 @@ const AdminHomePage = () => {
   const [editTypeValue, setEditTypeValue] = useState<IEditType>();
 
   const [data, setData] = useState<IPostDataType[]>([]);
+  const [announcementData, setAnnouncementData] = useState<any[]>([]);
 
   const getPostList = async (id: any) => {
     try {
       const res = await HomepageService.listPostHomepageWithCategoryId(id);
       if (res?.data) setData(res.data);
-      
     } catch (error: any) {
       if (error) {
         console.log(error);
@@ -61,6 +62,17 @@ const AdminHomePage = () => {
       }
     }
   };
+
+  const getAnnouncement = async () => {
+    try {
+      const res = await HomepageService.listAnnouncement();
+      if (res?.data) setAnnouncementData(res?.data);
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
   useEffect(() => {
     if (
       editTypeValue?.type === MODAL_TYPE.EDIT ||
@@ -68,7 +80,15 @@ const AdminHomePage = () => {
     ) {
       setOpenModal(true);
       setModalType(editTypeValue?.type);
-      const choosenValue = data.find((item) => item.id === editTypeValue.id);
+
+      let choosenValue;
+      if (dropdownValue.listType === LIST_TYPE.TITLE) {
+        choosenValue = announcementData.find(
+          (item) => item.id === editTypeValue.id
+        );
+      } else {
+        choosenValue = data.find((item) => item.id === editTypeValue.id);
+      }
       if (choosenValue) {
         setEditValue(choosenValue);
       }
@@ -85,15 +105,28 @@ const AdminHomePage = () => {
       handleApproveDataItem(editTypeValue.id ?? 0, { isApproved: true });
     }
   }, [editTypeValue]);
+
   useEffect(() => {
-    if (dropdownValue.listType === LIST_TYPE.IMAGE) {
-      getBannerList();
-    } else {
-      getPostList(dropdownValue.key);
-    }
+    getList(dropdownValue);
   }, [dropdownValue]);
+
   const handleEditType = ({ id, type }: IEditType) => {
     setEditTypeValue({ id, type });
+  };
+
+  const getList = (value: IDropdownItemType) => {
+    if (value.listType === LIST_TYPE.IMAGE) {
+      getBannerList();
+    }
+    if (
+      value.listType !== LIST_TYPE.IMAGE &&
+      value.listType !== LIST_TYPE.TITLE
+    ) {
+      getPostList(value.key);
+    }
+    if (value.listType === LIST_TYPE.TITLE) {
+      getAnnouncement();
+    }
   };
 
   const handleDeleteDataItem = async (id: number) => {
@@ -101,15 +134,20 @@ const AdminHomePage = () => {
       let res;
       if (dropdownValue.listType === LIST_TYPE.IMAGE) {
         res = await HomepageService.deleteBannerHomepage(id);
-      } else {
+      }
+      if (
+        dropdownValue.listType !== LIST_TYPE.IMAGE &&
+        dropdownValue.listType !== LIST_TYPE.TITLE
+      ) {
         res = await HomepageService.deletePostHomepage(id);
+      }
+      if (dropdownValue.listType === LIST_TYPE.TITLE) {
+        res = await HomepageService.deleteAnnouncement(id);
       }
 
       if (res.message == "success") {
         message.success(`Delete successfully.`);
-        dropdownValue.listType === LIST_TYPE.IMAGE
-          ? getBannerList()
-          : getPostList(dropdownValue.key);
+        getList(dropdownValue);
       }
     } catch (error: any) {
       if (error) {
@@ -156,16 +194,25 @@ const AdminHomePage = () => {
 
       const newBanner: ICreateBannerType = {
         thumpnailImage: value.imgFile,
-        name: value.imgFile.name,
+        name: value?.imgFile?.name ?? "",
         categoryID: dropdownValue.key,
       };
 
-      if (newObj && dropdownValue.listType != LIST_TYPE.IMAGE) {
+      const newAnnouncement: IEditAnnouncementType = {
+        title: value.title ?? "",
+        postID: 0,
+      };
+
+      if (newObj && dropdownValue.listType == LIST_TYPE.IMAGE_TITLE_CONTENT) {
         createPost(newObj);
       }
 
       if (newBanner && dropdownValue.listType == LIST_TYPE.IMAGE) {
         createBanner(newBanner);
+      }
+
+      if (newBanner && dropdownValue.listType == LIST_TYPE.TITLE) {
+        createAnnouncement(newAnnouncement);
       }
 
       setOpenModal(false);
@@ -187,12 +234,21 @@ const AdminHomePage = () => {
           thumpnailImage: value.imgFile,
         };
 
-        if (newDataItem && dropdownValue.listType != LIST_TYPE.IMAGE) {
+        const newAnnouncement: IEditAnnouncementType = {
+          title: value.title ?? "",
+          postID: 0,
+        };
+
+        if (newDataItem && dropdownValue.listType == LIST_TYPE.IMAGE_TITLE_CONTENT) {
           editPost(editValue.id, newDataItem);
         }
 
         if (newBannerData && dropdownValue.listType == LIST_TYPE.IMAGE) {
           editBanner(editValue.id, newBannerData);
+        }
+
+        if (newAnnouncement && dropdownValue.listType == LIST_TYPE.TITLE) {
+          editAnnouncement(editValue.id, newAnnouncement);
         }
       }
       setOpenModal(false);
@@ -227,6 +283,20 @@ const AdminHomePage = () => {
     }
   };
 
+  const createAnnouncement = async (data: IEditAnnouncementType) => {
+    try {
+      const res = await HomepageService.createAnnouncement(data);
+      if (res.message == "success") {
+        message.success(`Create announcement successfully.`);
+        getAnnouncement();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
   const editPost = async (id: number, data: IEditPostType) => {
     try {
       const res = await HomepageService.editPostHomepage(id, data);
@@ -241,8 +311,21 @@ const AdminHomePage = () => {
     }
   };
 
+  const editAnnouncement = async (id: number, data: IEditAnnouncementType) => {
+    try {
+      const res = await HomepageService.editAnnouncement(id, data);
+      if (res.message == "success") {
+        message.success(`Edit announcement successfully.`);
+        getAnnouncement();
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
   const editBanner = async (id: number, data: IEditBannerType) => {
-    console.log(id, data)
     try {
       const res = await HomepageService.editBannerHomepage(id, data);
       if (res.message == "success") {
@@ -264,39 +347,39 @@ const AdminHomePage = () => {
       children: (
         <ListData
           section={dropdownValue.label}
-          data={
-            data.filter((item) => item.categoryID === ITEM_HOMEPAGE.BANNER_IMG)
-          }
+          data={data.filter(
+            (item) => item.categoryID === ITEM_HOMEPAGE.BANNER_IMG
+          )}
           action={handleEditType}
           type={dropdownValue.listType}
         />
-      )
+      ),
     },
-    {
-      label: "Highlights",
-      key: ITEM_HOMEPAGE.HIGHLIGHT,
-      listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
-      children: (
-        <ListData
-          section={dropdownValue.label}
-          data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.HIGHLIGHT)}
-          action={handleEditType}
-          type={dropdownValue.listType}
-        />
-      )
-    },
+    // {
+    //   label: "Highlights",
+    //   key: ITEM_HOMEPAGE.HIGHLIGHT,
+    //   listType: LIST_TYPE.IMAGE_TITLE_CONTENT,
+    //   children: (
+    //     <ListData
+    //       section={dropdownValue.label}
+    //       data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.HIGHLIGHT)}
+    //       action={handleEditType}
+    //       type={dropdownValue.listType}
+    //     />
+    //   )
+    // },
     {
       label: "Announcement",
       key: ITEM_HOMEPAGE.ANNOUNCEMENT,
-      listType: LIST_TYPE.IMAGE_TITLE,
+      listType: LIST_TYPE.TITLE,
       children: (
         <ListData
           section={dropdownValue.label}
-          data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.ANNOUNCEMENT)}
+          data={announcementData}
           action={handleEditType}
           type={dropdownValue.listType}
         />
-      )
+      ),
     },
     {
       label: "Faculties",
@@ -305,11 +388,13 @@ const AdminHomePage = () => {
       children: (
         <ListData
           section={dropdownValue.label}
-          data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.FACULTIES)}
+          data={data.filter(
+            (item) => item.categoryID === ITEM_HOMEPAGE.FACULTIES
+          )}
           action={handleEditType}
           type={dropdownValue.listType}
         />
-      )
+      ),
     },
     {
       label: "MVV",
@@ -322,7 +407,7 @@ const AdminHomePage = () => {
           action={handleEditType}
           type={dropdownValue.listType}
         />
-      )
+      ),
     },
     {
       label: "Image library",
@@ -331,11 +416,13 @@ const AdminHomePage = () => {
       children: (
         <ListData
           section={dropdownValue.label}
-          data={data.filter((item) => item.categoryID === ITEM_HOMEPAGE.IMG_LIB)}
+          data={data.filter(
+            (item) => item.categoryID === ITEM_HOMEPAGE.IMG_LIB
+          )}
           action={handleEditType}
           type={dropdownValue.listType}
         />
-      )
+      ),
     },
   ];
   const onChange = (key: string) => {

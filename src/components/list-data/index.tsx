@@ -54,7 +54,7 @@ const ListData = ({
   const hanleDelete = (id: any) => {
     setOpen(true);
     setCurrentItem(id);
-    setActionType('delete');
+    setActionType("delete");
     setModalContent({
       title: <p className="text-xl">Confirm</p>,
       content: <div>Do you want delete this ?</div>,
@@ -64,7 +64,7 @@ const ListData = ({
   const hanleApprove = (id: any) => {
     setOpen(true);
     setCurrentItem(id);
-    setActionType('approve');
+    setActionType("approve");
     setModalContent({
       title: <p className="text-xl">Confirm</p>,
       content: <div>Do you want approve this ?</div>,
@@ -104,7 +104,7 @@ const ListData = ({
         renderItem={(item: IPostDataType) => (
           <List.Item
             actions={
-              type === LIST_TYPE.IMAGE || type === LIST_TYPE.IMAGE_TITLE
+              type === LIST_TYPE.IMAGE || type === LIST_TYPE.IMAGE_TITLE || type === LIST_TYPE.TITLE
                 ? [
                     <IconText
                       key={item.id}
@@ -177,11 +177,15 @@ const ListData = ({
                 }
                 className="mb-3"
               />
-              <img
-                width={272}
-                alt="logo"
-                src={`${import.meta.env.VITE_API_URL}${item.path}`}
-              />
+              {type !== LIST_TYPE.TITLE ? (
+                <img
+                  width={272}
+                  alt="logo"
+                  src={`${import.meta.env.VITE_API_URL}${item.path}`}
+                />
+              ) : (
+                <></>
+              )}
             </div>
           </List.Item>
         )}

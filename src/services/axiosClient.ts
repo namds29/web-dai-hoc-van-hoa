@@ -11,7 +11,6 @@ const axiosInstance: AxiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-    console.log(config)
     const token: string = AuthService.getToken() || null;
     token && (config.headers!.Authorization = `Bearer ${token}`);
     config.maxBodyLength = Infinity
