@@ -147,64 +147,69 @@ function EvcModal({
   const showTitleEdit = editType !== LIST_TYPE.IMAGE;
 
   return (
-    <Modal
-      className="custom-modal"
-      title={messageText(type).title}
-      centered
-      open={show}
-      onCancel={onCancel}
-      width={showTextEditor ? 1200 : 900}
-      footer={
-        type !== MODAL_TYPE.VIEW
-          ? [
-              <Button
-                icon={
-                  type === MODAL_TYPE.CREATE ? (
-                    <PlusCircleOutlined />
-                  ) : (
-                    <SaveOutlined />
-                  )
-                }
-                className="confirm-btn"
-                key="ok"
-                onClick={handleClickOk}
-                ref={buttonOkRef}
-              >
-                {messageText(type).okText}
-              </Button>,
-              <Button
-                className="confirm-btn"
-                key="cancel"
-                onClick={onCancel}
-                type="text"
-              >
-                {messageText(type).cancelText}
-              </Button>,
-            ]
-          : []
-      }
-    >
-      {type === MODAL_TYPE.VIEW ? (
-        <div
-          className="view ql-editor"
-          dangerouslySetInnerHTML={{ __html: contentState }}
-        ></div>
-      ) : (
-        <div className="flex">
-          <div className={showTextEditor ? "w-1/3" : "w-full"}>
-            <div className="w-full">
+    <div className="custom-evc-modal">
+      <Modal
+        title={<p className="text-3xl">{messageText(type).title}</p>}
+        open={show}
+        onCancel={onCancel}
+        footer={
+          type !== MODAL_TYPE.VIEW
+            ? [
+                <Button
+                  icon={
+                    type === MODAL_TYPE.CREATE ? (
+                      <PlusCircleOutlined />
+                    ) : (
+                      <SaveOutlined />
+                    )
+                  }
+                  className="confirm-btn"
+                  size="large"
+                  key="ok"
+                  onClick={handleClickOk}
+                  ref={buttonOkRef}
+                >
+                  {messageText(type).okText}
+                </Button>,
+                <Button
+                  className="confirm-btn"
+                  key="cancel"
+                  onClick={onCancel}
+                  size="large"
+                  type="text"
+                >
+                  {messageText(type).cancelText}
+                </Button>,
+              ]
+            : null
+        }
+      >
+        {type === MODAL_TYPE.VIEW ? (
+          <div
+            className="view ql-editor"
+            dangerouslySetInnerHTML={{ __html: contentState }}
+          ></div>
+        ) : (
+          <div className="w-full grid grid-cols-5 gap-4">
+            <div className="col-span-2">
               {showTitleEdit ? (
-                <AutoComplete
-                  value={titleState}
-                  placeholder="Title"
-                  className="w-full mb-3"
-                  onChange={onChangeTitle}
-                />
+                <div>
+                  <div className="font-semibold text-lg">Title</div>
+                  <div>
+                    <AutoComplete
+                      value={titleState}
+                      placeholder="Title"
+                      className="w-full mb-3"
+                      onChange={onChangeTitle}
+                    />
+                  </div>
+                </div>
               ) : (
                 <></>
               )}
               {showTextArea ? (
                 <div className="mb-3">
+                  <div className="font-semibold text-lg">Brief</div>
                   <TextArea
                     rows={4}
                     value={briefState}
@@ -215,38 +220,46 @@ function EvcModal({
               ) : (
                 <></>
               )}
+              {showImgImport ? (
+                <div>
+                  <div className="font-semibold text-lg">Thumbnail</div>
+                  <div className="h-44 w-full mb-9">
+                    <Dragger {...props}>
+                      <p className="ant-upload-drag-icon">
+                        <InboxOutlined />
+                      </p>
+                      <p className="ant-upload-text">
+                        Click or drag image banner here
+                      </p>
+                      <p className="ant-upload-hint">
+                        Support for a single or bulk upload
+                      </p>
+                    </Dragger>
+                  </div>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
-            {showImgImport ? (
-              <div className="h-44 w-full mb-9">
-                <Dragger {...props}>
-                  <p className="ant-upload-drag-icon">
-                    <InboxOutlined />
-                  </p>
-                  <p className="ant-upload-text">
-                    Click or drag image banner here
-                  </p>
-                  <p className="ant-upload-hint">
-                    Support for a single or bulk upload
-                  </p>
-                </Dragger>
-              </div>
-            ) : (
-              <></>
-            )}
+            <div className="col-span-3">
+              {showTextEditor ? (
+                <div>
+                  <div className="font-semibold text-lg">Content</div>
+                  <div className="w-full mb-3">
+                    <TextEditor
+                      content={contentState}
+                      editContent={editContentState}
+                    ></TextEditor>
+                  </div>
+                </div>
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
-          {showTextEditor ? (
-            <div className="w-2/3 ml-10 mb-3">
-              <TextEditor
-                content={contentState}
-                editContent={editContentState}
-              ></TextEditor>
-            </div>
-          ) : (
-            <></>
-          )}
-        </div>
-      )}
-    </Modal>
+        )}
+      </Modal>
+    </div>
   );
 }
 

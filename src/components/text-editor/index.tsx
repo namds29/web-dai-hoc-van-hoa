@@ -59,7 +59,7 @@ export default function TextEditor({
   };
   return (
     <ReactQuill
-      className="h-[18rem]"
+      className="h-[66rem]"
       theme="snow"
       placeholder="Write content here..."
       modules={modules}
