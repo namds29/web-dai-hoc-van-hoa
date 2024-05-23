@@ -3,7 +3,6 @@ import {
   Button,
   Drawer,
   Input,
-  Modal,
   Upload,
   UploadFile,
   UploadProps,
