@@ -113,14 +113,3 @@ a {
     scroll-behavior: auto !important;
   }
 }
-
-.ant-modal,
-.ant-modal-content {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  top: 0;
-}
-.ant-modal-body {
-  height: calc(100vh - 130px);
-}

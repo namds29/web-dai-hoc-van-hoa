@@ -1,6 +1,7 @@
 import {
   AutoComplete,
   Button,
+  Drawer,
   Input,
   Modal,
   Upload,
@@ -44,6 +45,7 @@ enum BUTTON_TEXT {
   SAVE = "Save",
   CREATE = "Create",
   CANCEL = "Cancel",
+  CLOSE = "Close",
 }
 
 const { Dragger } = Upload;
@@ -69,6 +71,8 @@ function EvcModal({
   const [imgFile, setImgFile] = useState<UploadFile>();
   const buttonOkRef = useRef<HTMLButtonElement>(null);
 
+  const fullWidth = window.innerWidth;
+
   const messageText = (type: string): MessageText => {
     switch (type) {
       case MODAL_TYPE.EDIT:
@@ -86,6 +90,7 @@ function EvcModal({
       case MODAL_TYPE.VIEW:
         return {
           title: MODAL_TITLE.VIEW,
+          cancelText: BUTTON_TEXT.CLOSE,
         };
       default:
         return { title: "", okText: "", cancelText: "" };
@@ -147,119 +152,130 @@ function EvcModal({
   const showTitleEdit = editType !== LIST_TYPE.IMAGE;
 
   return (
-    <div className="custom-evc-modal">
-      <Modal
-        title={<p className="text-3xl">{messageText(type).title}</p>}
-        open={show}
-        onCancel={onCancel}
-        footer={
-          type !== MODAL_TYPE.VIEW
-            ? [
-                <Button
-                  icon={
-                    type === MODAL_TYPE.CREATE ? (
-                      <PlusCircleOutlined />
-                    ) : (
-                      <SaveOutlined />
-                    )
-                  }
-                  className="confirm-btn"
-                  size="large"
-                  key="ok"
-                  onClick={handleClickOk}
-                  ref={buttonOkRef}
-                >
-                  {messageText(type).okText}
-                </Button>,
-                <Button
-                  className="confirm-btn"
-                  key="cancel"
-                  onClick={onCancel}
-                  size="large"
-                  type="text"
-                >
-                  {messageText(type).cancelText}
-                </Button>,
-              ]
-            : null
-        }
-      >
-        {type === MODAL_TYPE.VIEW ? (
-          <div
-            className="view ql-editor"
-            dangerouslySetInnerHTML={{ __html: contentState }}
-          ></div>
+    <Drawer
+      title={<p className="text-3xl">{messageText(type).title}</p>}
+      open={show}
+      closeIcon={false}
+      width={fullWidth}
+      footer={
+        type !== MODAL_TYPE.VIEW ? (
+          <div className="float-end">
+            <Button
+              icon={
+                type === MODAL_TYPE.CREATE ? (
+                  <PlusCircleOutlined />
+                ) : (
+                  <SaveOutlined />
+                )
+              }
+              className="confirm-btn mr-2"
+              size="large"
+              key="ok"
+              onClick={handleClickOk}
+              ref={buttonOkRef}
+            >
+              {messageText(type).okText}
+            </Button>
+            <Button
+              className="confirm-btn"
+              key="cancel"
+              onClick={onCancel}
+              size="large"
+              type="text"
+            >
+              {messageText(type).cancelText}
+            </Button>
+          </div>
         ) : (
-          <div className="w-full grid grid-cols-5 gap-4">
-            <div className="col-span-2">
-              {showTitleEdit ? (
+          <div className="float-end">
+            <Button
+              className="confirm-btn"
+              key="cancel"
+              onClick={onCancel}
+              size="large"
+              type="text"
+            >
+              {messageText(type).cancelText}
+            </Button>
+          </div>
+        )
+      }
+    >
+      {type === MODAL_TYPE.VIEW ? (
+        <div
+          className="view ql-editor"
+          dangerouslySetInnerHTML={{ __html: contentState }}
+        ></div>
+      ) : (
+        <div className="w-full grid grid-cols-5 gap-4">
+          <div className="col-span-2">
+            {showTitleEdit ? (
+              <div>
+                <div className="font-semibold text-lg">Title</div>
                 <div>
-                  <div className="font-semibold text-lg">Title</div>
-                  <div>
-                    <AutoComplete
-                      value={titleState}
-                      placeholder="Title"
-                      className="w-full mb-3"
-                      onChange={onChangeTitle}
-                    />
-                  </div>
-                </div>
-              ) : (
-                <></>
-              )}
-              {showTextArea ? (
-                <div className="mb-3">
-                  <div className="font-semibold text-lg">Brief</div>
-                  <TextArea
-                    rows={4}
-                    value={briefState}
-                    placeholder="Please input brief in here"
-                    onChange={onChangeBrief}
+                  <AutoComplete
+                    value={titleState}
+                    placeholder="Title"
+                    className="w-full mb-3"
+                    onChange={onChangeTitle}
                   />
                 </div>
-              ) : (
-                <></>
-              )}
-              {showImgImport ? (
-                <div>
-                  <div className="font-semibold text-lg">Thumbnail</div>
-                  <div className="h-44 w-full mb-9">
-                    <Dragger {...props}>
-                      <p className="ant-upload-drag-icon">
-                        <InboxOutlined />
-                      </p>
-                      <p className="ant-upload-text">
-                        Click or drag image banner here
-                      </p>
-                      <p className="ant-upload-hint">
-                        Support for a single or bulk upload
-                      </p>
-                    </Dragger>
-                  </div>
+              </div>
+            ) : (
+              <></>
+            )}
+            {showTextArea ? (
+              <div className="mb-3">
+                <div className="font-semibold text-lg">Brief</div>
+                <TextArea
+                  rows={4}
+                  value={briefState}
+                  placeholder="Please input brief in here"
+                  onChange={onChangeBrief}
+                />
+              </div>
+            ) : (
+              <></>
+            )}
+            {showImgImport ? (
+              <div>
+                <div className="font-semibold text-lg">Thumbnail</div>
+                <div className="h-44 w-full mb-9">
+                  <Dragger {...props}>
+                    <p className="ant-upload-drag-icon">
+                      <InboxOutlined />
+                    </p>
+                    <p className="ant-upload-text">
+                      Click or drag image banner here
+                    </p>
+                    <p className="ant-upload-hint">
+                      Support for a single or bulk upload
+                    </p>
+                  </Dragger>
                 </div>
-              ) : (
-                <></>
-              )}
-            </div>
-            <div className="col-span-3">
-              {showTextEditor ? (
-                <div>
-                  <div className="font-semibold text-lg">Content</div>
-                  <div className="w-full mb-3">
-                    <TextEditor
-                      content={contentState}
-                      editContent={editContentState}
-                    ></TextEditor>
-                  </div>
-                </div>
-              ) : (
-                <></>
-              )}
-            </div>
+              </div>
+            ) : (
+              <></>
+            )}
           </div>
-        )}
-      </Modal>
-    </div>
+          <div className="col-span-3">
+            {showTextEditor ? (
+              <div>
+                <div className="font-semibold text-lg">Content</div>
+                <div className="w-full mb-3">
+                  <TextEditor
+                    content={contentState}
+                    editContent={editContentState}
+                  ></TextEditor>
+                </div>
+              </div>
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
+      )}
+    </Drawer>
   );
 }
 
