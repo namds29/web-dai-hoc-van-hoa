@@ -3,19 +3,18 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Roboto';
-  src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+  font-family: "Roboto";
+  src: url("./fonts/Roboto-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
-
 
 /* Box sizing rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   letter-spacing: 0.03rem;
 }
 
@@ -34,11 +33,11 @@ dd {
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role='list'],
-ol[role='list'] {
+ul[role="list"],
+ol[role="list"] {
   list-style: none;
 }
-li{
+li {
   margin-left: 1rem;
 }
 /* Set core root defaults */
@@ -76,15 +75,15 @@ a {
 .border-bottom-solid {
   border-bottom: 1px solid #e1e1e1;
 }
-.border-r-solid{
+.border-r-solid {
   border-right: 1px solid #dbd3d3;
 }
-.border-grey{
+.border-grey {
   border: 1px solid lightgrey;
 }
 ::-webkit-scrollbar {
   width: 6px;
- height: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
