@@ -44,6 +44,7 @@ export type IPostDataType = {
   isDeleted?: number;
   createdAt?: string;
   updatedAt?: string;
+  ordering?: number;
   categoryID: string;
   name?: string;
   type?: number;

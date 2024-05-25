@@ -1,4 +1,4 @@
-import { message } from "antd";
+import { Button, message } from "antd";
 import { useEffect, useState } from "react";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
@@ -18,6 +18,7 @@ import {
 } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
 import TabsItem from "src/components/Tabs/TabsItem";
+import ModalSwapPosition from "src/components/modal-swap-position";
 
 type DataType = { id: number; title: string; content: string };
 
@@ -37,8 +38,9 @@ const AdminHomePage = () => {
   const [openModal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState("");
   const [editTypeValue, setEditTypeValue] = useState<IEditType>();
-
+  const [openSwapModal, setOpenSwapModal] = useState(false);
   const [data, setData] = useState<IPostDataType[]>([]);
+  const [bannerList, setBannerList] = useState<IPostDataType[]>([]);
   const [announcementData, setAnnouncementData] = useState<any[]>([]);
 
   const getPostList = async (id: any) => {
@@ -56,6 +58,10 @@ const AdminHomePage = () => {
     try {
       const res = await HomepageService.listBannerHomepage();
       if (res?.data) setData(res?.data);
+      const bannerList = res?.data.filter(
+        (item: any) => item.categoryID === ITEM_HOMEPAGE.BANNER_IMG
+      )
+      setBannerList(bannerList)
     } catch (error: any) {
       if (error) {
         console.log(error);
@@ -111,6 +117,9 @@ const AdminHomePage = () => {
   }, [dropdownValue]);
 
   const handleEditType = ({ id, type }: IEditType) => {
+    if(type === 'swap'){
+      setOpenSwapModal(true)
+    }
     setEditTypeValue({ id, type });
   };
 
@@ -175,8 +184,11 @@ const AdminHomePage = () => {
 
   const handleCancel = () => {
     setOpenModal(false);
+    setOpenSwapModal(false)
   };
-
+  const handleSaveSwapPosition = () =>{
+    setOpenSwapModal(true)
+  }
   const handleOk = (value: {
     title?: string;
     content?: string;
@@ -438,6 +450,9 @@ const AdminHomePage = () => {
   };
 
   useEffect(() => {
+    console.log(data.filter(
+      (item) => item.categoryID === ITEM_HOMEPAGE.BANNER_IMG
+    ))
     setDropdownValue({
       key: tabsItem[0].key,
       label: tabsItem[0].label,
@@ -448,7 +463,12 @@ const AdminHomePage = () => {
   return (
     <div>
       <TabsItem tab={tabsItem} onChange={onChange} />
-
+      <ModalSwapPosition
+        data={bannerList}
+        onCancel={handleCancel}
+        onOk={handleSaveSwapPosition}
+        show={openSwapModal}
+      />
       <EditModal
         editType={dropdownValue.listType ?? 0}
         data={editValue}
