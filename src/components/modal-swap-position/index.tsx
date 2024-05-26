@@ -2,12 +2,13 @@
 import { Button, Modal } from "antd";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
 import { IPostDataType } from "src/interfaces";
+import HomepageService from "src/services/homepage/homepageService";
 
 type IProps = {
     data: any,
     show?: boolean;
     onCancel?: MouseEventHandler<HTMLElement>;
-    onOk?: MouseEventHandler<HTMLElement>;
+    onOk?: () => void;
 };
 
 export enum MESSAGE_TYPE {
@@ -45,6 +46,10 @@ function ModalSwapPosition({
             setListImg(newArray);
         }
     }
+    const onSave = async () => {
+        console.log(listImg)
+        // const res = HomepageService.editPositionBanner(listImg)
+    }
     useEffect(() => {
         if (!listImg.length) setListImg(data)
         // data && 
@@ -62,7 +67,7 @@ function ModalSwapPosition({
                     <Button
                         className="confirm-btn"
                         key="ok"
-                        onClick={onOk}
+                        onClick={onSave}
                         ref={buttonOkRef}
                     >
                         Save

@@ -7,6 +7,7 @@ import {
   ICreateAddmissionType,
   IGetAddmissionType,
   IEditAnnouncementType,
+  IEditPositionBanner,
 } from "src/interfaces";
 import { API_ADMIN } from "../constant";
 import {
@@ -16,6 +17,7 @@ import {
   apiDelete,
   apiGetData,
   apiUpdateFormData,
+  apiPatch,
 } from "../utils-service";
 
 const listPostHomepage = async (): Promise<any> => {
@@ -91,6 +93,12 @@ const editAddmissionHomepage = async (
   params: IEditAddmissionType
 ): Promise<any> => {
   const res = await apiUpdate(API_ADMIN.HOMEPAGE.ADDMISSION + "/" + id, params);
+  return res;
+};
+const editPositionBanner = async (
+  params: IEditPositionBanner
+): Promise<any> => {
+  const res = await apiPatch(API_ADMIN.HOMEPAGE.BANNER, params);
   return res;
 };
 
@@ -188,6 +196,7 @@ const HomepageService = {
   deleteAddmissionHomepage,
   getPostById,
   getAddmissionByCategoryId,
-  approvePostHomepage
+  approvePostHomepage,
+  editPositionBanner
 };
 export default HomepageService;
