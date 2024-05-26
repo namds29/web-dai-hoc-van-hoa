@@ -7,7 +7,7 @@ import {
   ICreateAddmissionType,
   IGetAddmissionType,
   IEditAnnouncementType,
-  IEditPositionBanner,
+  IPositionItem,
 } from "src/interfaces";
 import { API_ADMIN } from "../constant";
 import {
@@ -96,9 +96,10 @@ const editAddmissionHomepage = async (
   return res;
 };
 const editPositionBanner = async (
-  params: IEditPositionBanner
+  params: IPositionItem[]
 ): Promise<any> => {
-  const res = await apiPatch(API_ADMIN.HOMEPAGE.BANNER, params);
+  const data = { orderings: JSON.stringify(params)} 
+  const res = await apiPatch(API_ADMIN.HOMEPAGE.BANNER, data);
   return res;
 };
 

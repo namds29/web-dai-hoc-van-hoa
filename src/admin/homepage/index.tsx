@@ -1,4 +1,4 @@
-import { Button, message } from "antd";
+import { message } from "antd";
 import { useEffect, useState } from "react";
 import ListData from "src/components/list-data";
 import EditModal from "src/components/evc-modal";
@@ -114,7 +114,7 @@ const AdminHomePage = () => {
 
   useEffect(() => {
     getList(dropdownValue);
-  }, [dropdownValue]);
+  }, [dropdownValue, bannerList]);
 
   const handleEditType = ({ id, type }: IEditType) => {
     if(type === 'swap'){
@@ -187,7 +187,7 @@ const AdminHomePage = () => {
     setOpenSwapModal(false)
   };
   const handleSaveSwapPosition = () =>{
-    setOpenSwapModal(true)
+    getBannerList();
   }
   const handleOk = (value: {
     title?: string;
@@ -450,9 +450,6 @@ const AdminHomePage = () => {
   };
 
   useEffect(() => {
-    console.log(data.filter(
-      (item) => item.categoryID === ITEM_HOMEPAGE.BANNER_IMG
-    ))
     setDropdownValue({
       key: tabsItem[0].key,
       label: tabsItem[0].label,

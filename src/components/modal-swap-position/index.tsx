@@ -1,14 +1,14 @@
 
-import { Button, Modal } from "antd";
-import { MouseEventHandler, useEffect, useRef, useState } from "react";
-import { IPostDataType } from "src/interfaces";
+import { Button, Modal, message } from "antd";
+import { useEffect, useRef, useState } from "react";
+import { IPositionItem, IPostDataType } from "src/interfaces";
 import HomepageService from "src/services/homepage/homepageService";
 
 type IProps = {
     data: any,
     show?: boolean;
-    onCancel?: MouseEventHandler<HTMLElement>;
-    onOk?: () => void;
+    onCancel: () => void;
+    onOk: () => void;
 };
 
 export enum MESSAGE_TYPE {
@@ -28,7 +28,6 @@ function ModalSwapPosition({
     const [listImg, setListImg] = useState<any[]>([])
     const buttonOkRef = useRef<HTMLButtonElement>(null);
     const handleUp = (index: number) => {
-        console.log(index);
         if (index > 0) {
             const newArray = [...listImg];
             [newArray[index], newArray[index - 1]] = [newArray[index - 1], newArray[index]];
@@ -47,12 +46,18 @@ function ModalSwapPosition({
         }
     }
     const onSave = async () => {
-        console.log(listImg)
-        // const res = HomepageService.editPositionBanner(listImg)
+        const orderImages: IPositionItem[] = listImg.map((item: IPositionItem) => ({id: item.id, ordering: item.ordering}))
+        try {
+            const res = await HomepageService.editPositionBanner(orderImages)
+            res.message === 'success' && message.success(`Swap successfully.`)
+            onOk();
+            onCancel();
+        } catch (error) {
+            message.error(`Swap failed.`)
+        }
     }
     useEffect(() => {
         if (!listImg.length) setListImg(data)
-        // data && 
     }, [listImg, data])
     return (
         <Modal
@@ -65,7 +70,7 @@ function ModalSwapPosition({
             footer={
                 [
                     <Button
-                        className="confirm-btn"
+                        className="confirm-btn bg-black text-white"
                         key="ok"
                         onClick={onSave}
                         ref={buttonOkRef}
@@ -78,17 +83,17 @@ function ModalSwapPosition({
                 ]
             }
         >
-            <div className="flex flex-col items-center gap-5 justify-start items-start">
+            <div className="flex flex-col gap-5 justify-start items-start">
                 {listImg && listImg.map((item: IPostDataType, index: number) => (
-                    <div className="w-full flex justify-between">
+                    <div key={index} className="w-full flex justify-between">
                         <img
                             width={272}
                             alt="logo"
                             src={`${import.meta.env.VITE_API_URL}${item.path}`}
                         />
-                        <div className="flex gap-4">
-                            <button className="p-2 w-16 bg-black text-white rounded" onClick={() => handleUp(index)}>Up</button>
-                            <button className="p-2  w-16 bg-black text-white rounded" onClick={() => handleDown(index)}>Down</button>
+                        <div className="flex gap-4 items-center">
+                            <button className="p-2 bg-black text-white rounded h-10 w-16" onClick={() => handleUp(index)}>Up</button>
+                            <button className="p-2 bg-black text-white rounded h-10 w-16" onClick={() => handleDown(index)}>Down</button>
                         </div>
                     </div>
                 ))}
