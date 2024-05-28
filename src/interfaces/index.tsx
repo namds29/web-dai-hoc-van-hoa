@@ -44,6 +44,7 @@ export type IPostDataType = {
   isDeleted?: number;
   createdAt?: string;
   updatedAt?: string;
+  ordering?: number;
   categoryID: string;
   name?: string;
   type?: number;
@@ -125,7 +126,9 @@ export type IEditAddmissionType = {
   ordering?: number;
   urlToExternalMedia?: string;
 };
-
+export type IEditPositionBanner = {
+  orderings: IPositionItem[]
+}
 export type IEditBannerType = {
   thumpnailImage: File;
 };
@@ -149,6 +152,10 @@ export enum PostCategory {
 
 export type DataType = { id: number; title: string; content: string };
 
+export type IPositionItem = {
+  id: number,
+  ordering: number
+}
 export type IEditType = {
   id?: number;
   type: string;

@@ -5,7 +5,8 @@ enum METHOD_API {
     GET = "get",
     POST = "post",
     PUT = "put",
-    DELETE = "delete"
+    DELETE = "delete",
+    PATCH = "patch",
 }
 export const apiGet = async (url: string) => {
     const config = {
@@ -64,6 +65,16 @@ export const apiCreateFormData = async (url: string, formData?: any) => {
 export const apiUpdate = async (url: string, params?: any) => {
     const config = {
         method: METHOD_API.PUT,
+        url: url,
+        data: qs.stringify(params),
+    };
+
+    const res = await axiosInstance.request(config);
+    return res;
+}
+export const apiPatch = async (url: string, params?: any) => {
+    const config = {
+        method: METHOD_API.PATCH,
         url: url,
         data: qs.stringify(params),
     };

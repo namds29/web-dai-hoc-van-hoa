@@ -224,7 +224,16 @@ const ListData = ({
 
   return (
     <div>
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end mb-4 gap-3">
+      {section === 'Banner image' && <Button
+          type="primary"
+          className="bg-black"
+          onClick={() => {
+            action({ type: "swap" });
+          }}
+        >
+          Swap position
+        </Button> } 
         <Button
           type="primary"
           className="bg-black"
@@ -300,6 +309,7 @@ const ListData = ({
               )}
             </div>
           </List.Item>
+          
         )}
       />
       <CustomModal
@@ -309,6 +319,7 @@ const ListData = ({
         onOk={handleOk}
         show={open}
       />
+      
     </div>
   );
 };
