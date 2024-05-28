@@ -28,7 +28,7 @@ const SlickButtonFix = ({
   ...props
 }: any) => <div {...props}>{children}</div>;
 
-const AdminHomepage = () => {
+const Homepage = () => {
   const [open, setOpen] = useState(false);
   const [modalContent, setModalContent] = useState<IMessage>({
     title: <></>,
@@ -62,9 +62,7 @@ const AdminHomepage = () => {
         </div>
       </SlickButtonFix>
     ),
-    focusOnSelect: true,
     draggable: true,
-
     // afterChange: this.nextClick
   };
   const handleCancel = () => {
@@ -220,7 +218,7 @@ const AdminHomepage = () => {
             src="https://www.youtube.com/embed/OEKQ6fQPJ58?si=K4yhJ1NZjG-Gq33B"
             title="YouTube video player"
             frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>
@@ -314,4 +312,4 @@ const AdminHomepage = () => {
   );
 };
 
-export default AdminHomepage;
+export default Homepage;

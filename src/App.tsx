@@ -1,7 +1,6 @@
 import "./App.scss";
 import { Outlet, Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/front-page-layout/layout";
-import Homepage from "./storefront/homepage";
 import Research from "./storefront/research";
 import InternationalPartners from "./storefront/international-partners";
 
@@ -24,6 +23,8 @@ import NewsDetailComponent from "./storefront/news/detail/news-detail";
 import NewsListComponent from "./storefront/news/list/index";
 import Faculties from "./storefront/faculties";
 import TrainingProgramComponent from "./storefront/academics/training-program-detail";
+import Homepage from "./storefront/homepage";
+import Footer from "./admin/footer";
 
 const AboutComponent = lazy(() => import("./storefront/about"));
 const NewsComponent = lazy(() => import("./storefront/news"));
@@ -41,6 +42,7 @@ function App() {
             <Route path="/admin/news" element={<AdminNews />} />
             <Route path="/admin/academics" element={<AdminAcademics />} />
             <Route path="/admin/admission" element={<AdminAdmission />} />
+            <Route path="/admin/footer" element={<Footer />} />
             <Route
               path="/admin/international-partners"
               element={<AdminInternationalPartners />}
@@ -76,9 +78,6 @@ function App() {
             <Route path="/research" element={<Research />} />
             {/* <Route path="/wallpaper" element={<Wallpapers />} /> */}
           </Route>
-
-
-
         </Routes>
       </AuthProvider>
     </Suspense>

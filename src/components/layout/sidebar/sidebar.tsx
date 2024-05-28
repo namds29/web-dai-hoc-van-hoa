@@ -4,6 +4,7 @@ import {
   // BankOutlined,
   // BookOutlined,
   CoffeeOutlined,
+  DesktopOutlined,
   // DesktopOutlined,
   // FileSearchOutlined,
   // GlobalOutlined,
@@ -16,6 +17,7 @@ const Sidebar = ({ menuOpen }: any) => {
     { title: "Home page", icon: <HomeOutlined />, route: "/admin" },
     // { title: "About", icon: <InfoOutlined />, route: "/admin/about" },
     { title: "News", icon: <CoffeeOutlined />, route: "/admin/news" },
+    { title: "Footer", icon: <DesktopOutlined />, route: "/admin/footer" },
     // { title: "Academics", icon: <BookOutlined />, route: "/admin/academics" },
     // { title: "Admission", icon: <BankOutlined />, route: "/admin/admission" },
     // {
