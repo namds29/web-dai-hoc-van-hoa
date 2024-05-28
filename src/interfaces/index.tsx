@@ -113,10 +113,11 @@ export type ICreateBannerType = {
 };
 
 export type IEditPostType = {
-  thumpnailImage: File;
-  title: string;
-  brief: string;
-  content: string;
+  thumpnailImage?: File;
+  title?: string;
+  brief?: string;
+  content?: string;
+  isHighlighted?: number;
 };
 
 export type IEditAddmissionType = {
