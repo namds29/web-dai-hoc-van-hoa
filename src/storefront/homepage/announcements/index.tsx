@@ -22,7 +22,7 @@ const Announcements = (input: {
       </div>
       <div className={styles.newest_new}>
         {input.highlightData
-          .filter((item) => item.isApproved)
+          .filter((item) => !item.isApproved)
           .slice(0, HIGHTLIGHT_SIZE)
           .map((newsItem, index) => (
             <NewsCardComponent
