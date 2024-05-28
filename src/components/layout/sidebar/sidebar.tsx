@@ -1,34 +1,34 @@
 import { Link } from "react-router-dom";
 import styles from "./sidebar.module.scss";
 import {
-  BankOutlined,
-  BookOutlined,
+  // BankOutlined,
+  // BookOutlined,
   CoffeeOutlined,
-  DesktopOutlined,
-  FileSearchOutlined,
-  GlobalOutlined,
+  // DesktopOutlined,
+  // FileSearchOutlined,
+  // GlobalOutlined,
   HomeOutlined,
-  InfoOutlined,
+  // InfoOutlined,
 } from "@ant-design/icons";
 
 const Sidebar = ({ menuOpen }: any) => {
   const menuItem = [
     { title: "Home page", icon: <HomeOutlined />, route: "/admin" },
-    { title: "About", icon: <InfoOutlined />, route: "/admin/about" },
+    // { title: "About", icon: <InfoOutlined />, route: "/admin/about" },
     { title: "News", icon: <CoffeeOutlined />, route: "/admin/news" },
-    { title: "Academics", icon: <BookOutlined />, route: "/admin/academics" },
-    { title: "Admission", icon: <BankOutlined />, route: "/admin/admission" },
-    {
-      title: "Student Support",
-      icon: <DesktopOutlined />,
-      route: "/admin/student-support",
-    },
-    {
-      title: "International Partners",
-      icon: <GlobalOutlined />,
-      route: "/admin/international-partners",
-    },
-    { title: "Research", icon: <FileSearchOutlined />, route: "/admin/research" },
+    // { title: "Academics", icon: <BookOutlined />, route: "/admin/academics" },
+    // { title: "Admission", icon: <BankOutlined />, route: "/admin/admission" },
+    // {
+    //   title: "Student Support",
+    //   icon: <DesktopOutlined />,
+    //   route: "/admin/student-support",
+    // },
+    // {
+    //   title: "International Partners",
+    //   icon: <GlobalOutlined />,
+    //   route: "/admin/international-partners",
+    // },
+    // { title: "Research", icon: <FileSearchOutlined />, route: "/admin/research" },
   ];
   return (
     <div className={styles.sidebar}>

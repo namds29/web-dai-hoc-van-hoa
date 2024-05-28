@@ -42,7 +42,7 @@ const NewsDetailComponent = () => {
     try {
       const res = await HomepageService.listPostHomepage();
       if (res?.data) {
-        setPostList(res?.data.filter((item: IPostDataType) => item.isApproved));
+        setPostList(res?.data.filter((item: IPostDataType) => !item.isApproved));
       }
     } catch (error: any) {
       if (error) {
