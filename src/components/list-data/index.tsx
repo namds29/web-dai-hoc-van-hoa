@@ -4,16 +4,18 @@ import {
   DeleteOutlined,
   EyeOutlined,
   CheckCircleOutlined,
+  MoreOutlined,
+  CloseCircleOutlined,
 } from "@ant-design/icons";
-import { Button, List } from "antd";
+import { Button, Dropdown, List, MenuProps, Tag } from "antd";
 import { IMessage, IPostDataType, LIST_TYPE } from "src/interfaces";
 import CustomModal from "../custom-modal";
+import moment from "moment";
 
 const IconText = ({
   icon,
   text,
   danger,
-  disable = false,
   onClick,
 }: {
   icon: React.FC;
@@ -22,14 +24,10 @@ const IconText = ({
   disable?: boolean;
   onClick: () => void;
 }) => (
-  <Button
-    icon={React.createElement(icon)}
-    danger={danger}
-    onClick={onClick}
-    disabled={disable}
-  >
-    {text}
-  </Button>
+  <a style={danger ? { color: "red" } : {}} onClick={onClick}>
+    {React.createElement(icon)}
+    <span className="ml-2">{text}</span>
+  </a>
 );
 
 const ListData = ({
@@ -80,6 +78,150 @@ const ListData = ({
     setOpen(false);
   };
 
+  // actions={
+  //   type === LIST_TYPE.IMAGE || type === LIST_TYPE.IMAGE_TITLE || type === LIST_TYPE.TITLE
+  //     ? [
+  //         <IconText
+  //           key={item.id}
+  //           icon={EditOutlined}
+  //           text="Edit"
+  //           danger={false}
+  //           onClick={() => {
+  //             action({ id: item.id, type: "edit" });
+  //           }}
+  //         />,
+  //         <IconText
+  //           key={item.id}
+  //           icon={DeleteOutlined}
+  //           text="Delete"
+  //           danger={true}
+  //           onClick={() => hanleDelete(item.id)}
+  //         />,
+  //       ]
+  //     : [
+  //         <IconText
+  //           key={item.id}
+  //           icon={EyeOutlined}
+  //           text="View"
+  //           danger={false}
+  //           onClick={() => {
+  //             action({ id: item.id, type: "view" });
+  //           }}
+  //         />,
+  //         <IconText
+  //           key={item.id}
+  //           icon={EditOutlined}
+  //           text="Edit"
+  //           danger={false}
+  //           onClick={() => {
+  //             action({ id: item.id, type: "edit" });
+  //           }}
+  //         />,
+  //         <IconText
+  //           key={item.id}
+  //           icon={CheckCircleOutlined}
+  //           text="Approve"
+  //           danger={false}
+  //           disable={Boolean(item.isApproved == 0)}
+  //           onClick={() => hanleApprove(item.id)}
+  //         />,
+  //         <IconText
+  //           key={item.id}
+  //           icon={DeleteOutlined}
+  //           text="Delete"
+  //           danger={true}
+  //           onClick={() => hanleDelete(item.id)}
+  //         />,
+  //       ]
+  // }
+
+  const onGetItem = (item: any): MenuProps["items"] => {
+    const bannerItems: MenuProps["items"] = [
+      {
+        key: "1",
+        label: (
+          <IconText
+            icon={EditOutlined}
+            text="Edit"
+            danger={false}
+            onClick={() => {
+              action({ id: item.id, type: "edit" });
+            }}
+          />
+        ),
+      },
+      {
+        key: "2",
+        label: (
+          <IconText
+            icon={DeleteOutlined}
+            text="Delete"
+            danger={true}
+            onClick={() => hanleDelete(item.id)}
+          />
+        ),
+      },
+    ];
+
+    const postItems: MenuProps["items"] = [
+      {
+        key: "1",
+        label: (
+          <IconText
+            icon={EyeOutlined}
+            text="View"
+            danger={false}
+            onClick={() => {
+              action({ id: item.id, type: "view" });
+            }}
+          />
+        ),
+      },
+      {
+        key: "2",
+        label: (
+          <IconText
+            icon={EditOutlined}
+            text="Edit"
+            danger={false}
+            onClick={() => {
+              action({ id: item.id, type: "edit" });
+            }}
+          />
+        ),
+      },
+      {
+        key: "3",
+        label: (
+          <IconText
+            icon={CheckCircleOutlined}
+            text="Approve"
+            danger={false}
+            onClick={() => hanleApprove(item.id)}
+          />
+        ),
+        disabled: Boolean(item.isApproved == 0),
+      },
+      {
+        key: "4",
+        label: (
+          <IconText
+            icon={DeleteOutlined}
+            text="Delete"
+            danger={true}
+            onClick={() => hanleDelete(item.id)}
+          />
+        ),
+      },
+    ];
+
+    return type === LIST_TYPE.IMAGE ||
+      type === LIST_TYPE.IMAGE_TITLE ||
+      type === LIST_TYPE.TITLE
+      ? bannerItems
+      : postItems;
+  };
+
   return (
     <div>
       <div className="flex justify-end mb-4 gap-3">
@@ -112,62 +254,16 @@ const ListData = ({
         dataSource={data}
         renderItem={(item: IPostDataType) => (
           <List.Item
-            actions={
-              type === LIST_TYPE.IMAGE || type === LIST_TYPE.IMAGE_TITLE || type === LIST_TYPE.TITLE
-                ? [
-                    <IconText
-                      key={item.id+ 1}
-                      icon={EditOutlined}
-                      text="Edit"
-                      danger={false}
-                      onClick={() => {
-                        action({ id: item.id, type: "edit" });
-                      }}
-                    />,
-                    <IconText
-                      key={item.id}
-                      icon={DeleteOutlined}
-                      text="Delete"
-                      danger={true}
-                      onClick={() => hanleDelete(item.id)}
-                    />,
-                  ]
-                : [
-                    <IconText
-                      key={item.id}
-                      icon={EyeOutlined}
-                      text="View"
-                      danger={false}
-                      onClick={() => {
-                        action({ id: item.id, type: "view" });
-                      }}
-                    />,
-                    <IconText
-                      key={item.id}
-                      icon={EditOutlined}
-                      text="Edit"
-                      danger={false}
-                      onClick={() => {
-                        action({ id: item.id, type: "edit" });
-                      }}
-                    />,
-                    <IconText
-                      key={item.id}
-                      icon={CheckCircleOutlined}
-                      text="Approve"
-                      danger={false}
-                      disable={Boolean(item.isApproved == 0)}
-                      onClick={() => hanleApprove(item.id)}
-                    />,
-                    <IconText
-                      key={item.id}
-                      icon={DeleteOutlined}
-                      text="Delete"
-                      danger={true}
-                      onClick={() => hanleDelete(item.id)}
-                    />,
-                  ]
-            }
+            actions={[
+              <Dropdown
+                key="dropdown"
+                menu={{ items: onGetItem(item) }}
+                placement="bottomLeft"
+                arrow
+              >
+                <Button shape="circle" icon={<MoreOutlined />} />
+              </Dropdown>,
+            ]}
           >
             <div className="w-full">
               <List.Item.Meta
@@ -186,6 +282,22 @@ const ListData = ({
                 }
                 className="mb-3"
               />
+              <div className="mb-3 text-red-700 ">
+                <div className="mb-3">
+                  {moment(item.createdAt).format("YYYY/MM/DD")}
+                </div>
+                <div>
+                  {item.isApproved == 0 ? (
+                    <Tag color="green" icon={<CheckCircleOutlined />}>
+                      Approved
+                    </Tag>
+                  ) : (
+                    <Tag color="red" icon={<CloseCircleOutlined />}>
+                      Disapproved
+                    </Tag>
+                  )}
+                </div>
+              </div>
               {type !== LIST_TYPE.TITLE ? (
                 <img
                   width={272}

@@ -6,7 +6,13 @@ import HomepageService from "src/services/homepage/homepageService";
 const NewsDetailComponent = () => {
   const { id } = useParams();
   const [data, setData] = useState<IPostDataType | null>(null);
-  const [postList, setPostList] = useState<IPostDataType[]>([]);
+  const [schoolActivityList, setSchoolActivityList] = useState<IPostDataType[]>(
+    []
+  );
+  const [campusLifeList, setCampusLifeList] = useState<IPostDataType[]>([]);
+  const [internationalList, setInternationalList] = useState<IPostDataType[]>(
+    []
+  );
   const url = import.meta.env.VITE_API_URL;
   const [randomItems, setRandomItems] = useState<IPostDataType[]>([]);
   const navigate = useNavigate();
@@ -22,7 +28,9 @@ const NewsDetailComponent = () => {
   }, [id]);
 
   useEffect(() => {
-    getPostList();
+    getPostList(ITEM_NEWS.SCHOOL_ACTIVITIES);
+    getPostList(ITEM_NEWS.CAMPUS_LIFE);
+    getPostList(ITEM_NEWS.INTERNATIONAL_COOPERATION);
   }, []);
 
   const getPostWithId = async (id: number) => {
@@ -38,11 +46,30 @@ const NewsDetailComponent = () => {
     }
   };
 
-  const getPostList = async () => {
+  const getPostList = async (catId: string) => {
     try {
-      const res = await HomepageService.listPostHomepage();
+      const res = await HomepageService.listPostHomepageWithCategoryId(catId);
       if (res?.data) {
-        setPostList(res?.data.filter((item: IPostDataType) => !item.isApproved));
+        switch (catId) {
+          case ITEM_NEWS.SCHOOL_ACTIVITIES:
+            setSchoolActivityList(
+              res?.data.filter((item: IPostDataType) => !item.isApproved)
+            );
+            break;
+          case ITEM_NEWS.CAMPUS_LIFE:
+            setCampusLifeList(
+              res?.data.filter((item: IPostDataType) => !item.isApproved)
+            );
+            break;
+          case ITEM_NEWS.INTERNATIONAL_COOPERATION:
+            setInternationalList(
+              res?.data.filter((item: IPostDataType) => !item.isApproved)
+            );
+            break;
+
+          default:
+            break;
+        }
       }
     } catch (error: any) {
       if (error) {
@@ -53,13 +80,15 @@ const NewsDetailComponent = () => {
 
   useEffect(() => {
     const randomSchoolActivity = selectRandomItem(
-      postList.filter((item) => item.categoryID === ITEM_NEWS.SCHOOL_ACTIVITIES)
+      schoolActivityList.filter(
+        (item) => item.categoryID === ITEM_NEWS.SCHOOL_ACTIVITIES
+      )
     );
     const randomCampusLife = selectRandomItem(
-      postList.filter((item) => item.categoryID === ITEM_NEWS.CAMPUS_LIFE)
+      campusLifeList.filter((item) => item.categoryID === ITEM_NEWS.CAMPUS_LIFE)
     );
     const randomInternationalCooperation = selectRandomItem(
-      postList.filter(
+      internationalList.filter(
         (item) => item.categoryID === ITEM_NEWS.INTERNATIONAL_COOPERATION
       )
     );
@@ -75,7 +104,7 @@ const NewsDetailComponent = () => {
         randomInternationalCooperation,
       ]);
     }
-  }, [postList]);
+  }, [schoolActivityList, campusLifeList, internationalList]);
 
   return (
     <>
