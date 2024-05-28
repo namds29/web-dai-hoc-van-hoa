@@ -78,63 +78,6 @@ const ListData = ({
     setOpen(false);
   };
 
-  // actions={
-  //   type === LIST_TYPE.IMAGE || type === LIST_TYPE.IMAGE_TITLE || type === LIST_TYPE.TITLE
-  //     ? [
-  //         <IconText
-  //           key={item.id}
-  //           icon={EditOutlined}
-  //           text="Edit"
-  //           danger={false}
-  //           onClick={() => {
-  //             action({ id: item.id, type: "edit" });
-  //           }}
-  //         />,
-  //         <IconText
-  //           key={item.id}
-  //           icon={DeleteOutlined}
-  //           text="Delete"
-  //           danger={true}
-  //           onClick={() => hanleDelete(item.id)}
-  //         />,
-  //       ]
-  //     : [
-  //         <IconText
-  //           key={item.id}
-  //           icon={EyeOutlined}
-  //           text="View"
-  //           danger={false}
-  //           onClick={() => {
-  //             action({ id: item.id, type: "view" });
-  //           }}
-  //         />,
-  //         <IconText
-  //           key={item.id}
-  //           icon={EditOutlined}
-  //           text="Edit"
-  //           danger={false}
-  //           onClick={() => {
-  //             action({ id: item.id, type: "edit" });
-  //           }}
-  //         />,
-  //         <IconText
-  //           key={item.id}
-  //           icon={CheckCircleOutlined}
-  //           text="Approve"
-  //           danger={false}
-  //           disable={Boolean(item.isApproved == 0)}
-  //           onClick={() => hanleApprove(item.id)}
-  //         />,
-  //         <IconText
-  //           key={item.id}
-  //           icon={DeleteOutlined}
-  //           text="Delete"
-  //           danger={true}
-  //           onClick={() => hanleDelete(item.id)}
-  //         />,
-  //       ]
-  // }
-
   const onGetItem = (item: any): MenuProps["items"] => {
     const bannerItems: MenuProps["items"] = [
       {
@@ -200,7 +143,7 @@ const ListData = ({
             onClick={() => hanleApprove(item.id)}
           />
         ),
-        disabled: Boolean(item.isApproved == 0),
+        disabled: Boolean(item.isApproved),
       },
       {
         key: "4",
@@ -290,7 +233,7 @@ const ListData = ({
                     {moment(item.createdAt).format("YYYY/MM/DD")}
                   </div>
                   <div>
-                    {item.isApproved == 0 ? (
+                    {item.isApproved ? (
                       <Tag color="green" icon={<CheckCircleOutlined />}>
                         Approved
                       </Tag>
