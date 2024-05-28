@@ -50,7 +50,7 @@ const NewsListComponent = () => {
     try {
       const res = await HomepageService.listPostHomepageWithCategoryId(id);
       if (res?.data) {
-        setData(res?.data.filter((item: IPostDataType) => item.isApproved));
+        setData(res?.data.filter((item: IPostDataType) => !item.isApproved));
       }
     } catch (error: any) {
       if (error) {

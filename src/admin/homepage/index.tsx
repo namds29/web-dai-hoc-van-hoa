@@ -108,7 +108,7 @@ const AdminHomePage = () => {
     }
 
     if (editTypeValue?.type === "approve") {
-      handleApproveDataItem(editTypeValue.id ?? 0, { isApproved: true });
+      handleApproveDataItem(editTypeValue.id ?? 0, { isApproved: false });
     }
   }, [editTypeValue]);
 

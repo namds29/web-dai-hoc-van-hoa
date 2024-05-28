@@ -156,7 +156,7 @@ const ListData = ({
                       icon={CheckCircleOutlined}
                       text="Approve"
                       danger={false}
-                      disable={Boolean(item.isApproved)}
+                      disable={Boolean(item.isApproved == 0)}
                       onClick={() => hanleApprove(item.id)}
                     />,
                     <IconText

@@ -18,35 +18,34 @@ const News = () => {
 
   const url = import.meta.env.VITE_API_URL;
 
-  const getPostList = async () => {
+  const getPostList = async (id: string) => {
     try {
-      const res = await HomepageService.listPostHomepage();
+      const res = await HomepageService.listPostHomepageWithCategoryId(id);
       if (res?.data) {
-        setNewsData(
-          res?.data.filter(
-            (item: IPostDataType) =>
-              item.categoryID === ITEM_NEWS.NEWS && item.isApproved
-          )
-        );
-        setSchoolActData(
-          res?.data.filter(
-            (item: IPostDataType) =>
-              item.categoryID === ITEM_NEWS.SCHOOL_ACTIVITIES && item.isApproved
-          )
-        );
-        setCampusLifeData(
-          res?.data.filter(
-            (item: IPostDataType) =>
-              item.categoryID === ITEM_NEWS.CAMPUS_LIFE && item.isApproved
-          )
-        );
-        setInterCoopData(
-          res?.data.filter(
-            (item: IPostDataType) =>
-              item.categoryID === ITEM_NEWS.INTERNATIONAL_COOPERATION &&
-              item.isApproved
-          )
-        );
+        switch (id) {
+          case ITEM_NEWS.NEWS:
+            setNewsData(
+              res?.data.filter((item: IPostDataType) => !item.isApproved)
+            );
+            break;
+          case ITEM_NEWS.SCHOOL_ACTIVITIES:
+            setSchoolActData(
+              res?.data.filter((item: IPostDataType) => !item.isApproved)
+            );
+            break;
+          case ITEM_NEWS.CAMPUS_LIFE:
+            setCampusLifeData(
+              res?.data.filter((item: IPostDataType) => !item.isApproved)
+            );
+            break;
+          case ITEM_NEWS.INTERNATIONAL_COOPERATION:
+            setInterCoopData(
+              res?.data.filter((item: IPostDataType) => !item.isApproved)
+            );
+            break;
+          default:
+            break;
+        }
       }
     } catch (error: any) {
       if (error) {
@@ -56,7 +55,10 @@ const News = () => {
   };
 
   useEffect(() => {
-    getPostList();
+    getPostList(ITEM_NEWS.NEWS);
+    getPostList(ITEM_NEWS.SCHOOL_ACTIVITIES);
+    getPostList(ITEM_NEWS.CAMPUS_LIFE);
+    getPostList(ITEM_NEWS.INTERNATIONAL_COOPERATION);
   }, []);
 
   const navigate = useNavigate();
