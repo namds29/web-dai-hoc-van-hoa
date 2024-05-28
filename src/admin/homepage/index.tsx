@@ -57,11 +57,14 @@ const AdminHomePage = () => {
   const getBannerList = async () => {
     try {
       const res = await HomepageService.listBannerHomepage();
-      if (res?.data) setData(res?.data);
-      const bannerList = res?.data.filter(
-        (item: any) => item.categoryID === ITEM_HOMEPAGE.BANNER_IMG
-      )
-      setBannerList(bannerList)
+      if (res?.data) {
+        setData(res?.data);
+        const bannerList = res?.data.filter(
+          (item: any) => item.categoryID === ITEM_HOMEPAGE.BANNER_IMG
+        )
+        console.log(bannerList)
+        setBannerList(bannerList)
+      }
     } catch (error: any) {
       if (error) {
         console.log(error);
@@ -114,10 +117,10 @@ const AdminHomePage = () => {
 
   useEffect(() => {
     getList(dropdownValue);
-  }, [dropdownValue, bannerList]);
+  }, [dropdownValue]);
 
   const handleEditType = ({ id, type }: IEditType) => {
-    if(type === 'swap'){
+    if (type === 'swap') {
       setOpenSwapModal(true)
     }
     setEditTypeValue({ id, type });
@@ -186,7 +189,7 @@ const AdminHomePage = () => {
     setOpenModal(false);
     setOpenSwapModal(false)
   };
-  const handleSaveSwapPosition = () =>{
+  const handleSaveSwapPosition = () => {
     getBannerList();
   }
   const handleOk = (value: {

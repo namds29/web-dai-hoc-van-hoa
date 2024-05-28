@@ -1,4 +1,5 @@
 
+import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import { Button, Modal, message } from "antd";
 import { useEffect, useRef, useState } from "react";
 import { IPositionItem, IPostDataType } from "src/interfaces";
@@ -46,7 +47,7 @@ function ModalSwapPosition({
         }
     }
     const onSave = async () => {
-        const orderImages: IPositionItem[] = listImg.map((item: IPositionItem) => ({id: item.id, ordering: item.ordering}))
+        const orderImages: IPositionItem[] = listImg.map((item: IPositionItem) => ({ id: item.id, ordering: item.ordering }))
         try {
             const res = await HomepageService.editPositionBanner(orderImages)
             res.message === 'success' && message.success(`Swap successfully.`)
@@ -92,8 +93,12 @@ function ModalSwapPosition({
                             src={`${import.meta.env.VITE_API_URL}${item.path}`}
                         />
                         <div className="flex gap-4 items-center">
-                            <button className="p-2 bg-black text-white rounded h-10 w-16" onClick={() => handleUp(index)}>Up</button>
-                            <button className="p-2 bg-black text-white rounded h-10 w-16" onClick={() => handleDown(index)}>Down</button>
+                            <button className="flex items-center justify-center p-2 bg-black text-white rounded h-9 w-16 hover:bg-white hover:text-black hover:border-2" onClick={() => handleUp(index)}>
+                                <UpOutlined />
+                            </button>
+                            <button className="flex items-center justify-center p-2 bg-black text-white rounded h-9 w-16 hover:bg-white hover:text-black hover:border-2" onClick={() => handleDown(index)}>
+                                <DownOutlined />
+                            </button>
                         </div>
                     </div>
                 ))}
