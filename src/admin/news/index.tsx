@@ -59,6 +59,25 @@ const AdminNews = () => {
     if (editTypeValue?.type === "approve") {
       handleApproveDataItem(editTypeValue.id ?? 0, { isApproved: true });
     }
+
+    if (editTypeValue?.type === "highlight") {
+      const dataById: IPostDataType | undefined =
+        data.find((item) => editTypeValue.id && item.id === editTypeValue.id) ??
+        undefined;
+
+      if (dataById) {
+        const newDataItem: IEditPostType = {
+          ...dataById,
+          isHighlighted: 1,
+        };
+
+        console.log(newDataItem);
+
+        if (newDataItem) {
+          editPost(editTypeValue.id ?? 0, newDataItem);
+        }
+      }
+    }
   }, [editTypeValue]);
 
   const handleEditType = ({ id, type }: IEditType) => {

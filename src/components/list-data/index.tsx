@@ -69,6 +69,16 @@ const ListData = ({
     });
   };
 
+  const hanleHighlight = (id: any) => {
+    setOpen(true);
+    setCurrentItem(id);
+    setActionType("highlight");
+    setModalContent({
+      title: <p className="text-xl">Confirm</p>,
+      content: <div>Do you want highlight this ?</div>,
+    });
+  };
+
   const handleCancel = () => {
     setOpen(false);
   };
@@ -143,7 +153,17 @@ const ListData = ({
             onClick={() => hanleApprove(item.id)}
           />
         ),
-        disabled: Boolean(item.isApproved),
+      },
+      {
+        key: "4",
+        label: (
+          <IconText
+            icon={CheckCircleOutlined}
+            text="Highlight"
+            danger={false}
+            onClick={() => hanleHighlight(item.id)}
+          />
+        ),
       },
       {
         key: "4",

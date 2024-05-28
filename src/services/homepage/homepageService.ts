@@ -57,10 +57,11 @@ const editPostHomepage = async (
   params: IEditPostType
 ): Promise<any> => {
   const formData = new FormData();
-  formData.append("thumpnailImage", params.thumpnailImage);
-  formData.append("title", params.title);
-  formData.append("brief", params.brief);
-  formData.append("content", params.content);
+  formData.append("thumpnailImage", params.thumpnailImage ?? "");
+  formData.append("title", params.title ?? "");
+  formData.append("brief", params.brief ?? "");
+  formData.append("content", params.content ?? "");
+  formData.append("isHighlighted", params.isHighlighted?.toString() ?? "");
 
   const res = await apiUpdateFormData(
     API_ADMIN.HOMEPAGE.POST.INDEX + "/" + id,
