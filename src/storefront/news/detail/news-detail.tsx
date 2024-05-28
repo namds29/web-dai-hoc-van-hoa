@@ -53,17 +53,17 @@ const NewsDetailComponent = () => {
         switch (catId) {
           case ITEM_NEWS.SCHOOL_ACTIVITIES:
             setSchoolActivityList(
-              res?.data.filter((item: IPostDataType) => !item.isApproved)
+              res?.data.filter((item: IPostDataType) => item.isApproved)
             );
             break;
           case ITEM_NEWS.CAMPUS_LIFE:
             setCampusLifeList(
-              res?.data.filter((item: IPostDataType) => !item.isApproved)
+              res?.data.filter((item: IPostDataType) => item.isApproved)
             );
             break;
           case ITEM_NEWS.INTERNATIONAL_COOPERATION:
             setInternationalList(
-              res?.data.filter((item: IPostDataType) => !item.isApproved)
+              res?.data.filter((item: IPostDataType) => item.isApproved)
             );
             break;
 

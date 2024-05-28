@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import footerService from "src/services/footer/footer-service";
-import HomepageService from "src/services/homepage/homepageService";
-
 
 const Footer = () => {
   const [data, setData] = useState<any>([])

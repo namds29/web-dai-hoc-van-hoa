@@ -25,22 +25,22 @@ const News = () => {
         switch (id) {
           case ITEM_NEWS.NEWS:
             setNewsData(
-              res?.data.filter((item: IPostDataType) => !item.isApproved)
+              res?.data.filter((item: IPostDataType) => item.isApproved)
             );
             break;
           case ITEM_NEWS.SCHOOL_ACTIVITIES:
             setSchoolActData(
-              res?.data.filter((item: IPostDataType) => !item.isApproved)
+              res?.data.filter((item: IPostDataType) => item.isApproved)
             );
             break;
           case ITEM_NEWS.CAMPUS_LIFE:
             setCampusLifeData(
-              res?.data.filter((item: IPostDataType) => !item.isApproved)
+              res?.data.filter((item: IPostDataType) => item.isApproved)
             );
             break;
           case ITEM_NEWS.INTERNATIONAL_COOPERATION:
             setInterCoopData(
-              res?.data.filter((item: IPostDataType) => !item.isApproved)
+              res?.data.filter((item: IPostDataType) => item.isApproved)
             );
             break;
           default:

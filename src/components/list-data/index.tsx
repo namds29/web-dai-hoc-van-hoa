@@ -78,63 +78,6 @@ const ListData = ({
     setOpen(false);
   };
 
-  // actions={
-  //   type === LIST_TYPE.IMAGE || type === LIST_TYPE.IMAGE_TITLE || type === LIST_TYPE.TITLE
-  //     ? [
-  //         <IconText
-  //           key={item.id}
-  //           icon={EditOutlined}
-  //           text="Edit"
-  //           danger={false}
-  //           onClick={() => {
-  //             action({ id: item.id, type: "edit" });
-  //           }}
-  //         />,
-  //         <IconText
-  //           key={item.id}
-  //           icon={DeleteOutlined}
-  //           text="Delete"
-  //           danger={true}
-  //           onClick={() => hanleDelete(item.id)}
-  //         />,
-  //       ]
-  //     : [
-  //         <IconText
-  //           key={item.id}
-  //           icon={EyeOutlined}
-  //           text="View"
-  //           danger={false}
-  //           onClick={() => {
-  //             action({ id: item.id, type: "view" });
-  //           }}
-  //         />,
-  //         <IconText
-  //           key={item.id}
-  //           icon={EditOutlined}
-  //           text="Edit"
-  //           danger={false}
-  //           onClick={() => {
-  //             action({ id: item.id, type: "edit" });
-  //           }}
-  //         />,
-  //         <IconText
-  //           key={item.id}
-  //           icon={CheckCircleOutlined}
-  //           text="Approve"
-  //           danger={false}
-  //           disable={Boolean(item.isApproved == 0)}
-  //           onClick={() => hanleApprove(item.id)}
-  //         />,
-  //         <IconText
-  //           key={item.id}
-  //           icon={DeleteOutlined}
-  //           text="Delete"
-  //           danger={true}
-  //           onClick={() => hanleDelete(item.id)}
-  //         />,
-  //       ]
-  // }
-
   const onGetItem = (item: any): MenuProps["items"] => {
     const bannerItems: MenuProps["items"] = [
       {
@@ -200,7 +143,7 @@ const ListData = ({
             onClick={() => hanleApprove(item.id)}
           />
         ),
-        disabled: Boolean(item.isApproved == 0),
+        disabled: Boolean(item.isApproved),
       },
       {
         key: "4",
@@ -225,15 +168,17 @@ const ListData = ({
   return (
     <div>
       <div className="flex justify-end mb-4 gap-3">
-      {section === 'Banner image' && <Button
-          type="primary"
-          className="bg-black"
-          onClick={() => {
-            action({ type: "swap" });
-          }}
-        >
-          Swap position
-        </Button> } 
+        {section === "Banner image" && (
+          <Button
+            type="primary"
+            className="bg-black"
+            onClick={() => {
+              action({ type: "swap" });
+            }}
+          >
+            Swap position
+          </Button>
+        )}
         <Button
           type="primary"
           className="bg-black"
@@ -282,22 +227,26 @@ const ListData = ({
                 }
                 className="mb-3"
               />
-              <div className="mb-3 text-red-700 ">
-                <div className="mb-3">
-                  {moment(item.createdAt).format("YYYY/MM/DD")}
+              {type === LIST_TYPE.IMAGE_TITLE_CONTENT ? (
+                <div className="mb-3 text-red-700 ">
+                  <div className="mb-3">
+                    {moment(item.createdAt).format("YYYY/MM/DD")}
+                  </div>
+                  <div>
+                    {item.isApproved ? (
+                      <Tag color="green" icon={<CheckCircleOutlined />}>
+                        Approved
+                      </Tag>
+                    ) : (
+                      <Tag color="red" icon={<CloseCircleOutlined />}>
+                        Disapproved
+                      </Tag>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  {item.isApproved == 0 ? (
-                    <Tag color="green" icon={<CheckCircleOutlined />}>
-                      Approved
-                    </Tag>
-                  ) : (
-                    <Tag color="red" icon={<CloseCircleOutlined />}>
-                      Disapproved
-                    </Tag>
-                  )}
-                </div>
-              </div>
+              ) : (
+                <></>
+              )}
               {type !== LIST_TYPE.TITLE ? (
                 <img
                   width={272}
@@ -309,7 +258,6 @@ const ListData = ({
               )}
             </div>
           </List.Item>
-          
         )}
       />
       <CustomModal
@@ -319,7 +267,6 @@ const ListData = ({
         onOk={handleOk}
         show={open}
       />
-      
     </div>
   );
 };
