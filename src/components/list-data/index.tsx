@@ -225,15 +225,17 @@ const ListData = ({
   return (
     <div>
       <div className="flex justify-end mb-4 gap-3">
-      {section === 'Banner image' && <Button
-          type="primary"
-          className="bg-black"
-          onClick={() => {
-            action({ type: "swap" });
-          }}
-        >
-          Swap position
-        </Button> } 
+        {section === "Banner image" && (
+          <Button
+            type="primary"
+            className="bg-black"
+            onClick={() => {
+              action({ type: "swap" });
+            }}
+          >
+            Swap position
+          </Button>
+        )}
         <Button
           type="primary"
           className="bg-black"
@@ -282,22 +284,26 @@ const ListData = ({
                 }
                 className="mb-3"
               />
-              <div className="mb-3 text-red-700 ">
-                <div className="mb-3">
-                  {moment(item.createdAt).format("YYYY/MM/DD")}
+              {type === LIST_TYPE.IMAGE_TITLE_CONTENT ? (
+                <div className="mb-3 text-red-700 ">
+                  <div className="mb-3">
+                    {moment(item.createdAt).format("YYYY/MM/DD")}
+                  </div>
+                  <div>
+                    {item.isApproved == 0 ? (
+                      <Tag color="green" icon={<CheckCircleOutlined />}>
+                        Approved
+                      </Tag>
+                    ) : (
+                      <Tag color="red" icon={<CloseCircleOutlined />}>
+                        Disapproved
+                      </Tag>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  {item.isApproved == 0 ? (
-                    <Tag color="green" icon={<CheckCircleOutlined />}>
-                      Approved
-                    </Tag>
-                  ) : (
-                    <Tag color="red" icon={<CloseCircleOutlined />}>
-                      Disapproved
-                    </Tag>
-                  )}
-                </div>
-              </div>
+              ) : (
+                <></>
+              )}
               {type !== LIST_TYPE.TITLE ? (
                 <img
                   width={272}
@@ -309,7 +315,6 @@ const ListData = ({
               )}
             </div>
           </List.Item>
-          
         )}
       />
       <CustomModal
@@ -319,7 +324,6 @@ const ListData = ({
         onOk={handleOk}
         show={open}
       />
-      
     </div>
   );
 };
