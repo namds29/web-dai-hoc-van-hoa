@@ -56,11 +56,11 @@ const AdminNews = () => {
       handleDeleteDataItem(editTypeValue.id ?? 0);
     }
 
-    if (editTypeValue?.type === "approve") {
-      handleApproveDataItem(editTypeValue.id ?? 0, { isApproved: true });
+    if (editTypeValue?.type === "approve" || editTypeValue?.type === "disapprove") {
+      handleApproveDataItem(editTypeValue.id ?? 0, { isApproved: editTypeValue?.type === "approve" });
     }
 
-    if (editTypeValue?.type === "highlight") {
+    if (editTypeValue?.type === "highlight" || editTypeValue?.type === "unhighlight") {
       const dataById: IPostDataType | undefined =
         data.find((item) => editTypeValue.id && item.id === editTypeValue.id) ??
         undefined;
@@ -68,10 +68,8 @@ const AdminNews = () => {
       if (dataById) {
         const newDataItem: IEditPostType = {
           ...dataById,
-          isHighlighted: 1,
+          isHighlighted: editTypeValue?.type === "highlight" ? 1 : 0,
         };
-
-        console.log(newDataItem);
 
         if (newDataItem) {
           editPost(editTypeValue.id ?? 0, newDataItem);
