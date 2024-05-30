@@ -6,6 +6,8 @@ import {
   CheckCircleOutlined,
   MoreOutlined,
   CloseCircleOutlined,
+  HighlightOutlined,
+  StopOutlined,
 } from "@ant-design/icons";
 import { Button, Dropdown, List, MenuProps, Tag } from "antd";
 import { IMessage, IPostDataType, LIST_TYPE } from "src/interfaces";
@@ -59,23 +61,31 @@ const ListData = ({
     });
   };
 
-  const hanleApprove = (id: any) => {
+  const hanleApprove = (item: any) => {
     setOpen(true);
-    setCurrentItem(id);
-    setActionType("approve");
+    setCurrentItem(item.id);
+    setActionType(item.isApproved ? "disapprove" : "approve");
     setModalContent({
       title: <p className="text-xl">Confirm</p>,
-      content: <div>Do you want approve this ?</div>,
+      content: (
+        <div>
+          Do you want {item.isApproved ? "disapprove" : "approve"} this ?
+        </div>
+      ),
     });
   };
 
-  const hanleHighlight = (id: any) => {
+  const hanleHighlight = (item: any) => {
     setOpen(true);
-    setCurrentItem(id);
-    setActionType("highlight");
+    setCurrentItem(item.id);
+    setActionType(item.isHighlighted ? "unhighlight" : "highlight");
     setModalContent({
       title: <p className="text-xl">Confirm</p>,
-      content: <div>Do you want highlight this ?</div>,
+      content: (
+        <div>
+          Do you want {item.isHighlighted ? "unhighlight" : "highlight"} this ?
+        </div>
+      ),
     });
   };
 
@@ -147,10 +157,10 @@ const ListData = ({
         key: "3",
         label: (
           <IconText
-            icon={CheckCircleOutlined}
-            text="Approve"
+            icon={!item.isApproved ? CheckCircleOutlined : CloseCircleOutlined}
+            text={!item.isApproved ? "Approve" : "Disapprove"}
             danger={false}
-            onClick={() => hanleApprove(item.id)}
+            onClick={() => hanleApprove(item)}
           />
         ),
       },
@@ -158,15 +168,15 @@ const ListData = ({
         key: "4",
         label: (
           <IconText
-            icon={CheckCircleOutlined}
-            text="Highlight"
+            icon={!item.isHighlighted ? HighlightOutlined : StopOutlined}
+            text={!item.isHighlighted ? "Highlight" : "Unhighlight"}
             danger={false}
-            onClick={() => hanleHighlight(item.id)}
+            onClick={() => hanleHighlight(item)}
           />
         ),
       },
       {
-        key: "4",
+        key: "5",
         label: (
           <IconText
             icon={DeleteOutlined}
