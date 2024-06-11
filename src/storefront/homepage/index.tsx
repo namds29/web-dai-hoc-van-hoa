@@ -88,6 +88,9 @@ const Homepage = () => {
 
   useEffect(() => {
     getPostList(ITEM_NEWS.NEWS);
+    getPostList(ITEM_NEWS.CAMPUS_LIFE);
+    getPostList(ITEM_NEWS.INTERNATIONAL_COOPERATION);
+    getPostList(ITEM_NEWS.SCHOOL_ACTIVITIES);
     getPostList(ITEM_HOMEPAGE.MVV);
     getBannerList();
     getAnnouncement();
@@ -99,7 +102,10 @@ const Homepage = () => {
       if (res?.data) {
         switch (id) {
           case ITEM_NEWS.NEWS:
-            setHiglightData(res?.data);
+          case ITEM_NEWS.CAMPUS_LIFE:
+          case ITEM_NEWS.INTERNATIONAL_COOPERATION:
+          case ITEM_NEWS.SCHOOL_ACTIVITIES:
+            setHiglightData(higlightData.concat(res?.data));
             break;
           case ITEM_HOMEPAGE.MVV:
             setMvvData(res?.data);
@@ -141,6 +147,15 @@ const Homepage = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const sorted = [...higlightData].sort(
+      (a, b) =>
+        new Date(a.createdAt ?? "").getTime() -
+        new Date(b.createdAt ?? "").getTime()
+    );
+    setHiglightData(sorted);
+  }, [higlightData]);
 
   return (
     <div className={styles.container}>
