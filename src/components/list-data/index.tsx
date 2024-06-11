@@ -19,7 +19,6 @@ import {
   Tag,
 } from "antd";
 import {
-  IBannerDataType,
   IMessage,
   IPostDataType,
   ITEM_NEWS,
