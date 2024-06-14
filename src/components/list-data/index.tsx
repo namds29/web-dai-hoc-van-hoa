@@ -9,8 +9,21 @@ import {
   HighlightOutlined,
   StopOutlined,
 } from "@ant-design/icons";
-import { Button, Dropdown, List, MenuProps, Tag } from "antd";
-import { IMessage, IPostDataType, LIST_TYPE } from "src/interfaces";
+import {
+  Button,
+  Dropdown,
+  Image,
+  MenuProps,
+  Table,
+  TableProps,
+  Tag,
+} from "antd";
+import {
+  IMessage,
+  IPostDataType,
+  ITEM_NEWS,
+  LIST_TYPE,
+} from "src/interfaces";
 import CustomModal from "../custom-modal";
 import moment from "moment";
 
@@ -50,6 +63,10 @@ const ListData = ({
   });
   const [currentItem, setCurrentItem] = useState();
   const [actionType, setActionType] = useState<string>();
+
+  const [visible, setVisible] = useState(false);
+  const [imagePath, setImagePath] = useState("");
+  const [loadings, setLoadings] = useState<boolean[]>([]);
 
   const hanleDelete = (id: any) => {
     setOpen(true);
@@ -195,6 +212,160 @@ const ListData = ({
       : postItems;
   };
 
+  const renderTypeById = (category: string) => {
+    let formatCategory = "";
+    switch (category) {
+      case ITEM_NEWS.NEWS:
+        formatCategory = "News";
+        break;
+      case ITEM_NEWS.CAMPUS_LIFE:
+        formatCategory = "Campus life";
+        break;
+      case ITEM_NEWS.SCHOOL_ACTIVITIES:
+        formatCategory = "News";
+        break;
+      case ITEM_NEWS.INTERNATIONAL_COOPERATION:
+        formatCategory = "International cooperation";
+        break;
+      default:
+        break;
+    }
+    return formatCategory;
+  };
+
+  const enterLoading = (index: number, path: string) => {
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      setImagePath(path);
+      newLoadings[index] = true;
+      return newLoadings;
+    });
+
+    setTimeout(() => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        setVisible(true);
+        newLoadings[index] = false;
+        return newLoadings;
+      });
+    }, 300);
+  };
+
+  const columns: TableProps<IPostDataType>["columns"] = [
+    {
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
+    },
+    {
+      title: "Brief",
+      dataIndex: "brief",
+      key: "brief",
+      hidden: type !== LIST_TYPE.IMAGE_TITLE_CONTENT
+    },
+    {
+      title: "Category",
+      dataIndex: "categoryID",
+      render: (_, { categoryID }) => <p>{renderTypeById(categoryID)}</p>,
+      width: 150,
+      hidden: type !== LIST_TYPE.IMAGE_TITLE_CONTENT
+    },
+    {
+      title: "Date",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (_, { createdAt }) => (
+        <p>{moment(createdAt).format("YYYY/MM/DD")}</p>
+      ),
+    },
+    {
+      title: "Status",
+      key: "status",
+      dataIndex: "status",
+      render: (_, { isApproved }) => (
+        <>
+          {isApproved ? (
+            <Tag color="green" icon={<CheckCircleOutlined />}>
+              Approved
+            </Tag>
+          ) : (
+            <Tag color="red" icon={<CloseCircleOutlined />}>
+              Disapproved
+            </Tag>
+          )}
+        </>
+      ),
+      hidden: type !== LIST_TYPE.IMAGE_TITLE_CONTENT 
+    },
+    {
+      title: "Image",
+      key: "image",
+      dataIndex: "image",
+      render: (_, { path }) => (
+        <Button
+          id={path}
+          shape="circle"
+          icon={<EyeOutlined />}
+          loading={loadings[2]}
+          onClick={() => enterLoading(2, path ?? "")}
+        />
+      ),
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_, record) => (
+        <Dropdown
+          key="dropdown"
+          menu={{ items: onGetItem(record) }}
+          placement="bottomLeft"
+          arrow
+        >
+          <Button shape="circle" icon={<MoreOutlined />} />
+        </Dropdown>
+      ),
+    },
+  ];
+
+  const bannerColumns: TableProps<IPostDataType>["columns"] = [
+    {
+      title: "Image",
+      key: "image",
+      dataIndex: "image",
+      render: (_, { path }) => (
+        <img
+          width={272}
+          alt="logo"
+          src={`${import.meta.env.VITE_API_URL}${path}`}
+        />
+      ),
+    },
+    {
+      title: "Date",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (_, { createdAt }) => (
+        <p>{moment(createdAt).format("YYYY/MM/DD")}</p>
+      ),
+      width: 100,
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_, record) => (
+        <Dropdown
+          key="dropdown"
+          menu={{ items: onGetItem(record) }}
+          placement="bottomLeft"
+          arrow
+        >
+          <Button shape="circle" icon={<MoreOutlined />} />
+        </Dropdown>
+      ),
+      width: 100,
+    },
+  ];
+
   return (
     <div>
       <div className="flex justify-end mb-4 gap-3">
@@ -219,7 +390,7 @@ const ListData = ({
           Add new
         </Button>
       </div>
-      <List
+      {/* <List
         header={
           <div className="text-white font-semibold text-2xl">
             List of {section}
@@ -289,6 +460,21 @@ const ListData = ({
             </div>
           </List.Item>
         )}
+      /> */}
+      <Table
+        columns={type !== LIST_TYPE.IMAGE ? columns : bannerColumns}
+        dataSource={data}
+        pagination={false}
+      />
+      <Image
+        style={{ display: "none" }}
+        preview={{
+          visible,
+          src: `${import.meta.env.VITE_API_URL}${imagePath}`,
+          onVisibleChange: (value) => {
+            setVisible(value);
+          },
+        }}
       />
       <CustomModal
         message={modalContent}

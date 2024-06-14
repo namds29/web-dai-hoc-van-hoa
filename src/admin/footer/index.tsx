@@ -6,7 +6,6 @@ const Footer = () => {
   const getPostList = async () => {
     try {
       const res = await footerService.listPostHomepage();
-      console.log(res)
       if (res) {
         setData(res);
       }

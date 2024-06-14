@@ -149,8 +149,6 @@ const AdminResearch = () => {
     try {
       const res = await HomepageService.listPostHomepage();
       if (res?.data) {
-        console.log(res?.data);
-        
         setData(res?.data);
       }
     } catch (error: any) {

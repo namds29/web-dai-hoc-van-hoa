@@ -42,7 +42,7 @@ const Research = () => {
             </div>
            
           </section>
-          <section id="science" className="mt-10">
+          {/* <section id="science" className="mt-10">
             <p className="text-2xl border-b-4">Science Topic</p>
 
             <div className="bg-white w-full mt-10 rounded flex gap-6 p-4 mb-5">
@@ -167,7 +167,7 @@ const Research = () => {
                 See more
               </button>
             </div>
-          </section>
+          </section> */}
         </section>
       </section>
     </section>

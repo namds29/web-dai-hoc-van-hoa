@@ -13,7 +13,6 @@ type DataDetail = {
 
 const TrainingProgramComponent = () => {
   const { programId } = useParams();
-  console.log(programId)
   const [data, setData] = useState<DataDetail | null>(null)
   const [randomItems, setRandomItems] = useState<any[]>([]);
   const navigate = useNavigate();
@@ -25,7 +24,7 @@ const TrainingProgramComponent = () => {
   useEffect(() => {
     if (programId) {
       const resDetail: DataDetail = DATA_DETAIL.filter(item => item.id === programId)[0];
-      console.log(resDetail)
+
       setData(resDetail)
     }
   }, [programId])

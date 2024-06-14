@@ -62,7 +62,6 @@ const AdminHomePage = () => {
         const bannerList = res?.data.filter(
           (item: any) => item.categoryID === ITEM_HOMEPAGE.BANNER_IMG
         )
-        console.log(bannerList)
         setBannerList(bannerList)
       }
     } catch (error: any) {

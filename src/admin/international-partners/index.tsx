@@ -129,8 +129,7 @@ const AdminInternationalPartnerss = () => {
     setOpenModal(false);
   };
 
-  const handleOk = (value: any) => {
-    console.log(value);
+  const handleOk = () => {
     setData([]);
   };
 

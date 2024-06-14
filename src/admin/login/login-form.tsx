@@ -23,7 +23,6 @@ const LoginForm = () => {
   }: User) => {
     try {
       const res = await AuthService.login({ userID: username, password: password });
-      console.log(res)
       if (res?.message === "success") {
         AuthService.setToken(res.data.accessToken);
         navigate("/admin");
