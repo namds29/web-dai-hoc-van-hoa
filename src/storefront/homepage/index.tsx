@@ -18,6 +18,7 @@ import {
 import CustomModal from "src/components/custom-modal";
 import HomepageService from "src/services/homepage/homepageService";
 import { Link, useNavigate } from "react-router-dom";
+import { FetchResult, PromiseResult } from "src/types";
 
 const SIZE = 3;
 
@@ -27,6 +28,7 @@ const SlickButtonFix = ({
   children,
   ...props
 }: any) => <div {...props}>{children}</div>;
+
 
 const Homepage = () => {
   const [open, setOpen] = useState(false);
@@ -38,6 +40,7 @@ const Homepage = () => {
   const [announcementData, setAnnouncementData] = useState<IPostDataType[]>([]);
   const [mvvData, setMvvData] = useState<IPostDataType[]>([]);
   const [bannerData, setBannerData] = useState<IBannerDataType[]>([]);
+  const [data, setData] = useState<FetchResult[]>([])
   const navigate = useNavigate();
   const settings = {
     className: "center",
@@ -87,33 +90,47 @@ const Homepage = () => {
   };
 
   useEffect(() => {
-    getPostList(ITEM_NEWS.NEWS);
-    getPostList(ITEM_NEWS.CAMPUS_LIFE);
-    getPostList(ITEM_NEWS.INTERNATIONAL_COOPERATION);
-    getPostList(ITEM_NEWS.SCHOOL_ACTIVITIES);
-    getPostList(ITEM_HOMEPAGE.MVV);
-    getBannerList();
-    getAnnouncement();
+    const fetchData = async () => {
+      try {
+        const results = await Promise.allSettled([
+          getPostList('NEWS').then(data => ({ source: 'NEWS', data })),
+          getPostList('CAMPUS_LIFE').then(data => ({ source: 'CAMPUS_LIFE', data })),
+          getPostList('INTERNATIONAL_COOPERATION').then(data => ({ source: 'INTERNATIONAL_COOPERATION', data })),
+          getPostList('SCHOOL_ACTIVITIES').then(data => ({ source: 'SCHOOL_ACTIVITIES', data })),
+          getPostList('MVV').then(data => ({ source: 'MVV', data })),
+          getBannerList().then(data => ({ source: 'BANNER_LIST', data })),
+          getAnnouncement().then(data => ({ source: 'ANNOUNCEMENT', data }))
+        ]);
+        
+        const formattedResults = results.map(result => {
+          if (result.status === 'fulfilled') {
+            return { source: result.value.source, data: result.value.data };
+          } else {
+            return { source: 'Unknown', error: result.reason };
+          }
+        });
+
+        const sortedHighlight = formattedResults[3].data.sort(
+          (a: any, b:any) =>
+            new Date(b.createdAt ?? "").getTime() -
+            new Date(a.createdAt ?? "").getTime()
+        );
+
+        setHiglightData(sortedHighlight);
+        setAnnouncementData(formattedResults[6].data);
+        setBannerData(formattedResults[5].data);
+        setMvvData(formattedResults[4].data)
+      } catch (error) {
+        console.error('Error fetching data', error);
+      }
+    }
+   fetchData()
   }, []);
 
   const getPostList = async (id: any) => {
     try {
       const res = await HomepageService.listPostHomepageWithCategoryId(id);
-      if (res?.data) {
-        switch (id) {
-          case ITEM_NEWS.NEWS:
-          case ITEM_NEWS.CAMPUS_LIFE:
-          case ITEM_NEWS.INTERNATIONAL_COOPERATION:
-          case ITEM_NEWS.SCHOOL_ACTIVITIES:
-            setHiglightData(higlightData.concat(res?.data));
-            break;
-          case ITEM_HOMEPAGE.MVV:
-            setMvvData(res?.data);
-            break;
-          default:
-            break;
-        }
-      }
+      return res.data
     } catch (error: any) {
       if (error) {
         console.log(error);
@@ -125,7 +142,7 @@ const Homepage = () => {
     try {
       const res = await HomepageService.listBannerHomepage();
       if (res?.data) {
-        setBannerData(res?.data);
+        return res.data
       }
     } catch (error: any) {
       if (error) {
@@ -138,8 +155,7 @@ const Homepage = () => {
     try {
       const res = await HomepageService.listAnnouncement();
       if (res?.data) {
-        console.log(res?.data);
-        setAnnouncementData(res?.data);
+        return res.data
       }
     } catch (error: any) {
       if (error) {
@@ -148,16 +164,10 @@ const Homepage = () => {
     }
   };
 
-  useEffect(() => {
-    const sorted = [...higlightData].sort(
-      (a, b) =>
-        new Date(a.createdAt ?? "").getTime() -
-        new Date(b.createdAt ?? "").getTime()
-    );
-    setHiglightData(sorted);
-  }, [higlightData]);
+ 
 
   return (
+    
     <div className={styles.container}>
       <Banner />
       <section className="w-full">

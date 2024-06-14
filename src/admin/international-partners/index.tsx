@@ -130,7 +130,6 @@ const AdminInternationalPartnerss = () => {
   };
 
   const handleOk = (value: any) => {
-    console.log(value);
     setData([]);
   };
 

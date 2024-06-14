@@ -157,7 +157,6 @@ const AdminStudentSupport = () => {
   };
 
   const handleOk = (value: any) => {
-    console.log(value);
     setData([]);
   };
 

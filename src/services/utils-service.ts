@@ -18,8 +18,6 @@ export const apiGet = async (url: string) => {
 }
 
 export const apiGetData = async (url: string, params?: any) => {
-    console.log(params);
-    
     const config = {
         method: METHOD_API.GET,
         url: url,
