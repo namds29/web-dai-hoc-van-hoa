@@ -140,7 +140,7 @@ const AdminAbout = () => {
 
   const editPost = async (id: number, data: IEditPostType) => {
     try {
-      const res = await HomepageService.editPostHomepage(id, data);
+       await HomepageService.editPostHomepage(id, data);
     } catch (error: any) {
       if (error) {
         console.log(error);

@@ -13,12 +13,10 @@ import {
   IMessage,
   IPostDataType,
   ITEM_HOMEPAGE,
-  ITEM_NEWS,
 } from "src/interfaces";
 import CustomModal from "src/components/custom-modal";
 import HomepageService from "src/services/homepage/homepageService";
 import { Link, useNavigate } from "react-router-dom";
-import { FetchResult, PromiseResult } from "src/types";
 
 const SIZE = 3;
 
@@ -40,7 +38,6 @@ const Homepage = () => {
   const [announcementData, setAnnouncementData] = useState<IPostDataType[]>([]);
   const [mvvData, setMvvData] = useState<IPostDataType[]>([]);
   const [bannerData, setBannerData] = useState<IBannerDataType[]>([]);
-  const [data, setData] = useState<FetchResult[]>([])
   const navigate = useNavigate();
   const settings = {
     className: "center",
