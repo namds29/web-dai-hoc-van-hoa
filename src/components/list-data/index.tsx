@@ -6,9 +6,24 @@ import {
   CheckCircleOutlined,
   MoreOutlined,
   CloseCircleOutlined,
+  HighlightOutlined,
+  StopOutlined,
 } from "@ant-design/icons";
-import { Button, Dropdown, List, MenuProps, Tag } from "antd";
-import { IMessage, IPostDataType, LIST_TYPE } from "src/interfaces";
+import {
+  Button,
+  Dropdown,
+  Image,
+  MenuProps,
+  Table,
+  TableProps,
+  Tag,
+} from "antd";
+import {
+  IMessage,
+  IPostDataType,
+  ITEM_NEWS,
+  LIST_TYPE,
+} from "src/interfaces";
 import CustomModal from "../custom-modal";
 import moment from "moment";
 
@@ -49,6 +64,10 @@ const ListData = ({
   const [currentItem, setCurrentItem] = useState();
   const [actionType, setActionType] = useState<string>();
 
+  const [visible, setVisible] = useState(false);
+  const [imagePath, setImagePath] = useState("");
+  const [loadings, setLoadings] = useState<boolean[]>([]);
+
   const hanleDelete = (id: any) => {
     setOpen(true);
     setCurrentItem(id);
@@ -59,23 +78,31 @@ const ListData = ({
     });
   };
 
-  const hanleApprove = (id: any) => {
+  const hanleApprove = (item: any) => {
     setOpen(true);
-    setCurrentItem(id);
-    setActionType("approve");
+    setCurrentItem(item.id);
+    setActionType(item.isApproved ? "disapprove" : "approve");
     setModalContent({
       title: <p className="text-xl">Confirm</p>,
-      content: <div>Do you want approve this ?</div>,
+      content: (
+        <div>
+          Do you want {item.isApproved ? "disapprove" : "approve"} this ?
+        </div>
+      ),
     });
   };
 
-  const hanleHighlight = (id: any) => {
+  const hanleHighlight = (item: any) => {
     setOpen(true);
-    setCurrentItem(id);
-    setActionType("highlight");
+    setCurrentItem(item.id);
+    setActionType(item.isHighlighted ? "unhighlight" : "highlight");
     setModalContent({
       title: <p className="text-xl">Confirm</p>,
-      content: <div>Do you want highlight this ?</div>,
+      content: (
+        <div>
+          Do you want {item.isHighlighted ? "unhighlight" : "highlight"} this ?
+        </div>
+      ),
     });
   };
 
@@ -147,10 +174,10 @@ const ListData = ({
         key: "3",
         label: (
           <IconText
-            icon={CheckCircleOutlined}
-            text="Approve"
+            icon={!item.isApproved ? CheckCircleOutlined : CloseCircleOutlined}
+            text={!item.isApproved ? "Approve" : "Disapprove"}
             danger={false}
-            onClick={() => hanleApprove(item.id)}
+            onClick={() => hanleApprove(item)}
           />
         ),
       },
@@ -158,15 +185,15 @@ const ListData = ({
         key: "4",
         label: (
           <IconText
-            icon={CheckCircleOutlined}
-            text="Highlight"
+            icon={!item.isHighlighted ? HighlightOutlined : StopOutlined}
+            text={!item.isHighlighted ? "Highlight" : "Unhighlight"}
             danger={false}
-            onClick={() => hanleHighlight(item.id)}
+            onClick={() => hanleHighlight(item)}
           />
         ),
       },
       {
-        key: "4",
+        key: "5",
         label: (
           <IconText
             icon={DeleteOutlined}
@@ -184,6 +211,160 @@ const ListData = ({
       ? bannerItems
       : postItems;
   };
+
+  const renderTypeById = (category: string) => {
+    let formatCategory = "";
+    switch (category) {
+      case ITEM_NEWS.NEWS:
+        formatCategory = "News";
+        break;
+      case ITEM_NEWS.CAMPUS_LIFE:
+        formatCategory = "Campus life";
+        break;
+      case ITEM_NEWS.SCHOOL_ACTIVITIES:
+        formatCategory = "News";
+        break;
+      case ITEM_NEWS.INTERNATIONAL_COOPERATION:
+        formatCategory = "International cooperation";
+        break;
+      default:
+        break;
+    }
+    return formatCategory;
+  };
+
+  const enterLoading = (index: number, path: string) => {
+    setLoadings((prevLoadings) => {
+      const newLoadings = [...prevLoadings];
+      setImagePath(path);
+      newLoadings[index] = true;
+      return newLoadings;
+    });
+
+    setTimeout(() => {
+      setLoadings((prevLoadings) => {
+        const newLoadings = [...prevLoadings];
+        setVisible(true);
+        newLoadings[index] = false;
+        return newLoadings;
+      });
+    }, 300);
+  };
+
+  const columns: TableProps<IPostDataType>["columns"] = [
+    {
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
+    },
+    {
+      title: "Brief",
+      dataIndex: "brief",
+      key: "brief",
+      hidden: type !== LIST_TYPE.IMAGE_TITLE_CONTENT
+    },
+    {
+      title: "Category",
+      dataIndex: "categoryID",
+      render: (_, { categoryID }) => <p>{renderTypeById(categoryID)}</p>,
+      width: 150,
+      hidden: type !== LIST_TYPE.IMAGE_TITLE_CONTENT
+    },
+    {
+      title: "Date",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (_, { createdAt }) => (
+        <p>{moment(createdAt).format("YYYY/MM/DD")}</p>
+      ),
+    },
+    {
+      title: "Status",
+      key: "status",
+      dataIndex: "status",
+      render: (_, { isApproved }) => (
+        <>
+          {isApproved ? (
+            <Tag color="green" icon={<CheckCircleOutlined />}>
+              Approved
+            </Tag>
+          ) : (
+            <Tag color="red" icon={<CloseCircleOutlined />}>
+              Disapproved
+            </Tag>
+          )}
+        </>
+      ),
+      hidden: type !== LIST_TYPE.IMAGE_TITLE_CONTENT 
+    },
+    {
+      title: "Image",
+      key: "image",
+      dataIndex: "image",
+      render: (_, { path }) => (
+        <Button
+          id={path}
+          shape="circle"
+          icon={<EyeOutlined />}
+          loading={loadings[2]}
+          onClick={() => enterLoading(2, path ?? "")}
+        />
+      ),
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_, record) => (
+        <Dropdown
+          key="dropdown"
+          menu={{ items: onGetItem(record) }}
+          placement="bottomLeft"
+          arrow
+        >
+          <Button shape="circle" icon={<MoreOutlined />} />
+        </Dropdown>
+      ),
+    },
+  ];
+
+  const bannerColumns: TableProps<IPostDataType>["columns"] = [
+    {
+      title: "Image",
+      key: "image",
+      dataIndex: "image",
+      render: (_, { path }) => (
+        <img
+          width={272}
+          alt="logo"
+          src={`${import.meta.env.VITE_API_URL}${path}`}
+        />
+      ),
+    },
+    {
+      title: "Date",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (_, { createdAt }) => (
+        <p>{moment(createdAt).format("YYYY/MM/DD")}</p>
+      ),
+      width: 100,
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_, record) => (
+        <Dropdown
+          key="dropdown"
+          menu={{ items: onGetItem(record) }}
+          placement="bottomLeft"
+          arrow
+        >
+          <Button shape="circle" icon={<MoreOutlined />} />
+        </Dropdown>
+      ),
+      width: 100,
+    },
+  ];
 
   return (
     <div>
@@ -209,7 +390,7 @@ const ListData = ({
           Add new
         </Button>
       </div>
-      <List
+      {/* <List
         header={
           <div className="text-white font-semibold text-2xl">
             List of {section}
@@ -279,6 +460,21 @@ const ListData = ({
             </div>
           </List.Item>
         )}
+      /> */}
+      <Table
+        columns={type !== LIST_TYPE.IMAGE ? columns : bannerColumns}
+        dataSource={data}
+        pagination={false}
+      />
+      <Image
+        style={{ display: "none" }}
+        preview={{
+          visible,
+          src: `${import.meta.env.VITE_API_URL}${imagePath}`,
+          onVisibleChange: (value) => {
+            setVisible(value);
+          },
+        }}
       />
       <CustomModal
         message={modalContent}

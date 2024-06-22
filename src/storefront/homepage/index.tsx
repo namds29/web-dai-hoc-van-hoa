@@ -13,7 +13,6 @@ import {
   IMessage,
   IPostDataType,
   ITEM_HOMEPAGE,
-  ITEM_NEWS,
 } from "src/interfaces";
 import CustomModal from "src/components/custom-modal";
 import HomepageService from "src/services/homepage/homepageService";
@@ -27,6 +26,7 @@ const SlickButtonFix = ({
   children,
   ...props
 }: any) => <div {...props}>{children}</div>;
+
 
 const Homepage = () => {
   const [open, setOpen] = useState(false);
@@ -87,27 +87,47 @@ const Homepage = () => {
   };
 
   useEffect(() => {
-    getPostList(ITEM_NEWS.NEWS);
-    getPostList(ITEM_HOMEPAGE.MVV);
-    getBannerList();
-    getAnnouncement();
+    const fetchData = async () => {
+      try {
+        const results = await Promise.allSettled([
+          getPostList('NEWS').then(data => ({ source: 'NEWS', data })),
+          getPostList('CAMPUS_LIFE').then(data => ({ source: 'CAMPUS_LIFE', data })),
+          getPostList('INTERNATIONAL_COOPERATION').then(data => ({ source: 'INTERNATIONAL_COOPERATION', data })),
+          getPostList('SCHOOL_ACTIVITIES').then(data => ({ source: 'SCHOOL_ACTIVITIES', data })),
+          getPostList('MVV').then(data => ({ source: 'MVV', data })),
+          getBannerList().then(data => ({ source: 'BANNER_LIST', data })),
+          getAnnouncement().then(data => ({ source: 'ANNOUNCEMENT', data }))
+        ]);
+        
+        const formattedResults = results.map(result => {
+          if (result.status === 'fulfilled') {
+            return { source: result.value.source, data: result.value.data };
+          } else {
+            return { source: 'Unknown', error: result.reason };
+          }
+        });
+
+        const sortedHighlight = formattedResults[3].data.sort(
+          (a: any, b:any) =>
+            new Date(b.createdAt ?? "").getTime() -
+            new Date(a.createdAt ?? "").getTime()
+        );
+
+        setHiglightData(sortedHighlight);
+        setAnnouncementData(formattedResults[6].data);
+        setBannerData(formattedResults[5].data);
+        setMvvData(formattedResults[4].data)
+      } catch (error) {
+        console.error('Error fetching data', error);
+      }
+    }
+   fetchData()
   }, []);
 
   const getPostList = async (id: any) => {
     try {
       const res = await HomepageService.listPostHomepageWithCategoryId(id);
-      if (res?.data) {
-        switch (id) {
-          case ITEM_NEWS.NEWS:
-            setHiglightData(res?.data);
-            break;
-          case ITEM_HOMEPAGE.MVV:
-            setMvvData(res?.data);
-            break;
-          default:
-            break;
-        }
-      }
+      return res.data
     } catch (error: any) {
       if (error) {
         console.log(error);
@@ -119,7 +139,7 @@ const Homepage = () => {
     try {
       const res = await HomepageService.listBannerHomepage();
       if (res?.data) {
-        setBannerData(res?.data);
+        return res.data
       }
     } catch (error: any) {
       if (error) {
@@ -132,8 +152,7 @@ const Homepage = () => {
     try {
       const res = await HomepageService.listAnnouncement();
       if (res?.data) {
-        console.log(res?.data);
-        setAnnouncementData(res?.data);
+        return res.data
       }
     } catch (error: any) {
       if (error) {
@@ -142,7 +161,10 @@ const Homepage = () => {
     }
   };
 
+ 
+
   return (
+    
     <div className={styles.container}>
       <Banner />
       <section className="w-full">

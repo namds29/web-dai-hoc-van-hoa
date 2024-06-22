@@ -50,6 +50,7 @@ export type IPostDataType = {
   type?: number;
   path?: string;
   displayOnImageLibrary?: number;
+  isHighlighted?: number;
 };
 
 export type IBannerDataType = {

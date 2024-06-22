@@ -86,8 +86,6 @@ const AdminAcademics = () => {
     content?: string;
     imgFile: File;
   }) => {
-    console.log(value.imgFile);
-
     if (editTypeValue?.type === MODAL_TYPE.CREATE) {
       const newObj: ICreateAddmissionType = {
         title: value.title ?? "",
@@ -143,7 +141,6 @@ const AdminAcademics = () => {
       const payload: IGetAddmissionType = {
         categoryID: id,
       };
-      console.log(payload);
 
       const res = await HomepageService.getAddmissionByCategoryId(payload);
       if (res?.data) {
