@@ -15,7 +15,6 @@ const FormalTraining = () => {
   const [unitId, setUnitId] = useState<number>(1);
 
   const handleChangeUnit = (id: number) => {
-    console.log(id);
     setUnitId(id);
   };
 
