@@ -1,12 +1,37 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import Particles from "react-tsparticles";
 import { Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
+import HomepageService from "src/services/homepage/homepageService";
+import { IFooterDataType } from "src/interfaces";
 const Footer = () => {
+  const [data, setData] = useState<IFooterDataType[]>([
+    { id: 1, content: "" },
+    { id: 2, content: "" },
+    { id: 3, content: "" },
+    { id: 4, content: "" },
+    { id: 5, content: "" },
+  ]);
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
+
+  const getFooterList = async () => {
+    try {
+      const res = await HomepageService.listFooter();
+      if (res) setData(res);
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getFooterList();
+  }, []);
+
   return (
     <footer>
       <section
@@ -68,11 +93,11 @@ const Footer = () => {
         <div className="flex flex-wrap md:flex-nowrap lg:flex-row gap-10 xl:gap-16 absolute w-full h-full px-8 xl:px-24 py-8">
           <div className="text-sm">
             <p className="font-bold text-lg mb-4">CONNECT WITH TUCST</p>
-            <p>Address: No. 561 Quang Trung 3, Dong Ve Ward, City. Thanh Hoa</p>
+            <p>Address: {data[0].content}</p>
             <p>
-              Phone: +(84) 2373. 953 388 <br /> +(84) 2373. 857 421
+              Phone: +(84) {data[1].content} <br /> +(84) 2373. 857 421
             </p>
-            <p>Website: http://www.dvtdt.edu.vn</p>
+            <p>Website: http://{data[2].content}.edu.vn</p>
             <div className="mt-7">
               <iframe
                 src="https://maps.google.com/maps?q=Thanh%20Hoa%20University%20of%20Culture&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
@@ -83,23 +108,13 @@ const Footer = () => {
           <div className="block">
             <p className="font-bold text-lg">Social Media </p>
             <div className="mt-4">
-              <a
-                className="underline"
-                href="https://www.facebook.com/profile.php?id=100064751773340"
-                target="_blank"
-              >
-                Thanh Hoa University of Culture, Sports and Tourism Youth Union
-                fanpage
+              <a className="underline" href={data[3].url} target="_blank">
+                {data[3].content}
               </a>
             </div>
             <div className="mt-4">
-              <a
-                className="underline"
-                href="https://www.facebook.com/tuyensinh.dvtdt.edu.vn"
-                target="_blank"
-              >
-                Thanh Hoa University of Culture, Sports and Tourism Admissions
-                fanpage
+              <a className="underline" href={data[4].url} target="_blank">
+                {data[4].content}
               </a>
             </div>
           </div>

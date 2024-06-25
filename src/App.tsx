@@ -24,6 +24,7 @@ import NewsDetailComponent from "./storefront/news/detail/news-detail";
 import NewsListComponent from "./storefront/news/list/index";
 import Faculties from "./storefront/faculties";
 import TrainingProgramComponent from "./storefront/academics/training-program-detail";
+import AdminFooter from "./admin/footer";
 
 const AboutComponent = lazy(() => import("./storefront/about"));
 const NewsComponent = lazy(() => import("./storefront/news"));
@@ -50,6 +51,7 @@ function App() {
               element={<AdminStudentSupport />}
             />
             <Route path="/admin/research" element={<AdminResearch />} />
+            <Route path="/admin/footer" element={<AdminFooter />} />
           </Route>
 
           <Route path="/login" element={<LoginPage />} />
@@ -61,7 +63,10 @@ function App() {
             <Route path="/news/:id" element={<NewsDetailComponent />} />
             <Route path="/news-list/:name" element={<NewsListComponent />} />
             <Route path="/academics" element={<AcademicsComponent />} />
-            <Route path="/academics/:programId" element={<TrainingProgramComponent />} />
+            <Route
+              path="/academics/:programId"
+              element={<TrainingProgramComponent />}
+            />
             <Route
               path="/academics/formal-training"
               element={<FormalTraining />}
@@ -76,9 +81,6 @@ function App() {
             <Route path="/research" element={<Research />} />
             {/* <Route path="/wallpaper" element={<Wallpapers />} /> */}
           </Route>
-
-
-
         </Routes>
       </AuthProvider>
     </Suspense>
