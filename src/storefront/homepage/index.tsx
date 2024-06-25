@@ -161,8 +161,6 @@ const Homepage = () => {
     }
   };
 
- 
-
   return (
     
     <div className={styles.container}>
