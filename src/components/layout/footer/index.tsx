@@ -7,12 +7,13 @@ import HomepageService from "src/services/homepage/homepageService";
 import { IFooterDataType } from "src/interfaces";
 const Footer = () => {
   const [data, setData] = useState<IFooterDataType[]>([
-    { id: 1, content: "" },
-    { id: 2, content: "" },
-    { id: 3, content: "" },
-    { id: 4, content: "" },
-    { id: 5, content: "" },
+    {id: 1, content: ""},
+    {id: 2, content: ""},
+    {id: 3, content: ""},
+    {id: 4, content: ""},
+    {id: 5, content: ""},
   ]);
+  
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
@@ -114,7 +115,7 @@ const Footer = () => {
             </div>
             <div className="mt-4">
               <a className="underline" href={data[4].url} target="_blank">
-                {data[4].content}
+                { data[4].content}
               </a>
             </div>
           </div>
