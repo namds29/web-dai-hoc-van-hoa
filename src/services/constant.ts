@@ -9,8 +9,8 @@ export const API_ADMIN = Object.freeze(
             },
             BANNER: "banners",
             ANNOUNCEMENT: "announcements",
-            ADDMISSION: "accordions"
-        },
-        FOOTER: 'footers'
+            ADDMISSION: "accordions",
+            FOOTER: "footers"
+        }
     }
 )

@@ -53,6 +53,17 @@ export type IPostDataType = {
   isHighlighted?: number;
 };
 
+export type IFooterDataType = {
+  id: number;
+  content: string;
+  modifiedByUserID?: number;
+  createdByUserID?: number;
+  createdAt?: string;
+  updatedAt?: string;
+  url?: string;
+  type?: number;
+}; 
+
 export type IBannerDataType = {
   id: number;
   name: string;
@@ -138,6 +149,11 @@ export type IEditBannerType = {
 export type IEditAnnouncementType = {
   title: string;
   postID?: number;
+};
+
+export type IEditFooterType = {
+  content: string;
+  url?: string;
 };
 
 export enum PostCategory {

@@ -8,6 +8,7 @@ import {
   IGetAddmissionType,
   IEditAnnouncementType,
   IPositionItem,
+  IEditFooterType,
 } from "src/interfaces";
 import { API_ADMIN } from "../constant";
 import {
@@ -40,6 +41,11 @@ const listBannerHomepage = async (): Promise<any> => {
   return res;
 };
 
+const listFooter = async (): Promise<any> => {
+  const res = await apiGet(API_ADMIN.HOMEPAGE.FOOTER + "?type=0");
+  return res;
+};
+
 const getAddmissionByCategoryId = async (
   params: IGetAddmissionType
 ): Promise<any> => {
@@ -50,7 +56,18 @@ const getAddmissionByCategoryId = async (
 const getPostById = async (id: number): Promise<any> => {
   const res = await apiGet(`${API_ADMIN.HOMEPAGE.POST.INDEX}/${id}`);
   return res;
-}
+};
+
+const editFooter = async (
+  id: number,
+  params: IEditFooterType
+): Promise<any> => {
+  const res = await apiUpdate(
+    API_ADMIN.HOMEPAGE.FOOTER + "/" + id,
+    params
+  );
+  return res;
+};
 
 const editPostHomepage = async (
   id: number,
@@ -85,7 +102,10 @@ const editAnnouncement = async (
   id: number,
   params: IEditAnnouncementType
 ): Promise<any> => {
-  const res = await apiUpdate(API_ADMIN.HOMEPAGE.ANNOUNCEMENT + "/" + id, params);
+  const res = await apiUpdate(
+    API_ADMIN.HOMEPAGE.ANNOUNCEMENT + "/" + id,
+    params
+  );
   return res;
 };
 
@@ -96,10 +116,8 @@ const editAddmissionHomepage = async (
   const res = await apiUpdate(API_ADMIN.HOMEPAGE.ADDMISSION + "/" + id, params);
   return res;
 };
-const editPositionBanner = async (
-  params: IPositionItem[]
-): Promise<any> => {
-  const data = { orderings: JSON.stringify(params)} 
+const editPositionBanner = async (params: IPositionItem[]): Promise<any> => {
+  const data = { orderings: JSON.stringify(params) };
   const res = await apiPatch(API_ADMIN.HOMEPAGE.BANNER, data);
   return res;
 };
@@ -108,7 +126,10 @@ const approvePostHomepage = async (
   id: number,
   params: { isApproved: boolean }
 ): Promise<any> => {
-  const res = await apiUpdate(API_ADMIN.HOMEPAGE.POST.APPROVE + "/" + id, params);
+  const res = await apiUpdate(
+    API_ADMIN.HOMEPAGE.POST.APPROVE + "/" + id,
+    params
+  );
   return res;
 };
 
@@ -184,10 +205,12 @@ const HomepageService = {
   listPostHomepageWithCategoryId,
   listAnnouncement,
   listBannerHomepage,
+  listFooter,
   editPostHomepage,
   editBannerHomepage,
   editAddmissionHomepage,
   editAnnouncement,
+  editFooter,
   createAnnouncement,
   createPostHomepage,
   createBannerHomepage,
@@ -199,6 +222,6 @@ const HomepageService = {
   getPostById,
   getAddmissionByCategoryId,
   approvePostHomepage,
-  editPositionBanner
+  editPositionBanner,
 };
 export default HomepageService;
