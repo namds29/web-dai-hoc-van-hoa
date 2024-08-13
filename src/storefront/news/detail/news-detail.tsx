@@ -108,9 +108,9 @@ const NewsDetailComponent = () => {
 
   return (
     <>
-      <div className="bg-gray-100 min-h-[100vh] py-10 text-black flex gap-10 w-full justify-center">
-        <section aria-label="link-page" className="w-[10%]"></section>
-        <section className="w-[55%]">
+      <div className="bg-gray-100 min-h-[100vh] py-10 text-black flex flex-col lg:flex-row gap-10 w-full justify-center">
+        {/* <section aria-label="link-page" className="hidden w-[10%]"></section> */}
+        <section className="lg:w-[55%] px-8">
           <div className="flex w-full text-orange-500 font-bold mb-6 justify-center items-center">
             <div className="text-xl border-b-4">{data?.title}</div>
             <div></div>
@@ -123,7 +123,7 @@ const NewsDetailComponent = () => {
             </div>
           </div>
         </section>
-        <section aria-label="news relate" className="w-[15%]">
+        <section aria-label="news relate" className="px-8 lg:w-[15%]">
           <div className="text-orange-500 font-bold border-b-4">
             NEWS YOU MAY INTEREST
           </div>

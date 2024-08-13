@@ -588,7 +588,7 @@ const Academics = () => {
       <div className="w-full">
         <img style={contentStyle} src="/img/academics.png" alt="banner 2" />
       </div>
-      <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
+      <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-4 xl:px-20 py-8">
         <p className="text-3xl border-b-4 text-center">Academics</p>
         <section id="functional_unit">
           <p className="text-2xl mt-8">Functional Units</p>
@@ -598,13 +598,13 @@ const Academics = () => {
                 <div
                   key={item.id}
                   onClick={() => handleChangeUnit(item.id)}
-                  className="border-b font-normal text-xl flex justify-between items-center cursor-pointer text-white hover:text-gray-300 px-4 py-2"
+                  className="border-b font-normal text-sm lg:text-xl flex justify-between items-center cursor-pointer text-white hover:text-gray-300 px-4 py-2"
                 >
                   <a>{item.title}</a>
                 </div>
               ))}
             </div>
-            <div className="description font-normal p-4 w-2/3 bg-orange-300 rounded-r-xl">
+            <div className="description font-normal text-sm p-4 w-2/3 bg-orange-300 rounded-r-xl">
               {handleChangeContent(unitId)}
             </div>
           </div>
@@ -613,16 +613,16 @@ const Academics = () => {
           <p className="text-2xl mt-8 underline underline-offset-8">
             Training Program
           </p>
-          <div className="flex text-black border-black mt-4">
-            <div className="title w-1/3 bg-orange-400 rounded-xl">
+          <div className="flex flex-col lg:flex-row text-black border-black mt-4">
+            <div className="title w-full lg:w-1/3 bg-orange-400 rounded-xl">
               {ACADEMICS_TRAINING_PROGRAM.map((item) => (
                 <div key={item.parent_title} className=" text-black px-4 py-2">
-                  <a className="text-xl font-bold">{item.parent_title}</a>
+                  <a className="text-sm lg:text-xl font-bold">{item.parent_title}</a>
                   <div className="cursor-pointer ml-4 text-white font-normal ">
                     {item.children_title.map((child) => (
                       <div
                         key={child.link}
-                        className="underline hover:text-gray-300"
+                        className="text-sm lg:text-base underline hover:text-gray-300"
                         onClick={() => navigate(child.link)}
                       >
                         {child.title}
@@ -632,10 +632,10 @@ const Academics = () => {
                 </div>
               ))}
             </div>
-            <div className="description font-normal pl-10 w-2/3">
+            <div className="description w-full font-normal pl-10 w-2/3">
               <div className="content">
-                <p className="font-bold text-center text-2xl">University</p>
-                <div className="flex mt-8 gap-10">
+                <p className="font-bold text-center text-2xl mt-8">University</p>
+                <div className="flex flex-col lg:flex-row items-center justify-center mt-8 gap-10 w-full">
                   <div className="w-full flex flex-col justify-center items-center">
                     <div className="w-full rounded-xl bg-orange-500 cursor-pointer">
                       <img

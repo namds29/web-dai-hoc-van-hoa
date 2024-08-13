@@ -233,7 +233,7 @@ const About = () => {
   return (
     <section className="w-full">
       <Banner />
-      <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
+      <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-4 xl:px-20 py-8">
         <p className="text-xl border-b-4 ">PRESIDENT’S MESSAGE</p>
         <div className="p-4 gap-10">
           <blockquote className={styles.quotes}>
@@ -283,14 +283,14 @@ const About = () => {
         </div>
       </section>
 
-      <section className={`bg_gradient_blue_to_light w-full px-24 py-8 `}>
+      <section className={`bg_gradient_blue_to_light w-full px-4 xl:px-24 py-8 `}>
         <div className="flex justify-center text-white font-bold mb-10">
           <p className={`text-4xl border-b-4`}>Governing Board</p>
         </div>
-        <div className="grid grid-cols-3 gap-4 text-black pb-10">
-          <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
+        <div className="flex flex-col  lg:grid lg:grid-cols-3 gap-6 text-black pb-10">
+          <div className="flex flex-col  rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div
-              className="w-full h-full grayscale hover:grayscale-0 duration-500  cursor-pointer"
+              className="w-full h-96 grayscale hover:grayscale-0 duration-500  cursor-pointer"
               onClick={() =>
                 handleOpenPresident("Assoc .Prof. Dr. Nguyen Thi Thuc")
               }
@@ -307,9 +307,9 @@ const About = () => {
               (Vice president)
             </div>
           </div>
-          <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
+          <div className="h-full rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div
-              className="w-full h-full grayscale hover:grayscale-0 duration-500 cursor-pointer"
+              className="w-full h-96 grayscale hover:grayscale-0 duration-500 cursor-pointer"
               onClick={() =>
                 handleOpenPresident("Assoc. Prof. Dr. Le Thanh Ha")
               }
@@ -328,7 +328,7 @@ const About = () => {
           </div>
           <div className="h-96 rounded-t-xl w-full hover:drop-shadow-2xl ">
             <div
-              className="w-full h-full grayscale hover:grayscale-0 duration-500 bg-slate-500  cursor-pointer"
+              className="w-full h-96 grayscale hover:grayscale-0 duration-500 bg-slate-500  cursor-pointer"
               onClick={() => handleOpenPresident("Dr. Dong Huong Lan")}
             >
               <img
@@ -346,7 +346,7 @@ const About = () => {
         </div>
       </section>
 
-      <section className="bg-white w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
+      <section className="bg-white w-full text-orange-500 font-bold  justify-between items-center px-4 xl:px-20 py-8">
         <p className="text-xl border-b-4 ">ABOUT TUCST</p>
         <p className="mt-8 text-black">SCHOOL NAME</p>
         <div className="flex gap-8 mt-4">
@@ -366,7 +366,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className="flex justify-center text-xl bold text-center gap-16 bg-gray-200 w-full text-black  font-bold px-20 py-8">
+      <section className="flex flex-col lg:flex-row justify-center items-center text-xl bold text-center gap-16 bg-gray-200 w-full text-black  font-bold px-4 xl:px-20 py-8">
         <div
           onClick={handleOpenModalHistory}
           className="w-[20rem] h-[20rem] rounded-lg bg-orange-300 flex items-center justify-center cursor-pointer"
@@ -389,7 +389,7 @@ const About = () => {
         </div>
       </section>
       <section>
-        <div className="flex gap-4 text-white">
+        <div className="flex flex-col lg:flex-row gap-4 text-white">
           <div className="w-full rounded">
             <div className="w-full flex items-center h-full">
               <img

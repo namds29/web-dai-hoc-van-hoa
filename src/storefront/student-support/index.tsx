@@ -160,7 +160,7 @@ const StudentSupport = () => {
         <img src="/img/student_support.png" alt="Student Support" />
       </div>
 
-      <section className="bg-gray-100 w-full px-24 py-6">
+      <section className="bg-gray-100 w-full px-4 lg:px-24 py-6">
         <div className="w-full flex justify-center mt-6 mb-10 border-b-4">
           <p className="text-5xl text-orange-500 ">International Student Guidebook</p>
         </div>
@@ -168,7 +168,7 @@ const StudentSupport = () => {
         <div className="flex text-orange-500 font-bold items-center">
           <p className="text-xl border-b-4">SUPPORT DEPARTMENTS</p>
         </div>
-        <div className="grid grid-cols-3 gap-4 w-full">
+        <div className="flex flex-col lg:grid lg:grid-cols-3 gap-4 w-full">
           <div className="m-10 relative flex items-center justify-center cursor-pointer" onClick={handleOpenCooperationDepartment}>
             <img
               className="object-cover w-full h-full rounded-lg filter brightness-50"
@@ -206,13 +206,13 @@ const StudentSupport = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 w-full px-24 py-6">
+      <section className="bg-gray-100 w-full px-4 lg:px-24 py-6">
         <div className="flex text-orange-500 font-bold items-center mb-6">
           <p className="text-xl border-b-4">STUDENT SERVICES</p>
         </div>
-        <div className="flex gap-4 w-full">
+        <div className="flex flex-col lg:flex-row gap-4 w-full">
           <div
-            className="mx-10 relative flex items-center justify-center w-full h-80"
+            className="lg:mx-10 relative flex items-center justify-center w-full h-80"
             onClick={handleOpenDorm}
           >
             <img
@@ -225,7 +225,7 @@ const StudentSupport = () => {
             </div>
           </div>
           <div
-            className="mx-10 relative flex items-center justify-center w-full h-80"
+            className="lg:mx-10 relative flex items-center justify-center w-full h-80"
             onClick={handleOpenExternal}
           >
             <img
@@ -241,11 +241,11 @@ const StudentSupport = () => {
         </div>
       </section>
 
-      <section className="bg-gray-100 w-full px-24 py-8">
+      <section className="bg-gray-100 w-full px-4 lg:px-24 py-8">
         <div className="flex text-orange-500 font-bold mb-6 justify-between items-center">
           <p className="text-xl border-b-4">RECRUITMENT</p>
         </div>
-        <div className="mx-10">
+        <div className="lg:mx-10">
           {DATA_RECRUITMENT.map((item) => {
             return (
               <Card key={item.id} className="my-4 shadow-lg">

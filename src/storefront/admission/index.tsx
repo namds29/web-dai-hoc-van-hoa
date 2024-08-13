@@ -364,7 +364,7 @@ const Admission = () => {
   return (
     <section className="w-full">
       <Banner />
-      <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-20 py-8">
+      <section className="bg-gray-100 w-full text-orange-500 font-bold  justify-between items-center px-4 lg:px-20 py-8">
         <p className="text-3xl border-b-4 text-center">Admission</p>
         <section id="functional_unit">
           <div className="flex text-black mt-4 gap-8">
