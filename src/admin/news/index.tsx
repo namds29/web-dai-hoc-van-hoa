@@ -206,19 +206,19 @@ const AdminNews = () => {
   }, [dropdownValue]);
 
   const tabsItem: ITabsType[] = [
-    {
-      label: "Hot news",
-      key: ITEM_NEWS.HOT_NEWS,
-      listType: LIST_TYPE.IMAGE_TITLE,
-      children: (
-        <ListData
-          section={dropdownValue.label}
-          data={data}
-          action={handleEditType}
-          type={dropdownValue.listType}
-        />
-      ),
-    },
+    // {
+    //   label: "Hot news",
+    //   key: ITEM_NEWS.HOT_NEWS,
+    //   listType: LIST_TYPE.IMAGE_TITLE,
+    //   children: (
+    //     <ListData
+    //       section={dropdownValue.label}
+    //       data={data}
+    //       action={handleEditType}
+    //       type={dropdownValue.listType}
+    //     />
+    //   ),
+    // },
     {
       label: "News",
       key: ITEM_NEWS.NEWS,
